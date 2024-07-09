@@ -1,0 +1,32 @@
+{
+  "docs": [
+    {
+      "uuid": "7f505c39-20a7-4d51-acea-8a622af2da47",
+      "slug": "installation",
+      "path": "docs/INSTALLATION.md",
+      "title": "Installing YAMLScript locally",
+      "blurb": "Learn how to install YAMLScript locally to solve Exercism's exercises on your own machine"
+    },
+    {
+      "uuid": "5bbb4d70-6ac9-4112-a379-4d13d60db817",
+      "slug": "learning",
+      "path": "docs/LEARNING.md",
+      "title": "How to learn YAMLScript",
+      "blurb": "An overview of how to get started from scratch with YAMLScript"
+    },
+    {
+      "uuid": "1c8693f6-5f47-4752-a83e-3cd24b82fbea",
+      "slug": "tests",
+      "path": "docs/TESTS.md",
+      "title": "Testing on the YAMLScript track",
+      "blurb": "Learn how to test your YAMLScript exercises on Exercism"
+    },
+    {
+      "uuid": "a11bd6c3-eba1-4f5e-b293-2ffb41415764",
+      "slug": "resources",
+      "path": "docs/RESOURCES.md",
+      "title": "Useful YAMLScript resources",
+      "blurb": "A collection of useful resources to help you master YAMLScript"
+    }
+  ]
+}
