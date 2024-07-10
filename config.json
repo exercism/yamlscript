@@ -8,11 +8,11 @@
     "representer": false,
     "analyzer": false
   },
-  "blurb": "TODO: add blurb",
+  "blurb": "YAMLScript is a dynamic, general purpose programming language. It has a clean YAML syntax and embeds nicely into existing YAML files, making the desired parts of them dynamic. When a YAMLScript program is run, the source code transpiles to Clojure code, and is evaluted by a native binary runtime interpreter called `ys` (not by the JVM). YAMLScript is also available as a dynamic YAML loader library (libyamlscript.so binding) in many popular programming languages, like Python, NodeJS, Rust and Go.",
   "version": 3,
   "online_editor": {
     "indent_style": "space",
-    "indent_size": 4
+    "indent_size": 2
   },
   "files": {
     "solution": [],
