@@ -39,6 +39,14 @@
         "topics": [
           "strings"
         ]
+      },
+      {
+        "slug": "two-fer",
+        "name": "Two-Fer",
+        "uuid": "0957cb25-13dd-43a0-ab3c-ba452ffa5508",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
     ]
   },
