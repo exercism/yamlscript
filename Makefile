@@ -12,7 +12,8 @@ export PATH := $(BIN):$(PATH)
 
 GEN_FILES := \
   config.json \
-  docs/config.yaml \
+  docs/config.json \
+  $(shell find exercises -name config.json) \
 
 SHELL_FILES := \
   $(BIN)/fetch-configlet \

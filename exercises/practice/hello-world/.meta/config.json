@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "contributors": [
+    "m-dango"
+  ],
+  "files": {
+    "solution": [
+      "hello-world.ys"
+    ],
+    "test": [
+      "hello-world-test.ys"
+    ],
+    "example": [
+      ".meta/hello-world.ys"
+    ]
+  },
+  "blurb": "Exercism's classic introductory exercise. Just say \"Hello, World!\".",
+  "source": "This is an exercise to introduce users to using Exercism",
+  "source_url": "https://en.wikipedia.org/wiki/%22Hello,_world!%22_program"
+}

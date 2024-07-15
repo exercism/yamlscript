@@ -28,9 +28,12 @@ online_editor:
   indent_size: 2
 
 files:
-  solution: []
-  test: []
-  example: []
+  solution:
+  - '%{kebab_slug}.ys'
+  test:
+  - '%{kebab_slug}-test.ys'
+  example:
+  - .meta/%{kebab_slug}.ys
   exemplar: []
 
 exercises:
@@ -38,7 +41,7 @@ exercises:
   practice:
   - slug: hello-world
     name: Hello World
-    uuid: 5279db5b-86f3-4074-9513-36a88c5ef9fc
+    uuid: f4c93e64-d954-4d2d-b4c9-d27d87a3390f
     practices: []
     prerequisites: []
     difficulty: 1
