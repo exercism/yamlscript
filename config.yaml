@@ -1,0 +1,45 @@
+# This is YAML config.yaml file is used to generate the JSON config.json file.
+# Make any changes to this file, not the JSON one.
+# Run `make update` to regenerate the JSON file.
+
+language: YAMLScript
+slug: yamlscript
+active: false
+
+status:
+  concept_exercises: false
+  test_runner: false
+  representer: false
+  analyzer: false
+
+blurb:
+  YAMLScript is a dynamic, general purpose programming language.
+  It has a clean YAML syntax and embeds nicely into existing YAML files, making
+  the desired parts of them dynamic.
+  When a YAMLScript program is run, the source code transpiles to Clojure code,
+  and is evaluted by a native binary runtime interpreter called `ys` (not by
+  the JVM).
+  YAMLScript is also available as a dynamic YAML loader library
+  (libyamlscript.so binding) in many popular programming languages, like
+  Python, NodeJS, Rust and Go.
+
+version: 3
+
+online_editor:
+  indent_style: space
+  indent_size: 2
+
+files:
+  solution: []
+  test: []
+  example: []
+  exemplar: []
+
+exercises:
+  concept: []
+  practice: []
+
+concepts: []
+
+key_features: []
+tags: []
