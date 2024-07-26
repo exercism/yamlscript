@@ -72,19 +72,21 @@ check: $(YS) $(CHECKS)
 test: test-exercises
 	@echo $(LINE)
 
-test-exercises:
+update: $(GEN_FILES)
+
+deps: $(YS) $(CFGLET) $(SHELLCHECK)
+
+test-exercises: $(YS)
 	@echo $(LINE)
 	@echo '*** Running tests for $(exercise-name)'
 	prove $(if $v,-v ,)$(exercise)
 	@echo '*** All exercises test ok'
 
-update: $(GEN_FILES)
-
-check-yaml: $(YAML_FILES)
+check-yaml: $(YS) $(YAML_FILES)
 	@echo $(LINE)
 	@echo '*** Test YAML files'
-	@for yaml in $^; do \
-	  (set -x; $(YS) -l $$yaml > /dev/null); \
+	@for yaml in $(YAML_FILES); do \
+	  (set -x; $< -l $$yaml > /dev/null); \
 	done
 	@echo '*** YAML files are OK'
 	@echo
@@ -103,7 +105,7 @@ check-exercism: $(CFGLET) update
 	@echo '*** Exercism setup is OK'
 	@echo
 
-check-verify:
+check-verify: update
 	@echo $(LINE)
 	@echo '*** Test all exercises are verified'
 	$(VERIFY) $(exercise)

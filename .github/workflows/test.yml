@@ -13,27 +13,35 @@
 # Requires scripts:
 # - bin/verify-exercises
 
-name: <track> / Test
+name: YAMLScript / Test
 
 on:
   push:
-    branches: [main]
+    # branches: [main]
   pull_request:
   workflow_dispatch:
 
 jobs:
   ci:
-    runs-on: <image-name>
+    runs-on: ubuntu:24.04
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
 
-      - name: Use <setup tooling>
-        uses: <action to setup tooling>
+      - name: Setup test environment
+        run:
+        - apt-get update
+        - apt-get install -y apt-utils
+        - apt-get install -y
+            curl
+            make
+            perl-modules-5.38
+            wget
+            xz-utils
 
-      - name: Install project dependencies
-        run: <install dependencies>
+      - name: Install dependencies
+        run: make deps
 
-      - name: Verify all exercises
-        run: bin/verify-exercises
+      - name: Run checks and tests
+        run: make check
