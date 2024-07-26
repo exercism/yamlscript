@@ -1,0 +1,10 @@
+# shellcheck shell=bash
+
+EXERCISM_YAMLSCRIPT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd -P)
+
+[[ :$PATH: == *:"$EXERCISM_YAMLSCRIPT_ROOT/bin":* ]] ||
+  PATH=$EXERCISM_YAMLSCRIPT_ROOT/bin:$PATH
+
+export PATH EXERCISM_YAMLSCRIPT_ROOT
+
+# vim: ft=sh:

@@ -20,8 +20,6 @@ blurb:
   and is evaluted by a native binary runtime interpreter called `ys` (not by
   the JVM).
   YAMLScript is also available as a dynamic YAML loader library
-  (libyamlscript.so binding) in many popular programming languages, like
-  Python, NodeJS, Rust and Go.
 
 version: 3
 
@@ -37,9 +35,33 @@ files:
 
 exercises:
   concept: []
-  practice: []
+  practice:
+  - slug: hello-world
+    name: Hello World
+    uuid: 5279db5b-86f3-4074-9513-36a88c5ef9fc
+    practices: []
+    prerequisites: []
+    difficulty: 1
+    topics: [strings]
 
 concepts: []
 
 key_features: []
-tags: []
+tags:
+- execution_mode/compiled
+- execution_mode/interpreted
+- paradigm/declarative
+- paradigm/functional
+- paradigm/imperative
+- platform/linux
+- platform/mac
+# - platform/windows  # soon
+# - runtime/jvm  # soon
+- runtime/standalone_executable
+- typing/dynamic
+- used_for/backends
+- used_for/cross_platform_development
+- used_for/games
+- used_for/scientific_calculations
+- used_for/scripts
+
