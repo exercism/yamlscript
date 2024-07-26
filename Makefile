@@ -15,6 +15,10 @@ EXERCISE_DIRS := $(EXERCISE_DIRS:%/.meta=%)
 EXERCISES := $(EXERCISE_DIRS:exercises/practice/%=%)
 EXERCISE_CONFIGS := $(EXERCISE_DIRS:%=%/.meta/config.json)
 EXERCISE_MAKEFILES := $(EXERCISE_DIRS:%=%/Makefile)
+a := (
+b := )
+EXERCISE_META_TESTS := $(shell ls exercises/practice/*/*-test.ys | \
+                         perl -pe 's{$a.*$b/$a.*$b}{$$1/.meta/$$2}')
 
 CHECKS := \
   check-yaml \
@@ -25,6 +29,7 @@ CHECKS := \
 
 GEN_FILES := \
   $(EXERCISE_MAKEFILES) \
+  $(EXERCISE_META_TESTS) \
   config.json \
   docs/config.json \
   $(EXERCISE_CONFIGS) \
@@ -115,6 +120,10 @@ realclean: clean
 
 exercises/practice/%/Makefile: common/exercise.mk
 	cp -p $< $@
+
+$(EXERCISE_META_TESTS):
+	( d=$$(dirname $@); f=$$(basename $@); cd $$d && ln -f ../$$f )
+
 
 %.json: %.yaml $(YS) Makefile
 	$(YS) -l $< | jq > $@
