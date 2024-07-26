@@ -30,14 +30,15 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
 
       - name: Setup test environment
-        run:
-        - apt-get update
-        - apt-get install -y apt-utils
-        - apt-get install -y
-            curl
-            make
-            perl-modules-5.38
-            wget
+        run: |
+          apt-get update
+          apt-get install -y apt-utils
+          apt-get install -y \
+            curl \
+            jq \
+            make \
+            perl-modules-5.38 \
+            wget \
             xz-utils
 
       - name: Install dependencies
