@@ -11,17 +11,29 @@ https://github.com/exercism/yamlscript/actions?query=workflow%3Atest)
 Exercism exercises in YAMLScript.
 
 
-## Testing the YAMLScript Exercises
+## Using Makefile Commands
 
-To test all exercises, run `make test`.
+Actions for this repository are all automated in the Makefile.
 
-To test a single exercise, run `make test exercise=<exercise-slug>`.
+* `make check`
+* `make test`
+* `make test v=1`  # verbose
+* `make test exercise=hello-world`  # Test single exercise
 
 
-### YAMLScript Track Linting
+### YAMLScript Track Repository Testing
 
 Run `make check` to check:
 
 * YAML files are correct
 * Shell files are correct
 * Exercism is set up correctly
+* Each exercise is verified
+* Also runs `make test`
+
+
+## Testing the YAMLScript Exercises
+
+To test all exercises, run `make test`.
+
+To test a single exercise, run `make test exercise=<exercise-slug>`.
