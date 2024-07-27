@@ -1,11 +1,11 @@
 Exercism YAMLScript Track
 =========================
 
-[![configlet](
-https://github.com/exercism/yamlscript/workflows/configlet/badge.svg)](
-https://github.com/exercism/yamlscript/actions?query=workflow%3Aconfiglet)
-[![tests](
-https://github.com/exercism/yamlscript/workflows/test/badge.svg)](
+[![Configlet](
+https://github.com/exercism/yamlscript/actions/workflows/configlet.yml/badge.svg
+)](https://github.com/exercism/yamlscript/actions?query=workflow%3Aconfiglet)
+[![Exercise Tests](
+https://github.com/exercism/yamlscript/actions/workflows/test.yml/badge.svg)](
 https://github.com/exercism/yamlscript/actions?query=workflow%3Atest)
 
 Exercism exercises in YAMLScript.

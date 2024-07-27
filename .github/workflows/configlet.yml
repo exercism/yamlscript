@@ -1,8 +1,7 @@
-name: Configlet
+name: configlet
 
 on:
-  push:
-    # branches: [main]
+  push: # {branches: [main]}
   pull_request:
   workflow_dispatch:
 

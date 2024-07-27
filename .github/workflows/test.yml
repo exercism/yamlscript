@@ -1,8 +1,7 @@
-name: Exercism YAMLScript Track / Test
+name: test
 
 on:
-  push:
-    # branches: [main]
+  push: # {branches: [main]}
   pull_request:
   workflow_dispatch:
 
@@ -11,30 +10,29 @@ defaults:
     shell: bash
 
 jobs:
-  test-repository:
+  test:
+    # TODO Switch to yamlscript-test-runner image
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+    - name: Checkout repository
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
 
-      - run: pwd
-      - run: whoami
-      - run: sudo apt-get update
-      - run: sudo apt-get install -y apt-utils
-      - run: |
-          sudo apt-get install -y \
-            curl \
-            jq \
-            make \
-            perl \
-            wget \
-            xz-utils
+    - run: sudo apt-get update
+    - run: sudo apt-get install -y apt-utils
+    - run: |
+        sudo apt-get install -y \
+          curl \
+          jq \
+          make \
+          perl \
+          wget \
+          xz-utils
 
-      - name: Install dependencies
-        run: make deps
+    - name: Install dependencies
+      run: make deps
 
-      - name: Run checks and tests
-        env:
-          EXERCISM_YAMLSCRIPT_GHA: 1
-        run: make check
+    - name: Run checks and tests
+      env:
+        EXERCISM_YAMLSCRIPT_GHA: 1
+      run: make check
