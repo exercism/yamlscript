@@ -1,6 +1,4 @@
 !yamlscript/v0
 
-ns: two-fer
-
 defn two-fer(name):
   ""

@@ -6,7 +6,7 @@ use: hello-world
 
 test::
 - name: Say Hi!
-  code: hello-world/hello()
+  code: hello()
   want: Hello, World!
 
 done: 1

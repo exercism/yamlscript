@@ -1,0 +1,15 @@
+authors:
+- m-dango
+- ingydotnet
+
+files:
+  solution:
+  - two-fer.ys
+  test:
+  - two-fer-test.ys
+  example:
+  - .meta/two-fer.ys
+
+blurb: Create a sentence of the form "One for X, one for me.".
+
+source_url: https://github.com/exercism/problem-specifications/issues/757

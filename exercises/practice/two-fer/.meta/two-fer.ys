@@ -1,6 +1,4 @@
 !yamlscript/v0
 
-ns: two-fer
-
-defn two-fer(name):
-  "One for $or(name, 'you'), one for me."
+defn two-fer(name): |-
+  One for $or(name 'you'), one for me.
