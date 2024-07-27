@@ -1,6 +1,8 @@
 !yamlscript/v0
 
-ns: leap
-
 defn is-leap-year(year):
-  ((year % 4) == 0) && (((year % 100) > 0) || ((year % 400) == 0))
+  and:
+    zero?: year % 4
+    or:
+      pos?: year % 100
+      zero?: year % 400
