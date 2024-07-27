@@ -5,7 +5,7 @@ files:
   solution:
   - leap.ys
   test:
-  - leap-test.ys
+  - test/test-1.ys
   example:
   - .meta/leap.ys
 

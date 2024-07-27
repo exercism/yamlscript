@@ -8,7 +8,7 @@
       "two-fer.ys"
     ],
     "test": [
-      "two-fer-test.ys"
+      "test/test-1.ys"
     ],
     "example": [
       ".meta/two-fer.ys"

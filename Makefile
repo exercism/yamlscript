@@ -17,8 +17,8 @@ EXERCISE_CONFIGS := $(EXERCISE_DIRS:%=%/.meta/config.json)
 EXERCISE_MAKEFILES := $(EXERCISE_DIRS:%=%/Makefile)
 a := (
 b := )
-EXERCISE_META_TESTS := $(shell ls exercises/practice/*/*-test.ys | \
-                         perl -pe 's{$a.*$b/$a.*$b}{$$1/.meta/$$2}')
+EXERCISE_META_TESTS := $(shell ls -d exercises/practice/*/test | \
+                         perl -pe 's{$a.*$b/test}{$$1/.meta/test}')
 
 CHECKS := \
   check-yaml \
@@ -56,11 +56,14 @@ v ?=
 
 ifeq (,$(exercise))
 exercise-name := all exercises
-override exercise := exercises/practice/*/.meta/*-test.ys
+override exercise := exercises/practice/*/.meta/test/*.ys
 else
 exercise-name := $(exercise)
-override exercise := exercises/practice/$(exercise)/.meta/*-test.ys
+override exercise := exercises/practice/$(exercise)/test/.meta/*.ys
 endif
+
+export YSPATH := $(shell IFS=:; p=$aexercises/practice/*/.meta$b; \
+	           echo "$${p[*]}")
 
 
 #------------------------------------------------------------------------------

@@ -8,7 +8,7 @@ files:
   solution:
   - hello-world.ys
   test:
-  - hello-world-test.ys
+  - test/test-1.ys
   example:
   - .meta/hello-world.ys
 

@@ -31,7 +31,7 @@ files:
   solution:
   - '%{kebab_slug}.ys'
   test:
-  - '%{kebab_slug}-test.ys'
+  - '%{kebab_slug}/test/test-1.ys'
   example:
   - .meta/%{kebab_slug}.ys
   exemplar: []
