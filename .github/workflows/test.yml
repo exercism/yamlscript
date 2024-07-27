@@ -1,19 +1,4 @@
-# This workflow will do a clean install of the dependencies and run tests across different versions
-#
-# Replace <track> with the track name
-# Replace <image-name> with an image to run the jobs on
-# Replace <action to setup tooling> with a github action to setup tooling on the image
-# Replace <install dependencies> with a cli command to install the dependencies
-#
-# Find Github Actions to setup tooling here:
-# - https://github.com/actions/?q=setup&type=&language=
-# - https://github.com/actions/starter-workflows/tree/main/ci
-# - https://github.com/marketplace?type=actions&query=setup
-#
-# Requires scripts:
-# - bin/verify-exercises
-
-name: YAMLScript / Test
+name: Exercism YAMLScript Track / Test
 
 on:
   push:
@@ -21,23 +6,28 @@ on:
   pull_request:
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
-  ci:
-    runs-on: ubuntu:24.04
+  test-repository:
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
 
-      - name: Setup test environment
-        run: |
-          apt-get update
-          apt-get install -y apt-utils
-          apt-get install -y \
+      - run: pwd
+      - run: whoami
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y apt-utils
+      - run: |
+          sudo apt-get install -y \
             curl \
             jq \
             make \
-            perl-modules-5.38 \
+            perl \
             wget \
             xz-utils
 
@@ -45,4 +35,6 @@ jobs:
         run: make deps
 
       - name: Run checks and tests
+        env:
+          EXERCISM_YAMLSCRIPT_GHA: 1
         run: make check
