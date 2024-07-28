@@ -6,3 +6,5 @@
 /bin/ys*
 /note/
 /shellcheck*
+/.clojure/
+/out.txt

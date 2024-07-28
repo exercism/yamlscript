@@ -18,7 +18,7 @@ Actions for this repository are all automated in the Makefile.
 * `make check`
 * `make test`
 * `make test v=1`  # verbose
-* `make test exercise=hello-world`  # Test single exercise
+* `make test test=hello-world`  # Test single exercise
 
 
 ### YAMLScript Track Repository Testing
@@ -36,4 +36,4 @@ Run `make check` to check:
 
 To test all exercises, run `make test`.
 
-To test a single exercise, run `make test exercise=<exercise-slug>`.
+To test a single exercise, run `make test test=<exercise-slug>`.
