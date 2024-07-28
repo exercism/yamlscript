@@ -31,13 +31,11 @@ files:
   solution:
   - '%{kebab_slug}.ys'
   test:
-  - '%{kebab_slug}/test/test-1.ys'
+  - 'test/test-1.ys'
   example:
   - .meta/%{kebab_slug}.ys
-  exemplar: []
 
 exercises:
-  concept: []
   practice:
   - slug: hello-world
     name: Hello World
@@ -53,7 +51,6 @@ exercises:
     practices: []
     prerequisites: []
     difficulty: 1
-    topics: []
 
   - slug: two-fer
     name: Two-Fer
@@ -61,11 +58,7 @@ exercises:
     practices: []
     prerequisites: []
     difficulty: 1
-    topics: []
 
-concepts: []
-
-key_features: []
 tags:
 - execution_mode/compiled
 - execution_mode/interpreted
@@ -83,4 +76,3 @@ tags:
 - used_for/games
 - used_for/scientific_calculations
 - used_for/scripts
-

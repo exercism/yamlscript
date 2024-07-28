@@ -19,15 +19,13 @@
       "%{kebab_slug}.ys"
     ],
     "test": [
-      "%{kebab_slug}/test/test-1.ys"
+      "test/test-1.ys"
     ],
     "example": [
       ".meta/%{kebab_slug}.ys"
-    ],
-    "exemplar": []
+    ]
   },
   "exercises": {
-    "concept": [],
     "practice": [
       {
         "slug": "hello-world",
@@ -46,8 +44,7 @@
         "uuid": "a6e60d12-8265-404a-b34e-69b6d00014fd",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": []
+        "difficulty": 1
       },
       {
         "slug": "two-fer",
@@ -55,13 +52,10 @@
         "uuid": "0957cb25-13dd-43a0-ab3c-ba452ffa5508",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": []
+        "difficulty": 1
       }
     ]
   },
-  "concepts": [],
-  "key_features": [],
   "tags": [
     "execution_mode/compiled",
     "execution_mode/interpreted",
