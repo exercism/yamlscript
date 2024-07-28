@@ -31,7 +31,8 @@ files:
   solution:
   - '%{kebab_slug}.ys'
   test:
-  - 'test/test-1.ys'
+  - test/test-1.ys
+  - Makefile
   example:
   - .meta/%{kebab_slug}.ys
 
