@@ -39,7 +39,6 @@ SHELL_FILES := \
 
 YAML_FILES := \
   config.yaml \
-  docs/config.yaml \
 
 SHELLCHECK_VERSION := v0.10.0
 SHELLCHECK_REPO := https://github.com/koalaman/shellcheck
