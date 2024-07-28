@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn reverse-string(s):
+  str/reverse: s

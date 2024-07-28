@@ -1,0 +1,32 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: reverse-string
+
+test::
+- name: An empty string
+  code: reverse-string('')
+  want: ''
+
+- name: A word
+  code: reverse-string('robot')
+  want: tobor
+
+- name: A capitalized word
+  code: reverse-string('Ramen')
+  want: nemaR
+
+- name: A sentence with punctuation
+  code: reverse-string("I'm hungry!")
+  want: "!yrgnuh m'I"
+
+- name: A palindrome
+  code: reverse-string('racecar')
+  want: racecar
+
+- name: An even sized word
+  code: reverse-string('drawer')
+  want: reward
+
+done:
