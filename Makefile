@@ -41,6 +41,9 @@ YAML_FILES := \
   config.yaml \
   docs/config.yaml \
 
+CLOJURE_REPO := .clojure
+CLOJURE_REPO_URL := https://github.com/exercism/clojure
+
 SHELLCHECK_VERSION := v0.10.0
 SHELLCHECK_REPO := https://github.com/koalaman/shellcheck
 SHELLCHECK_RELEASES := $(SHELLCHECK_REPO)/releases/download
@@ -52,14 +55,15 @@ SHELLCHECK_RELEASE := \
 LINE := $(shell printf '%.0s-' {1..80})
 
 exercise ?=
+test ?=
 v ?=
 
-ifeq (,$(exercise))
-exercise-name := all exercises
-override exercise := exercises/practice/*/.meta/test/*.ys
+ifeq (,$(test))
+test-name := all exercises
+override test := exercises/practice/*/.meta/test/*.ys
 else
-exercise-name := $(exercise)
-override exercise := exercises/practice/$(exercise)/test/.meta/*.ys
+test-name := $(test)
+override test := exercises/practice/$(test)/test/.meta/*.ys
 endif
 
 export YSPATH := $(shell IFS=:; p=$aexercises/practice/*/.meta$b; \
@@ -68,6 +72,12 @@ export YSPATH := $(shell IFS=:; p=$aexercises/practice/*/.meta$b; \
 
 #------------------------------------------------------------------------------
 default:
+
+new: $(CFGLET) $(YS) $(CLOJURE_REPO)
+ifndef exercise
+	$(error Please set the 'exercise' variable)
+endif
+	exercise=$(exercise) new-exercise
 
 check: $(YS) $(CHECKS)
 	@echo $(LINE)
@@ -81,8 +91,8 @@ deps: $(YS) $(CFGLET) $(SHELLCHECK)
 
 test-exercises: $(YS)
 	@echo $(LINE)
-	@echo '*** Running tests for $(exercise-name)'
-	prove $(if $v,-v ,)$(exercise)
+	@echo '*** Running tests for $(test-name)'
+	prove $(if $v,-v ,)$(test)
 	@echo '*** All exercises test ok'
 
 check-yaml: $(YS) $(YAML_FILES)
@@ -111,7 +121,7 @@ check-exercism: $(CFGLET) update
 check-verify: update
 	@echo $(LINE)
 	@echo '*** Test all exercises are verified'
-	$(VERIFY) $(exercise)
+	$(VERIFY) $(test)
 	@echo '*** All exercises are verified OK'
 	@echo
 
@@ -127,7 +137,7 @@ exercises/practice/%/Makefile: common/exercise.mk
 	cp -p $< $@
 
 $(EXERCISE_META_TESTS):
-	( d=$$(dirname $@); f=$$(basename $@); cd $$d && ln -f ../$$f )
+	( d=$$(dirname $@); f=$$(basename $@); cd $$d && ln -fs ../$$f )
 
 
 %.json: %.yaml $(YS) Makefile
@@ -153,3 +163,6 @@ $(SHELLCHECK_DIR): $(SHELLCHECK_TAR)
 
 $(SHELLCHECK_TAR):
 	wget $(SHELLCHECK_RELEASE)
+
+$(CLOJURE_REPO):
+	git clone $(CLOJURE_REPO_URL) $@

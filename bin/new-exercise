@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+die() {
+  echo "Error: $*" >&2
+  exit 1
+}
+
+[[ $exercise ]] ||
+  die "The 'exercise' variable not set"
+
+slug=$exercise
+clj=.clojure/exercises/practice/$slug
+ys=exercises/practice/$slug
+_slug=${slug//-/_}
+
+(
+  set -x
+  git checkout -- config.json config.yaml
+  rm -fr "exercises/practice/$slug"
+)
+
+configlet create --practice-exercise="$slug"
+
+new_yaml=$(mktemp)
+ys -Y config.json > "$new_yaml"
+new_section=$(
+  diff -u config.yaml "$new_yaml" |
+    perl -p0e '
+      s{(?s:.*)\n(\+\ \ -\ slug.*\n(?:\+.*\n)+)(?s:.*)}{$1};
+      s/^\+//mg' || true
+)
+top_section=$(grep -B999 '^tags:' config.yaml | head -n -2)
+bottom_section=$(grep -A999 '^tags:' config.yaml)
+
+(
+  cat <<...
+$top_section
+
+$new_section
+
+$bottom_section
+...
+) > config.yaml
+
+cp $clj/.meta/src/example.clj $ys/.meta/$slug.ys
+cp $clj/src/$_slug.clj $ys/$slug.ys
+(
+  cat <<...
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: $slug
+
+test:: []
+
+$(perl -pe 's/^(.)/# $1/' < $clj/test/${_slug}_test.clj)
+
+done:
+...
+) > $ys/test/test-1.ys
+
+touch common/exercise.mk
+
+make update
+
+#------------------------------------------------------------------------------
+(
+  git status --ignored
+  tree -a src/leap/ \
+          src/reverse-string/ \
+          .clojure/exercises/practice/reverse-string/
+) &> out.txt
