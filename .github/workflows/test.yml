@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
 
     - name: Touch all
-      run: touch *
+      run: find * -type f | xargs touch
 
     - name: Run checks and tests
       run: EXERCISM_YAMLSCRIPT_GHA=1 make check
