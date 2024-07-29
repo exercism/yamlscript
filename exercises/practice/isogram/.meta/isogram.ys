@@ -1,0 +1,10 @@
+!yamlscript/v0
+
+defn isogram?(word):
+  word
+    .lower-case()
+    .split('')
+    .remove(empty _)
+    .filter(\(re-matches /\w/ %1) _)
+    .conj(' ')
+    .apply(distinct? _)
