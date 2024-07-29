@@ -2,7 +2,7 @@ SHELL := bash
 
 ROOT := $(shell pwd)
 
-BIN := $(ROOT)/bin
+BIN := bin
 
 YS := $(BIN)/ys
 CFGLET := $(BIN)/configlet
@@ -14,7 +14,7 @@ YS := ys
 SHELLCHECK := shellcheck
 endif
 
-export PATH := $(BIN):$(PATH)
+export PATH := $(ROOT)/bin:$(PATH)
 
 EXERCISE_DIRS := $(shell find exercises -name .meta)
 EXERCISE_DIRS := $(EXERCISE_DIRS:%/.meta=%)
@@ -146,18 +146,22 @@ $(EXERCISE_META_TESTS):
 %.json: %.yaml $(YS) Makefile
 	$(YS) -l $< | jq > $@
 
-$(YS):
-	curl -s https://yamlscript.org/install | \
-	  PREFIX=$(ROOT) BIN=1 bash
-
-# Dummy rule for GHA
-ys shellcheck:
+$(CLOJURE_REPO):
+	git clone $(CLOJURE_REPO_URL) $@
 
 $(CFGLET):
 	$(BIN)/fetch-configlet
 
+# Dummy rule for GHA
+ys shellcheck:
+
+ifndef EXERCISM_YAMLSCRIPT_GHA
+bin/ys:
+	curl -s https://yamlscript.org/install | \
+	  PREFIX=$(ROOT) BIN=1 bash
+
 ifeq (,$(wildcard $(SHELLCHECK)))
-$(SHELLCHECK): $(SHELLCHECK_DIR)
+bin/shellcheck: $(SHELLCHECK_DIR)
 	mv $</shellcheck $@
 	touch $@
 	$(RM) -r $<
@@ -169,6 +173,4 @@ $(SHELLCHECK_DIR): $(SHELLCHECK_TAR)
 
 $(SHELLCHECK_TAR):
 	wget --quiet $(SHELLCHECK_RELEASE)
-
-$(CLOJURE_REPO):
-	git clone $(CLOJURE_REPO_URL) $@
+endif
