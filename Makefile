@@ -2,13 +2,19 @@ SHELL := bash
 
 ROOT := $(shell pwd)
 
-BIN := $(ROOT)/bin
+BIN := bin
+
 YS := $(BIN)/ys
 CFGLET := $(BIN)/configlet
 SHELLCHECK := $(BIN)/shellcheck
 VERIFY := $(BIN)/verify-exercises
 
-export PATH := $(BIN):$(PATH)
+ifdef EXERCISM_YAMLSCRIPT_GHA
+YS := ys
+SHELLCHECK := shellcheck
+endif
+
+export PATH := $(ROOT)/bin:$(PATH)
 
 EXERCISE_DIRS := $(shell find exercises -name .meta)
 EXERCISE_DIRS := $(EXERCISE_DIRS:%/.meta=%)
@@ -128,6 +134,7 @@ realclean: clean
 	$(RM) $(CFGLET)
 	$(RM) $(SHELLCHECK)
 	$(RM) $(BIN)/ys*
+	$(RM) -r $(CLOJURE_REPO)
 
 exercises/practice/%/Makefile: common/exercise.mk
 	cp -p $< $@
@@ -139,15 +146,22 @@ $(EXERCISE_META_TESTS):
 %.json: %.yaml $(YS) Makefile
 	$(YS) -l $< | jq > $@
 
-$(YS):
-	curl -s https://yamlscript.org/install | \
-	  PREFIX=$(ROOT) BIN=1 bash
+$(CLOJURE_REPO):
+	git clone $(CLOJURE_REPO_URL) $@
 
 $(CFGLET):
 	$(BIN)/fetch-configlet
 
+# Dummy rule for GHA
+ys shellcheck:
+
+ifndef EXERCISM_YAMLSCRIPT_GHA
+bin/ys:
+	curl -s https://yamlscript.org/install | \
+	  PREFIX=$(ROOT) BIN=1 bash
+
 ifeq (,$(wildcard $(SHELLCHECK)))
-$(SHELLCHECK): $(SHELLCHECK_DIR)
+bin/shellcheck: $(SHELLCHECK_DIR)
 	mv $</shellcheck $@
 	touch $@
 	$(RM) -r $<
@@ -158,7 +172,5 @@ $(SHELLCHECK_DIR): $(SHELLCHECK_TAR)
 	tar xf $<
 
 $(SHELLCHECK_TAR):
-	wget $(SHELLCHECK_RELEASE)
-
-$(CLOJURE_REPO):
-	git clone $(CLOJURE_REPO_URL) $@
+	wget --quiet $(SHELLCHECK_RELEASE)
+endif

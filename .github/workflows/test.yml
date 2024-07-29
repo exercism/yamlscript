@@ -11,28 +11,15 @@ defaults:
 
 jobs:
   test:
-    # TODO Switch to yamlscript-test-runner image
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
+    container: ingy/exercism-yamlscript-test-runner:0.0.1
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
 
-    - run: sudo apt-get update
-    - run: sudo apt-get install -y apt-utils
-    - run: |
-        sudo apt-get install -y \
-          curl \
-          jq \
-          make \
-          perl \
-          wget \
-          xz-utils
-
-    - name: Install dependencies
-      run: make deps
+    - name: Touch all
+      run: find * -type f | xargs touch
 
     - name: Run checks and tests
-      env:
-        EXERCISM_YAMLSCRIPT_GHA: 1
-      run: make check
+      run: EXERCISM_YAMLSCRIPT_GHA=1 make check
