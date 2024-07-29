@@ -66,12 +66,13 @@ test::
   uuid: 310ac53d-8932-47bc-bbb4-b2b94f25a83e
 
 - name: Word with duplicated character and with two hyphens
-  code: 
-  want: 
+  code: isogram?('up-to-date')
+  want: false
   uuid: 0d0b8644-0a1e-4a31-a432-2b3ee270d847
-  SKIP: true
 
-#                 (test-true "longest reported english isogram"
-#                            (isogram? "subdermatoglyphic"))
+- name: Longest reported english isogram
+  code: isogram?("subdermatoglyphic")
+  want: true
+  uuid: a15ff557-dd04-4764-99e7-02cc1a385863
 
 done:
