@@ -3,10 +3,16 @@ SHELL := bash
 ROOT := $(shell pwd)
 
 BIN := $(ROOT)/bin
+
 YS := $(BIN)/ys
 CFGLET := $(BIN)/configlet
 SHELLCHECK := $(BIN)/shellcheck
 VERIFY := $(BIN)/verify-exercises
+
+ifdef EXERCISM_YAMLSCRIPT_GHA
+YS := ys
+SHELLCHECK := shellcheck
+endif
 
 export PATH := $(BIN):$(PATH)
 
@@ -128,6 +134,7 @@ realclean: clean
 	$(RM) $(CFGLET)
 	$(RM) $(SHELLCHECK)
 	$(RM) $(BIN)/ys*
+	$(RM) -r $(CLOJURE_REPO)
 
 exercises/practice/%/Makefile: common/exercise.mk
 	cp -p $< $@
@@ -142,6 +149,9 @@ $(EXERCISE_META_TESTS):
 $(YS):
 	curl -s https://yamlscript.org/install | \
 	  PREFIX=$(ROOT) BIN=1 bash
+
+# Dummy rule for GHA
+ys shellcheck:
 
 $(CFGLET):
 	$(BIN)/fetch-configlet
@@ -158,7 +168,7 @@ $(SHELLCHECK_DIR): $(SHELLCHECK_TAR)
 	tar xf $<
 
 $(SHELLCHECK_TAR):
-	wget $(SHELLCHECK_RELEASE)
+	wget --quiet $(SHELLCHECK_RELEASE)
 
 $(CLOJURE_REPO):
 	git clone $(CLOJURE_REPO_URL) $@
