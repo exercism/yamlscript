@@ -18,7 +18,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
 
+    - name: Touch all
+      run: touch *
+
     - name: Run checks and tests
-      env:
-        EXERCISM_YAMLSCRIPT_GHA: 1
-      run: make check
+      run: EXERCISM_YAMLSCRIPT_GHA=1 make check
