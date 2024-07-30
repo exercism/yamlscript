@@ -30,7 +30,6 @@ CHECKS := \
   check-shell \
   check-exercism \
   check-verify \
-  test-exercises \
 
 GEN_FILES := \
   $(EXERCISE_MAKEFILES) \
@@ -39,12 +38,20 @@ GEN_FILES := \
 
 SHELL_FILES := \
   $(BIN)/fetch-configlet \
+  $(BIN)/new-exercise \
+  $(BIN)/verify-exercises \
 
 YAML_FILES := \
   config.yaml \
 
+PROBLEM_REPO := .problem
+PROBLEM_REPO_URL := https://github.com/exercism/problem-specifications
+
 CLOJURE_REPO := .clojure
 CLOJURE_REPO_URL := https://github.com/exercism/clojure
+
+PERL5_REPO := .perl5
+PERL5_REPO_URL := https://github.com/exercism/perl5
 
 SHELLCHECK_VERSION := v0.10.0
 SHELLCHECK_REPO := https://github.com/koalaman/shellcheck
@@ -56,7 +63,7 @@ SHELLCHECK_RELEASE := \
 
 LINE := $(shell printf '%.0s-' {1..80})
 
-exercise ?=
+slug ?=
 test ?=
 v ?=
 
@@ -65,7 +72,7 @@ test-name := all exercises
 override test := exercises/practice/*/.meta/test/*.ys
 else
 test-name := $(test)
-override test := exercises/practice/$(test)/test/.meta/*.ys
+override test := exercises/practice/$(test)/.meta/test/*.ys
 endif
 
 export YSPATH := $(shell IFS=:; p=$aexercises/practice/*/.meta$b; \
@@ -75,11 +82,11 @@ export YSPATH := $(shell IFS=:; p=$aexercises/practice/*/.meta$b; \
 #------------------------------------------------------------------------------
 default:
 
-new: $(CFGLET) $(YS) $(CLOJURE_REPO)
-ifndef exercise
-	$(error Please set the 'exercise' variable)
+new: $(CFGLET) $(YS) $(PROBLEM_REPO) $(CLOJURE_REPO) $(PERL5_REPO)
+ifndef slug
+	$(error Please set the 'slug' variable)
 endif
-	exercise=$(exercise) new-exercise
+	exercise=$(slug) new-exercise
 
 check: $(YS) $(CHECKS)
 	@echo $(LINE)
@@ -94,8 +101,11 @@ deps: $(YS) $(CFGLET) $(SHELLCHECK)
 test-exercises: $(YS)
 	@echo $(LINE)
 	@echo '*** Running tests for $(test-name)'
-	prove $(if $v,-v ,)$(test)
+	@$(MAKE) --no-print-directory run-tests
 	@echo '*** All exercises test ok'
+
+run-tests:
+	prove $(if $v,-v ,)$(test)
 
 check-yaml: $(YS) $(YAML_FILES)
 	@echo $(LINE)
@@ -109,7 +119,7 @@ check-yaml: $(YS) $(YAML_FILES)
 check-shell: $(SHELLCHECK)
 	@echo $(LINE)
 	@echo '*** Test shell script files'
-	@$< $(SHELL_FILES)
+	$< $(SHELL_FILES)
 	@echo '*** Shell script files are OK'
 	@echo
 
@@ -123,7 +133,7 @@ check-exercism: $(CFGLET) update
 check-verify: update
 	@echo $(LINE)
 	@echo '*** Test all exercises are verified'
-	$(VERIFY) $(test)
+	$(VERIFY) $(slug)
 	@echo '*** All exercises are verified OK'
 	@echo
 
@@ -134,7 +144,11 @@ realclean: clean
 	$(RM) $(CFGLET)
 	$(RM) $(SHELLCHECK)
 	$(RM) $(BIN)/ys*
-	$(RM) -r $(CLOJURE_REPO)
+	$(RM) -r $(CLOJURE_REPO) $(PERL5_REPO) $(PROBLEM_REPO)
+
+reset:
+	git checkout -- config.*
+	git status -- exercises | grep exercises | xargs rm -fr
 
 exercises/practice/%/Makefile: common/exercise.mk
 	cp -p $< $@
@@ -146,8 +160,14 @@ $(EXERCISE_META_TESTS):
 %.json: %.yaml $(YS) Makefile
 	$(YS) -l $< | jq > $@
 
+$(PROBLEM_REPO):
+	git clone $(PROBLEM_REPO_URL) $@
+
 $(CLOJURE_REPO):
 	git clone $(CLOJURE_REPO_URL) $@
+
+$(PERL5_REPO):
+	git clone $(PERL5_REPO_URL) $@
 
 $(CFGLET):
 	$(BIN)/fetch-configlet

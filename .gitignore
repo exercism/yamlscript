@@ -6,5 +6,7 @@
 /bin/ys*
 /note/
 /shellcheck*
-/.clojure/
 /out.txt
+/.clojure/
+/.perl5/
+/.problem/
