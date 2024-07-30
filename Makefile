@@ -172,5 +172,5 @@ $(SHELLCHECK_DIR): $(SHELLCHECK_TAR)
 	tar xf $<
 
 $(SHELLCHECK_TAR):
-	wget --quiet $(SHELLCHECK_RELEASE)
+	curl -sSOL $(SHELLCHECK_RELEASE)
 endif
