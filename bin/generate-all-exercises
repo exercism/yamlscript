@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+P=.problem/exercises
+E=exercises/practice
+
+if [[ $# -gt 0 ]]; then
+  SLUGS=("$@")
+else
+  for exercise in $P/*; do
+    SLUGS+=($(basename "$exercise"))
+  done
+fi
+
+i=0
+for exercise in "${SLUGS[@]}"; do
+  slug=$(basename "$exercise")
+  CDJ=$P/$slug/canonical-data.json
+  branch=exercise-$slug
+  new=new/$branch
+
+  if [[ $slug == armstrong-numbers ]]; then
+    echo "SKIP - '$slug' triggers a ys bug"
+    continue
+  fi
+  if [[ -e $E/$slug ]]; then
+    echo "SKIP - directory '$E/$slug' already exists"
+    continue
+  fi
+  if git show-ref --quiet "refs/heads/$branch"; then
+    echo "SKIP - branch 'exercise-$slug' already exists"
+    continue
+  fi
+  if [[ -e $P/$slug/.deprecated ]]; then
+    echo "SKIP - exercise '$slug' is deprecated"
+    continue
+  fi
+  if [[ ! -e $CDJ ]]; then
+    echo "SKIP - '$CDJ' not found"
+    continue
+  fi
+  if [[ $(jq '.cases[0].property' "$CDJ") == null ]]; then
+    echo "SKIP - '$slug' has multiple property values"
+    continue
+  fi
+
+  make --no-print-directory new slug="$slug" || {
+    echo "FAILED - to generate new exercise '$slug'"
+    rm -fr "$E/$slug"
+    continue
+  }
+
+  if [[ ${SAVE-} ]]; then
+    git branch "$branch" HEAD
+    git worktree add -f "$new" "$branch"
+    cp config.* "$new"
+    mv "$E/$slug" "$new/$E/"
+    git -C "$new/$E" add .
+    git -C "$new/$E" commit -m "Implement exercise '$slug'"
+
+    make reset
+  fi
+
+  echo "*** Generated new exercise '$slug'"
+
+  i=$((i++))
+  [[ $i -lt ${COUNT:-9999} ]] || break
+done

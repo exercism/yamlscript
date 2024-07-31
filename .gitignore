@@ -4,7 +4,10 @@
 /bin/configlet.exe
 /bin/shellcheck
 /bin/ys*
+/done/
+/new/
 /note/
 /shellcheck*
-/.clojure/
 /out.txt
+/.clojure/
+/.problem/

@@ -2,6 +2,105 @@
 
 set -euo pipefail
 
+main() (
+  setup "$@"
+
+  configlet create --practice-exercise="$slug" >/dev/null
+
+  update-config-yaml
+
+  generate-example-program
+
+  generate-stub-program
+
+  generate-test-file
+
+  make-update
+
+  # show-new-exercise
+)
+
+setup() {
+  [[ $exercise ]] ||
+    die "The 'exercise' variable not set"
+
+  slug=$exercise
+  clj=.clojure/exercises/practice/$slug
+  ys=exercises/practice/$slug
+  meta=$ys/.meta
+  _slug=${slug//-/_}
+
+  [[ ! -d $ys ]] ||
+    die "Directory '$ys' already exists"
+
+  clj_example_file=$clj/.meta/src/example.clj
+  ys_example_file=$meta/$slug.ys
+  ys_stub_file=$ys/$slug.ys
+  # clj_test_file=$clj/test/${_slug}_test.clj
+  ys_test_file=$ys/test/test-1.ys
+}
+
+update-config-yaml() (
+  new_yaml=$(mktemp)
+  ys -Y config.json > "$new_yaml"
+  new_section=$(
+    diff -u config.yaml "$new_yaml" |
+      perl -p0e '
+        s{(?s:.*)\n(\+\ \ -\ slug.*\n(?:\+.*\n)+)(?s:.*)}{$1};
+        s/^\+//mg' || true
+  )
+  top_section=$(grep -B999 '^tags:' config.yaml | head -n -2)
+  bottom_section=$(grep -A999 '^tags:' config.yaml)
+
+  # Update config.yaml:
+  (
+    cat <<...
+$top_section
+
+$new_section
+
+$bottom_section
+...
+  ) > config.yaml
+)
+
+generate-example-program() (
+  (
+    command generate-stub-program "$slug"
+    if [[ -e $clj_example_file ]]; then
+      echo
+      perl -pe 's/^(.)/# $1/' < "$clj_example_file"
+    fi
+  ) > "$ys_example_file"
+)
+
+generate-stub-program() (
+  (
+    command generate-stub-program "$slug"
+  ) > "$ys_stub_file"
+)
+
+generate-test-file() (
+  command generate-test-file "$slug" \
+    > "$ys_test_file"
+)
+
+make-update() (
+  touch common/exercise.mk
+
+  make update >/dev/null
+)
+
+show-new-exercise() (
+  if [[ $(command -v tree) ]]; then
+    tree -a "$ys"
+  fi
+)
+
+warn() (
+  echo "$*" >&2
+)
+
 die() {
   echo "Error: $*" >&2
   exit 1
@@ -9,87 +108,4 @@ die() {
 
 [[ ${DEBUG-} ]] && set -x
 
-[[ $exercise ]] ||
-  die "The 'exercise' variable not set"
-
-slug=$exercise
-clj=.clojure/exercises/practice/$slug
-ys=exercises/practice/$slug
-_slug=${slug//-/_}
-
-clj_example_file=$clj/.meta/src/example.clj
-ys_example_file=$ys/.meta/$slug.ys
-clj_stub_file=$clj/src/$_slug.clj
-ys_stub_file=$ys/$slug.ys
-clj_test_file=$clj/test/${_slug}_test.clj
-ys_test_file=$ys/test/test-1.ys
-
-[[ -d $ys ]] &&
-  die "Directory '$ys' already exists"
-
-configlet create --practice-exercise="$slug"
-
-new_yaml=$(mktemp)
-ys -Y config.json > "$new_yaml"
-new_section=$(
-  diff -u config.yaml "$new_yaml" |
-    perl -p0e '
-      s{(?s:.*)\n(\+\ \ -\ slug.*\n(?:\+.*\n)+)(?s:.*)}{$1};
-      s/^\+//mg' || true
-)
-top_section=$(grep -B999 '^tags:' config.yaml | head -n -2)
-bottom_section=$(grep -A999 '^tags:' config.yaml)
-
-# Update config.yaml:
-(
-  cat <<...
-$top_section
-
-$new_section
-
-$bottom_section
-...
-) > config.yaml
-
-# Generate example program from Clojure equivalent:
-(
-  cat <<...
-!yamlscript/v0
-
-$(perl -pe 's/^(.)/# $1/' < "$clj_example_file")
-...
-) > "$ys_example_file"
-
-# Generate stub program from Clojure equivalent:
-(
-  cat <<...
-!yamlscript/v0
-
-$(perl -pe 's/^(.)/# $1/' < "$clj_stub_file")
-...
-) > "$ys_stub_file"
-
-# Generate test file from Clojure equivalent:
-(
-  cat <<...
-#!/usr/bin/env ys-0
-
-require ys::taptest: :all
-
-use: $slug
-
-test:: []
-
-$(perl -pe 's/^(.)/# $1/' < "$clj_test_file")
-
-done:
-...
-) > "$ys_test_file"
-
-touch common/exercise.mk
-
-make update
-
-if [[ $(command -v tree) ]]; then
-  tree -a "$ys"
-fi
+main "$@"
