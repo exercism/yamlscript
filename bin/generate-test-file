@@ -1,0 +1,51 @@
+#!/usr/bin/env ys-0
+
+defn main(slug):
+  data =:
+    json/load:
+      slurp: ".problem/exercises/$slug/canonical-data.json"
+
+  tests =:
+    loop [[case & cases] data.cases, tests []]:
+      if cases.seq():
+        recur cases: tests.conj(gen-test(case))
+        =>: tests
+
+  test =: |
+    #!/usr/bin/env ys-0
+
+    require ys::taptest: :all
+
+    use: $slug
+    $gen-comments(data)
+    test::
+    $(join("\n" tests).trimr())
+
+    done: # $count(tests)
+
+  say: test
+
+defn gen-test(case):
+  test =::
+  - name:: case.description.capitalize()
+    code:: gen-code(case)
+    want:: case.expected
+    uuid:: case.uuid
+    SKIP: true
+
+  yaml/dump: test
+
+defn gen-code(case):
+  "$(case.property)($(join ' ' case.input.vals().mapv(pr-str)))"
+
+defn gen-comments(data):
+  if data.comments:
+    then:
+      comments =:
+        data
+          .comments
+          .map(trim)
+          .join("\n")
+          .replace(/(?m)^/ '# ')
+      =>: "\n$comments\n"
+    else: ''

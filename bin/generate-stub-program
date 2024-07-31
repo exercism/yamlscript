@@ -1,0 +1,21 @@
+#!/usr/bin/env ys-0
+
+defn main(slug):
+  data =:
+    json/load:
+      slurp: ".problem/exercises/$slug/canonical-data.json"
+
+  case =: data.cases.0
+  func =: case.property.kebab-symbol()
+  args =:
+    join ' ': case.input.keys().mapv(kebab-symbol)
+
+  say: |-
+    !yamlscript/v0
+
+    defn ${func}($args):
+      # Implement the '$func' function.
+
+defn kebab-symbol(v):
+  replace v /[A-Z]/:
+    fn [c]: +"-" + c.lower-case()
