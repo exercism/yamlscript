@@ -6,27 +6,50 @@ use: reverse-string
 
 test::
 - name: An empty string
-  code: reverse-string('')
+  code: reverse('')
   want: ''
+  uuid: c3b7d806-dced-49ee-8543-933fd1719b1c
 
 - name: A word
-  code: reverse-string('robot')
+  code: reverse('robot')
   want: tobor
+  uuid: 01ebf55b-bebb-414e-9dec-06f7bb0bee3c
 
 - name: A capitalized word
-  code: reverse-string('Ramen')
+  code: reverse('Ramen')
   want: nemaR
+  uuid: 0f7c07e4-efd1-4aaa-a07a-90b49ce0b746
 
 - name: A sentence with punctuation
-  code: reverse-string("I'm hungry!")
+  code: reverse("I'm hungry!")
   want: "!yrgnuh m'I"
+  uuid: 71854b9c-f200-4469-9f5c-1e8e5eff5614
 
 - name: A palindrome
-  code: reverse-string('racecar')
+  code: reverse('racecar')
   want: racecar
+  uuid: 1f8ed2f3-56f3-459b-8f3e-6d8d654a1f6c
 
 - name: An even sized word
-  code: reverse-string('drawer')
+  code: reverse('drawer')
   want: reward
+  uuid: b9e7dec1-c6df-40bd-9fa3-cd7ded010c4c
 
-done:
+- name: Wide characters
+  code: reverse('子猫')
+  want: 猫子
+  uuid: 1bed0f8a-13b0-4bd3-9d59-3d0593326fa2
+
+- name: Grapheme cluster with pre-combined form
+  code: reverse('Würstchenstand')
+  want: dnatsnehctsrüW
+  uuid: 93d7e1b8-f60f-4f3c-9559-4056e10d2ead
+  SKIP: true
+
+- name: Grapheme clusters
+  code: reverse('ผู้เขียนโปรแกรม')
+  want: มรกแรปโนยขีเผู้
+  uuid: 1028b2c1-6763-4459-8540-2da47ca512d9
+  SKIP: true
+
+done: 7 # 9

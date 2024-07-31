@@ -1,4 +1,4 @@
 !yamlscript/v0
 
-defn reverse-string(s):   # <- arglist goes here
-  your code: goes here
+defn reverse():
+  # Implement the 'reverse' function.
