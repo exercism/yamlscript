@@ -1,0 +1,8 @@
+!yamlscript/v0
+
+defn abbreviate(phrase): 42
+  phrase
+    .re-seq(/[A-Z]+['a-z]*|[a-z]+/ _)
+    .map(first)
+    .apply(str)
+    .upper-case()

@@ -38,6 +38,20 @@ files:
 
 exercises:
   practice:
+  - slug: acronym
+    name: Acronym
+    uuid: 69afd018-4769-431e-b1d3-84a678103736
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
+  - slug: all-your-base
+    name: All Your Base
+    uuid: 8dec480c-3ece-4f1c-9b87-d14e52f50db6
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
   - slug: hello-world
     name: Hello World
     uuid: f4c93e64-d954-4d2d-b4c9-d27d87a3390f
@@ -46,16 +60,16 @@ exercises:
     difficulty: 1
     topics: [strings]
 
-  - slug: leap
-    name: Leap
-    uuid: a6e60d12-8265-404a-b34e-69b6d00014fd
+  - slug: isogram
+    name: Isogram
+    uuid: 4e43c38f-500e-4f56-a502-91cbc1bade5f
     practices: []
     prerequisites: []
     difficulty: 1
 
-  - slug: two-fer
-    name: Two-Fer
-    uuid: 0957cb25-13dd-43a0-ab3c-ba452ffa5508
+  - slug: leap
+    name: Leap
+    uuid: a6e60d12-8265-404a-b34e-69b6d00014fd
     practices: []
     prerequisites: []
     difficulty: 1
@@ -67,16 +81,9 @@ exercises:
     prerequisites: []
     difficulty: 1
 
-  - slug: isogram
-    name: Isogram
-    uuid: 4e43c38f-500e-4f56-a502-91cbc1bade5f
-    practices: []
-    prerequisites: []
-    difficulty: 1
-
-  - slug: all-your-base
-    name: All Your Base
-    uuid: 8dec480c-3ece-4f1c-9b87-d14e52f50db6
+  - slug: two-fer
+    name: Two-Fer
+    uuid: 0957cb25-13dd-43a0-ab3c-ba452ffa5508
     practices: []
     prerequisites: []
     difficulty: 1
