@@ -1,11 +1,13 @@
 {
-  "authors": [],
+  "authors": [
+    "ingydotnet"
+  ],
   "files": {
     "solution": [
       "reverse-string.ys"
     ],
     "test": [
-      "test/test-1.ys",
+      "reverse-string-test.ys",
       "Makefile"
     ],
     "example": [

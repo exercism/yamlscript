@@ -8,7 +8,7 @@
       "two-fer.ys"
     ],
     "test": [
-      "test/test-1.ys",
+      "two-fer-test.ys",
       "Makefile"
     ],
     "example": [

@@ -37,7 +37,7 @@ setup() {
   ys_example_file=$meta/$slug.ys
   ys_stub_file=$ys/$slug.ys
   # clj_test_file=$clj/test/${_slug}_test.clj
-  ys_test_file=$ys/test/test-1.ys
+  ys_test_file=$ys/$slug-test.ys
 }
 
 update-config-yaml() (

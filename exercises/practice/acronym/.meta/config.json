@@ -1,11 +1,13 @@
 {
-  "authors": [],
+  "authors": [
+    "ingydotnet"
+  ],
   "files": {
     "solution": [
       "acronym.ys"
     ],
     "test": [
-      "test/test-1.ys",
+      "acronym-test.ys",
       "Makefile"
     ],
     "example": [

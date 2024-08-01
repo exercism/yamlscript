@@ -19,7 +19,7 @@
       "%{kebab_slug}.ys"
     ],
     "test": [
-      "test/test-1.ys",
+      "%{kebab_slug}-test.ys",
       "Makefile"
     ],
     "example": [

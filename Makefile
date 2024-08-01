@@ -66,10 +66,10 @@ v ?=
 
 ifeq (,$(test))
 test-name := all exercises
-override test := exercises/practice/*/.meta/test/*.ys
+override test := exercises/practice/*/.meta/*-test.ys
 else
 test-name := $(test)
-override test := exercises/practice/$(test)/.meta/test/*.ys
+override test := exercises/practice/$(test)/.meta/*-test.ys
 endif
 
 export YSPATH := $(shell IFS=:; p=$aexercises/practice/*/.meta$b; \

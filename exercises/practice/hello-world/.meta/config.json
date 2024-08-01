@@ -10,7 +10,7 @@
       "hello-world.ys"
     ],
     "test": [
-      "test/test-1.ys",
+      "hello-world-test.ys",
       "Makefile"
     ],
     "example": [

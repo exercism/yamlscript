@@ -1,13 +1,14 @@
 {
   "authors": [
-    "m-dango"
+    "m-dango",
+    "ingydotnet"
   ],
   "files": {
     "solution": [
       "leap.ys"
     ],
     "test": [
-      "test/test-1.ys",
+      "leap-test.ys",
       "Makefile"
     ],
     "example": [

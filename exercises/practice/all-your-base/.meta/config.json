@@ -1,11 +1,13 @@
 {
-  "authors": [],
+  "authors": [
+    "ingydotnet"
+  ],
   "files": {
     "solution": [
       "all-your-base.ys"
     ],
     "test": [
-      "test/test-1.ys",
+      "all-your-base-test.ys",
       "Makefile"
     ],
     "example": [

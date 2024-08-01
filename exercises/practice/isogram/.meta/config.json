@@ -7,7 +7,7 @@
       "isogram.ys"
     ],
     "test": [
-      "test/test-1.ys",
+      "isogram-test.ys",
       "Makefile"
     ],
     "example": [
