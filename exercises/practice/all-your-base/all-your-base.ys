@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn rebase(input-base digits output-base):
+  # Implement the 'rebase' function.

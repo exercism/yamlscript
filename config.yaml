@@ -74,6 +74,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: all-your-base
+    name: All Your Base
+    uuid: 8dec480c-3ece-4f1c-9b87-d14e52f50db6
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
 tags:
 - execution_mode/compiled
 - execution_mode/interpreted

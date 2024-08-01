@@ -1,0 +1,154 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: all-your-base
+
+# This canonical data makes the following choices:
+# 1. Zero is always represented in outputs as [0] instead of [].
+# 2. In no other instances are leading zeroes present in any outputs.
+# 3. Leading zeroes are accepted in inputs.
+# 4. An empty sequence of input digits is considered zero, rather than an error.
+#
+# Tracks that wish to make different decisions for these choices may translate appropriately.
+#
+# All your numeric-base are belong to [2..]. :)
+
+test::
+- name: Single bit one to decimal
+  code: rebase(2 [1] 10)
+  want:
+  - 1
+  uuid: 5ce422f9-7a4b-4f44-ad29-49c67cb32d2c
+
+- name: Binary to single decimal
+  code: rebase(2 [1 0 1] 10)
+  want:
+  - 5
+  uuid: 0cc3fea8-bb79-46ac-a2ab-5a2c93051033
+
+- name: Single decimal to binary
+  code: rebase(10 [5] 2)
+  want:
+  - 1
+  - 0
+  - 1
+  uuid: f12db0f9-0d3d-42c2-b3ba-e38cb375a2b8
+
+- name: Binary to multiple decimal
+  code: rebase(2 [1 0 1 0 1 0] 10)
+  want:
+  - 4
+  - 2
+  uuid: 2c45cf54-6da3-4748-9733-5a3c765d925b
+
+- name: Decimal to binary
+  code: rebase(10 [4 2] 2)
+  want:
+  - 1
+  - 0
+  - 1
+  - 0
+  - 1
+  - 0
+  uuid: 65ddb8b4-8899-4fcc-8618-181b2cf0002d
+
+- name: Trinary to hexadecimal
+  code: rebase(3 [1 1 2 0] 16)
+  want:
+  - 2
+  - 10
+  uuid: 8d418419-02a7-4824-8b7a-352d33c6987e
+
+- name: Hexadecimal to trinary
+  code: rebase(16 [2 10] 3)
+  want:
+  - 1
+  - 1
+  - 2
+  - 0
+  uuid: d3901c80-8190-41b9-bd86-38d988efa956
+
+- name: 15-bit integer
+  code: rebase(97 [3 46 60] 73)
+  want:
+  - 6
+  - 10
+  - 45
+  uuid: 5d42f85e-21ad-41bd-b9be-a3e8e4258bbf
+
+- name: Empty list
+  code: rebase(2 [] 10)
+  want:
+  - 0
+  uuid: d68788f7-66dd-43f8-a543-f15b6d233f83
+
+- name: Single zero
+  code: rebase(10 [0] 2)
+  want:
+  - 0
+  uuid: 5e27e8da-5862-4c5f-b2a9-26c0382b6be7
+
+- name: Multiple zeros
+  code: rebase(10 [0 0 0] 2)
+  want:
+  - 0
+  uuid: 2e1c2573-77e4-4b9c-8517-6c56c5bcfdf2
+
+- name: Leading zeros
+  code: rebase(7 [0 6 0] 10)
+  want:
+  - 4
+  - 2
+  uuid: 3530cd9f-8d6d-43f5-bc6e-b30b1db9629b
+
+- name: Input base is one
+  code: rebase(1 [0] 10)
+  what: error
+  want: input base must be >= 2
+  uuid: a6b476a1-1901-4f2a-92c4-4d91917ae023
+
+- name: Input base is zero
+  code: rebase(0 [] 10)
+  what: error
+  want: input base must be >= 2
+  uuid: e21a693a-7a69-450b-b393-27415c26a016
+
+- name: Input base is negative
+  code: rebase(-2 [1] 10)
+  what: error
+  want: input base must be >= 2
+  uuid: 54a23be5-d99e-41cc-88e0-a650ffe5fcc2
+
+- name: Negative digit
+  code: rebase(2 [1 -1 1 0 1 0] 10)
+  what: error
+  want: all digits must satisfy 0 <= d < input base
+  uuid: 9eccf60c-dcc9-407b-95d8-c37b8be56bb6
+
+- name: Invalid positive digit
+  code: rebase(2 [1 2 1 0 1 0] 10)
+  what: error
+  want: all digits must satisfy 0 <= d < input base
+  uuid: 232fa4a5-e761-4939-ba0c-ed046cd0676a
+
+- name: Output base is one
+  code: rebase(2 [1 0 1 0 1 0] 1)
+  what: error
+  want: output base must be >= 2
+  uuid: 14238f95-45da-41dc-95ce-18f860b30ad3
+
+- name: Output base is zero
+  code: rebase(10 [7] 0)
+  what: error
+  want: output base must be >= 2
+  uuid: 73dac367-da5c-4a37-95fe-c87fad0a4047
+
+- name: Output base is negative
+  code: rebase(2 [1] -7)
+  what: error
+  want: output base must be >= 2
+  uuid: 13f81f42-ff53-4e24-89d9-37603a48ebd9
+
+done: 20
+
