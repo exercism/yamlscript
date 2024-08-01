@@ -22,7 +22,7 @@ EXERCISES := $(EXERCISE_DIRS:exercises/practice/%=%)
 EXERCISE_MAKEFILES := $(EXERCISE_DIRS:%=%/Makefile)
 a := (
 b := )
-EXERCISE_META_TESTS := $(shell ls -d exercises/practice/*/test | \
+EXERCISE_META_TESTS := $(shell ls -d exercises/practice/*/*-test.ys | \
                          perl -pe 's{$a.*$b/test}{$$1/.meta/test}')
 
 CHECKS := \
