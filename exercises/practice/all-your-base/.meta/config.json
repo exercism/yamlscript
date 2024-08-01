@@ -1,0 +1,16 @@
+{
+  "authors": [],
+  "files": {
+    "solution": [
+      "all-your-base.ys"
+    ],
+    "test": [
+      "test/test-1.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/all-your-base.ys"
+    ]
+  },
+  "blurb": "Convert a number, represented as a sequence of digits in one base, to any other base."
+}
