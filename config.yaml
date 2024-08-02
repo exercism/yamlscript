@@ -43,11 +43,18 @@ exercises:
     uuid: 69afd018-4769-431e-b1d3-84a678103736
     practices: []
     prerequisites: []
-    difficulty: 1
+    difficulty: 2
 
   - slug: all-your-base
     name: All Your Base
     uuid: 8dec480c-3ece-4f1c-9b87-d14e52f50db6
+    practices: []
+    prerequisites: []
+    difficulty: 5
+
+  - slug: darts
+    name: Darts
+    uuid: a307a3a9-7841-47e2-9962-e50e4ba035b8
     practices: []
     prerequisites: []
     difficulty: 1
@@ -65,7 +72,7 @@ exercises:
     uuid: 4e43c38f-500e-4f56-a502-91cbc1bade5f
     practices: []
     prerequisites: []
-    difficulty: 1
+    difficulty: 2
 
   - slug: leap
     name: Leap
@@ -84,13 +91,6 @@ exercises:
   - slug: two-fer
     name: Two-Fer
     uuid: 0957cb25-13dd-43a0-ab3c-ba452ffa5508
-    practices: []
-    prerequisites: []
-    difficulty: 1
-
-  - slug: darts
-    name: Darts
-    uuid: a307a3a9-7841-47e2-9962-e50e4ba035b8
     practices: []
     prerequisites: []
     difficulty: 1
