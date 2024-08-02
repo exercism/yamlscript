@@ -88,6 +88,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: darts
+    name: Darts
+    uuid: a307a3a9-7841-47e2-9962-e50e4ba035b8
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
 tags:
 - execution_mode/compiled
 - execution_mode/interpreted
