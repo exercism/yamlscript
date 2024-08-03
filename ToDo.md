@@ -63,7 +63,7 @@ Exercises:
 * `13 - 4` - killer-sudoku-helper
 * `41 - 5` - kindergarten-garden
 * `37 - 6` - knapsack
-* `53 - 7` - largest-series-product
+* `53 - 7` - largest-series-product - **DONE**
 * `71 - 1` - leap - **DONE**
 * ` 9 - 5` - ledger
 * `33 - 5` - linked-list

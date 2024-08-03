@@ -26,10 +26,6 @@ There is tooling to help you out:
 
   Run other checks to make sure everything is ok before committing your work.
 
-* `make update`
-
-  Make sure generated files are up to date.
-
 * Look in Makefile for other helpers.
 
 
@@ -62,14 +58,12 @@ Now go back to the root directory.
 
 Edit the `config.yaml` file and change the `difficulty` number for your new
 exercise.
-You can use the number from the ToDo file.
+You can use the exercise's difficulty number from the ToDo file.
 
 You should also move your new config section in the YAML file to the alphabetic
 order position.
 
-Save the `config.yaml` file and run `make update`.
-
-Run `make check test` from the root directory.
+Run `make check` from the root directory.
 
 If it passes, commit your code and submit a Pull Request!
 

@@ -116,6 +116,13 @@ exercises:
     prerequisites: []
     difficulty: 2
 
+  - slug: largest-series-product
+    name: Largest Series Product
+    uuid: 5718019d-844a-4c0d-8a92-38ae3d34f632
+    practices: []
+    prerequisites: []
+    difficulty: 7
+
   - slug: leap
     name: Leap
     uuid: a6e60d12-8265-404a-b34e-69b6d00014fd
