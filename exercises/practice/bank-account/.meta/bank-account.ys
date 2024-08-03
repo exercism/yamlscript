@@ -1,0 +1,56 @@
+!yamlscript/v0
+
+# This exercise is a good candidate to practice concurrency, which
+# may not be available or possible in the implementing language track.
+# It is possible to implement this exercise without concurrency.
+
+account =: atom(nil)
+
+defn reset-test-state():
+  reset! account: nil
+
+defn bank-account(operations):
+  loop [[operation & operations] operations]:
+    op =: operation.operation
+    fn =: op.str('do-' _).symbol().resolve().var-get()
+    return =: fn.call(operation)
+    if operations.seq():
+      recur: operations
+      =>: return
+
+defn do-open(o):
+  when account.deref():
+    die: 'account already open'
+  reset! account: 0
+
+defn do-close(o):
+  when-not account.deref():
+    die: 'account not open'
+  reset! account: nil
+
+defn do-balance(o):
+  balance =: account.deref()
+  when-not balance:
+    die: 'account not open'
+  =>: balance
+
+defn do-deposit(o):
+  when-not account.deref():
+    die: 'account not open'
+  amount =: o.get-amount()
+  swap! account +: amount
+
+defn do-withdraw(o):
+  balance =: account.deref()
+  when-not balance:
+    die: 'account not open'
+  amount =: o.get-amount()
+  when (amount > balance):
+    die: 'amount must be less than balance'
+  swap! account -: amount
+
+defn get-amount(o):
+  amount =: o.amount
+  when (amount <= 0):
+    die: 'amount must be greater than 0'
+  =>: amount

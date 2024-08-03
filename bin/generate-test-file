@@ -40,7 +40,9 @@ defn gen-test(case):
   yaml/dump: test
 
 defn gen-code(case):
-  "$(case.property)($(join ' ' case.input.vals().mapv(pr-str)))"
+  func =: case.property.kebab-symbol()
+  args =: join(' ' case.input.vals().mapv(pr-str))
+  =>: "${func}($args)"
 
 defn gen-comments(data):
   if data.comments:
@@ -53,3 +55,7 @@ defn gen-comments(data):
           .replace(/(?m)^/ '# ')
       =>: "\n$comments\n"
     else: ''
+
+defn kebab-symbol(v):
+  replace v /[A-Z]/:
+    fn [c]: +"-" + c.lower-case()

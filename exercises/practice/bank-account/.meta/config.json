@@ -1,0 +1,16 @@
+{
+  "authors": [],
+  "files": {
+    "solution": [
+      "bank-account.ys"
+    ],
+    "test": [
+      "bank-account-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/bank-account.ys"
+    ]
+  },
+  "blurb": "Simulate a bank account supporting opening/closing, withdraws, and deposits of money. Watch out for concurrent transactions!"
+}

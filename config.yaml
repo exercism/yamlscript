@@ -52,6 +52,13 @@ exercises:
     prerequisites: []
     difficulty: 5
 
+  - slug: bank-account
+    name: Bank Account
+    uuid: 37b26117-84b1-4327-8391-c81de2bd572e
+    practices: []
+    prerequisites: []
+    difficulty: 3
+
   - slug: binary-search
     name: Binary Search
     uuid: db284b8d-a06d-4a34-9f8a-6c78ef56ce26
