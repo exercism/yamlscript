@@ -43,7 +43,6 @@ test::
   code: largest-product("0123456789" 5)
   want: 15120
   uuid: 673210a3-33cd-4708-940b-c482d7a88f9d
-  SKIP: true
 
 - name: Can get the largest product of a big number
   code: largest-product("73167176531330624919225119674426574742355349194934" 6)
