@@ -133,6 +133,6 @@ Exercises:
 * `55 - 2` - word-count
 * `14 - 7` - word-search
 * `33 - 5` - wordy
-* `49 - 3` - yacht
+* `49 - 3` - yacht - **DONE**
 * `30 - 8` - zebra-puzzle
 * `17 - 8` - zipper

@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn score(dice category):
+  # Implement the 'score' function.
