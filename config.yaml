@@ -158,6 +158,13 @@ exercises:
     prerequisites: []
     difficulty: 4
 
+  - slug: triangle
+    name: Triangle
+    uuid: 494f403b-3bd7-47f1-a866-d07e9faea677
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: two-fer
     name: Two-Fer
     uuid: 0957cb25-13dd-43a0-ab3c-ba452ffa5508

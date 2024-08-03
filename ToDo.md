@@ -125,7 +125,7 @@ Exercises:
 * `55 - 1` - sum-of-multiples
 * `23 - 3` - tournament
 * `28 - 5` - transpose
-* `64 - 2` - triangle
+* `64 - 2` - triangle - **DONE**
 * `26 - 1` - twelve-days
 * `32 - 6` - two-bucket
 * `65 - 1` - two-fer - **DONE**

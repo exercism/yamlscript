@@ -1,0 +1,10 @@
+!yamlscript/v0
+
+defn equilateral(sides):
+  # Implement the 'equilateral' function.
+
+defn isosceles(sides):
+  # Implement the 'isosceles' function.
+
+defn scalene(sides):
+  # Implement the 'scalene' function.
