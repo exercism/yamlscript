@@ -72,3 +72,14 @@ Save the `config.yaml` file and run `make update`.
 Run `make check test` from the root directory.
 
 If it passes, commit your code and submit a Pull Request!
+
+
+## Getting Help
+
+You can find me (Ingy) or other YAMLScript people online to ask questions here:
+
+* [Ingy on Matrix](https://matrix.to/#/@ingy:yaml.io)
+* [YAMLScript on Matrix](https://matrix.to/#/#chat-yamlscript:yaml.io)
+* [Ingy on Slack](https://clojurians.slack.com/team/U05H8N9V0HZ)
+* [YAMLScript on Slack](https://clojurians.slack.com/archives/C05HQFMTURF)
+* [YAMLScript on IRC](https://web.libera.chat/gamja/#yamlscript)

@@ -136,4 +136,3 @@ Exercises:
 * `49 - 3` - yacht
 * `30 - 8` - zebra-puzzle
 * `17 - 8` - zipper
-
