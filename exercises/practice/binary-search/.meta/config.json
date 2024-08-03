@@ -1,5 +1,7 @@
 {
-  "authors": [],
+  "authors": [
+    "ingydotnet"
+  ],
   "files": {
     "solution": [
       "binary-search.ys"
