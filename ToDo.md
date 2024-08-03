@@ -93,7 +93,7 @@ Exercises:
 * `36 - 3` - pythagorean-triplet
 * `51 - 4` - queen-attack
 * `26 - 4` - rail-fence-cipher
-* `70 - 2` - raindrops
+* `70 - 2` - raindrops - **DONE**
 * `22 - 5` - rational-numbers
 * `17 - 8` - react
 * `20 - 7` - rectangles
