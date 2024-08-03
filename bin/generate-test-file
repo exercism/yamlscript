@@ -26,12 +26,16 @@ defn main(slug):
   say: test
 
 defn gen-test(case):
-  test =::
-  - name:: case.description.capitalize()
-    code:: gen-code(case)
-    want:: case.expected
-    uuid:: case.uuid
-    SKIP: true
+  test =:
+    vector:
+      apply merge::
+      - name:: case.description.capitalize()
+        code:: gen-code(case)
+      - !
+        if case.expected.error: +{'what' 'error'} {}
+      - want:: case.expected.error || case.expected
+        uuid:: case.uuid
+        SKIP: true
 
   yaml/dump: test
 

@@ -52,6 +52,13 @@ exercises:
     prerequisites: []
     difficulty: 5
 
+  - slug: binary-search
+    name: Binary Search
+    uuid: db284b8d-a06d-4a34-9f8a-6c78ef56ce26
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: darts
     name: Darts
     uuid: a307a3a9-7841-47e2-9962-e50e4ba035b8

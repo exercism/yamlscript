@@ -1,0 +1,18 @@
+{
+  "authors": [],
+  "files": {
+    "solution": [
+      "binary-search.ys"
+    ],
+    "test": [
+      "binary-search-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/binary-search.ys"
+    ]
+  },
+  "blurb": "Implement a binary search algorithm.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Binary_search_algorithm"
+}

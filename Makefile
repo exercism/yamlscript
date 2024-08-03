@@ -22,8 +22,10 @@ EXERCISES := $(EXERCISE_DIRS:exercises/practice/%=%)
 EXERCISE_MAKEFILES := $(EXERCISE_DIRS:%=%/Makefile)
 a := (
 b := )
-EXERCISE_META_TESTS := $(shell ls -d exercises/practice/*/*-test.ys | \
-                         perl -pe 's{$a.*$b/test}{$$1/.meta/test}')
+EXERCISE_META_LINKS := \
+  $(shell ls -d exercises/practice/*/*-test.ys \
+                exercises/practice/*/Makefile \
+    | perl -pe 's{$a.*$b/$a.*$b}{$$1/.meta/$$2}')
 
 CHECKS := \
   check-yaml \
@@ -33,7 +35,7 @@ CHECKS := \
 
 GEN_FILES := \
   $(EXERCISE_MAKEFILES) \
-  $(EXERCISE_META_TESTS) \
+  $(EXERCISE_META_LINKS) \
   config.json \
 
 SHELL_FILES := \
@@ -154,7 +156,7 @@ reset:
 exercises/practice/%/Makefile: common/exercise.mk
 	cp -p $< $@
 
-$(EXERCISE_META_TESTS):
+$(EXERCISE_META_LINKS):
 	( d=$$(dirname $@); f=$$(basename $@); cd $$d && ln -fs ../$$f )
 
 
