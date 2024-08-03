@@ -40,7 +40,7 @@ Exercises:
 * `28 - 4` - custom-set
 * `59 - 1` - darts - **DONE**
 * `45 - 5` - diamond
-* `68 - 2` - difference-of-squares
+* `68 - 2` - difference-of-squares - **DONE**
 * `42 - 3` - dnd-character
 * `22 - 8` - dominoes
 * `46 - 3` - eliuds-eggs

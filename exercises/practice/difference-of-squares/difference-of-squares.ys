@@ -1,0 +1,10 @@
+!yamlscript/v0
+
+defn square-of-sum(number):
+  # Implement the 'square-of-sum' function.
+
+defn sum-of-squares(number):
+  # Implement the 'sum-of-squares' function.
+
+defn difference-of-squares(number):
+  # Implement the 'difference-of-squares' function.
