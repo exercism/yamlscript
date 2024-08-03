@@ -20,7 +20,7 @@ Exercises:
 * `59 - 5` - all-your-base - **DONE**
 * `65 - 3` - allergies
 * `20 - 5` - alphametics
-* `65 - 4` - anagram
+* `65 - 4` - anagram - **DONE**
 * `63 - 2` - armstrong-numbers
 * `58 - 5` - atbash-cipher
 * `29 - 3` - bank-account - **DONE**

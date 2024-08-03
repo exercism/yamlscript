@@ -52,6 +52,13 @@ exercises:
     prerequisites: []
     difficulty: 5
 
+  - slug: anagram
+    name: Anagram
+    uuid: b9a97fab-932d-4b00-aae1-c028b68e6437
+    practices: []
+    prerequisites: []
+    difficulty: 4
+
   - slug: bank-account
     name: Bank Account
     uuid: 37b26117-84b1-4327-8391-c81de2bd572e
