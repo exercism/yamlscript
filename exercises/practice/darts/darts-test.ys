@@ -4,8 +4,6 @@ require ys::taptest: :all
 
 use: darts
 
-# Return the correct amount earned by a dart's landing position.
-
 test::
 - name: Missed target
   code: score(-9 9)

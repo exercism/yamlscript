@@ -4,16 +4,6 @@ require ys::taptest: :all
 
 use: all-your-base
 
-# This canonical data makes the following choices:
-# 1. Zero is always represented in outputs as [0] instead of [].
-# 2. In no other instances are leading zeroes present in any outputs.
-# 3. Leading zeroes are accepted in inputs.
-# 4. An empty sequence of input digits is considered zero, rather than an error.
-#
-# Tracks that wish to make different decisions for these choices may translate appropriately.
-#
-# All your numeric-base are belong to [2..]. :)
-
 test::
 - name: Single bit one to decimal
   code: rebase(2 [1] 10)
