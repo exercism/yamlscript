@@ -88,7 +88,7 @@ ifndef slug
 endif
 	@exercise=$(slug) new-exercise
 
-generate-all:
+generate-all: $(PROBLEM_REPO)
 	generate-all-exercises $(slug) $(slugs)
 
 check: $(YS) $(CHECKS)

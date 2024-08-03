@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn prime(number):
+  # Implement the 'prime' function.

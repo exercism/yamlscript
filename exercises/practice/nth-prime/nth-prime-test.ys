@@ -1,0 +1,29 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: nth-prime
+
+test::
+- name: First prime
+  code: prime(1)
+  want: 2
+  uuid: 75c65189-8aef-471a-81de-0a90c728160c
+
+- name: Second prime
+  code: prime(2)
+  want: 3
+  uuid: 2c38804c-295f-4701-b728-56dea34fd1a0
+
+- name: Sixth prime
+  code: prime(6)
+  want: 13
+  uuid: 56692534-781e-4e8c-b1f9-3e82c1640259
+
+- name: Big prime
+  code: prime(10001)
+  want: 104743
+  uuid: fce1e979-0edb-412d-93aa-2c744e8f50ff
+
+done: 4
+

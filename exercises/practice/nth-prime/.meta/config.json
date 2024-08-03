@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "nth-prime.ys"
+    ],
+    "test": [
+      "nth-prime-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/nth-prime.ys"
+    ]
+  },
+  "blurb": "Given a number n, determine what the nth prime is.",
+  "source": "A variation on Problem 7 at Project Euler",
+  "source_url": "https://projecteuler.net/problem=7"
+}
