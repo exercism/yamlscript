@@ -40,10 +40,6 @@ for exercise in "${SLUGS[@]}"; do
     echo "SKIP - '$CDJ' not found"
     continue
   fi
-  if [[ $(jq '.cases[0].property' "$CDJ") == null ]]; then
-    echo "SKIP - '$slug' has multiple property values"
-    continue
-  fi
 
   make --no-print-directory new slug="$slug" || {
     echo "FAILED - to generate new exercise '$slug'"

@@ -5,16 +5,30 @@ defn main(slug):
     json/load:
       slurp: ".problem/exercises/$slug/canonical-data.json"
 
-  case =: data.cases.0
+  say: "!yamlscript/v0\n"
+
+  say:
+    join "\n\n": gen-funcs(data.cases)
+
+defn gen-funcs(cases):
+  loop [[case & cases] cases, funcs []]:
+    genned-funcs =:
+      if case.cases:
+        gen-funcs(case.cases)
+        gen-func(case).vector()
+    funcs =: concat(funcs [genned-funcs.first()])
+    if cases.seq():
+      recur cases: funcs
+      =>: funcs
+
+defn gen-func(case):
   func =: case.property.kebab-symbol()
   args =:
     join ' ': case.input.keys().mapv(kebab-symbol)
-
-  say: |-
-    !yamlscript/v0
-
+  func =: |-
     defn ${func}($args):
       # Implement the '$func' function.
+  =>: func
 
 defn kebab-symbol(v):
   replace v /[A-Z]/:

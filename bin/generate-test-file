@@ -5,11 +5,7 @@ defn main(slug):
     json/load:
       slurp: ".problem/exercises/$slug/canonical-data.json"
 
-  tests =:
-    loop [[case & cases] data.cases, tests []]:
-      if cases.seq():
-        recur cases: tests.conj(gen-test(case))
-        =>: tests
+  tests =: gen-tests(data.cases)
 
   test =: |
     #!/usr/bin/env ys-0
@@ -24,6 +20,17 @@ defn main(slug):
     done: # $count(tests)
 
   say: test
+
+defn gen-tests(cases):
+  loop [[case & cases] cases, tests []]:
+    genned-tests =:
+      if case.cases:
+        gen-tests(case.cases)
+        gen-test(case).vector()
+    tests =: concat(tests genned-tests)
+    if cases.seq():
+      recur cases: tests
+      =>: tests
 
 defn gen-test(case):
   test =:

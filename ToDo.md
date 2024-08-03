@@ -28,7 +28,7 @@ Exercises:
 * `32 - 1` - binary-search-tree
 * `64 - 3` - bob
 * `26 - 7` - book-store
-* `17 - 3` - bottle-song
+* `17 - 3` - bottle-song - **DONE**
 * `31 - 8` - bowling
 * `29 - 5` - change
 * `45 - 8` - circular-buffer
