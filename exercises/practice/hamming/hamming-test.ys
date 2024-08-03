@@ -1,0 +1,99 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: hamming
+
+test::
+- name: Empty strands
+  code: distance("" "")
+  want: 0
+  uuid: f6dcb64f-03b0-4b60-81b1-3c9dbf47e887
+
+- name: Single letter identical strands
+  code: distance("A" "A")
+  want: 0
+  uuid: 54681314-eee2-439a-9db0-b0636c656156
+
+- name: Single letter different strands
+  code: distance("G" "T")
+  want: 1
+  uuid: 294479a3-a4c8-478f-8d63-6209815a827b
+
+- name: Long identical strands
+  code: distance("GGACTGAAATCTG" "GGACTGAAATCTG")
+  want: 0
+  uuid: 9aed5f34-5693-4344-9b31-40c692fb5592
+
+- name: Long different strands
+  code: distance("GGACGGATTCTG" "AGGACGGATTCT")
+  want: 9
+  uuid: cd2273a5-c576-46c8-a52b-dee251c3e6e5
+
+- name: Disallow first strand longer
+  code: distance("AATG" "AAA")
+  what: error
+  # want: left and right strands must be of equal length
+  want: strands must be of equal length
+  uuid: 919f8ef0-b767-4d1b-8516-6379d07fcb28
+
+- name: Disallow first strand longer
+  code: distance("AATG" "AAA")
+  what: error
+  want: strands must be of equal length
+  uuid: b9228bb1-465f-4141-b40f-1f99812de5a8
+
+- name: Disallow second strand longer
+  code: distance("ATA" "AGTG")
+  what: error
+  # want: left and right strands must be of equal length
+  want: strands must be of equal length
+  uuid: 8a2d4ed0-ead5-4fdd-924d-27c4cf56e60e
+
+- name: Disallow second strand longer
+  code: distance("ATA" "AGTG")
+  what: error
+  want: strands must be of equal length
+  uuid: dab38838-26bb-4fff-acbe-3b0a9bfeba2d
+
+- name: Disallow left empty strand
+  code: distance("" "G")
+  what: error
+  # want: left strand must not be empty
+  want: strands must be of equal length
+  uuid: 5dce058b-28d4-4ca7-aa64-adfe4e17784c
+
+- name: Disallow left empty strand
+  code: distance("" "G")
+  what: error
+  # want: left and right strands must be of equal length
+  want: strands must be of equal length
+  uuid: db92e77e-7c72-499d-8fe6-9354d2bfd504
+
+- name: Disallow empty first strand
+  code: distance("" "G")
+  what: error
+  want: strands must be of equal length
+  uuid: b764d47c-83ff-4de2-ab10-6cfe4b15c0f3
+
+- name: Disallow right empty strand
+  code: distance("G" "")
+  what: error
+  # want: right strand must not be empty
+  want: strands must be of equal length
+  uuid: 38826d4b-16fb-4639-ac3e-ba027dec8b5f
+
+- name: Disallow right empty strand
+  code: distance("G" "")
+  what: error
+  # want: left and right strands must be of equal length
+  want: strands must be of equal length
+  uuid: 920cd6e3-18f4-4143-b6b8-74270bb8f8a3
+
+- name: Disallow empty second strand
+  code: distance("G" "")
+  what: error
+  want: strands must be of equal length
+  uuid: 9ab9262f-3521-4191-81f5-0ed184a5aa89
+
+done: # 15

@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn distance(strand1 strand2):
+  # Implement the 'distance' function.

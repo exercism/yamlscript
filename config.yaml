@@ -80,6 +80,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: hamming
+    name: Hamming
+    uuid: 5ab55f94-fe14-4f17-acb7-772787f84d33
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: hello-world
     name: Hello World
     uuid: f4c93e64-d954-4d2d-b4c9-d27d87a3390f
@@ -128,7 +135,7 @@ exercises:
     uuid: 95d72ba7-f3f5-44a3-b289-f0c29f449108
     practices: []
     prerequisites: []
-    difficulty: 1
+    difficulty: 4
 
   - slug: two-fer
     name: Two-Fer
