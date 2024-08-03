@@ -12,11 +12,13 @@ defn main(slug):
 
 defn gen-funcs(cases):
   loop [[case & cases] cases, funcs []]:
+    cases =:
+      if case.cases: cases []
     genned-funcs =:
       if case.cases:
         gen-funcs(case.cases)
         gen-func(case).vector()
-    funcs =: concat(funcs [genned-funcs.first()])
+    funcs =: concat(funcs genned-funcs)
     if cases.seq():
       recur cases: funcs
       =>: funcs
