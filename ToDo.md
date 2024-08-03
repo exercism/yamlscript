@@ -104,7 +104,7 @@ Exercises:
 * `63 - 1` - reverse-string - **DONE**
 * `69 - 1` - rna-transcription
 * `51 - 5` - robot-simulator
-* `67 - 4` - roman-numerals
+* `67 - 4` - roman-numerals - **DONE**
 * `54 - 4` - rotational-cipher
 * `50 - 4` - run-length-encoding
 * `33 - 1` - saddle-points

@@ -123,6 +123,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: roman-numerals
+    name: Roman Numerals
+    uuid: 95d72ba7-f3f5-44a3-b289-f0c29f449108
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
   - slug: two-fer
     name: Two-Fer
     uuid: 0957cb25-13dd-43a0-ab3c-ba452ffa5508
