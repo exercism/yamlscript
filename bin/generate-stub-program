@@ -33,5 +33,5 @@ defn gen-func(case):
   =>: func
 
 defn kebab-symbol(v):
-  replace v /[A-Z]/:
-    fn [c]: +"-" + c.lower-case()
+  v.replace(/[A-Z]/ \("-" + %1.lower-case()))
+   .replace(/_/ "-")

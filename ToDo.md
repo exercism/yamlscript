@@ -91,7 +91,7 @@ Exercises:
 * `58 - 2` - protein-translation
 * `35 - 2` - proverb
 * `36 - 3` - pythagorean-triplet
-* `51 - 4` - queen-attack
+* `51 - 4` - queen-attack - **DONE**
 * `26 - 4` - rail-fence-cipher
 * `70 - 2` - raindrops - **DONE**
 * `22 - 5` - rational-numbers

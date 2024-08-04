@@ -1,0 +1,7 @@
+!yamlscript/v0
+
+defn create(queen):
+  # Implement the 'create' function.
+
+defn can-attack(white-queen black-queen):
+  # Implement the 'can-attack' function.
