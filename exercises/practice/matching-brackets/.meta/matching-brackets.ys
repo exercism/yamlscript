@@ -12,17 +12,13 @@ defn is-paired(value):
   loop [[char & chars] chars, stack []]:
     stack =:
       cond:
-        char.empty?(): +[]      # For empty string input
+        char.empty?():: []      # For empty string input
         opening(char): stack.conj(char)
         closing(char):
-          if (stack.peek() = pairs(char)):
-            then: stack.pop()
-            else: nil
+          when (stack.peek() = pairs(char)): stack.pop()
         =>: stack
 
     cond:
-      stack.nil?(): nil
-      empty?(chars):
-        or: empty?(stack) nil
-      =>:
-        recur chars: stack
+      stack.nil?(): false
+      empty?(chars): empty?(stack)
+      =>: recur(chars stack)

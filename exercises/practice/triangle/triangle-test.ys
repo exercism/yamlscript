@@ -12,17 +12,17 @@ test::
 
 - name: Any side is unequal
   code: equilateral([2 3 2])
-  want: null
+  want: false
   uuid: 33eb6f87-0498-4ccf-9573-7f8c3ce92b7b
 
 - name: No sides are equal
   code: equilateral([5 4 6])
-  want: null
+  want: false
   uuid: c6585b7d-a8c0-4ad8-8a34-e21d36f7ad87
 
 - name: All zero sides is not a triangle
   code: equilateral([0 0 0])
-  want: null
+  want: false
   uuid: 16e8ceb0-eadb-46d1-b892-c50327479251
 
 - name: Sides may be floats
@@ -52,22 +52,22 @@ test::
 
 - name: No sides are equal
   code: isosceles([2 3 4])
-  want: null
+  want: false
   uuid: 840ed5f8-366f-43c5-ac69-8f05e6f10bbb
 
 - name: First triangle inequality violation
   code: isosceles([1 1 3])
-  want: null
+  want: false
   uuid: 2eba0cfb-6c65-4c40-8146-30b608905eae
 
 - name: Second triangle inequality violation
   code: isosceles([1 3 1])
-  want: null
+  want: false
   uuid: 278469cb-ac6b-41f0-81d4-66d9b828f8ac
 
 - name: Third triangle inequality violation
   code: isosceles([3 1 1])
-  want: null
+  want: false
   uuid: 90efb0c7-72bb-4514-b320-3a3892e278ff
 
 - name: Sides may be floats
@@ -82,27 +82,27 @@ test::
 
 - name: All sides are equal
   code: scalene([4 4 4])
-  want: null
+  want: false
   uuid: 2510001f-b44d-4d18-9872-2303e7977dc1
 
 - name: First and second sides are equal
   code: scalene([4 4 3])
-  want: null
+  want: false
   uuid: c6e15a92-90d9-4fb3-90a2-eef64f8d3e1e
 
 - name: First and third sides are equal
   code: scalene([3 4 3])
-  want: null
+  want: false
   uuid: 3da23a91-a166-419a-9abf-baf4868fd985
 
 - name: Second and third sides are equal
   code: scalene([4 3 3])
-  want: null
+  want: false
   uuid: b6a75d98-1fef-4c42-8e9a-9db854ba0a4d
 
 - name: May not violate triangle inequality
   code: scalene([7 3 2])
-  want: null
+  want: false
   uuid: 70ad5154-0033-48b7-af2c-b8d739cd9fdc
 
 - name: Sides may be floats
