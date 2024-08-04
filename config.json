@@ -136,6 +136,14 @@
         "difficulty": 1
       },
       {
+        "slug": "matching-brackets",
+        "name": "Matching Brackets",
+        "uuid": "a6c79db6-925c-45c3-8a59-aa9d96a4740b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
         "slug": "nth-prime",
         "name": "Nth Prime",
         "uuid": "d0f42bce-73e7-4ef0-b4cc-985bc1d4eef6",

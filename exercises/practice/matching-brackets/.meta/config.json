@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "matching-brackets.ys"
+    ],
+    "test": [
+      "matching-brackets-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/matching-brackets.ys"
+    ]
+  },
+  "blurb": "Make sure the brackets and braces all match.",
+  "source": "Ginna Baker"
+}

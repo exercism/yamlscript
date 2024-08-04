@@ -1,0 +1,28 @@
+!yamlscript/v0
+
+pairs =::
+  ')': '('
+  ']': '['
+  '}': '{'
+opening =: pairs.vals().set()
+closing =: pairs.keys().set()
+
+defn is-paired(value):
+  chars =: value.split()
+  loop [[char & chars] chars, stack []]:
+    stack =:
+      cond:
+        char.empty?(): +[]      # For empty string input
+        opening(char): stack.conj(char)
+        closing(char):
+          if (stack.peek() = pairs(char)):
+            then: stack.pop()
+            else: nil
+        =>: stack
+
+    cond:
+      stack.nil?(): nil
+      empty?(chars):
+        or: empty?(stack) nil
+      =>:
+        recur chars: stack

@@ -70,7 +70,7 @@ Exercises:
 * `46 - 3` - list-ops
 * `60 - 4` - luhn
 * `13 - 6` - markdown
-* `59 - 5` - matching-brackets
+* `59 - 5` - matching-brackets - **DONE**
 * `37 - 4` - matrix
 * `42 - 1` - meetup
 * ` 7 - 2` - micro-blog
