@@ -1,22 +1,22 @@
 !yamlscript/v0
 
 defn prime(number):
-  nth: gen-primes() number.dec()
+  nth gen-primes(): number.dec()
 
-defn gen-primes():
+defn- gen-primes():
   primes-step {}: 2
 
-defn primes-step(table d):
-  if-let [factors (get table d)]:
+defn- primes-step(table d):
+  if-let [factors get(table d)]:
     recur:
       reduce \(reinsert %1 d %2):
-        (dissoc table d) |: factors
+        dissoc(table d) |: factors
       inc: d
     lazy-seq:
       cons d:
         primes-step:
-          assoc: table (d * d) list(d)
+          assoc: table (d * d) [d]
           inc: d
 
-defn reinsert(table x prime):
-  (update-in table [(prime + x)] conj prime)
+defn- reinsert(table n prime):
+  update-in table [(prime + n)]: conj prime

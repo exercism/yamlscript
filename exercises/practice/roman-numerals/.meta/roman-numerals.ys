@@ -17,13 +17,13 @@ numeral-mapping =::
 
 defn roman(number):
   if zero?(number):
-    then: ""
+    then: ''
     else:
       +[part letter] =: largest-factor(number)
       remainder =: number - part
       str letter: roman(remainder)
 
-defn largest-factor(number):
+defn- largest-factor(number):
   first:
-    filter (fn [[p l]] (p <= number)):
+    filter fn([[p]] (p <= number)):
       numeral-mapping

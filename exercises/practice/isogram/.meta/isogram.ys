@@ -1,10 +1,10 @@
 !yamlscript/v0
 
-# A function to check if a string is composed of all unique letters:
 defn isogram?(string):
-  if empty?(string) true:
+  if empty?(string):
+    true
     string
-      .lower-case()                   \#"Want to be case insensitive"
+      .lc()                           \#"Want to be case insensitive"
       .split('')                      \#"Split string into chars"
       .filter(\(re-matches /\w/ %1))  \#"Keep letters only"
       .apply(distinct?)               \#"Check if distinct letters"

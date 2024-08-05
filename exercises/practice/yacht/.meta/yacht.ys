@@ -7,33 +7,34 @@ defn score(dice category):
     .symbol().resolve().var-get()
     .call(dice) || 0
 
-defn do-yacht(dice):
-  when (= dice*): 50
+defn- do-yacht(dice):
+  when eq(dice*): 50
 
-defn same(n):
+defn- same-number(n):
   fn [dice]:
-    dice.filter(\(%1 = n)).apply(+)
+    dice.filter(\(%1 == n)).apply(+)
 
-do-ones   =: same(1)
-do-twos   =: same(2)
-do-threes =: same(3)
-do-fours  =: same(4)
-do-fives  =: same(5)
-do-sixes  =: same(6)
+do-ones   =: same-number(1)
+do-twos   =: same-number(2)
+do-threes =: same-number(3)
+do-fours  =: same-number(4)
+do-fives  =: same-number(5)
+do-sixes  =: same-number(6)
 
-defn do-full-house(dice):
+defn- do-full-house(dice):
   f =: frequencies(dice)
-  when ((f.count() = 2) && f.vals().set().contains?(2)):
-    dice.apply(+)
+  ? when ((f.count() == 2) &&
+    f.vals().set().contains?(2))
+  : sum(dice*)
 
-defn do-four-of-a-kind(dice):
+defn- do-four-of-a-kind(dice):
   f =: frequencies(dice).set/map-invert()
-  =>: (f.4 || f.5 || 0) * 4
+  mul 4: f.4 || f.5 || 0
 
-defn do-little-straight(dice):
-  when (dice.sort() = list(1 2 3 4 5)): 30
+defn- do-little-straight(dice):
+  when (dice.sort() == (1 .. 5)): 30
 
-defn do-big-straight(dice):
-  when (dice.sort() = list(2 3 4 5 6)): 30
+defn- do-big-straight(dice):
+  when (dice.sort() == (2 .. 6)): 30
 
-defn do-choice(dice): dice.apply(+)
+defn- do-choice(dice): sum(dice*)

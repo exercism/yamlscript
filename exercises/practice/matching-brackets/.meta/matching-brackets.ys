@@ -13,9 +13,11 @@ defn is-paired(value):
     stack =:
       cond:
         char.empty?():: []      # For empty string input
-        opening(char): stack.conj(char)
+        opening(char):
+          conj stack: char
         closing(char):
-          when (stack.peek() = pairs(char)): stack.pop()
+          when (peek(stack) == pairs(char)):
+            pop: stack
         =>: stack
 
     cond:
