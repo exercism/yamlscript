@@ -36,7 +36,7 @@ defn gen-test(case):
   test =:
     vector:
       apply merge::
-      - name:: case.description.capitalize()
+      - name:: case.description.uc1()
         code:: gen-code(case)
       - !
         if case.expected.error: +{'what' 'error'} {}
@@ -64,5 +64,5 @@ defn gen-comments(data):
     else: ''
 
 defn kebab-symbol(v):
-  v.replace(/[A-Z]/ \("-" + %1.lower-case()))
+  v.replace(/[A-Z]/ \("-" + %1.lc()))
    .replace(/_/ "-")

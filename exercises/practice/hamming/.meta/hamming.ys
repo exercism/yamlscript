@@ -2,7 +2,7 @@
 
 defn distance(strand1 strand2):
   when (strand1.count() != strand2.count()):
-    die:: strands must be of equal length
+    die: 'strands must be of equal length'
 
   count:
     filter true?:

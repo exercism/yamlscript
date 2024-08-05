@@ -3,7 +3,7 @@
 defn find(array value):
  loop [low 0, high array.count().dec()]:
    when (low > high):
-     die: "value not in array"
+     die: 'value not in array'
    mid =: quot((high + low) 2)
    item =: array.get(mid)
    cond:

@@ -3,9 +3,9 @@
 defn find-anagrams(subject candidates):
   filter \(anagram %1 subject): candidates
 
-defn anagram(word1, word2):
-  word1 =: word1.lower-case()
-  word2 =: word2.lower-case()
+defn- anagram(word1 word2):
+  word1 =: word1.lc()
+  word2 =: word2.lc()
   and:
     (word1 != word2)
-    (word1.sort() = word2.sort())
+    (sort(word1) == sort(word2))
