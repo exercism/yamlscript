@@ -1,8 +1,7 @@
 !yamlscript/v0
 
 defn isogram?(string):
-  if empty?(string):
-    true
+  or empty?(string):
     string
       .lc()                           \#"Want to be case insensitive"
       .split('')                      \#"Split string into chars"
