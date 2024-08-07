@@ -73,6 +73,13 @@ exercises:
     prerequisites: []
     difficulty: 2
 
+  - slug: bob
+    name: Bob
+    uuid: b7aa6a3a-925d-498c-9eb0-bf7993794f9d
+    practices: []
+    prerequisites: []
+    difficulty: 3
+
   - slug: bottle-song
     name: Bottle Song
     uuid: 3f2a57d7-20fd-4212-8b40-04b7fbc27742
