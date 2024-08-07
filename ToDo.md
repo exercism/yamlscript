@@ -26,7 +26,7 @@ Exercises:
 * `29 - 3` - bank-account - **DONE**
 * `62 - 2` - binary-search - **DONE**
 * `32 - 1` - binary-search-tree
-* `64 - 3` - bob
+* `64 - 3` - bob - **DONE**
 * `26 - 7` - book-store
 * `17 - 3` - bottle-song - **DONE**
 * `31 - 8` - bowling
