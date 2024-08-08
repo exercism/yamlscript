@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn is-pangram(sentence):
+  # Implement the 'is-pangram' function.

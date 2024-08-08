@@ -151,6 +151,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: pangram
+    name: Pangram
+    uuid: 62d68fed-0afd-4a9c-abb7-b93d99331026
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: queen-attack
     name: Queen Attack
     uuid: a8c8b02e-2662-42ff-b7eb-6a4239f10066
