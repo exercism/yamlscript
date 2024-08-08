@@ -11,7 +11,7 @@ defn- do-yacht(dice):
   when eq(dice*): 50
 
 defn- same-number(n):
-  fn [dice]:
+  fn(dice):
     dice.filter(\(%1 == n)).apply(+)
 
 do-ones   =: same-number(1)
@@ -23,8 +23,9 @@ do-sixes  =: same-number(6)
 
 defn- do-full-house(dice):
   f =: frequencies(dice)
-  ? when ((f.count() == 2) &&
-    f.vals().set().contains?(2))
+  ? when
+      (f.count() == 2) &&
+      f.vals().set().contains?(2)
   : sum(dice*)
 
 defn- do-four-of-a-kind(dice):
@@ -32,9 +33,9 @@ defn- do-four-of-a-kind(dice):
   mul 4: f.4 || f.5 || 0
 
 defn- do-little-straight(dice):
-  when (dice.sort() == (1 .. 5)): 30
+  when dice.sort() == (1 .. 5): 30
 
 defn- do-big-straight(dice):
-  when (dice.sort() == (2 .. 6)): 30
+  when dice.sort() == (2 .. 6): 30
 
 defn- do-choice(dice): sum(dice*)

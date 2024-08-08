@@ -7,7 +7,7 @@ defn- gen-primes():
   primes-step {}: 2
 
 defn- primes-step(table d):
-  if-let [factors get(table d)]:
+  if-let factors get(table d):
     recur:
       reduce \(reinsert %1 d %2):
         dissoc(table d) |: factors

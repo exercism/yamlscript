@@ -2,10 +2,10 @@
 
 defn response(hey-bob):
   case get-tone(hey-bob.trim()):
+    :ask     : 'Sure.'
     :ASK     : "Calm down, I know what I'm doing!"
     :shhh    : 'Fine. Be that way!'
     :YELL    : 'Whoa, chill out!'
-    :ask     : 'Sure.'
     =>       : 'Whatever.'
 
 defn get-tone(str):
