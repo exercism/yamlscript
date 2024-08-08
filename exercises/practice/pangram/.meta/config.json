@@ -1,0 +1,18 @@
+{
+  "authors": [],
+  "files": {
+    "solution": [
+      "pangram.ys"
+    ],
+    "test": [
+      "pangram-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/pangram.ys"
+    ]
+  },
+  "blurb": "Determine if a sentence is a pangram.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Pangram"
+}

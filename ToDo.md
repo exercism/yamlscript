@@ -79,7 +79,7 @@ Exercises:
 * `59 - 2` - nucleotide-count
 * `25 - 6` - ocr-numbers
 * `28 - 6` - palindrome-products
-* `65 - 2` - pangram
+* `65 - 2` - pangram - **DONE**
 * `23 - 7` - parallel-letter-frequency
 * `49 - 4` - pascals-triangle
 * `51 - 2` - perfect-numbers
