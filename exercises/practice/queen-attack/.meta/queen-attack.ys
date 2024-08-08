@@ -6,14 +6,14 @@ defn create({{r 'row' c 'column'} 'position'}):
     r > 7: die('row not on board')
     c < 0: die('column not positive')
     c > 7: die('column not on board')
-    =>: 0
+    =>   : 0
 
 defn can-attack(white-queen black-queen):
-  w-r =: white-queen.position.row
-  w-c =: white-queen.position.column
-  b-r =: black-queen.position.row
-  b-c =: black-queen.position.column
+  +{w-r "row" w-c "column"} =: white-queen.position
+  +{b-r "row" b-c "column"} =: black-queen.position
+
   or:
-    (w-r == b-r)
-    (w-c == b-c)
-    (abs(w-r - b-r) == abs(w-c - b-c))
+    eq: w-r b-r
+    eq: w-c b-c
+    eq: abs(w-r - b-r)
+        abs(w-c - b-c)

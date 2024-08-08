@@ -24,7 +24,7 @@ defn rebase(input-base digits output-base):
 defn digits-to-decimal(input-base digits):
   =>:: Converts a sequence of digits given in input-base into decimal format.
 
-  loop [sum 0, [num & nums] digits]:
+  loop sum 0, [num & nums] digits:
     if num:
       recur: ((sum * input-base) + num) nums
       =>: sum
@@ -34,7 +34,7 @@ defn decimal-to-digits(output-base number):
     Converts a decimal number into a sequence of digits in the desired output
     base.
 
-  loop [digits nil, num number]:
+  loop digits nil, num number:
     if zero?(num):
       =>: digits
       recur:
