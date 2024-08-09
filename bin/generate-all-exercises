@@ -20,7 +20,9 @@ for exercise in "${SLUGS[@]}"; do
   branch=exercise-$slug
   new=new/$branch
 
-  if [[ $slug == armstrong-numbers ]]; then
+  if [[ $slug == armstrong-numbers ]] ||
+     [[ $slug == grains ]]
+  then
     echo "SKIP - '$slug' triggers a ys bug"
     continue
   fi

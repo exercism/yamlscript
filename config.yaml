@@ -144,6 +144,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: luhn
+    name: Luhn
+    uuid: cd6dbea1-95f7-43d6-91ac-1d0a4572a2a6
+    practices: []
+    prerequisites: []
+    difficulty: 4
+
   - slug: matching-brackets
     name: Matching Brackets
     uuid: a6c79db6-925c-45c3-8a59-aa9d96a4740b

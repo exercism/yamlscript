@@ -68,7 +68,7 @@ Exercises:
 * ` 9 - 5` - ledger
 * `33 - 5` - linked-list
 * `46 - 3` - list-ops
-* `60 - 4` - luhn
+* `60 - 4` - luhn - **DONE**
 * `13 - 6` - markdown
 * `59 - 5` - matching-brackets - **DONE**
 * `37 - 4` - matrix
@@ -114,7 +114,7 @@ Exercises:
 * `59 - 3` - secret-handshake
 * `44 - 2` - series
 * `11 - 9` - sgf-parsing
-* `61 - 2` - sieve
+* `61 - 2` - sieve - **DONE**
 * `27 - 1` - simple-cipher
 * `64 - 2` - space-age - **DONE**
 * `42 - 4` - spiral-matrix
