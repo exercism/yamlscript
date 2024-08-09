@@ -18,7 +18,7 @@ Exercises:
 * `66 - 2` - acronym - **DONE**
 * `29 - 5` - affine-cipher
 * `59 - 5` - all-your-base - **DONE**
-* `65 - 3` - allergies
+* `65 - 3` - allergies - **DONE**
 * `20 - 5` - alphametics
 * `65 - 4` - anagram - **DONE**
 * `63 - 2` - armstrong-numbers

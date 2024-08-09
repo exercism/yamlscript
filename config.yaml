@@ -45,6 +45,13 @@ exercises:
     prerequisites: []
     difficulty: 2
 
+  - slug: allergies
+    name: Allergies
+    uuid: ff88e308-78fe-436e-8882-fbf00abd1fb0
+    practices: []
+    prerequisites: []
+    difficulty: 3
+
   - slug: all-your-base
     name: All Your Base
     uuid: 8dec480c-3ece-4f1c-9b87-d14e52f50db6

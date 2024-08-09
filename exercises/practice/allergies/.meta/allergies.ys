@@ -1,0 +1,26 @@
+!yamlscript/v0
+
+allergens =::
+- eggs
+- peanuts
+- shellfish
+- strawberries
+- tomatoes
+- chocolate
+- pollen
+- cats
+
+allergen-nums =:
+  zipmap:
+    allergens
+    range(allergens.count())
+
+defn allergic-to(item score):
+  bit-test score: allergen-nums.$item
+
+defn list-allergens(score):
+  reduce+ [] allergen-nums.seq():
+    fn(list [allergen num]):
+      if bit-test(score num):
+        conj list: allergen
+        =>: list
