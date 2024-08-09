@@ -74,7 +74,7 @@ Exercises:
 * `37 - 4` - matrix
 * `42 - 1` - meetup
 * ` 7 - 2` - micro-blog
-* `42 - 8` - minesweeper
+* `42 - 8` - minesweeper - **DONE**
 * `45 - 1` - nth-prime - **DONE**
 * `59 - 2` - nucleotide-count
 * `25 - 6` - ocr-numbers

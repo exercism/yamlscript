@@ -1,0 +1,41 @@
+!yamlscript/v0
+
+defn annotate(minefield):
+  grid =: minefield.map(split)
+
+  loop y 0 field []:
+    if y < grid.count():
+      recur y.inc():
+        conj field: get-row(grid y)
+      =>: field
+
+defn get-row(grid y):
+  width =: grid.$y.count()
+  loop x 0, row '':
+    if x < width:
+      recur x.inc():
+        row + get-cell(grid x y)
+      =>: row
+
+indeces =: for([a (-1 .. 1) b (-1 .. 1)] [a b])
+
+defn get-cell(grid x y):
+  h =: grid.count().dec()
+  w =: grid.0.count().dec()
+  # WWW: grid
+  if grid.$y.$x == '*':
+    then: '*'
+    else:
+      new =:
+        reduce+ 0 indeces:
+          fn(count [a b]):
+            +[i j] =: +[(x + a) (y + b)]
+            mine =:
+              and:
+                (0 <= i <= w)
+                (0 <= j <= h)
+                \#" WWW([i j])"
+                (grid.$j.$i == '*')
+            sum count:
+              if mine: 1 0
+      if new > 0: str(new) ' '

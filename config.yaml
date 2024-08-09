@@ -144,6 +144,13 @@ exercises:
     prerequisites: []
     difficulty: 5
 
+  - slug: minesweeper
+    name: Minesweeper
+    uuid: 4e7dd5dd-a6b6-4d8c-be9c-7a5995a86de9
+    practices: []
+    prerequisites: []
+    difficulty: 8
+
   - slug: nth-prime
     name: Nth Prime
     uuid: d0f42bce-73e7-4ef0-b4cc-985bc1d4eef6
