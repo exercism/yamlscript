@@ -110,7 +110,7 @@ Exercises:
 * `33 - 1` - saddle-points
 * `13 - 7` - satellite
 * `37 - 5` - say
-* `63 - 2` - scrabble-score
+* `63 - 2` - scrabble-score - **DONE**
 * `59 - 3` - secret-handshake
 * `44 - 2` - series
 * `11 - 9` - sgf-parsing
