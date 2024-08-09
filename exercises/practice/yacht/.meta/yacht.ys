@@ -4,7 +4,7 @@ defn score(dice category):
   category
     .replace(/\ / '-')
     .str('do-' _)
-    .symbol().resolve().var-get()
+    .symbol().resolve().var-get()  \#"remove"
     .call(dice) || 0
 
 defn- do-yacht(dice):
@@ -12,7 +12,7 @@ defn- do-yacht(dice):
 
 defn- same-number(n):
   fn(dice):
-    dice.filter(\(%1 == n)).apply(+)
+    dice.filter(partial(== n)).apply(+)
 
 do-ones   =: same-number(1)
 do-twos   =: same-number(2)

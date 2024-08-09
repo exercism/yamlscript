@@ -4,6 +4,6 @@ defn isogram?(string):
   or empty?(string):
     string
       .lc()                           \#"Want to be case insensitive"
-      .split('')                      \#"Split string into chars"
-      .filter(\(re-matches /\w/ %1))  \#"Keep letters only"
+      .split()                        \#"Split string into chars"
+      .filter(partial(re-matches /\w/))  \#"Keep letters only"
       .apply(distinct?)               \#"Check if distinct letters"

@@ -6,4 +6,4 @@ defn distance(strand1 strand2):
 
   count:
     filter true?:
-      map \(%1 != %2): strand1 strand2
+      map partial(ne): strand1 strand2

@@ -25,7 +25,7 @@ indeces =:
 defn get-cell(grid x y):
   if grid.$y.$x == ' ':
     then:
-      new =:
+      new =:  # XXX reduce
         reduce+ 0 indeces:
           fn(cnt [a b]):
             +[i j] =: +[(x + a) (y + b)]

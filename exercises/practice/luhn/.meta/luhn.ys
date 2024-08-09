@@ -13,8 +13,8 @@ defn valid(value):
     then: false
     else:
       digits =: digits
-        .split('').remove(empty?).map(num)
-        .reverse().conj(0).partition(2 _)
+        .split().remove(empty?).map(num)
+        .reverse().conj(0).partition(2 _) # XXX _
       zero?:
         rem: # XXX 'rem _ 10: ...'
           apply +: digits.map(munge).flatten()

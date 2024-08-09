@@ -14,37 +14,37 @@ defn bank-account(operations):
     return =: operation
       .operation
       .str('do-' _)
-      .symbol().resolve().var-get()
+      .symbol().resolve().var-get()  \#"XXX remove this line"
       .call(operation)
 
     if operations.seq():
-      recur: operations
-      =>: return
+      then: recur(operations)
+      else: return
 
 defn- do-open(o):
-  when account.deref():
+  when deref(account):
     die: 'account already open'
   reset! account: 0
 
 defn- do-close(o):
-  when-not account.deref():
+  when-not deref(account):
     die: 'account not open'
   reset! account: nil
 
 defn- do-balance(o):
-  balance =: account.deref()
+  balance =: deref(account)
   when-not balance:
     die: 'account not open'
   =>: balance
 
 defn- do-deposit(o):
-  when-not account.deref():
+  when-not deref(account):
     die: 'account not open'
   amount =: o.get-amount()
   swap! account +: amount
 
 defn- do-withdraw(o):
-  balance =: account.deref()
+  balance =: deref(account)
   when-not balance:
     die: 'account not open'
   amount =: o.get-amount()

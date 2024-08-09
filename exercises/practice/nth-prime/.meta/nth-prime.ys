@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn prime(number):
-  nth gen-primes(): number.dec()
+  nth gen-primes(): number - 1
 
 defn- gen-primes():
   primes-step {}: 2

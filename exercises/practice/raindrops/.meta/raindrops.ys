@@ -4,6 +4,7 @@ dict =:: { 3: Pling, 5: Plang, 7: Plong }
 
 defn convert(number):
   words =:
+    # XXX reduce
     reduce+ [] [3 5 7]:
       fn(acc num):
         concat acc:

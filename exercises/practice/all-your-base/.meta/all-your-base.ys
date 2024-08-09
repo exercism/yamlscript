@@ -11,7 +11,7 @@ defn rebase(input-base digits output-base):
     output-base < 2:
       die: 'output base must be >= 2'
     ? digits.some(neg?) ||
-      digits.some(\(%1 >= input-base))
+      digits.some(partial(<= input-base))
     : die: 'all digits must satisfy 0 <= d < input base'
 
     digits.every?(zero?):: [0]

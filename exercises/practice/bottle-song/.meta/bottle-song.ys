@@ -3,22 +3,23 @@
 defn recite(start-bottles take-down):
   last-num =: (start-bottles - take-down) + 1
   drop-last:
+    # XXX reduce
     reduce+ [] (start-bottles .. last-num):
       fn(acc num):
         concat acc: verse(num)
 
 defn- verse(num):
-  lines =:
+  # XXX use _
+  conj:
     lines: |
       $(bottles(num).uc1()) hanging on the wall,
       $(bottles(num).uc1()) hanging on the wall,
       And if one green bottle should accidentally fall,
       There'll be $bottles(num - 1) hanging on the wall.
-  conj: lines ''
+    =>: ''
 
 dict =:
-  zipmap:
-    (0 .. 10)
+  zipmap (0 .. 10):
     qw(no one two three four five six seven eight nine ten)
 
 defn- bottles(num):
