@@ -116,7 +116,7 @@ Exercises:
 * `11 - 9` - sgf-parsing
 * `61 - 2` - sieve
 * `27 - 1` - simple-cipher
-* `64 - 2` - space-age
+* `64 - 2` - space-age - **DONE**
 * `42 - 4` - spiral-matrix
 * `33 - 2` - square-root
 * `11 - 5` - state-of-tic-tac-toe

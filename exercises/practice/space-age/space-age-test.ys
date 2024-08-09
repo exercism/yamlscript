@@ -1,0 +1,54 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: space-age
+
+test::
+- name: Age on earth
+  code: age("Earth" 1000000000)
+  want: 31.69
+  uuid: 84f609af-5a91-4d68-90a3-9e32d8a5cd34
+
+- name: Age on mercury
+  code: age("Mercury" 2134835688)
+  want: 280.88
+  uuid: ca20c4e9-6054-458c-9312-79679ffab40b
+
+- name: Age on venus
+  code: age("Venus" 189839836)
+  want: 9.78
+  uuid: 502c6529-fd1b-41d3-8fab-65e03082b024
+
+- name: Age on mars
+  code: age("Mars" 2129871239)
+  want: 35.88
+  uuid: 9ceadf5e-a0d5-4388-9d40-2c459227ceb8
+
+- name: Age on jupiter
+  code: age("Jupiter" 901876382)
+  want: 2.41
+  uuid: 42927dc3-fe5e-4f76-a5b5-f737fc19bcde
+
+- name: Age on saturn
+  code: age("Saturn" 2000000000)
+  want: 2.15
+  uuid: 8469b332-7837-4ada-b27c-00ee043ebcad
+
+- name: Age on uranus
+  code: age("Uranus" 1210123456)
+  want: 0.46
+  uuid: 999354c1-76f8-4bb5-a672-f317b6436743
+
+- name: Age on neptune
+  code: age("Neptune" 1821023456)
+  want: 0.35
+  uuid: 80096d30-a0d4-4449-903e-a381178355d8
+
+- name: Invalid planet causes error
+  code: age("Sun" 680804807)
+  what: error
+  want: not a planet
+  uuid: 57b96e2a-1178-40b7-b34d-f3c9c34e4bf4
+
+done: 9
