@@ -1,0 +1,18 @@
+{
+  "authors": [],
+  "files": {
+    "solution": [
+      "rna-transcription.ys"
+    ],
+    "test": [
+      "rna-transcription-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/rna-transcription.ys"
+    ]
+  },
+  "blurb": "Given a DNA strand, return its RNA Complement Transcription.",
+  "source": "Hyperphysics",
+  "source_url": "https://web.archive.org/web/20220408112140/http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html"
+}

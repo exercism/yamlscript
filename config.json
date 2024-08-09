@@ -208,6 +208,14 @@
         "difficulty": 4
       },
       {
+        "slug": "rna-transcription",
+        "name": "RNA Transcription",
+        "uuid": "13e5f40a-3be8-4314-9950-f28bc15efd11",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "triangle",
         "name": "Triangle",
         "uuid": "494f403b-3bd7-47f1-a866-d07e9faea677",
