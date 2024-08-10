@@ -172,6 +172,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: nucleotide-count
+    name: Nucleotide Count
+    uuid: 9ca8b2e6-5487-461d-a1a2-c54fb6a0ae2e
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
   - slug: pangram
     name: Pangram
     uuid: 62d68fed-0afd-4a9c-abb7-b93d99331026

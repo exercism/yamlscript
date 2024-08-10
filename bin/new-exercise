@@ -15,9 +15,11 @@ main() (
 
   generate-test-file
 
+  update-exercise-config
+
   make-update
 
-  # show-new-exercise
+  paste-buffer-edit-command
 )
 
 setup() {
@@ -85,16 +87,23 @@ generate-test-file() (
     > "$ys_test_file"
 )
 
+update-exercise-config() (
+  [[ $USER == ingy ]] || return 0
+  config=$meta/config.json
+  file=$(mktemp)
+  jq '.authors |= ["ingydotnet"]' < "$config" > "$file"
+  mv "$file" "$config"
+)
+
 make-update() (
   touch common/exercise.mk
 
   make update >/dev/null
 )
 
-show-new-exercise() (
-  if [[ $(command -v tree) ]]; then
-    tree -a "$ys"
-  fi
+paste-buffer-edit-command() (
+  doc=($(cd "$meta" && ls ../.docs/*))
+  echo -n "cd $meta && vim ${doc[*]} $slug.ys $slug-test.ys -O" | xsel -b
 )
 
 warn() (

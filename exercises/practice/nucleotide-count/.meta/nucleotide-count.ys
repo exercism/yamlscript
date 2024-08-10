@@ -1,0 +1,12 @@
+!yamlscript/v0
+
+nucleotides =:
+  zipmap qw(A C G T): repeat(0)
+
+defn nucleotide-counts(strand):
+  when strand !~ /^[ACGT]*$/:
+    die: 'Invalid nucleotide in strand'
+
+  reduce-kv _ nucleotides frequencies(strand):
+    fn(map key val):
+      assoc map: str(key) val

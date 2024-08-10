@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn nucleotide-counts(strand):
+  # Implement the 'nucleotide-counts' function.

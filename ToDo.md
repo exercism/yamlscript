@@ -76,7 +76,7 @@ Exercises:
 * ` 7 - 2` - micro-blog
 * `42 - 8` - minesweeper - **DONE**
 * `45 - 1` - nth-prime - **DONE**
-* `59 - 2` - nucleotide-count
+* `59 - 2` - nucleotide-count - **DONE**
 * `25 - 6` - ocr-numbers
 * `28 - 6` - palindrome-products
 * `65 - 2` - pangram - **DONE**
