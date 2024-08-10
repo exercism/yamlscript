@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "protein-translation.ys"
+    ],
+    "test": [
+      "protein-translation-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/protein-translation.ys"
+    ]
+  },
+  "blurb": "Translate RNA sequences into proteins.",
+  "source": "Tyler Long"
+}

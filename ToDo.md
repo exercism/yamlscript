@@ -88,7 +88,7 @@ Exercises:
 * `20 - 8` - poker
 * `13 - 9` - pov
 * `46 - 1` - prime-factors
-* `58 - 2` - protein-translation
+* `58 - 2` - protein-translation - **DONE**
 * `35 - 2` - proverb
 * `36 - 3` - pythagorean-triplet
 * `51 - 4` - queen-attack - **DONE**

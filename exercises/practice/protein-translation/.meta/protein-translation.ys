@@ -1,0 +1,26 @@
+!yamlscript/v0
+
+defn proteins(strand):
+  strand
+    .str('XX')
+    .partition(3)
+    .map(partial(apply str))
+    .map(translate-codon)
+    .take-while(check)
+
+defn translate-codon(codon):
+  case codon:
+    +'AUG'::                    Methionine
+    ('UUU' 'UUC')::             Phenylalanine
+    ('UUA' 'UUG')::             Leucine
+    ('UCU' 'UCC' 'UCA' 'UCG'):: Serine
+    ('UAU' 'UAC')::             Tyrosine
+    ('UGU' 'UGC')::             Cysteine
+    +'UGG'::                    Tryptophan
+    ('UAA' 'UAG' 'UGA')::       STOP
+    =>::                        INVALID
+
+defn check(protein):
+  when protein == 'INVALID':
+    die: 'Invalid codon'
+  ne: protein 'STOP'

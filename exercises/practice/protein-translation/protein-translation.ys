@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn proteins(strand):
+  # Implement the 'proteins' function.

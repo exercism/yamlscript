@@ -102,8 +102,10 @@ make-update() (
 )
 
 paste-buffer-edit-command() (
-  IFS=" " read -r -a doc <<< "$(cd "$meta" && ls ../.docs/*)"
-  echo -n "cd $meta && vim ${doc[*]} $slug.ys $slug-test.ys -O" | xsel -b
+  if [[ $(command -v xsel) ]]; then
+    IFS=" " read -r -a doc <<< "$(cd "$meta" && ls ../.docs/*)"
+    echo -n "cd $meta && vim ${doc[*]} $slug.ys $slug-test.ys -O" | xsel -b
+  fi
 )
 
 warn() (
