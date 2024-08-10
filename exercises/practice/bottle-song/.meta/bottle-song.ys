@@ -3,9 +3,8 @@
 defn recite(start-bottles take-down):
   last-num =: (start-bottles - take-down) + 1
   drop-last:
-    reduce _ [] (start-bottles .. last-num):
-      fn(acc num):
-        concat acc: verse(num)
+    mapcat verse:
+      (start-bottles .. last-num)
 
 defn- verse(num):
   drop-last:
