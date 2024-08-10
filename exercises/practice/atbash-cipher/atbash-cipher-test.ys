@@ -1,0 +1,82 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: atbash-cipher
+
+# The tests are divided into two groups:
+# * Encoding from English to atbash cipher
+# * Decoding from atbash cipher to all-lowercase-mashed-together English
+
+test::
+- name: Encode yes
+  code: encode("yes")
+  want: bvh
+  uuid: 2f47ebe1-eab9-4d6b-b3c6-627562a31c77
+
+- name: Encode no
+  code: encode("no")
+  want: ml
+  uuid: b4ffe781-ea81-4b74-b268-cc58ba21c739
+
+- name: Encode omg
+  code: encode("OMG")
+  want: lnt
+  uuid: 10e48927-24ab-4c4d-9d3f-3067724ace00
+
+- name: Encode spaces
+  code: encode("O M G")
+  want: lnt
+  uuid: d59b8bc3-509a-4a9a-834c-6f501b98750b
+
+- name: Encode mindblowingly
+  code: encode("mindblowingly")
+  want: nrmwy oldrm tob
+  uuid: 31d44b11-81b7-4a94-8b43-4af6a2449429
+
+- name: Encode numbers
+  code: encode("Testing,1 2 3, testing.")
+  want: gvhgr mt123 gvhgr mt
+  uuid: d503361a-1433-48c0-aae0-d41b5baa33ff
+
+- name: Encode deep thought
+  code: encode("Truth is fiction.")
+  want: gifgs rhurx grlm
+  uuid: 79c8a2d5-0772-42d4-b41b-531d0b5da926
+
+- name: Encode all the letters
+  code: encode("The quick brown fox jumps over the lazy dog.")
+  want: gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt
+  uuid: 9ca13d23-d32a-4967-a1fd-6100b8742bab
+
+- name: Decode exercism
+  code: decode("vcvix rhn")
+  want: exercism
+  uuid: bb50e087-7fdf-48e7-9223-284fe7e69851
+
+- name: Decode a sentence
+  code: decode("zmlyh gzxov rhlug vmzhg vkkrm thglm v")
+  want: anobstacleisoftenasteppingstone
+  uuid: ac021097-cd5d-4717-8907-b0814b9e292c
+
+- name: Decode numbers
+  code: decode("gvhgr mt123 gvhgr mt")
+  want: testing123testing
+  uuid: 18729de3-de74-49b8-b68c-025eaf77f851
+
+- name: Decode all the letters
+  code: decode("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt")
+  want: thequickbrownfoxjumpsoverthelazydog
+  uuid: 0f30325f-f53b-415d-ad3e-a7a4f63de034
+
+- name: Decode with too many spaces
+  code: decode("vc vix    r hn")
+  want: exercism
+  uuid: 39640287-30c6-4c8c-9bac-9d613d1a5674
+
+- name: Decode with no spaces
+  code: decode("zmlyhgzxovrhlugvmzhgvkkrmthglmv")
+  want: anobstacleisoftenasteppingstone
+  uuid: b34edf13-34c0-49b5-aa21-0768928000d5
+
+done: 14

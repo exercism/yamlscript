@@ -1,0 +1,7 @@
+!yamlscript/v0
+
+defn encode(phrase):
+  # Implement the 'encode' function.
+
+defn decode(phrase):
+  # Implement the 'decode' function.

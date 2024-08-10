@@ -22,7 +22,7 @@ Exercises:
 * `20 - 5` - alphametics
 * `65 - 4` - anagram - **DONE**
 * `63 - 2` - armstrong-numbers
-* `58 - 5` - atbash-cipher
+* `58 - 5` - atbash-cipher - **DONE**
 * `29 - 3` - bank-account - **DONE**
 * `62 - 2` - binary-search - **DONE**
 * `32 - 1` - binary-search-tree

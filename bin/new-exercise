@@ -102,7 +102,7 @@ make-update() (
 )
 
 paste-buffer-edit-command() (
-  doc=($(cd "$meta" && ls ../.docs/*))
+  IFS=" " read -r -a doc <<< "$(cd "$meta" && ls ../.docs/*)"
   echo -n "cd $meta && vim ${doc[*]} $slug.ys $slug-test.ys -O" | xsel -b
 )
 

@@ -66,6 +66,13 @@ exercises:
     prerequisites: []
     difficulty: 4
 
+  - slug: atbash-cipher
+    name: Atbash Cipher
+    uuid: e88753e1-3404-4bf0-beff-914cf048fc07
+    practices: []
+    prerequisites: []
+    difficulty: 5
+
   - slug: bank-account
     name: Bank Account
     uuid: 37b26117-84b1-4327-8391-c81de2bd572e

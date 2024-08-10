@@ -1,0 +1,22 @@
+!yamlscript/v0
+
+letters =: range(26)
+  .map(partial(+ 97))
+  .map(char)
+
+dict =:
+  zipmap letters: reverse(letters)
+
+defn encode(phrase):
+  phrase
+    .lc()
+    .replace(/[^a-z0-9]/ '')
+    .str/escape(dict)
+    .partition(5 5 '' _)
+    .map(join)
+    .join(' ' _)
+
+defn decode(phrase):
+  phrase
+    .replace(' ' '')
+    .str/escape(dict)
