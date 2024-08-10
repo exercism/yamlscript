@@ -10,8 +10,7 @@ letter-values =::
   QZ         : 10
 
 letter-score =:
-  # XXX reduce
-  reduce+ {} seq(letter-values):
+  reduce _ {} seq(letter-values):
     fn(dict [letters score]):
       merge dict:
         zipmap letters.split(): repeat(score)
@@ -21,5 +20,4 @@ defn score(word):
     word
       .uc()
       .split()
-      .remove(empty?)
       .map(partial(get letter-score))

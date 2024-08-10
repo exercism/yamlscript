@@ -2,8 +2,7 @@
 
 defn annotate(minefield):
   grid =:
-    map fn([s] s.split().remove(empty?)):
-      minefield
+    map split: minefield
 
   loop y 0, field []:
     if y >= grid.count():
@@ -20,13 +19,13 @@ defn get-row(grid y):
 
 indeces =:
   for a (-1 .. 1), b (-1 .. 1):
-    +[a b]
+    vector: a b
 
 defn get-cell(grid x y):
   if grid.$y.$x == ' ':
     then:
-      new =:  # XXX reduce
-        reduce+ 0 indeces:
+      new =:
+        reduce _ 0 indeces:
           fn(cnt [a b]):
             +[i j] =: +[(x + a) (y + b)]
             sum cnt:

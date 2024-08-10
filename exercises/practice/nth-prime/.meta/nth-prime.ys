@@ -9,8 +9,8 @@ defn- gen-primes():
 defn- primes-step(table d):
   if-let factors get(table d):
     recur:
-      reduce \(reinsert %1 d %2):
-        dissoc(table d) |: factors
+      reduce _ dissoc(table d) factors:
+        \(reinsert %1 d %2)
       inc: d
     lazy-seq:
       cons d:

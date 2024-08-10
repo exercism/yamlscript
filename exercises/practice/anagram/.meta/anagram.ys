@@ -1,12 +1,14 @@
 !yamlscript/v0
 
 defn find-anagrams(subject candidates):
-  filter \(anagram %1 subject): candidates
+  filter _ candidates:
+    \(anagram %1 subject)
 
 defn- anagram(word1 word2):
   # XXX use .=
   word1 =: word1.lc()
   word2 =: word2.lc()
   and:
-    (word1 != word2)
-    (sort(word1) == sort(word2))
+    ne: word1 word2
+    eq: sort(word1)
+        sort(word2)

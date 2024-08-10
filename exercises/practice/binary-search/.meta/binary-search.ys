@@ -5,7 +5,7 @@ defn find(array value):
    when low > high:
      die: 'value not in array'
    mid =: quot((high + low) 2)
-   item =: array.get(mid)
+   item =: array.$mid
    cond:
      value == item : mid
      value <  item : recur(low mid.dec())

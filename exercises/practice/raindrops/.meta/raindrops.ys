@@ -4,12 +4,11 @@ dict =:: { 3: Pling, 5: Plang, 7: Plong }
 
 defn convert(number):
   words =:
-    # XXX reduce
-    reduce+ [] [3 5 7]:
+    reduce _ [] [3 5 7]:
       fn(acc num):
         concat acc:
           if zero?(number % num):
-            +[dict.get(num)]
+            +[dict.$num]
             []
 
   if empty?(words):

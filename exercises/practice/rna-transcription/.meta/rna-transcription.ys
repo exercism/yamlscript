@@ -7,4 +7,7 @@ dna-to-rna =::
   T: A
 
 defn to-rna(dna):
-  dna.split().map(\(dna-to-rna %1)).join()
+  dna
+    .split()
+    .map(\(dna-to-rna %1))
+    .join()

@@ -1,21 +1,19 @@
 !yamlscript/v0
 
 defn valid(value):
-  digits =: value.replace(/\ / '')
+  digits =: value.replace(' ' '')
   munge =:
     fn([a b]):
-      b =: (2 * b)
+      b =: 2 * b
       b =:
         if b > 9: (b - 9) b
       vector: a b
 
-  if (count(digits) < 2) || (digits =~ /[^0-9]/):
-    then: false
-    else:
-      digits =: digits
-        .split().remove(empty?).map(num)
-        .reverse().conj(0).partition(2 _) # XXX _
-      zero?:
-        rem: # XXX 'rem _ 10: ...'
-          apply +: digits.map(munge).flatten()
-          =>: 10
+  and:
+    not: (count(digits) < 2) || (digits =~ /[^0-9]/)
+    zero?:
+      rem _ 10:
+        apply sum: digits
+          .split().remove(empty?).map(num)
+          .reverse().conj(0).partition(2)
+          .map(munge).flatten()

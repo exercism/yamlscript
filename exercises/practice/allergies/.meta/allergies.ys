@@ -11,17 +11,19 @@ allergens =::
 - cats
 
 allergen-nums =:
-  zipmap:
-    allergens
-    range(allergens.count())
+  zipmap allergens: range()
 
 defn allergic-to(item score):
   bit-test score: allergen-nums.$item
 
 defn list-allergens(score):
-  # XXX - reduce
-  reduce+ [] allergen-nums.seq():
-    fn(list [allergen num]):
-      if bit-test(score num):
-        conj list: allergen
-        =>: list
+  test-allergen =:
+    fn([allergen num]):
+      when bit-test(score num):
+        allergen
+  =>:
+    allergen-nums
+      .seq()
+      .map(test-allergen)
+      .remove(nil?)
+

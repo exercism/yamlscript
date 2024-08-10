@@ -8,8 +8,7 @@ opening =: pairs.vals().set()
 closing =: pairs.keys().set()
 
 defn is-paired(value):
-  chars =: value.split().remove(empty?) # XXX
-  loop [char & chars] chars, stack []:
+  loop [char & chars] split(value), stack []:
     stack =:
       cond:
         opening(char):

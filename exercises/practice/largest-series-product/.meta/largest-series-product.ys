@@ -14,4 +14,4 @@ defn largest-product(digits span):
 
 defn- slices(digits span):
   partition span 1:
-    map num: digits.split()
+    map num: digits.split('')

@@ -19,7 +19,7 @@ defn age(planet seconds):
   =>:
     seconds
       .div(seconds-in-year)
-      .div(factor)
+      .div(factors.$planet)
       .mul(100)
       .math/round()
       .div(100)
