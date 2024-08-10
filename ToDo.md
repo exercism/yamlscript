@@ -111,7 +111,7 @@ Exercises:
 * `13 - 7` - satellite
 * `37 - 5` - say
 * `63 - 2` - scrabble-score - **DONE**
-* `59 - 3` - secret-handshake
+* `59 - 3` - secret-handshake - **DONE**
 * `44 - 2` - series
 * `11 - 9` - sgf-parsing
 * `61 - 2` - sieve - **DONE**
