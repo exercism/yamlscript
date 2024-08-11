@@ -1,0 +1,14 @@
+!yamlscript/v0
+
+defn sum(factors limit):
+  if empty?(factors):
+    then: 0
+    else:
+      apply +:
+        reduce _ [] factors:
+          fn(nums num):
+            distinct:
+              concat nums:
+                if zero?(num):
+                  then: +[0]
+                  else: range(num limit num)

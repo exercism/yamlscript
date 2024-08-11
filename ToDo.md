@@ -122,7 +122,7 @@ Exercises:
 * `11 - 5` - state-of-tic-tac-toe
 * `40 - 3` - strain
 * `40 - 6` - sublist
-* `55 - 1` - sum-of-multiples
+* `55 - 1` - sum-of-multiples - **DONE**
 * `23 - 3` - tournament
 * `28 - 5` - transpose
 * `64 - 2` - triangle - **DONE**

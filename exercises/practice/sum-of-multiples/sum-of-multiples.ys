@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn sum(factors limit):
+  # Implement the 'sum' function.

@@ -1,0 +1,88 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: sum-of-multiples
+
+test::
+- name: No multiples within limit
+  code: sum([3 5] 1)
+  want: 0
+  uuid: 54aaab5a-ce86-4edc-8b40-d3ab2400a279
+
+- name: One factor has multiples within limit
+  code: sum([3 5] 4)
+  want: 3
+  uuid: 361e4e50-c89b-4f60-95ef-5bc5c595490a
+
+- name: More than one multiple within limit
+  code: sum([3] 7)
+  want: 9
+  uuid: e644e070-040e-4ae0-9910-93c69fc3f7ce
+
+- name: More than one factor with multiples within limit
+  code: sum([3 5] 10)
+  want: 23
+  uuid: 607d6eb9-535c-41ce-91b5-3a61da3fa57f
+
+- name: Each multiple is only counted once
+  code: sum([3 5] 100)
+  want: 2318
+  uuid: f47e8209-c0c5-4786-b07b-dc273bf86b9b
+
+- name: A much larger limit
+  code: sum([3 5] 1000)
+  want: 233168
+  uuid: 28c4b267-c980-4054-93e9-07723db615ac
+
+- name: Three factors
+  code: sum([7 13 17] 20)
+  want: 51
+  uuid: 09c4494d-ff2d-4e0f-8421-f5532821ee12
+
+- name: Factors not relatively prime
+  code: sum([4 6] 15)
+  want: 30
+  uuid: 2d0d5faa-f177-4ad6-bde9-ebb865083751
+
+- name: Some pairs of factors relatively prime and some not
+  code: sum([5 6 8] 150)
+  want: 4419
+  uuid: ece8f2e8-96aa-4166-bbb7-6ce71261e354
+
+- name: One factor is a multiple of another
+  code: sum([5 25] 51)
+  want: 275
+  uuid: 624fdade-6ffb-400e-8472-456a38c171c0
+
+- name: Much larger factors
+  code: sum([43 47] 10000)
+  want: 2203160
+  uuid: 949ee7eb-db51-479c-b5cb-4a22b40ac057
+
+- name: All numbers are multiples of 1
+  code: sum([1] 100)
+  want: 4950
+  uuid: 41093673-acbd-482c-ab80-d00a0cbedecd
+
+- name: No factors means an empty sum
+  code: sum([] 10000)
+  want: 0
+  uuid: 1730453b-baaa-438e-a9c2-d754497b2a76
+
+- name: The only multiple of 0 is 0
+  code: sum([0] 1)
+  want: 0
+  uuid: 214a01e9-f4bf-45bb-80f1-1dce9fbb0310
+
+- name: The factor 0 does not affect the sum of multiples of other factors
+  code: sum([3 0] 4)
+  want: 3
+  uuid: c423ae21-a0cb-4ec7-aeb1-32971af5b510
+
+- name: Solutions using include-exclude must extend to cardinality greater than 3
+  code: sum([2 3 5 7 11] 10000)
+  want: 39614537
+  uuid: 17053ba9-112f-4ac0-aadb-0519dd836342
+
+done: 16
