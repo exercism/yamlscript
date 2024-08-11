@@ -83,7 +83,7 @@ Exercises:
 * `23 - 7` - parallel-letter-frequency
 * `49 - 4` - pascals-triangle
 * `51 - 2` - perfect-numbers
-* `55 - 5` - phone-number
+* `55 - 5` - phone-number - **DONE**
 * `45 - 3` - pig-latin
 * `20 - 8` - poker
 * `13 - 9` - pov

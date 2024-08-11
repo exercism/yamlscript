@@ -208,6 +208,14 @@
         "difficulty": 2
       },
       {
+        "slug": "phone-number",
+        "name": "Phone Number",
+        "uuid": "e8fd0c68-bceb-4a21-8420-b26a71641dca",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
         "slug": "protein-translation",
         "name": "Protein Translation",
         "uuid": "b0d8cfbc-0709-4c01-8100-77fd8571471a",

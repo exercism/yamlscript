@@ -1,0 +1,36 @@
+!yamlscript/v0
+
+defn clean(phrase):
+  number =: phrase.replace(/[^\d]/ '')
+  len =: count(number)
+
+  when phrase.lc() =~ /[a-z]/:
+    die: 'letters not permitted'
+  when phrase =~ /@/:
+    die: 'punctuations not permitted'
+
+  case len:
+    9:
+      die: 'must not be fewer than 10 digits'
+    range(8):
+      die: 'incorrect number of digits'
+    11:
+      when number.first() != \\1:
+        die: '11 digits must start with 1'
+    =>: nil
+
+  when len > 11:
+    die: 'must not be greater than 11 digits'
+
+  number =: number.take-last(10 _).join()
+
+  when number =~ /^0/:
+    die: 'area code cannot start with zero'
+  when number =~ /^1/:
+    die: 'area code cannot start with one'
+  when number.3 == \\0:
+    die: 'exchange code cannot start with zero'
+  when number.3 == \\1:
+    die: 'exchange code cannot start with one'
+
+  =>: number
