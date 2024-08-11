@@ -11,3 +11,5 @@
 /out.txt
 /.clojure/
 /.problem/
+/*.ys
+/*.clj

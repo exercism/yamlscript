@@ -130,7 +130,7 @@ Exercises:
 * `32 - 6` - two-bucket
 * `65 - 1` - two-fer - **DONE**
 * `23 - 6` - variable-length-quantity
-* `55 - 2` - word-count
+* `55 - 2` - word-count - **DONE**
 * `14 - 7` - word-search
 * `33 - 5` - wordy
 * `49 - 3` - yacht - **DONE**

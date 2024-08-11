@@ -277,6 +277,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: word-count
+    name: Word Count
+    uuid: c4ced5bc-1728-4fcd-bbe9-de4f02eeca2e
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: yacht
     name: Yacht
     uuid: 952906be-3237-43c6-96fa-85ae5fb52569

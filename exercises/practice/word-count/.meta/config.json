@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "word-count.ys"
+    ],
+    "test": [
+      "word-count-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/word-count.ys"
+    ]
+  },
+  "blurb": "Given a phrase, count the occurrences of each word in that phrase.",
+  "source": "This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour."
+}
