@@ -44,7 +44,7 @@ Exercises:
 * `42 - 3` - dnd-character
 * `22 - 8` - dominoes
 * `46 - 3` - eliuds-eggs
-* `55 - 2` - etl
+* `55 - 2` - etl - **DONE**
 * `33 - 3` - flatten-array
 * `30 - 5` - food-chain
 * `25 - 7` - forth
