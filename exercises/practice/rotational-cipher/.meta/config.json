@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "rotational-cipher.ys"
+    ],
+    "test": [
+      "rotational-cipher-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/rotational-cipher.ys"
+    ]
+  },
+  "blurb": "Create an implementation of the rotational cipher, also sometimes called the Caesar cipher.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Caesar_cipher"
+}

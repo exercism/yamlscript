@@ -105,7 +105,7 @@ Exercises:
 * `69 - 1` - rna-transcription - **DONE**
 * `51 - 5` - robot-simulator
 * `67 - 4` - roman-numerals - **DONE**
-* `54 - 4` - rotational-cipher
+* `54 - 4` - rotational-cipher - **DONE**
 * `50 - 4` - run-length-encoding
 * `33 - 1` - saddle-points
 * `13 - 7` - satellite
@@ -114,7 +114,7 @@ Exercises:
 * `59 - 3` - secret-handshake - **DONE**
 * `44 - 2` - series
 * `11 - 9` - sgf-parsing
-* `61 - 2` - sieve - **DONE**
+* `61 - 2` - sieve
 * `27 - 1` - simple-cipher
 * `64 - 2` - space-age - **DONE**
 * `42 - 4` - spiral-matrix

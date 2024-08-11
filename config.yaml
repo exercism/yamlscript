@@ -242,6 +242,13 @@ exercises:
     prerequisites: []
     difficulty: 4
 
+  - slug: rotational-cipher
+    name: Rotational Cipher
+    uuid: cd3ce44e-1e5e-4d82-8cea-bcebd6e9b39d
+    practices: []
+    prerequisites: []
+    difficulty: 4
+
   - slug: rna-transcription
     name: RNA Transcription
     uuid: 13e5f40a-3be8-4314-9950-f28bc15efd11

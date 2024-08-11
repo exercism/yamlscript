@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn rotate(text shift-key):
+  # Implement the 'rotate' function.
