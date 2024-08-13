@@ -14,7 +14,7 @@ defn bank-account(operations):
     return =: operation
       .operation
       .str('do-' _)
-      .symbol().resolve().var-get()  \#"XXX remove this line"
+      .str().symbol().resolve().var-get()  \#"XXX"
       .call(operation)
 
     if operations.seq():

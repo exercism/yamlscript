@@ -1,9 +1,9 @@
 !yamlscript/v0
 
-defn isogram?(string):
+defn isogram(string):
   or empty?(string):
     string
-      .lc()                              \#"Want to be case insensitive"
-      .split()                           \#"Split string into chars"
-      .filter(partial(re-matches /\w/))  \#"Keep letters only"
-      .apply(distinct?)                  \#"Check if distinct letters"
+      .lc()                        \#"Want to be case insensitive"
+      .split()                     \#"Split string into chars"
+      .filter(A(re-matches /\w/))  \#"Keep letters only"
+      .apply(distinct?)            \#"Check if distinct letters"

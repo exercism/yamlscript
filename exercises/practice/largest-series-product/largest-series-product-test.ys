@@ -4,15 +4,6 @@ require ys::taptest: :all
 
 use: largest-series-product
 
-# Different languages may handle errors differently.
-# e.g. raise exceptions, return (int, error), return Option<int>, etc.
-# and the 'slices of size N' operation.
-# These cases *deliberately* do not cover those two operations.
-# Those are implementation details.
-# Testing them constrains implementations,
-# and not all implementations use these operations.
-# e.g. The implementation which makes a single pass through the digits.
-
 test::
 - name: Finds the largest product if span equals length
   code: largest-product("29" 2)

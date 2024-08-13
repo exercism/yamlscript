@@ -4,9 +4,6 @@ require ys::taptest: :all
 
 use: word-count
 
-# For each word in the input, count the number of times it appears in the
-# entire sentence.
-
 test::
 - name: Count one word
   code: count-words("word")

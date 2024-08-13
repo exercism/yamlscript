@@ -26,4 +26,3 @@ defn list-allergens(score):
       .seq()
       .map(test-allergen)
       .remove(nil?)
-

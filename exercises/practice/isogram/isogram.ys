@@ -1,7 +1,4 @@
 !yamlscript/v0
 
-# (ns isogram)
-
-# (defn isogram? [] ;; <- arglist goes here
-#   ;; your code goes here
-# )
+defn isogram(phrase):
+  # Implement the 'isogram' function.

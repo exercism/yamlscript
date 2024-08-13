@@ -2,7 +2,7 @@
 
 defn clean(phrase):
   number =: phrase.replace(/[^\d]/ '')
-  len =: count(number)
+  len =: S(number)
 
   when phrase.lc() =~ /[a-z]/:
     die: 'letters not permitted'
@@ -22,7 +22,7 @@ defn clean(phrase):
   when len > 11:
     die: 'must not be greater than 11 digits'
 
-  number =: number.take-last(10 _).join()
+  number =: number.take-last(10).join()
 
   when number =~ /^0/:
     die: 'area code cannot start with zero'

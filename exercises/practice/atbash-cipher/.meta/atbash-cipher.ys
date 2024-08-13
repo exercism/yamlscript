@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 letters =: range(26)
-  .map(partial(+ 97))
+  .map(A(+ 97))
   .map(char)
 
 dict =:
@@ -12,9 +12,9 @@ defn encode(phrase):
     .lc()
     .replace(/[^a-z0-9]/ '')
     .str/escape(dict)
-    .partition(5 5 '' _)
+    .partition(5 5 ''_)  \#"XXX remove _"
     .map(join)
-    .join(' ' _)
+    .join(' ')
 
 defn decode(phrase):
   phrase

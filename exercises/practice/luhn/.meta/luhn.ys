@@ -10,7 +10,7 @@ defn valid(value):
       vector: a b
 
   and:
-    not: (count(digits) < 2) || (digits =~ /[^0-9]/)
+    not: (S(digits) < 2) || (digits =~ /[^0-9]/)
     zero?:
       rem _ 10:
         apply sum: digits

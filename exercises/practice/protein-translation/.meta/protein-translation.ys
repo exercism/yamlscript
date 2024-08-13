@@ -4,7 +4,7 @@ defn proteins(strand):
   strand
     .str('XX')
     .partition(3)
-    .map(partial(apply str))
+    .map(A(apply str))
     .map(translate-codon)
     .take-while(check)
 

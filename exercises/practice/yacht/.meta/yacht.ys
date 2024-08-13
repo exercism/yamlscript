@@ -4,7 +4,7 @@ defn score(dice category):
   category
     .replace(/\ / '-')
     .str('do-' _)
-    .symbol().resolve().var-get()  \#"remove"
+    .symbol().resolve()
     .call(dice) || 0
 
 defn- do-yacht(dice):
@@ -12,7 +12,7 @@ defn- do-yacht(dice):
 
 defn- same-number(n):
   fn(dice):
-    dice.filter(partial(== n)).apply(+)
+    dice.filter(A(== n)).apply(+)
 
 do-ones   =: same-number(1)
 do-twos   =: same-number(2)
@@ -24,7 +24,7 @@ do-sixes  =: same-number(6)
 defn- do-full-house(dice):
   f =: frequencies(dice)
   ? when
-      (f.count() == 2) &&
+      (f.S() == 2) &&
       f.vals().set().contains?(2)
   : sum(dice*)
 

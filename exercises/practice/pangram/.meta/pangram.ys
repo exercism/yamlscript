@@ -3,4 +3,4 @@
 defn is-pangram(sentence):
   eq 26: sentence
     .map(lc).replace(/[^a-z]/ '')
-    .sort().distinct().count()
+    .sort().distinct().S()

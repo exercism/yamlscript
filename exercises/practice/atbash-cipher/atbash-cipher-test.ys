@@ -4,10 +4,6 @@ require ys::taptest: :all
 
 use: atbash-cipher
 
-# The tests are divided into two groups:
-# * Encoding from English to atbash cipher
-# * Decoding from atbash cipher to all-lowercase-mashed-together English
-
 test::
 - name: Encode yes
   code: encode("yes")

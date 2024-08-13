@@ -7,7 +7,7 @@ defn isosceles(sides):
   +[a b c] =: sort(sides)
   and:
     ((a + b ) > c)
-    (sides.frequencies().count() <= 2)
+    (sides.frequencies().S() <= 2)
 
 defn scalene(sides):
   and:

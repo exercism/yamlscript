@@ -4,16 +4,6 @@ require ys::taptest: :all
 
 use: yacht
 
-# The dice are represented always as a list of exactly five integers
-# with values between 1 and 6 inclusive. The category is an string.
-# the categories are 'ones' to 'sixes',
-# Then 'full house',
-# 'four of a kind'
-# 'little straight' 1-5
-# 'big straight' 2-6
-# 'choice', sometimes called Chance
-# 'yacht', or five of a kind
-
 test::
 - name: Yacht
   code: score([5 5 5 5 5] "yacht")

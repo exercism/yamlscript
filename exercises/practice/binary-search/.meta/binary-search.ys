@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn find(array value):
- loop low 0, high array.count().dec():
+ loop low 0, high array.S().dec():
    when low > high:
      die: 'value not in array'
    mid =: quot((high + low) 2)

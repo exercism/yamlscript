@@ -4,9 +4,6 @@ require ys::taptest: :all
 
 use: allergies
 
-# Given a number and a substance, indicate whether Tom is allergic
-# to that substance.
-
 test::
 - name: Not allergic to anything
   code: allergic-to("eggs" 0)

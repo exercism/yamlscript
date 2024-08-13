@@ -4,9 +4,6 @@ require ys::taptest: :all
 
 use: pangram
 
-# A pangram is a sentence using every letter of the alphabet at least once.
-# Output should be a boolean denoting if the string is a pangram or not.
-
 test::
 - name: Empty sentence
   code: is-pangram("")

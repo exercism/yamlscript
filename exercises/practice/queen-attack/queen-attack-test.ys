@@ -4,19 +4,6 @@ require ys::taptest: :all
 
 use: queen-attack
 
-# Testing invalid positions will vary by language. The expected value of
-# 'error' is there to indicate some sort of failure should occur, while a 0
-# means no failure.
-# Some languages implement tests beyond this set, such as checking for two
-# pieces being placed on the same position, representing the board
-# graphically, or using standard chess notation. Those tests can be offered
-# as extra credit.
-# 
-# All row and column positions are considered to be zero-indexed array
-# indices, where the first row - with index 0 - represents the top of the
-# board, and the first column - with index 0 - represents the left of the
-# board. In chess notation that is a8.
-
 test::
 - name: Queen with a valid position
   code: create({"position" {"row" 2, "column" 2}})

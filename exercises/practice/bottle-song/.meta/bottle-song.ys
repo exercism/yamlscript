@@ -4,7 +4,7 @@ defn recite(start-bottles take-down):
   last-num =: (start-bottles - take-down) + 1
   drop-last:
     mapcat verse:
-      (start-bottles .. last-num)
+      start-bottles .. last-num
 
 defn- verse(num):
   drop-last:
