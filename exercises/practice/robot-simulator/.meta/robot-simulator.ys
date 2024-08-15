@@ -1,0 +1,45 @@
+!yamlscript/v0
+
+directions =: qw(north east south west)
+
+defn create(position direction)::
+  position:: position
+  direction:: direction
+
+defn move(position direction instructions):
+  ? loop
+      [instruction & instructions] instructions
+      robot create(position direction)
+  : if instruction:
+      recur instructions:
+        case instruction:
+          \\A: robot.advance()
+          \\L: robot.turn-left()
+          \\R: robot.turn-right()
+      =>: robot
+
+defn advance(robot):
+  x =: robot.position.x
+  y =: robot.position.y
+  d =: robot.direction
+  create _ d:
+    cond:
+      d == 'north': +{'x' x      'y' inc(y)}
+      d == 'south': +{'x' x      'y' dec(y)}
+      d == 'east' : +{'x' inc(x) 'y' y}
+      d == 'west' : +{'x' dec(x) 'y' y}
+
+defn turn-left(robot):
+  create robot.position:
+    turn robot.direction:
+      reverse(directions)
+
+defn turn-right(robot):
+  create robot.position:
+    turn robot.direction:
+      directions
+
+defn turn(direction directions):
+  (2 * directions)
+    .drop-while(A(ne direction))
+    .second()

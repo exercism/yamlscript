@@ -235,6 +235,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: robot-simulator
+    name: Robot Simulator
+    uuid: e1709823-93b9-4d38-88ea-cce9af07d979
+    practices: []
+    prerequisites: []
+    difficulty: 5
+
   - slug: roman-numerals
     name: Roman Numerals
     uuid: 95d72ba7-f3f5-44a3-b289-f0c29f449108

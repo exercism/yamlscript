@@ -1,0 +1,170 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: robot-simulator
+
+test::
+- name: At origin facing north
+  code: create({"x" 0, "y" 0} "north")
+  want:
+    position:
+      x: 0
+      y: 0
+    direction: north
+  uuid: c557c16d-26c1-4e06-827c-f6602cd0785c
+
+- name: At negative position facing south
+  code: create({"x" -1, "y" -1} "south")
+  want:
+    position:
+      x: -1
+      y: -1
+    direction: south
+  uuid: bf0dffce-f11c-4cdb-8a5e-2c89d8a5a67d
+
+- name: Changes north to east
+  code: move({"x" 0, "y" 0} "north" "R")
+  want:
+    position:
+      x: 0
+      y: 0
+    direction: east
+  uuid: 8cbd0086-6392-4680-b9b9-73cf491e67e5
+
+- name: Changes east to south
+  code: move({"x" 0, "y" 0} "east" "R")
+  want:
+    position:
+      x: 0
+      y: 0
+    direction: south
+  uuid: 8abc87fc-eab2-4276-93b7-9c009e866ba1
+
+- name: Changes south to west
+  code: move({"x" 0, "y" 0} "south" "R")
+  want:
+    position:
+      x: 0
+      y: 0
+    direction: west
+  uuid: 3cfe1b85-bbf2-4bae-b54d-d73e7e93617a
+
+- name: Changes west to north
+  code: move({"x" 0, "y" 0} "west" "R")
+  want:
+    position:
+      x: 0
+      y: 0
+    direction: north
+  uuid: 5ea9fb99-3f2c-47bd-86f7-46b7d8c3c716
+
+- name: Changes north to west
+  code: move({"x" 0, "y" 0} "north" "L")
+  want:
+    position:
+      x: 0
+      y: 0
+    direction: west
+  uuid: fa0c40f5-6ba3-443d-a4b3-58cbd6cb8d63
+
+- name: Changes west to south
+  code: move({"x" 0, "y" 0} "west" "L")
+  want:
+    position:
+      x: 0
+      y: 0
+    direction: south
+  uuid: da33d734-831f-445c-9907-d66d7d2a92e2
+
+- name: Changes south to east
+  code: move({"x" 0, "y" 0} "south" "L")
+  want:
+    position:
+      x: 0
+      y: 0
+    direction: east
+  uuid: bd1ca4b9-4548-45f4-b32e-900fc7c19389
+
+- name: Changes east to north
+  code: move({"x" 0, "y" 0} "east" "L")
+  want:
+    position:
+      x: 0
+      y: 0
+    direction: north
+  uuid: 2de27b67-a25c-4b59-9883-bc03b1b55bba
+
+- name: Facing north increments y
+  code: move({"x" 0, "y" 0} "north" "A")
+  want:
+    position:
+      x: 0
+      y: 1
+    direction: north
+  uuid: f0dc2388-cddc-4f83-9bed-bcf46b8fc7b8
+
+- name: Facing south decrements y
+  code: move({"x" 0, "y" 0} "south" "A")
+  want:
+    position:
+      x: 0
+      y: -1
+    direction: south
+  uuid: 2786cf80-5bbf-44b0-9503-a89a9c5789da
+
+- name: Facing east increments x
+  code: move({"x" 0, "y" 0} "east" "A")
+  want:
+    position:
+      x: 1
+      y: 0
+    direction: east
+  uuid: 84bf3c8c-241f-434d-883d-69817dbd6a48
+
+- name: Facing west decrements x
+  code: move({"x" 0, "y" 0} "west" "A")
+  want:
+    position:
+      x: -1
+      y: 0
+    direction: west
+  uuid: bb69c4a7-3bbf-4f64-b415-666fa72d7b04
+
+- name: Moving east and north from readme
+  code: move({"x" 7, "y" 3} "north" "RAALAL")
+  want:
+    position:
+      x: 9
+      y: 4
+    direction: west
+  uuid: e34ac672-4ed4-4be3-a0b8-d9af259cbaa1
+
+- name: Moving west and north
+  code: move({"x" 0, "y" 0} "north" "LAAARALA")
+  want:
+    position:
+      x: -4
+      y: 1
+    direction: west
+  uuid: f30e4955-4b47-4aa3-8b39-ae98cfbd515b
+
+- name: Moving west and south
+  code: move({"x" 2, "y" -7} "east" "RRAAAAALA")
+  want:
+    position:
+      x: -3
+      y: -8
+    direction: south
+  uuid: 3e466bf6-20ab-4d79-8b51-264165182fca
+
+- name: Moving east and north
+  code: move({"x" 8, "y" 4} "south" "LAAARRRALLLL")
+  want:
+    position:
+      x: 11
+      y: 5
+    direction: north
+  uuid: 41f0bb96-c617-4e6b-acff-a4b279d44514
+
+done: 18

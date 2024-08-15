@@ -103,7 +103,7 @@ Exercises:
 * `10 - 7` - rest-api
 * `63 - 1` - reverse-string - **DONE**
 * `69 - 1` - rna-transcription - **DONE**
-* `51 - 5` - robot-simulator
+* `51 - 5` - robot-simulator - **DONE**
 * `67 - 4` - roman-numerals - **DONE**
 * `54 - 4` - rotational-cipher - **DONE**
 * `50 - 4` - run-length-encoding

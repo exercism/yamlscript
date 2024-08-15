@@ -1,0 +1,16 @@
+!yamlscript/v0
+
+defn create(position direction):
+  # Implement the 'create' function.
+
+defn move(position direction instructions):
+  # Implement the 'move' function.
+
+defn move(position direction instructions):
+  # Implement the 'move' function.
+
+defn move(position direction instructions):
+  # Implement the 'move' function.
+
+defn move(position direction instructions):
+  # Implement the 'move' function.

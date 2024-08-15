@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "robot-simulator.ys"
+    ],
+    "test": [
+      "robot-simulator-test.ys",
+      "Makefile"
+    ],
+    "example": [
+      ".meta/robot-simulator.ys"
+    ]
+  },
+  "blurb": "Write a robot simulator.",
+  "source": "Inspired by an interview question at a famous company."
+}
