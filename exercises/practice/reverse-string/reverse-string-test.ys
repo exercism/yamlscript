@@ -44,12 +44,12 @@ test::
   code: reverse('Würstchenstand')
   want: dnatsnehctsrüW
   uuid: 93d7e1b8-f60f-4f3c-9559-4056e10d2ead
-  SKIP: true
+  SKIP: true    # UNSOLVED
 
 - name: Grapheme clusters
   code: reverse('ผู้เขียนโปรแกรม')
   want: มรกแรปโนยขีเผู้
   uuid: 1028b2c1-6763-4459-8540-2da47ca512d9
-  SKIP: true
+  SKIP: true    # UNSOLVED
 
 done: 7 # 9

@@ -200,6 +200,13 @@ exercises:
     prerequisites: []
     difficulty: 2
 
+  - slug: perfect-numbers
+    name: Perfect Numbers
+    uuid: 4f7d162a-c0c3-4e2a-a08f-4acd199e649e
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: phone-number
     name: Phone Number
     uuid: e8fd0c68-bceb-4a21-8420-b26a71641dca
