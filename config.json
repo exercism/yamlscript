@@ -296,6 +296,14 @@
         "difficulty": 1
       },
       {
+        "slug": "run-length-encoding",
+        "name": "Run-Length Encoding",
+        "uuid": "fa43daa5-91a7-4e04-84cc-e997b8b4752e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "scrabble-score",
         "name": "Scrabble Score",
         "uuid": "16d74aa7-6ca9-4a5f-927e-36aa756a5ccf",

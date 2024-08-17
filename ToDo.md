@@ -106,7 +106,7 @@ Exercises:
 * `51 - 5` - robot-simulator - **DONE**
 * `67 - 4` - roman-numerals - **DONE**
 * `54 - 4` - rotational-cipher - **DONE**
-* `50 - 4` - run-length-encoding
+* `50 - 4` - run-length-encoding - **DONE**
 * `33 - 1` - saddle-points
 * `13 - 7` - satellite
 * `37 - 5` - say

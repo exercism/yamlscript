@@ -1,0 +1,10 @@
+!yamlscript/v0
+
+defn encode(string):
+  # Implement the 'encode' function.
+
+defn decode(string):
+  # Implement the 'decode' function.
+
+defn consistency(string):
+  # Implement the 'consistency' function.
