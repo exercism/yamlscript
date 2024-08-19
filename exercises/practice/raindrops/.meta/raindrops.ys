@@ -8,7 +8,7 @@ defn convert(number):
       fn(acc num):
         concat acc:
           if zero?(number % num):
-            +[dict.$num]
+            +[dict.get(num)]
             []
 
   if empty?(words):

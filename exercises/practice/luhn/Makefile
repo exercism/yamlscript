@@ -12,6 +12,7 @@ endif
 export YSPATH=$(PWD)
 
 default:
+	@which ys
 
 .PHONY: test
 test:

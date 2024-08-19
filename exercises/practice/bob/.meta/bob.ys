@@ -6,7 +6,7 @@ defn response(hey-bob):
     :ASK     : "Calm down, I know what I'm doing!"
     :shhh    : 'Fine. Be that way!'
     :YELL    : 'Whoa, chill out!'
-    =>       : 'Whatever.'
+    else     : 'Whatever.'
 
 defn get-tone(str):
   cond:

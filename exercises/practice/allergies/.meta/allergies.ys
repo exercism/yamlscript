@@ -21,8 +21,8 @@ defn list-allergens(score):
     fn([allergen num]):
       when bit-test(score num):
         allergen
-  =>:
-    allergen-nums
-      .seq()
-      .map(test-allergen)
-      .remove(nil?)
+
+  allergen-nums:
+    .seq()
+    .map(test-allergen)
+    .remove(nil?)

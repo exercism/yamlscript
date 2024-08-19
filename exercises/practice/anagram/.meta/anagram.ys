@@ -5,9 +5,8 @@ defn find-anagrams(subject candidates):
     \(anagram %1 subject)
 
 defn- anagram(word1 word2):
-  # XXX use .=
-  word1 =: word1.lc()
-  word2 =: word2.lc()
+  word1 .=: lc()
+  word2 .=: lc()
   and:
     ne: word1 word2
     eq: sort(word1)

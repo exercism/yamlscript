@@ -18,10 +18,10 @@ defn- verse(num):
 
 dict =:
   zipmap range():
-    qw(no one two three four five six seven eight nine ten)
+    QW(no one two three four five six seven eight nine ten)
 
 defn- bottles(num):
-  case num %:
-    0 : 'no green bottles'
-    1 : 'one green bottle'
-    =>: "$(dict.$num) green bottles"
+  case num:
+    0    : 'no green bottles'
+    1    : 'one green bottle'
+    else : "$get(dict num) green bottles"

@@ -4,5 +4,5 @@ defn abbreviate(phrase):
   phrase
     .re-seq(/[A-Z]+['a-z]*|[a-z]+/)
     .map(first)
-    .apply(str)  \#".str(*)"
+    .str(*)
     .uc()

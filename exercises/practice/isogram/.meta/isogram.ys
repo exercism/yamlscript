@@ -3,7 +3,7 @@
 defn isogram(string):
   or empty?(string):
     string
-      .lc()                        \#"Want to be case insensitive"
-      .split()                     \#"Split string into chars"
-      .filter(A(re-matches /\w/))  \#"Keep letters only"
-      .apply(distinct?)            \#"Check if distinct letters"
+      .lc()                         \"Want to be case insensitive"
+      .split()                      \"Split string into chars"
+      .filter(FN(re-matches /\w/))  \"Keep letters only"
+      .distinct?(*)                 \"Check if distinct letters"

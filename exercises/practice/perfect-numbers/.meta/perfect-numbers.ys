@@ -5,11 +5,11 @@ defn classify(number):
     die: 'Classification is only possible for positive integers.'
 
   case compare(sum-of-divisors(number), number):
-    0:: perfect
-    1:: abundant
-    -1:: deficient
+    0  :: perfect
+    1  :: abundant
+    -1 :: deficient
 
 defn sum-of-divisors(number):
-  nums =: range(1 quot(number 2).inc())
-  apply +:
-    for n nums :when zero?(number % n): n
+  for([n range(1 quot(number 2).inc())
+      :when zero?(number % n)] n)
+    .sum(*)

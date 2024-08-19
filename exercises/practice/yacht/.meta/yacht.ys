@@ -3,16 +3,16 @@
 defn score(dice category):
   category
     .replace(/\ / '-')
-    .str('do-' _)
-    .symbol().resolve()
-    .call(dice) || 0
+    .str('do-' _).V()
+    .call(dice)
+  || 0
 
 defn- do-yacht(dice):
   when eq(dice*): 50
 
 defn- same-number(n):
   fn(dice):
-    dice.filter(A(== n)).apply(+)
+    dice.filter(FN(== n)).sum(*)
 
 do-ones   =: same-number(1)
 do-twos   =: same-number(2)
@@ -24,13 +24,13 @@ do-sixes  =: same-number(6)
 defn- do-full-house(dice):
   f =: frequencies(dice)
   ? when
-      (f.S() == 2) &&
-      f.vals().set().contains?(2)
-  : sum(dice*)
+      (N(f) == 2) &&
+      f.vals().has?(2)
+  : sum: dice*
 
 defn- do-four-of-a-kind(dice):
   f =: frequencies(dice).set/map-invert()
-  mul 4: f.4 || f.5 || 0
+  mul 4: f.get(4) || f.get(5) || 0
 
 defn- do-little-straight(dice):
   when dice.sort() == (1 .. 5): 30
@@ -38,4 +38,5 @@ defn- do-little-straight(dice):
 defn- do-big-straight(dice):
   when dice.sort() == (2 .. 6): 30
 
-defn- do-choice(dice): sum(dice*)
+defn- do-choice(dice):
+  sum: dice*

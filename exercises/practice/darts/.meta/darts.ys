@@ -6,4 +6,4 @@ defn score(x y):
     h <= 1  : 10
     h <= 5  : 5
     h <= 10 : 1
-    =>      : 0
+    else    : 0

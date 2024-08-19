@@ -5,12 +5,12 @@ defn largest-product(digits span):
   cond:
     span < 0:
       die: 'span must not be negative'
-    span > digits.S():
+    span > N(digits):
       die: 'span must be smaller than string length'
     digits =~ /[^0-9]/:
       die: 'digits input must only contain digits'
-    =>:
-      apply max: map(A(apply *) slices(digits span))
+    else:
+      map(FN(apply *) slices(digits span)).max(*)
 
 defn- slices(digits span):
   partition span 1:

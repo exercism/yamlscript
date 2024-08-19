@@ -3,19 +3,20 @@
 defn encode(string):
   apply str:
     for part partition-by(I string):
-      num =: S(part)
+      num =: N(part)
       str:
         when((num > 1) num) part.0
 
 defn decode(string):
   ? loop
-      [p1 p2 & parts] re-seq(/\d+|[^\d]/ string)
+      [p1 p2 & parts]
+        re-seq(/\d+|[^\d]/ string)
       val ''
   : if p1:
       if p1 =~ /\d/:
         recur parts: "$val$(num(p1) * p2)"
         recur cons(p2 parts): "$val$p1"
-      =>: val
+      else: val
 
 defn consistency(string):
   string.encode().decode()

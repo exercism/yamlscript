@@ -1,12 +1,10 @@
 !yamlscript/v0
 
 defn square-of-sum(number):
-  # XXX sum((1 .. number)*) ** 2
-  apply(sum (1 .. number)) ** 2
+  (1 .. number).sum(*) ** 2
 
 defn sum-of-squares(number):
-  apply sum:
-    map squared: 1 .. number
+  (1 .. number).map(squared).sum(*)
 
 defn difference-of-squares(number):
   square-of-sum(number) -

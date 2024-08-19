@@ -13,8 +13,7 @@ defn bank-account(operations):
   loop [operation & operations] operations:
     return =: operation
       .operation
-      .str('do-' _)
-      .str().symbol().resolve().var-get()  \#"XXX"
+      .str('do-' _).V()
       .call(operation)
 
     if operations.seq():
@@ -33,9 +32,9 @@ defn- do-close(o):
 
 defn- do-balance(o):
   balance =: deref(account)
-  when-not balance:
+  if-not balance:
     die: 'account not open'
-  =>: balance
+    else: balance
 
 defn- do-deposit(o):
   when-not deref(account):
@@ -54,6 +53,6 @@ defn- do-withdraw(o):
 
 defn- get-amount(o):
   amount =: o.amount
-  when amount <= 0:
+  if amount <= 0:
     die: 'amount must be greater than 0'
-  =>: amount
+    else: amount

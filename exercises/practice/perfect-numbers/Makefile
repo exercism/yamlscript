@@ -1,15 +1,9 @@
 SHELL := bash
 
-TEST :=
-ifneq (,$(wildcard test))
-  TEST += test/*.ys
-endif
-ifneq (,$(wildcard *-test.ys))
-  TEST += $(wildcard *-test.ys)
-endif
-
-
 export YSPATH=$(PWD)
+
+TEST += $(wildcard *-test.ys)
+
 
 default:
 

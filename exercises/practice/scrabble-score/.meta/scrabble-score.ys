@@ -16,8 +16,8 @@ letter-score =:
         zipmap letters.split(): repeat(score)
 
 defn score(word):
-  apply sum:
-    word
-      .uc()
-      .split()
-      .map(A(get letter-score))
+  word:
+    .uc()
+    .split()
+    .map(FN(get letter-score))
+    .sum(*)

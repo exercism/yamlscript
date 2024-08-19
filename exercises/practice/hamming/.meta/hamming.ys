@@ -1,9 +1,9 @@
 !yamlscript/v0
 
 defn distance(strand1 strand2):
-  when S(strand1) != S(strand2):
+  when N(strand1) != N(strand2):
     die: 'strands must be of equal length'
 
   count:
     filter true?:
-      map A(ne): strand1 strand2
+      map FN(ne): strand1 strand2

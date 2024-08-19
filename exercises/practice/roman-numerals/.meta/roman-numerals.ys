@@ -16,14 +16,14 @@ numeral-mapping =::
   1:    I
 
 defn roman(number):
-  if zero?(number):
-    then: ''
-    else:
+  if pos?(number):
+    then:
       +[part letter] =: largest-factor(number)
       remainder =: number - part
       str letter: roman(remainder)
+    else: ''
 
 defn- largest-factor(number):
   first:
-    filter fn([[p]] (p <= number)):
-      numeral-mapping
+    filter _ numeral-mapping:
+      fn([p]): p <= number

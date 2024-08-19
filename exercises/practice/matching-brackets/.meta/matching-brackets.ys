@@ -16,9 +16,9 @@ defn is-paired(value):
         closing(char):
           when peek(stack) == pairs(char):
             pop: stack
-        =>: stack
+        else: stack
 
     cond:
       stack.nil?(): false
       empty?(chars): empty?(stack)
-      =>: recur(chars stack)
+      else: recur(chars stack)

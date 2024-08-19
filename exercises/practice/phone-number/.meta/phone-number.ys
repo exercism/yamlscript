@@ -2,7 +2,7 @@
 
 defn clean(phrase):
   number =: phrase.replace(/[^\d]/ '')
-  len =: S(number)
+  len =: N(number)
 
   when phrase.lc() =~ /[a-z]/:
     die: 'letters not permitted'
@@ -17,12 +17,12 @@ defn clean(phrase):
     11:
       when number.first() != \\1:
         die: '11 digits must start with 1'
-    =>: nil
+    else: nil
 
   when len > 11:
     die: 'must not be greater than 11 digits'
 
-  number =: number.take-last(10).join()
+  number .=: take-last(10).join()
 
   when number =~ /^0/:
     die: 'area code cannot start with zero'

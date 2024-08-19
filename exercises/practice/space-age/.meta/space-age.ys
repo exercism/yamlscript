@@ -16,11 +16,11 @@ seconds-in-year =:
 defn age(planet seconds):
   factor =: factors.$planet ||
     die('not a planet')
-  =>:
-    seconds
-      .div(seconds-in-year)
-      .div(factors.$planet)
-      .mul(100)
-      .math/round()
-      .div(100)
-      .double()
+
+  seconds:
+    .div(seconds-in-year)
+    .div(factors.$planet)
+    .mul(100)
+    .math/round()
+    .div(100)
+    .double()

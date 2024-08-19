@@ -1,15 +1,15 @@
 !yamlscript/v0
 
-lower =: (1 .. 26).map(partial(+ 96)).map(char)
-upper =: (1 .. 26).map(partial(+ 64)).map(char)
+lower =: (1 .. 26).map(comp(char FN(+ 96)))
+upper =: (1 .. 26).map(comp(char FN(+ 64)))
 
 defn rotate(text shift-key):
   lower =:
-    zipmap lower: lower.drop(shift-key) + lower
+    zipmap lower: lower.drop(shift-key).vec() + lower
   upper =:
-    zipmap upper: upper.drop(shift-key) + upper
-  =>: text
-        .str/escape(lower)
-        .str/escape(upper)
+    zipmap upper: upper.drop(shift-key).vec() + upper
+  text:
+    .str/escape(lower)
+    .str/escape(upper)
 
 

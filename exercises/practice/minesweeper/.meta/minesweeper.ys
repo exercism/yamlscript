@@ -5,17 +5,17 @@ defn annotate(minefield):
     map split: minefield
 
   loop y 0, field []:
-    if y >= grid.S():
-      =>: field
+    if y < grid.N():
       recur inc(y):
         conj field: get-row(grid y)
+      else: field
 
 defn get-row(grid y):
   loop x 0, row '':
-    if x >= grid.0.S():
-      =>: row
+    if x < grid.0.N():
       recur inc(x):
         row + get-cell(grid x y)
+      else: row
 
 indeces =:
   for a (-1 .. 1), b (-1 .. 1):
@@ -29,8 +29,8 @@ defn get-cell(grid x y):
           fn(cnt [a b]):
             +[i j] =: +[(x + a) (y + b)]
             sum cnt:
-              (((0 <= (x + a) <= dec(grid.0.S())) &&
-                (0 <= j <= dec(grid.S())) &&
+              (((0 <= (x + a) <= dec(grid.0.N())) &&
+                (0 <= j <= dec(grid.N())) &&
                 (grid.$j.$i == '*')) &&
                 1) || 0
       if new > 0: new ' '

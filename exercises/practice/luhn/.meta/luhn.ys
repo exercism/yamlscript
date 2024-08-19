@@ -2,18 +2,18 @@
 
 defn valid(value):
   digits =: value.replace(' ' '')
-  munge =:
-    fn([a b]):
-      b =: 2 * b
-      b =:
-        if b > 9: (b - 9) b
-      vector: a b
 
   and:
-    not: (S(digits) < 2) || (digits =~ /[^0-9]/)
+    not: (N(digits) < 2) || (digits =~ /[^0-9]/)
     zero?:
       rem _ 10:
-        apply sum: digits
+        digits:
           .split().remove(empty?).map(num)
-          .reverse().conj(0).partition(2)
-          .map(munge).flatten()
+          .reverse().vec().conj(0).partition(2)
+          .map(munge).flatten().sum(*)
+
+defn munge([a b]):
+  b =: 2 * b
+  b =:
+    if b > 9: (b - 9) b
+  vector: a b
