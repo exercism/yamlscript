@@ -9,8 +9,8 @@ defn create({{r 'row' c 'column'} 'position'}):
     else  : 0
 
 defn can-attack(white-queen black-queen):
-  +{w-r "row" w-c "column"} =: white-queen.position
-  +{b-r "row" b-c "column"} =: black-queen.position
+  -{w-r "row" w-c "column"} =: white-queen.position
+  -{b-r "row" b-c "column"} =: black-queen.position
 
   or:
     eq: w-r b-r

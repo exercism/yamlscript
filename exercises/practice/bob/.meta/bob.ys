@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn response(hey-bob):
-  case get-tone(hey-bob.trim()):
+  case hey-bob.trim().get-tone():
     :ask     : 'Sure.'
     :ASK     : "Calm down, I know what I'm doing!"
     :shhh    : 'Fine. Be that way!'

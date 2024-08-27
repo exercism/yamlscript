@@ -1,18 +1,17 @@
 !yamlscript/v0
 
 defn score(dice category):
-  category
+  or _ 0: category
     .replace(/\ / '-')
-    .str('do-' _).V()
+    .str('do-' _)
     .call(dice)
-  || 0
 
 defn- do-yacht(dice):
   when eq(dice*): 50
 
 defn- same-number(n):
   fn(dice):
-    dice.filter(FN(== n)).sum(*)
+    dice.filter(fun(== n)).sum(*)
 
 do-ones   =: same-number(1)
 do-twos   =: same-number(2)
@@ -22,15 +21,15 @@ do-fives  =: same-number(5)
 do-sixes  =: same-number(6)
 
 defn- do-full-house(dice):
-  f =: frequencies(dice)
+  freqs =: frequencies(dice)
   ? when
-      (N(f) == 2) &&
-      f.vals().has?(2)
+      (num(freqs) == 2) &&
+      freqs.vals().has?(2)
   : sum: dice*
 
 defn- do-four-of-a-kind(dice):
-  f =: frequencies(dice).set/map-invert()
-  mul 4: f.get(4) || f.get(5) || 0
+  freqs =: frequencies(dice).set/map-invert()
+  mul 4: freqs.get(4) || freqs.get(5) || 0
 
 defn- do-little-straight(dice):
   when dice.sort() == (1 .. 5): 30

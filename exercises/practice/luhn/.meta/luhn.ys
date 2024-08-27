@@ -4,8 +4,9 @@ defn valid(value):
   digits =: value.replace(' ' '')
 
   and:
-    not: (N(digits) < 2) || (digits =~ /[^0-9]/)
-    zero?:
+    ge: len(digits) 2
+    not: digits =~ /[^0-9]/
+    f?:
       rem _ 10:
         digits:
           .split().remove(empty?).map(num)

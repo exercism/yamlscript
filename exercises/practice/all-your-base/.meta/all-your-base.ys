@@ -10,7 +10,7 @@ defn rebase(input-base digits output-base):
     output-base < 2:
       die: 'output base must be >= 2'
     ? digits.some(neg?) ||
-      digits.some(FN(<= input-base))
+      digits.some(fun(<= input-base))
     : die: 'all digits must satisfy 0 <= d < input base'
 
     digits.every?(zero?):: [0]
@@ -23,7 +23,7 @@ defn rebase(input-base digits output-base):
 defn digits-to-decimal(digits input-base):
   :: Converts a sequence of digits given in input-base into decimal format.
 
-  loop sum 0, [num & nums] digits:
+  loop sum 0, [num *nums] digits:
     if num:
       recur: ((sum * input-base) + num) nums
       else: sum

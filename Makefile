@@ -97,11 +97,14 @@ check: $(YS) $(CHECKS)
 test: test-exercises
 	@echo $(LINE)
 
+test-each: update
+	for d in exercises/practice/*/.meta; do make -C $$d test || exit; done
+
 update: $(GEN_FILES)
 
 deps: $(YS) $(CFGLET) $(SHELLCHECK)
 
-test-exercises: $(YS)
+test-exercises: $(YS) update
 	@echo $(LINE)
 	@echo '*** Running tests for $(test-name)'
 	@$(MAKE) --no-print-directory run-tests

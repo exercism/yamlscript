@@ -2,7 +2,7 @@
 
 defn is-leap-year(year):
   and:
-    zero?: year % 4
+    f?: year % 4
     or:
-      pos? : year % 100
-      zero?: year % 400
+      t?: year % 100
+      f?: year % 400

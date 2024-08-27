@@ -6,5 +6,5 @@ defn is-pangram(sentence):
     .replace(/[^a-z]/ '')
     .sort()
     .distinct()
-    .count()
+    .num()
     .eq(26)

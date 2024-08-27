@@ -9,5 +9,5 @@ dna-to-rna =::
 defn to-rna(dna):
   dna:
     .split()
-    .map(\(dna-to-rna %1))
+    .map(dna-to-rna)
     .join()

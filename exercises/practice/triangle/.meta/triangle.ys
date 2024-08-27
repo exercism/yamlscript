@@ -1,17 +1,15 @@
 !yamlscript/v0
 
 defn equilateral(sides):
-  (sides.0 > 0) && eq(sides*)
+  and eq(sides*): sides.0 > 0
 
 defn isosceles(sides):
-  +[a b c] =: sort(sides)
-  and:
-    ((a + b ) > c)
-    (N(sides.frequencies()) <= 2)
+  -[a b c] =: sort(sides)
+  and ((a + b ) > c):
+    num(sides.frequencies()) <= 2
 
 defn scalene(sides):
-  and:
-    not: isosceles(sides)
-    do:
-      +[a b c] =: sort(sides)
+  boolean:
+    when-not isosceles(sides):
+      -[a b c] =: sort(sides)
       gt: (a + b) c

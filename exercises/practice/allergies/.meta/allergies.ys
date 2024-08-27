@@ -19,8 +19,7 @@ defn allergic-to(item score):
 defn list-allergens(score):
   test-allergen =:
     fn([allergen num]):
-      when bit-test(score num):
-        allergen
+      bit-test(score num) &&& allergen
 
   allergen-nums:
     .seq()

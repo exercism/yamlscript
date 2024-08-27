@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 nucleotides =:
-  zipmap QW(A C G T): repeat(0)
+  zipmap qw(A C G T): repeat(0)
 
 defn nucleotide-counts(strand):
   when strand !~ /^[ACGT]*$/:

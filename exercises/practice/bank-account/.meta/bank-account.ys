@@ -10,13 +10,13 @@ defn reset-test-state():
   reset! account: nil
 
 defn bank-account(operations):
-  loop [operation & operations] operations:
+  loop [operation *operations] operations:
     return =: operation
       .operation
-      .str('do-' _).V()
+      .str('do-' _)
       .call(operation)
 
-    if operations.seq():
+    if operations.t?():
       then: recur(operations)
       else: return
 

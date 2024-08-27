@@ -1,12 +1,11 @@
 SHELL := bash
 
-export YSPATH=$(PWD)
+test ?= $(wildcard *-test.ys)
 
-TEST += $(wildcard *-test.ys)
+export YSPATH=$(shell pwd -P)
 
 
 default:
 
-.PHONY: test
 test:
-	prove -v $(TEST)
+	prove -v $(test)

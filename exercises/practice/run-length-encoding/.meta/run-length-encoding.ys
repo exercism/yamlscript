@@ -2,14 +2,14 @@
 
 defn encode(string):
   apply str:
-    for part partition-by(I string):
-      num =: N(part)
+    for part partition-by(just string):
+      len =: len(part)
       str:
-        when((num > 1) num) part.0
+        when((len > 1) len) part.0
 
 defn decode(string):
   ? loop
-      [p1 p2 & parts]
+      [p1 p2 *parts]
         re-seq(/\d+|[^\d]/ string)
       val ''
   : if p1:
