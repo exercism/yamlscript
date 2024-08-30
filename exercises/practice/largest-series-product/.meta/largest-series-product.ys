@@ -1,6 +1,5 @@
 !yamlscript/v0
 
-
 defn largest-product(digits span):
   cond:
     span < 0:
@@ -14,4 +13,4 @@ defn largest-product(digits span):
 
 defn- slices(digits span):
   partition span 1:
-    digits.split('').map(num)
+    digits.split('').map(to-num)

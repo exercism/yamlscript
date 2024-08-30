@@ -5,14 +5,14 @@ defn annotate(minefield):
     map split: minefield
 
   loop y 0, field []:
-    if y < grid.num():
+    if y < grid.#:
       recur inc(y):
         conj field: get-row(grid y)
       else: field
 
 defn get-row(grid y):
   loop x 0, row '':
-    if x < grid.0.num():
+    if x < grid.0.#:
       recur inc(x):
         row + get-cell(grid x y)
       else: row
@@ -30,8 +30,8 @@ defn get-cell(grid x y):
           fn(cnt [a b]):
             -[i j] =: -[(x + a) (y + b)]
             sum cnt:
-              (((0 <= (x + a) <= dec(grid.0.num())) &&
-                (0 <= j <= dec(grid.num())) &&
+              (((0 <= (x + a) <= dec(grid.0.#)) &&
+                (0 <= j <= dec(grid.#)) &&
                 (grid.$j.$i == '*')) &&
                 1) || 0
       if new > 0: new ' '

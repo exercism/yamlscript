@@ -6,15 +6,13 @@ defn valid(value):
   and:
     ge: len(digits) 2
     not: digits =~ /[^0-9]/
-    f?:
+    zero?:
       rem _ 10:
         digits:
-          .split().remove(empty?).map(num)
+          .split().remove(empty?).map(to-num)
           .reverse().vec().conj(0).partition(2)
           .map(munge).flatten().sum(*)
 
 defn munge([a b]):
   b =: 2 * b
-  b =:
-    if b > 9: (b - 9) b
-  vector: a b
+  vector: a if((b > 9) (b - 9) b)

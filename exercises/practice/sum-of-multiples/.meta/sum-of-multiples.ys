@@ -9,5 +9,5 @@ defn sum(factors limit):
           fn(nums num):
             distinct:
               concat nums:
-                when t?(num):
+                when num.?:
                   range(num limit num)

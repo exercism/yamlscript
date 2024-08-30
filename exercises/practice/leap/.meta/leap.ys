@@ -1,8 +1,6 @@
 !yamlscript/v0
 
 defn is-leap-year(year):
-  and:
-    f?: year % 4
-    or:
-      t?: year % 100
-      f?: year % 400
+  (year % 4).! &&
+  ((year % 100).? ||
+   (year % 400).!)

@@ -16,7 +16,7 @@ defn bank-account(operations):
       .str('do-' _)
       .call(operation)
 
-    if operations.t?():
+    if operations.#?:
       then: recur(operations)
       else: return
 

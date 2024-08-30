@@ -14,7 +14,7 @@ defn decode(string):
       val ''
   : if p1:
       if p1 =~ /\d/:
-        recur parts: "$val$(num(p1) * p2)"
+        recur parts: "$val$(to-int(p1) * p2)"
         recur cons(p2 parts): "$val$p1"
       else: val
 
