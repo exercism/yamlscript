@@ -1,0 +1,153 @@
+#!/usr/bin/env ys-0
+
+root =: RUN.bin + '/..'
+
+all =::
+- yamlscript
+- bash
+- coffee
+- crystal
+- cs
+- d
+- erlang
+- go
+- hs
+- java
+- jq
+- js
+- julia
+- lua
+- nim
+- perl
+- php
+- python
+- raku
+- ruby
+- rust
+- scala
+- ts
+
+defn main(prog *langs):
+  when prog == 'list':
+    each prog all.drop(1):
+      say: prog
+    exit: 0
+
+  langs =:
+    if langs == ['all']:
+      then: all
+      else: cons('yamlscript' langs)
+
+  paths =:
+    join "\n":
+      remove nil?:
+        reduce _ [] langs:
+          fn(paths lang):
+            when lang.in?(all):
+              when-let [path call(lang prog)]:
+                vec:
+                  conj paths: path
+
+  exec: "vim -o $paths"
+
+defn path(file):
+  fs/canonicalize: file
+
+defn bash(slug):
+  file =: "$root/../bash/exercises/practice/$slug/.meta/example.sh"
+  when fs-e(file): path(file)
+
+defn coffee(slug):
+  file =: "$root/../coffeescript/exercises/practice/$slug/.meta/example.coffee"
+  when fs-e(file): path(file)
+
+defn crystal(slug):
+  file =: "$root/../crystal/exercises/practice/$slug/.meta/src/example.cr"
+  when fs-e(file): path(file)
+
+defn cs(slug):
+  file =: "$root/../csharp/exercises/practice/$slug/.meta/Example.cs"
+  when fs-e(file): path(file)
+
+defn d(slug):
+  file =: "$root/../d/exercises/practice/$slug/example/$slug.d"
+  when fs-e(file): path(file)
+
+defn erlang(slug):
+  file =: "$root/../erlang/exercises/practice/$slug/.meta/example.erl"
+  when fs-e(file): path(file)
+
+defn go(slug):
+  file =: "$root/../go/exercises/practice/$slug/.meta/example.go"
+  when fs-e(file): path(file)
+
+defn hs(slug):
+  files =: fs/glob(
+    "$root/../haskell/exercises/practice/$slug/.meta/examples" "**/*.hs")
+  when t?(files):
+    path: files.0
+
+defn java(slug):
+  files =: fs/glob(
+    "$root/../java/exercises/practice/$slug/.meta/src" "**/*.java")
+  when t?(files):
+    path: files.0
+
+defn jq(slug):
+  file =: "$root/../jq/exercises/practice/$slug/.meta/example.jq"
+  when fs-e(file): path(file)
+
+defn js(slug):
+  file =: "$root/../javascript/exercises/practice/$slug/.meta/proof.ci.js"
+  when fs-e(file): path(file)
+
+defn julia(slug):
+  file =: "$root/../julia/exercises/practice/$slug/.meta/example.jl"
+  when fs-e(file): path(file)
+
+defn lua(slug):
+  file =: "$root/../lua/exercises/practice/$slug/.meta/example.lua"
+  when fs-e(file): path(file)
+
+defn nim(slug):
+  file =: "$root/../nim/exercises/practice/$slug/.meta/example.nim"
+  when fs-e(file): path(file)
+
+defn perl(slug):
+  files =: fs/glob(
+    "$root/../perl5/exercises/practice/$slug/.meta/solutions/lib" "*")
+  when t?(files):
+    path: files.0
+
+defn php(slug):
+  file =: "$root/../php/exercises/practice/$slug/.meta/example.php"
+  when fs-e(file): path(file)
+
+defn python(slug):
+  file =: "$root/../python/exercises/practice/$slug/.meta/example.py"
+  when fs-e(file): path(file)
+
+defn raku(slug):
+  files =: fs/glob(
+    "$root/../raku/exercises/practice/$slug/.meta/solutions/lib" "*")
+  when t?(files):
+    path: files.0
+
+defn ruby(slug):
+  file =: "$root/../ruby/exercises/practice/$slug/.meta/example.rb"
+  when fs-e(file): path(file)
+
+defn rust(slug):
+  file =: "$root/../rust/exercises/practice/$slug/.meta/example.rs"
+  when fs-e(file): path(file)
+
+defn scala(slug):
+  file =: "$root/../scala/exercises/practice/$slug/.meta/Example.scala"
+  when fs-e(file): path(file)
+
+defn ts(slug):
+  file =: "$root/../typescript/exercises/practice/$slug/.meta/proof.ci.ts"
+  when fs-e(file): path(file)
+
+defn yamlscript(slug):
+  path: "$root/exercises/practice/$slug/.meta/$slug.ys"
