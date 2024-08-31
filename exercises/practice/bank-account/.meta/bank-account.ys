@@ -28,7 +28,7 @@ defn- do-close(o):
 
 defn- do-balance(o):
   balance =: deref(account)
-  if-not balance:
+  if balance.!!:
     die: 'account not open'
     else: balance
 

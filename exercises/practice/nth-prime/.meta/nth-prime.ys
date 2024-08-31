@@ -1,14 +1,14 @@
 !yamlscript/v0
 
 defn prime(number):
-  lazy-primes().nth(number - 1)
+  lazy-primes().nth(number.--)
 
 defn- lazy-primes(d=2 table={}):
   if-let factors table.$d:
-    recur inc(d):
+    recur d.++:
       reduce _ table.dissoc(d) factors:
         \(update-in(%1 [(%2 + d)] conj %2))
     lazy-seq:
       cons d:
-        lazy-primes inc(d):
+        lazy-primes d.++:
           table: .assoc(sqr(d) [d])

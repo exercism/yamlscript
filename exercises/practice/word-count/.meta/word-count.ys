@@ -4,6 +4,6 @@ defn count-words(sentence):
   sentence:
     .lc()
     .split(/[^a-z0-9']+/)
-    .map(\(replace %1 /(^'|'$)/ ''))
+    .map(\(replace _, /(^'|'$)/, ''))
     .remove(empty?)
     .frequencies()

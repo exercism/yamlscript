@@ -1,12 +1,12 @@
 !yamlscript/v0
 
 defn find(array value):
- loop low 0, high array.#.dec():
+ loop low 0, high array.#--:
    when low > high:
      die: 'value not in array'
    mid =: quot((high + low) 2)
    item =: array.$mid
    cond:
      value == item : mid
-     value <  item : recur(low mid.dec())
-     else          : recur(mid.inc() high)
+     value <  item : recur(low mid.--)
+     else          : recur(mid.++ high)

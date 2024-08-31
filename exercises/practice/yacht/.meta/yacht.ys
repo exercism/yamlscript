@@ -11,7 +11,7 @@ defn- do-yacht(dice):
 
 defn- same-number(n):
   fn(dice):
-    dice.filter(fun(== n)).sum(*)
+    dice.filter(\(_ == n)).sum(*)
 
 do-ones   =: same-number(1)
 do-twos   =: same-number(2)

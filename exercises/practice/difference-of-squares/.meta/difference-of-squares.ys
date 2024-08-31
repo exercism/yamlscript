@@ -4,7 +4,7 @@ defn square-of-sum(number):
   sqr: (1 .. number).sum(*)
 
 defn sum-of-squares(number):
-  (1 .. number).map(sqr): .sum(*)
+  1 .. number: .map(sqr).sum(*)
 
 defn difference-of-squares(number):
   square-of-sum(number) -: sum-of-squares(number)

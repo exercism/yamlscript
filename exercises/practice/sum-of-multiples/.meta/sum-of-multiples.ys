@@ -4,7 +4,7 @@ defn sum(factors limit):
   if empty?(factors):
     then: 0
     else:
-      apply +:
+      apply add:
         reduce _ [] factors:
           fn(nums num):
             distinct:

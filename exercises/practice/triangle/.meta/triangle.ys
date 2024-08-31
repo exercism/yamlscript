@@ -10,6 +10,6 @@ defn isosceles(sides):
 
 defn scalene(sides):
   boolean:
-    when isosceles(sides).!:
+    when-not isosceles(sides):
       -[a b c] =: sort(sides)
       (a + b) >: c

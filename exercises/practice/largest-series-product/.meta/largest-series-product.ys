@@ -9,7 +9,7 @@ defn largest-product(digits span):
     digits =~ /[^0-9]/:
       die: 'digits input must only contain digits'
     else:
-      map(fun(apply *) slices(digits span)).max(*)
+      map(\(apply mul _) slices(digits span)).max(*)
 
 defn- slices(digits span):
   partition span 1:

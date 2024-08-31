@@ -1,8 +1,7 @@
 !yamlscript/v0
 
 letters =: range(26)
-  .map(fun(+ int(\\a)))
-  .map(char)
+  .map(\(char(_ + \\a)))
 
 dict =:
   zipmap letters: reverse(letters)

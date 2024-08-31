@@ -5,9 +5,9 @@ defn proteins(strand):
     strand:
       .str('XX')
       .partition(3)
-      .map(fun(apply str))
+      .map(join)
       .map(translate-codon)
-      .take-while(fun(ne 'STOP'))
+      .take-while(\(_ != 'STOP'))
 
   if proteins.has?('INVALID'):
     die: 'Invalid codon'

@@ -19,5 +19,5 @@ defn score(word):
   word:
     .uc()
     .split()
-    .map(fun(get letter-score))
+    .map(letter-score)
     .sum(*)
