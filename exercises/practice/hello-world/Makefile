@@ -1,3 +1,5 @@
+# A comment in a Makefile
+
 SHELL := bash
 
 test ?= $(wildcard *-test.ys)
