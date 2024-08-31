@@ -9,4 +9,4 @@ defn nucleotide-counts(strand):
 
   reduce-kv _ nucleotides frequencies(strand):
     fn(map key val):
-      assoc map: str(key) val
+      map.assoc(str(key) val)

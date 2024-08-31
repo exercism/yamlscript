@@ -10,4 +10,4 @@ defn sum(factors limit):
             distinct:
               concat nums:
                 when num.?:
-                  range(num limit num)
+                  range: num limit num

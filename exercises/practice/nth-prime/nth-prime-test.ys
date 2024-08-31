@@ -21,7 +21,7 @@ test::
   uuid: 56692534-781e-4e8c-b1f9-3e82c1640259
 
 - name: Big prime
-  # code: prime(10001)  # Takes 225 ms
+  # code: prime(10001)  # Takes 200 ms
   # want: 104743
   code: prime(1001)
   want: 7927

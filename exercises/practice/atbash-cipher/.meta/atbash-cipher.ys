@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 letters =: range(26)
-  .map(fun(+ 97))
+  .map(fun(+ int(\\a)))
   .map(char)
 
 dict =:

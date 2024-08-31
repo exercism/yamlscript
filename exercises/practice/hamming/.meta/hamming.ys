@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn distance(strand1 strand2):
-  when len(strand1) != len(strand2):
+  when strand1.# != strand2.#:
     die: 'strands must be of equal length'
 
   count:

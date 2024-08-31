@@ -4,7 +4,7 @@ defn largest-product(digits span):
   cond:
     span < 0:
       die: 'span must not be negative'
-    span > len(digits):
+    span > digits.#:
       die: 'span must be smaller than string length'
     digits =~ /[^0-9]/:
       die: 'digits input must only contain digits'

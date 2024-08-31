@@ -22,5 +22,4 @@ defn age(planet seconds):
     .div(factors.$planet)
     .mul(100)
     .math/round()
-    .div(100)
-    .double()
+    .div+(100)

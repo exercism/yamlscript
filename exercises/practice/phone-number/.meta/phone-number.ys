@@ -2,7 +2,7 @@
 
 defn clean(phrase):
   numstr =: phrase.replace(/[^\d]/ '')
-  len =: len(numstr)
+  len =: numstr.#
 
   when phrase.lc() =~ /[a-z]/:
     die: 'letters not permitted'

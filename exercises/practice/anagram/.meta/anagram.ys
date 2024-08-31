@@ -5,5 +5,4 @@ defn find-anagrams(subject candidates):
 
 defn- anagram(*words):
   -[word1 word2] =: words.map(lc)
-  and:
-    word1 != word2 |: sort(word1) == sort(word2)
+  (word1 != word2) &&: sort(word1) == sort(word2)

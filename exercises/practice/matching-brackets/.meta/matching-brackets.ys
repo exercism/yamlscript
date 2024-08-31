@@ -17,6 +17,6 @@ defn is-paired(value):
         else: stack
 
     cond:
-      stack.nil?(): false
-      chars.empty?(): empty?(stack)
+      nil?(stack): false
+      chars.!: stack.!
       else: recur(chars stack)

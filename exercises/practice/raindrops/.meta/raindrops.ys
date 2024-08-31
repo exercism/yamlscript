@@ -7,9 +7,9 @@ defn convert(number):
     reduce _ [] [3 5 7]:
       fn(acc num):
         concat acc:
-          when zero?(number % num):
+          when (number % num).!:
             dict.$num.vector()
 
-  if empty?(words):
-    str: number
+  if words.?:
     str: words*
+    str: number

@@ -26,8 +26,8 @@ defn advance(robot):
     condp eq d:
       -'north' : -{'x' x      'y' inc(y)}
       -'south' : -{'x' x      'y' dec(y)}
-      -'east'  : -{'x' inc(x) 'y' y}
-      -'west'  : -{'x' dec(x) 'y' y}
+      -'east'  : -{'x' inc(x) 'y' y     }
+      -'west'  : -{'x' dec(x) 'y' y     }
 
 defn turn-left(robot):
   create robot.position:
@@ -40,6 +40,7 @@ defn turn-right(robot):
       directions
 
 defn turn(direction directions):
-  (directions * 2):
+  directions:
+    .mul+(2)
     .drop-while(fun(ne direction))
     .second()

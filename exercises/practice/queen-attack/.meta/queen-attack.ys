@@ -13,7 +13,6 @@ defn can-attack(white-queen black-queen):
   -{b-r "row" b-c "column"} =: black-queen.position
 
   or:
-    eq: w-r b-r
-    eq: w-c b-c
-    eq: abs(w-r - b-r)
-        abs(w-c - b-c)
+    w-r ==: b-r
+    w-c ==: b-c
+    abs(w-r - b-r) ==: abs(w-c - b-c)

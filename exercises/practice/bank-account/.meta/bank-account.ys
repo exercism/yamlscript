@@ -1,9 +1,5 @@
 !yamlscript/v0
 
-# This exercise is a good candidate to practice concurrency, which
-# may not be available or possible in the implementing language track.
-# It is possible to implement this exercise without concurrency.
-
 account =: atom(nil)
 
 defn reset-test-state():
@@ -26,7 +22,7 @@ defn- do-open(o):
   reset! account: 0
 
 defn- do-close(o):
-  when-not deref(account):
+  when deref(account).!!:
     die: 'account not open'
   reset! account: nil
 
@@ -37,14 +33,14 @@ defn- do-balance(o):
     else: balance
 
 defn- do-deposit(o):
-  when-not deref(account):
+  when deref(account).!!:
     die: 'account not open'
   amount =: o.get-amount()
   swap! account +: amount
 
 defn- do-withdraw(o):
   balance =: deref(account)
-  when-not balance:
+  when balance.!!:
     die: 'account not open'
   amount =: o.get-amount()
   when amount > balance:

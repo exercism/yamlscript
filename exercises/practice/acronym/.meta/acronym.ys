@@ -1,8 +1,8 @@
 !yamlscript/v0
 
 defn abbreviate(phrase):
-  phrase
-    .re-seq(/[A-Z]+['a-z]*|[a-z]+/)
+  phrase:
+    .re-seq(/[A-Za-z']+/)
     .map(first)
     .str(*)
     .uc()

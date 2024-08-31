@@ -4,8 +4,8 @@ defn valid(value):
   digits =: value.replace(' ' '')
 
   and:
-    ge: len(digits) 2
-    not: digits =~ /[^0-9]/
+    digits.# >=: 2
+    digits !~: /[^0-9]/
     zero?:
       rem _ 10:
         digits:
@@ -15,4 +15,5 @@ defn valid(value):
 
 defn munge([a b]):
   b =: 2 * b
-  vector: a if((b > 9) (b - 9) b)
+  vector a:
+    if b > 9: (b - 9) b

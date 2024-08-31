@@ -28,9 +28,10 @@ defn get-cell(grid x y):
       new =:
         reduce _ 0 indeces:
           fn(cnt [a b]):
-            -[i j] =: -[(x + a) (y + b)]
+            i =: x + a
+            j =: y + b
             sum cnt:
-              (((0 <= (x + a) <= dec(grid.0.#)) &&
+              (((0 <= i <= dec(grid.0.#)) &&
                 (0 <= j <= dec(grid.#)) &&
                 (grid.$j.$i == '*')) &&
                 1) || 0

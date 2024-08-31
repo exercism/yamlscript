@@ -23,7 +23,7 @@ do-sixes  =: same-number(6)
 defn- do-full-house(dice):
   freqs =: frequencies(dice)
   ? when
-      (freqs.# == 2) &&
+      freqs.#.eq(2) &&
       freqs.vals().has?(2)
   : sum: dice*
 

@@ -3,9 +3,9 @@
 defn encode(string):
   apply str:
     for part partition-by(just string):
-      len =: len(part)
+      len =: part.#
       str:
-        when((len > 1) len) part.0
+        (len > 1).when(len) part.0
 
 defn decode(string):
   ? loop

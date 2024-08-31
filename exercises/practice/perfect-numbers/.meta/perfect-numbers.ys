@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn classify(number):
-  when-not pos?(number):
+  when pos?(number).!!:
     die: 'Classification is only possible for positive integers.'
 
   case compare(sum-of-divisors(number), number):
