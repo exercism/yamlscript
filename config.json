@@ -20,14 +20,10 @@
     ],
     "test": [
       "%{kebab_slug}-test.ys",
-      "GNUmakefile",
-      "Makefile",
-      "random-file.txt"
+      "Makefile"
     ],
     "example": [
-      ".meta/%{kebab_slug}.ys",
-      ".meta/%{kebab_slug}-test.ys",
-      ".meta/Makefile"
+      ".meta/%{kebab_slug}.ys"
     ]
   },
   "exercises": {

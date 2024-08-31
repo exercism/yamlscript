@@ -32,13 +32,9 @@ files:
   - '%{kebab_slug}.ys'
   test:
   - '%{kebab_slug}-test.ys'
-  - GNUmakefile
   - Makefile
-  - random-file.txt
   example:
   - .meta/%{kebab_slug}.ys
-  - .meta/%{kebab_slug}-test.ys
-  - .meta/Makefile
 
 exercises:
   practice:

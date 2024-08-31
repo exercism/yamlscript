@@ -1,7 +1,5 @@
 #!/usr/bin/env ys-0
 
-# A comment
-
 require ys::taptest: :all
 
 use: hello-world

@@ -1,5 +1,3 @@
-# A comment
-
 SHELL := bash
 
 test ?= $(wildcard *-test.ys)
