@@ -97,14 +97,14 @@ check: $(YS) $(CHECKS)
 test: test-exercises
 	@echo $(LINE)
 
-test-each: update
+test-each:
 	for d in exercises/practice/*/.meta; do make -C $$d test || exit; done
 
 update: $(GEN_FILES)
 
 deps: $(YS) $(CFGLET) $(SHELLCHECK)
 
-test-exercises: $(YS) update
+test-exercises: $(YS)
 	@echo $(LINE)
 	@echo '*** Running tests for $(test-name)'
 	@$(MAKE) --no-print-directory run-tests
@@ -129,14 +129,14 @@ check-shell: $(SHELLCHECK)
 	@echo '*** Shell script files are OK'
 	@echo
 
-check-exercism: $(CFGLET) update
+check-exercism: $(CFGLET)
 	@echo $(LINE)
 	@echo '*** Test Exercism setup'
 	$< lint
 	@echo '*** Exercism setup is OK'
 	@echo
 
-check-verify: update
+check-verify:
 	@echo $(LINE)
 	@echo '*** Test all exercises are verified'
 	$(VERIFY) $(slug)

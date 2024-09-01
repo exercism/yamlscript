@@ -1,0 +1,1 @@
+../../../common/exercise.mk

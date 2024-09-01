@@ -1,3 +1,5 @@
+# GNU's not Unix
+
 SHELL := bash
 
 test ?= $(wildcard *-test.ys)
