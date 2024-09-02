@@ -3,6 +3,6 @@
 defn find-anagrams(subject candidates):
   filter fun(anagram subject): candidates
 
-defn- anagram(*words):
-  -[word1 word2] =: words.map(lc)
+defn- anagram(*):
+  -[word1 word2] =: _.map(lc)
   (word1 != word2) &&: sort(word1) == sort(word2)

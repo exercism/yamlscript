@@ -30,7 +30,7 @@ defn get-cell(grid x y):
           fn(cnt [a b]):
             i =: x + a
             j =: y + b
-            sum cnt:
+            add cnt:
               or _ 0:
                 (0 <= i <= grid.0.#--) &&
                 (0 <= j <= grid.#--  ) &&

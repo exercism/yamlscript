@@ -11,7 +11,7 @@ defn- do-yacht(dice):
 
 defn- same-number(n):
   fn(dice):
-    dice.filter(\(_ == n)).sum(*)
+    sum: dice.filter(\(_ == n))
 
 do-ones   =: same-number(1)
 do-twos   =: same-number(2)
@@ -25,7 +25,7 @@ defn- do-full-house(dice):
   ? when
       freqs.#.eq(2) &&
       freqs.vals().has?(2)
-  : sum: dice*
+  : sum: dice
 
 defn- do-four-of-a-kind(dice):
   freqs =: frequencies(dice).set/map-invert()
@@ -38,4 +38,4 @@ defn- do-big-straight(dice):
   when dice.sort() == (2 .. 6): 30
 
 defn- do-choice(dice):
-  sum: dice*
+  sum: dice

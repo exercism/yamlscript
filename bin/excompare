@@ -5,6 +5,7 @@ root =: RUN.bin + '/..'
 all =::
 - yamlscript
 - bash
+- clojure
 - coffee
 - crystal
 - cs
@@ -27,11 +28,23 @@ all =::
 - scala
 - ts
 
+EP =: 'exercises/practice'
+
+O =: ENV.O.?.if('-O' '-o')
+
 defn main(prog *langs):
-  when prog == 'list':
+  when prog == 'lang':
     each prog all.drop(1):
       say: prog
     exit: 0
+
+  when prog == 'prog':
+    each dir fs-ls(EP).sort():
+      say: fs-filename(dir)
+    exit: 0
+
+  when fs-d("$EP/$prog").!!:
+    die: "No YAMLScript exercise called '$prog'"
 
   langs =:
     if langs == ['all']:
@@ -48,13 +61,17 @@ defn main(prog *langs):
                 vec:
                   conj paths: path
 
-  exec: "vim -o $paths"
+  exec: "vim $O $paths"
 
 defn path(file):
   fs/canonicalize: file
 
 defn bash(slug):
   file =: "$root/../bash/exercises/practice/$slug/.meta/example.sh"
+  when fs-e(file): path(file)
+
+defn clojure(slug):
+  file =: "$root/../clojure/exercises/practice/$slug/.meta/src/example.clj"
   when fs-e(file): path(file)
 
 defn coffee(slug):

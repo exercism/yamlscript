@@ -20,4 +20,4 @@ defn score(word):
     .uc()
     .split()
     .map(letter-score)
-    .sum(*)
+    .sum()

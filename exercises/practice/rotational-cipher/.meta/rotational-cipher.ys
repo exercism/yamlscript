@@ -7,5 +7,3 @@ defn rotate(text shift-key):
   text:
     .str/escape(lower.zipmap(cycle(lower).drop(shift-key)))
     .str/escape(upper.zipmap(cycle(upper).drop(shift-key)))
-
-

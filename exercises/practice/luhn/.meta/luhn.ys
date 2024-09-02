@@ -11,7 +11,7 @@ defn valid(value):
         digits:
           .split().remove(empty?).map(to-num)
           .reverse().vec().conj(0).partition(2)
-          .map(munge).flatten().sum(*)
+          .map(munge).flatten().sum()
 
 defn munge([a b]):
   b =: 2 * b
