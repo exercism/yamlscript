@@ -1,13 +1,8 @@
 !yamlscript/v0
 
 defn sum(factors limit):
-  if empty?(factors):
-    then: 0
-    else:
-      apply add:
-        reduce _ [] factors:
-          fn(nums num):
-            distinct:
-              concat nums:
-                when num.?:
-                  range: num limit num
+  std/sum:
+    reduce _ [] factors:
+      fn(nums num):
+        when(num.? range(num limit num))
+          .concat(nums).distinct()

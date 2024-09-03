@@ -22,10 +22,8 @@ do-sixes  =: same-number(6)
 
 defn- do-full-house(dice):
   freqs =: frequencies(dice)
-  ? when
-      freqs.#.eq(2) &&
-      freqs.vals().has?(2)
-  : sum: dice
+  when freqs.#.eq(2) && freqs.vals().has?(2):
+    sum: dice
 
 defn- do-four-of-a-kind(dice):
   freqs =: frequencies(dice).set/map-invert()
