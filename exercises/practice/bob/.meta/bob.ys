@@ -1,18 +1,11 @@
 !yamlscript/v0
 
 defn response(hey-bob):
-  case hey-bob.trim().get-tone():
-    :ask  : 'Sure.'
-    :ASK  : "Calm down, I know what I'm doing!"
-    :shhh : 'Fine. Be that way!'
-    :YELL : 'Whoa, chill out!'
-    else  : 'Whatever.'
-
-defn get-tone(str):
-  cond:
-    str =~ /^\s*$/          : :shhh
-    str =~ /^[^a-zA-Z]+\?$/ : :ask
-    str !~ /[a-zA-Z]/       : nil
-    str =~ /^[^a-z]+\?$/    : :ASK
-    str =~ /\?$/            : :ask
-    str !~ /[a-z]/          : :YELL
+  condp re-matches hey-bob.trim():
+    /\s*/          : 'Fine. Be that way!'
+    /[^a-zA-Z]+\?/ : 'Sure.'
+    /[^a-z]+\?/    : "Calm down, I know what I'm doing!"
+    /.*\?/         : 'Sure.'
+    /[^a-zA-Z]*/   : 'Whatever.'
+    /[^a-z]*/      : 'Whoa, chill out!'
+    else           : 'Whatever.'
