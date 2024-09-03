@@ -33,7 +33,6 @@ files:
   test:
   - '%{kebab_slug}-test.ys'
   - Makefile
-  - GNUmakefile
   example:
   - .meta/%{kebab_slug}.ys
 

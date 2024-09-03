@@ -20,8 +20,7 @@
     ],
     "test": [
       "%{kebab_slug}-test.ys",
-      "Makefile",
-      "GNUmakefile"
+      "Makefile"
     ],
     "example": [
       ".meta/%{kebab_slug}.ys"
