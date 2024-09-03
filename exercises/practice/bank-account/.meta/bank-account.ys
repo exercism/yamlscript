@@ -6,49 +6,45 @@ defn reset-test-state():
   reset! account: nil
 
 defn bank-account(operations):
-  loop [operation *operations] operations:
-    return =: operation
-      .operation
-      .str('do-' _)
-      .call(operation)
+  last:
+    for operation operations:
+      operation
+        .operation
+        .str('do-' _)
+        .call(operation)
 
-    if operations.#?:
-      then: recur(operations)
-      else: return
-
-defn- do-open(o):
+defn- do-open(op):
   when deref(account):
     die: 'account already open'
   reset! account: 0
 
-defn- do-close(o):
-  when deref(account).!!:
+defn- do-close(op):
+  when-not deref(account):
     die: 'account not open'
   reset! account: nil
 
-defn- do-balance(o):
+defn- do-balance(op):
   balance =: deref(account)
-  if balance.!!:
+  if-not balance:
     die: 'account not open'
     else: balance
 
-defn- do-deposit(o):
-  when deref(account).!!:
+defn- do-deposit(op):
+  when-not deref(account):
     die: 'account not open'
-  amount =: o.get-amount()
-  swap! account +: amount
+  swap! account +: op.get-amount()
 
-defn- do-withdraw(o):
+defn- do-withdraw(op):
   balance =: deref(account)
-  when balance.!!:
+  when-not balance:
     die: 'account not open'
-  amount =: o.get-amount()
+  amount =: op.get-amount()
   when amount > balance:
     die: 'amount must be less than balance'
   swap! account -: amount
 
-defn- get-amount(o):
-  amount =: o.amount
+defn- get-amount(op):
+  amount =: op.amount
   if amount <= 0:
     die: 'amount must be greater than 0'
     else: amount

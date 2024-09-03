@@ -9,11 +9,9 @@ defn is-paired(value):
   loop [char *chars] split(value), stack []:
     stack =:
       cond:
-        opening(char):
-          conj stack: char
+        opening(char): stack.conj(char)
         closing(char):
-          when peek(stack) == pairs(char):
-            pop: stack
+          (peek(stack) == pairs(char)) &&: pop(stack)
         else: stack
 
     cond:

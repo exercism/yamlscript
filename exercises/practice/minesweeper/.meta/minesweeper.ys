@@ -1,39 +1,22 @@
 !yamlscript/v0
 
 defn annotate(minefield):
-  grid =:
-    map split: minefield
-
-  loop y 0, field []:
-    if y < grid.#:
-      recur y.++:
-        conj field: get-row(grid y)
-      else: field
-
-defn get-row(grid y):
-  loop x 0, row '':
-    if x < grid.0.#:
-      recur x.++:
-        row + get-cell(grid x y)
-      else: row
-
-nums =: -1 .. 1
-indeces =:
-  for a nums, b nums:
-    vector: a b
-
-defn get-cell(grid x y):
-  if grid.$y.$x == ' ':
-    then:
-      new =:
-        reduce _ 0 indeces:
-          fn(cnt [a b]):
-            i =: x + a
-            j =: y + b
-            add cnt:
-              or _ 0:
-                (0 <= i <= grid.0.#--) &&
-                (0 <= j <= grid.#--  ) &&
-                (grid.$j.$i == '*') && 1
-      if new > 0: new ' '
-    else: '*'
+  grid =: minefield.map(split).vec()
+  reduce-kv _ [] grid:
+    fn(acc x row):
+      height =: grid.#--
+      width =: grid.0.#--
+      conj acc:
+        reduce-kv _ '' row:
+          fn(acc y cell):
+            str acc:
+              or? _ cell:
+                when cell == ' ':
+                  sum:
+                    ? for i (-1 .. 1) j (-1 .. 1)
+                        :let [row (x + i), col (y + j)]
+                    : to-num:
+                        ((i != 0) || (j != 0)) &&
+                        (0 <= row <= height) &&
+                        (0 <= col <= width) &&
+                        (grid.$row.$col == '*')
