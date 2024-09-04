@@ -1,1 +1,111 @@
-../phone-number-test.ys
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: phone-number
+
+test::
+- name: Cleans the number
+  code: clean("(223) 456-7890")
+  want: '2234567890'
+  uuid: 79666dce-e0f1-46de-95a1-563802913c35
+
+- name: Cleans numbers with dots
+  code: clean("223.456.7890")
+  want: '2234567890'
+  uuid: c360451f-549f-43e4-8aba-fdf6cb0bf83f
+
+- name: Cleans numbers with multiple spaces
+  code: clean("223 456   7890   ")
+  want: '2234567890'
+  uuid: 08f94c34-9a37-46a2-a123-2a8e9727395d
+
+- name: Invalid when 9 digits
+  code: clean("123456789")
+  what: error
+  want: must not be fewer than 10 digits
+  uuid: 2de74156-f646-42b5-8638-0ef1d8b58bc2
+
+- name: Invalid when 11 digits does not start with a 1
+  code: clean("22234567890")
+  what: error
+  want: 11 digits must start with 1
+  uuid: 57061c72-07b5-431f-9766-d97da7c4399d
+
+- name: Valid when 11 digits and starting with 1
+  code: clean("12234567890")
+  want: '2234567890'
+  uuid: 9962cbf3-97bb-4118-ba9b-38ff49c64430
+
+- name: Valid when 11 digits and starting with 1 even with punctuation
+  code: clean("+1 (223) 456-7890")
+  want: '2234567890'
+  uuid: fa724fbf-054c-4d91-95da-f65ab5b6dbca
+
+- name: Invalid when more than 11 digits
+  code: clean("321234567890")
+  what: error
+  want: must not be greater than 11 digits
+  uuid: 4a1509b7-8953-4eec-981b-c483358ff531
+
+- name: Invalid with letters
+  code: clean("523-abc-7890")
+  what: error
+  want: letters not permitted
+  uuid: eb8a1fc0-64e5-46d3-b0c6-33184208e28a
+
+- name: Invalid with punctuations
+  code: clean("523-@:!-7890")
+  what: error
+  want: punctuations not permitted
+  uuid: 065f6363-8394-4759-b080-e6c8c351dd1f
+
+- name: Invalid if area code starts with 0
+  code: clean("(023) 456-7890")
+  what: error
+  want: area code cannot start with zero
+  uuid: d77d07f8-873c-4b17-8978-5f66139bf7d7
+
+- name: Invalid if area code starts with 1
+  code: clean("(123) 456-7890")
+  what: error
+  want: area code cannot start with one
+  uuid: c7485cfb-1e7b-4081-8e96-8cdb3b77f15e
+
+- name: Invalid if exchange code starts with 0
+  code: clean("(223) 056-7890")
+  what: error
+  want: exchange code cannot start with zero
+  uuid: 4d622293-6976-413d-b8bf-dd8a94d4e2ac
+
+- name: Invalid if exchange code starts with 1
+  code: clean("(223) 156-7890")
+  what: error
+  want: exchange code cannot start with one
+  uuid: 4cef57b4-7d8e-43aa-8328-1e1b89001262
+
+- name: Invalid if area code starts with 0 on valid 11-digit number
+  code: clean("1 (023) 456-7890")
+  what: error
+  want: area code cannot start with zero
+  uuid: 9925b09c-1a0d-4960-a197-5d163cbe308c
+
+- name: Invalid if area code starts with 1 on valid 11-digit number
+  code: clean("1 (123) 456-7890")
+  what: error
+  want: area code cannot start with one
+  uuid: 3f809d37-40f3-44b5-ad90-535838b1a816
+
+- name: Invalid if exchange code starts with 0 on valid 11-digit number
+  code: clean("1 (223) 056-7890")
+  what: error
+  want: exchange code cannot start with zero
+  uuid: e08e5532-d621-40d4-b0cc-96c159276b65
+
+- name: Invalid if exchange code starts with 1 on valid 11-digit number
+  code: clean("1 (223) 156-7890")
+  what: error
+  want: exchange code cannot start with one
+  uuid: 57b32f3d-696a-455c-8bf1-137b6d171cdf
+
+done: 18

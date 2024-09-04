@@ -1,1 +1,98 @@
-../raindrops-test.ys
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: raindrops
+
+test::
+- name: The sound for 1 is 1
+  code: convert(1)
+  want: '1'
+  uuid: 1575d549-e502-46d4-a8e1-6b7bec6123d8
+
+- name: The sound for 3 is pling
+  code: convert(3)
+  want: Pling
+  uuid: 1f51a9f9-4895-4539-b182-d7b0a5ab2913
+
+- name: The sound for 5 is plang
+  code: convert(5)
+  want: Plang
+  uuid: 2d9bfae5-2b21-4bcd-9629-c8c0e388f3e0
+
+- name: The sound for 7 is plong
+  code: convert(7)
+  want: Plong
+  uuid: d7e60daa-32ef-4c23-b688-2abff46c4806
+
+- name: The sound for 6 is pling as it has a factor 3
+  code: convert(6)
+  want: Pling
+  uuid: 6bb4947b-a724-430c-923f-f0dc3d62e56a
+
+- name: 2 to the power 3 does not make a raindrop sound as 3 is the exponent not the base
+  code: convert(8)
+  want: '8'
+  uuid: ce51e0e8-d9d4-446d-9949-96eac4458c2d
+
+- name: The sound for 9 is pling as it has a factor 3
+  code: convert(9)
+  want: Pling
+  uuid: 0dd66175-e3e2-47fc-8750-d01739856671
+
+- name: The sound for 10 is plang as it has a factor 5
+  code: convert(10)
+  want: Plang
+  uuid: 022c44d3-2182-4471-95d7-c575af225c96
+
+- name: The sound for 14 is plong as it has a factor of 7
+  code: convert(14)
+  want: Plong
+  uuid: 37ab74db-fed3-40ff-b7b9-04acdfea8edf
+
+- name: The sound for 15 is plingplang as it has factors 3 and 5
+  code: convert(15)
+  want: PlingPlang
+  uuid: 31f92999-6afb-40ee-9aa4-6d15e3334d0f
+
+- name: The sound for 21 is plingplong as it has factors 3 and 7
+  code: convert(21)
+  want: PlingPlong
+  uuid: ff9bb95d-6361-4602-be2c-653fe5239b54
+
+- name: The sound for 25 is plang as it has a factor 5
+  code: convert(25)
+  want: Plang
+  uuid: d2e75317-b72e-40ab-8a64-6734a21dece1
+
+- name: The sound for 27 is pling as it has a factor 3
+  code: convert(27)
+  want: Pling
+  uuid: a09c4c58-c662-4e32-97fe-f1501ef7125c
+
+- name: The sound for 35 is plangplong as it has factors 5 and 7
+  code: convert(35)
+  want: PlangPlong
+  uuid: bdf061de-8564-4899-a843-14b48b722789
+
+- name: The sound for 49 is plong as it has a factor 7
+  code: convert(49)
+  want: Plong
+  uuid: c4680bee-69ba-439d-99b5-70c5fd1a7a83
+
+- name: The sound for 52 is 52
+  code: convert(52)
+  want: '52'
+  uuid: 17f2bc9a-b65a-4d23-8ccd-266e8c271444
+
+- name: The sound for 105 is plingplangplong as it has factors 3, 5 and 7
+  code: convert(105)
+  want: PlingPlangPlong
+  uuid: e46677ed-ff1a-419f-a740-5c713d2830e4
+
+- name: The sound for 3125 is plang as it has a factor 5
+  code: convert(3125)
+  want: Plang
+  uuid: 13c6837a-0fcd-4b86-a0eb-20572f7deb0b
+
+done: 18

@@ -8,56 +8,45 @@ test::
 - name: Lowercase letter
   code: score("a")
   want: 1
-  uuid: f46cda29-1ca5-4ef2-bd45-388a767e3db2
 
 - name: Uppercase letter
   code: score("A")
   want: 1
-  uuid: f7794b49-f13e-45d1-a933-4e48459b2201
 
 - name: Valuable letter
   code: score("f")
   want: 4
-  uuid: eaba9c76-f9fa-49c9-a1b0-d1ba3a5b31fa
 
 - name: Short word
   code: score("at")
   want: 2
-  uuid: f3c8c94e-bb48-4da2-b09f-e832e103151e
 
 - name: Short, valuable word
   code: score("zoo")
   want: 12
-  uuid: 71e3d8fa-900d-4548-930e-68e7067c4615
 
 - name: Medium word
   code: score("street")
   want: 6
-  uuid: d3088ad9-570c-4b51-8764-c75d5a430e99
 
 - name: Medium, valuable word
   code: score("quirky")
   want: 22
-  uuid: fa20c572-ad86-400a-8511-64512daac352
 
 - name: Long, mixed-case word
   code: score("OxyphenButazone")
   want: 41
-  uuid: 9336f0ba-9c2b-4fa0-bd1c-2e2d328cf967
 
 - name: English-like word
   code: score("pinata")
   want: 8
-  uuid: 1e34e2c3-e444-4ea7-b598-3c2b46fd2c10
 
 - name: Empty input
   code: score("")
   want: 0
-  uuid: 4efe3169-b3b6-4334-8bae-ff4ef24a7e4f
 
 - name: Entire alphabet available
   code: score("abcdefghijklmnopqrstuvwxyz")
   want: 87
-  uuid: 3b305c1c-f260-4e15-a5b5-cb7d3ea7c3d7
 
 done: 11

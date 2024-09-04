@@ -1,1 +1,77 @@
-../queen-attack-test.ys
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: queen-attack
+
+test::
+- name: Queen with a valid position
+  code: create({"position" {"row" 2, "column" 2}})
+  want: 0
+  uuid: 3ac4f735-d36c-44c4-a3e2-316f79704203
+
+- name: Queen must have positive row
+  code: create({"position" {"row" -2, "column" 2}})
+  what: error
+  want: row not positive
+  uuid: 4e812d5d-b974-4e38-9a6b-8e0492bfa7be
+
+- name: Queen must have row on board
+  code: create({"position" {"row" 8, "column" 4}})
+  what: error
+  want: row not on board
+  uuid: f07b7536-b66b-4f08-beb9-4d70d891d5c8
+
+- name: Queen must have positive column
+  code: create({"position" {"row" 2, "column" -2}})
+  what: error
+  want: column not positive
+  uuid: 15a10794-36d9-4907-ae6b-e5a0d4c54ebe
+
+- name: Queen must have column on board
+  code: create({"position" {"row" 4, "column" 8}})
+  what: error
+  want: column not on board
+  uuid: 6907762d-0e8a-4c38-87fb-12f2f65f0ce4
+
+- name: Cannot attack
+  code: can-attack({"position" {"row" 2, "column" 4}} {"position" {"row" 6, "column" 6}})
+  want: false
+  uuid: 33ae4113-d237-42ee-bac1-e1e699c0c007
+
+- name: Can attack on same row
+  code: can-attack({"position" {"row" 2, "column" 4}} {"position" {"row" 2, "column" 6}})
+  want: true
+  uuid: eaa65540-ea7c-4152-8c21-003c7a68c914
+
+- name: Can attack on same column
+  code: can-attack({"position" {"row" 4, "column" 5}} {"position" {"row" 2, "column" 5}})
+  want: true
+  uuid: bae6f609-2c0e-4154-af71-af82b7c31cea
+
+- name: Can attack on first diagonal
+  code: can-attack({"position" {"row" 2, "column" 2}} {"position" {"row" 0, "column" 4}})
+  want: true
+  uuid: 0e1b4139-b90d-4562-bd58-dfa04f1746c7
+
+- name: Can attack on second diagonal
+  code: can-attack({"position" {"row" 2, "column" 2}} {"position" {"row" 3, "column" 1}})
+  want: true
+  uuid: ff9b7ed4-e4b6-401b-8d16-bc894d6d3dcd
+
+- name: Can attack on third diagonal
+  code: can-attack({"position" {"row" 2, "column" 2}} {"position" {"row" 1, "column" 1}})
+  want: true
+  uuid: 0a71e605-6e28-4cc2-aa47-d20a2e71037a
+
+- name: Can attack on fourth diagonal
+  code: can-attack({"position" {"row" 1, "column" 7}} {"position" {"row" 0, "column" 6}})
+  want: true
+  uuid: 0790b588-ae73-4f1f-a968-dd0b34f45f86
+
+- name: Cannot attack if falling diagonals are only the same when reflected across the longest falling diagonal
+  code: can-attack({"position" {"row" 4, "column" 1}} {"position" {"row" 2, "column" 5}})
+  want: false
+  uuid: 543f8fd4-2597-4aad-8d77-cbdab63619f8
+
+done: 13

@@ -9,7 +9,6 @@ test::
   code: transform({"1" ["A"]})
   want:
     a: 1
-  uuid: 78a7a9f9-4490-4a47-8ee9-5a38bb47d28f
 
 - name: Single score with multiple letters
   code: transform({"1" ["A" "E" "I" "O" "U"]})
@@ -19,7 +18,6 @@ test::
     i: 1
     o: 1
     u: 1
-  uuid: 60dbd000-451d-44c7-bdbb-97c73ac1f497
 
 - name: Multiple scores with multiple letters
   code: transform({"1" ["A" "E"], "2" ["D" "G"]})
@@ -28,7 +26,6 @@ test::
     d: 2
     e: 1
     g: 2
-  uuid: f5c5de0c-301f-4fdd-a0e5-df97d4214f54
 
 - name: Multiple scores with differing numbers of letters
   code: transform({"1" ["A" "E" "I" "O" "U" "L" "N" "R" "S" "T"], "2" ["D" "G"], "3" ["B" "C" "M" "P"], "4" ["F" "H" "V" "W" "Y"], "5" ["K"], "8" ["J" "X"], "10" ["Q" "Z"]})
@@ -59,6 +56,5 @@ test::
     m: 3
     o: 1
     c: 3
-  uuid: 5db8ea89-ecb4-4dcd-902f-2b418cc87b9d
 
 done: 4
