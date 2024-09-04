@@ -4,12 +4,9 @@
   "active": false,
   "status": {
     "concept_exercises": false,
-    "test_runner": true,
+    "test_runner": false,
     "representer": false,
     "analyzer": false
-  },
-  "test_runner": {
-    "average_run_time": 1
   },
   "blurb": "YAMLScript is a dynamic, general purpose programming language. It has a clean YAML syntax and embeds nicely into existing YAML files, making the desired parts of them dynamic. When a YAMLScript program is run, the source code transpiles to Clojure code, and is evaluted by a native binary runtime interpreter called `ys` (not by the JVM). YAMLScript is also available as a dynamic YAML loader library",
   "version": 3,
