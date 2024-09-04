@@ -1,1 +1,198 @@
-../protein-translation-test.ys
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: protein-translation
+
+test::
+- name: Empty rna sequence results in no proteins
+  code: proteins("")
+  want: []
+  uuid: 2c44f7bf-ba20-43f7-a3bf-f2219c0c3f98
+
+- name: Methionine rna sequence
+  code: proteins("AUG")
+  want:
+  - Methionine
+  uuid: 96d3d44f-34a2-4db4-84cd-fff523e069be
+
+- name: Phenylalanine rna sequence 1
+  code: proteins("UUU")
+  want:
+  - Phenylalanine
+  uuid: 1b4c56d8-d69f-44eb-be0e-7b17546143d9
+
+- name: Phenylalanine rna sequence 2
+  code: proteins("UUC")
+  want:
+  - Phenylalanine
+  uuid: 81b53646-bd57-4732-b2cb-6b1880e36d11
+
+- name: Leucine rna sequence 1
+  code: proteins("UUA")
+  want:
+  - Leucine
+  uuid: 42f69d4f-19d2-4d2c-a8b0-f0ae9ee1b6b4
+
+- name: Leucine rna sequence 2
+  code: proteins("UUG")
+  want:
+  - Leucine
+  uuid: ac5edadd-08ed-40a3-b2b9-d82bb50424c4
+
+- name: Serine rna sequence 1
+  code: proteins("UCU")
+  want:
+  - Serine
+  uuid: 8bc36e22-f984-44c3-9f6b-ee5d4e73f120
+
+- name: Serine rna sequence 2
+  code: proteins("UCC")
+  want:
+  - Serine
+  uuid: 5c3fa5da-4268-44e5-9f4b-f016ccf90131
+
+- name: Serine rna sequence 3
+  code: proteins("UCA")
+  want:
+  - Serine
+  uuid: 00579891-b594-42b4-96dc-7ff8bf519606
+
+- name: Serine rna sequence 4
+  code: proteins("UCG")
+  want:
+  - Serine
+  uuid: 08c61c3b-fa34-4950-8c4a-133945570ef6
+
+- name: Tyrosine rna sequence 1
+  code: proteins("UAU")
+  want:
+  - Tyrosine
+  uuid: 54e1e7d8-63c0-456d-91d2-062c72f8eef5
+
+- name: Tyrosine rna sequence 2
+  code: proteins("UAC")
+  want:
+  - Tyrosine
+  uuid: 47bcfba2-9d72-46ad-bbce-22f7666b7eb1
+
+- name: Cysteine rna sequence 1
+  code: proteins("UGU")
+  want:
+  - Cysteine
+  uuid: 3a691829-fe72-43a7-8c8e-1bd083163f72
+
+- name: Cysteine rna sequence 2
+  code: proteins("UGC")
+  want:
+  - Cysteine
+  uuid: 1b6f8a26-ca2f-43b8-8262-3ee446021767
+
+- name: Tryptophan rna sequence
+  code: proteins("UGG")
+  want:
+  - Tryptophan
+  uuid: 1e91c1eb-02c0-48a0-9e35-168ad0cb5f39
+
+- name: Stop codon rna sequence 1
+  code: proteins("UAA")
+  want: []
+  uuid: e547af0b-aeab-49c7-9f13-801773a73557
+
+- name: Stop codon rna sequence 2
+  code: proteins("UAG")
+  want: []
+  uuid: 67640947-ff02-4f23-a2ef-816f8a2ba72e
+
+- name: Stop codon rna sequence 3
+  code: proteins("UGA")
+  want: []
+  uuid: 9c2ad527-ebc9-4ace-808b-2b6447cb54cb
+
+- name: Sequence of two protein codons translates into proteins
+  code: proteins("UUUUUU")
+  want:
+  - Phenylalanine
+  - Phenylalanine
+  uuid: f4d9d8ee-00a8-47bf-a1e3-1641d4428e54
+
+- name: Sequence of two different protein codons translates into proteins
+  code: proteins("UUAUUG")
+  want:
+  - Leucine
+  - Leucine
+  uuid: dd22eef3-b4f1-4ad6-bb0b-27093c090a9d
+
+- name: Translate rna strand into correct protein list
+  code: proteins("AUGUUUUGG")
+  want:
+  - Methionine
+  - Phenylalanine
+  - Tryptophan
+  uuid: d0f295df-fb70-425c-946c-ec2ec185388e
+
+- name: Translation stops if stop codon at beginning of sequence
+  code: proteins("UAGUGG")
+  want: []
+  uuid: e30e8505-97ec-4e5f-a73e-5726a1faa1f4
+
+- name: Translation stops if stop codon at end of two-codon sequence
+  code: proteins("UGGUAG")
+  want:
+  - Tryptophan
+  uuid: 5358a20b-6f4c-4893-bce4-f929001710f3
+
+- name: Translation stops if stop codon at end of three-codon sequence
+  code: proteins("AUGUUUUAA")
+  want:
+  - Methionine
+  - Phenylalanine
+  uuid: ba16703a-1a55-482f-bb07-b21eef5093a3
+
+- name: Translation stops if stop codon in middle of three-codon sequence
+  code: proteins("UGGUAGUGG")
+  want:
+  - Tryptophan
+  uuid: 4089bb5a-d5b4-4e71-b79e-b8d1f14a2911
+
+- name: Translation stops if stop codon in middle of six-codon sequence
+  code: proteins("UGGUGUUAUUAAUGGUUU")
+  want:
+  - Tryptophan
+  - Cysteine
+  - Tyrosine
+  uuid: 2c2a2a60-401f-4a80-b977-e0715b23b93d
+
+- name: Sequence of two non-stop codons does not translate to a stop codon
+  code: proteins("AUGAUG")
+  want:
+  - Methionine
+  - Methionine
+  uuid: f6f92714-769f-4187-9524-e353e8a41a80
+
+- name: Non-existing codon can't translate
+  code: proteins("AAA")
+  what: error
+  want: Invalid codon
+  uuid: 1e75ea2a-f907-4994-ae5c-118632a1cb0f
+
+- name: Unknown amino acids, not part of a codon, can't translate
+  code: proteins("XYZ")
+  what: error
+  want: Invalid codon
+  uuid: 9eac93f3-627a-4c90-8653-6d0a0595bc6f
+
+- name: Incomplete rna sequence can't translate
+  code: proteins("AUGU")
+  what: error
+  want: Invalid codon
+  uuid: 9d73899f-e68e-4291-b1e2-7bf87c00f024
+
+- name: Incomplete rna sequence can translate if valid until a stop codon
+  code: proteins("UUCUUCUAAUGGU")
+  want:
+  - Phenylalanine
+  - Phenylalanine
+  uuid: 43945cf7-9968-402d-ab9f-b8a28750b050
+
+done: 31

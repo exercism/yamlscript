@@ -1,1 +1,133 @@
-../bob-test.ys
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: bob
+
+test::
+- name: Stating something
+  code: response("Tom-ay-to, tom-aaaah-to.")
+  want: Whatever.
+  uuid: e162fead-606f-437a-a166-d051915cea8e
+
+- name: Shouting
+  code: response("WATCH OUT!")
+  want: Whoa, chill out!
+  uuid: 73a966dc-8017-47d6-bb32-cf07d1a5fcd9
+
+- name: Shouting gibberish
+  code: response("FCECDFCAAB")
+  want: Whoa, chill out!
+  uuid: d6c98afd-df35-4806-b55e-2c457c3ab748
+
+- name: Asking a question
+  code: response("Does this cryogenic chamber make me look fat?")
+  want: Sure.
+  uuid: 8a2e771d-d6f1-4e3f-b6c6-b41495556e37
+
+- name: Asking a numeric question
+  code: response("You are, what, like 15?")
+  want: Sure.
+  uuid: 81080c62-4e4d-4066-b30a-48d8d76920d9
+
+- name: Asking gibberish
+  code: response("fffbbcbeab?")
+  want: Sure.
+  uuid: 2a02716d-685b-4e2e-a804-2adaf281c01e
+
+- name: Talking forcefully
+  code: response("Hi there!")
+  want: Whatever.
+  uuid: c02f9179-ab16-4aa7-a8dc-940145c385f7
+
+- name: Using acronyms in regular speech
+  code: response("It's OK if you don't want to go work for NASA.")
+  want: Whatever.
+  uuid: 153c0e25-9bb5-4ec5-966e-598463658bcd
+
+- name: Forceful question
+  code: response("WHAT'S GOING ON?")
+  want: Calm down, I know what I'm doing!
+  uuid: a5193c61-4a92-4f68-93e2-f554eb385ec6
+
+- name: Shouting numbers
+  code: response("1, 2, 3 GO!")
+  want: Whoa, chill out!
+  uuid: a20e0c54-2224-4dde-8b10-bd2cdd4f61bc
+
+- name: No letters
+  code: response("1, 2, 3")
+  want: Whatever.
+  uuid: f7bc4b92-bdff-421e-a238-ae97f230ccac
+
+- name: Question with no letters
+  code: response("4?")
+  want: Sure.
+  uuid: bb0011c5-cd52-4a5b-8bfb-a87b6283b0e2
+
+- name: Shouting with special characters
+  code: response("ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!")
+  want: Whoa, chill out!
+  uuid: 496143c8-1c31-4c01-8a08-88427af85c66
+
+- name: Shouting with no exclamation mark
+  code: response("I HATE THE DENTIST")
+  want: Whoa, chill out!
+  uuid: e6793c1c-43bd-4b8d-bc11-499aea73925f
+
+- name: Statement containing question mark
+  code: response("Ending with ? means a question.")
+  want: Whatever.
+  uuid: aa8097cc-c548-4951-8856-14a404dd236a
+
+- name: Non-letters with question
+  code: response(":) ?")
+  want: Sure.
+  uuid: 9bfc677d-ea3a-45f2-be44-35bc8fa3753e
+
+- name: Prattling on
+  code: response("Wait! Hang on. Are you going to be OK?")
+  want: Sure.
+  uuid: 8608c508-f7de-4b17-985b-811878b3cf45
+
+- name: Silence
+  code: response("")
+  want: Fine. Be that way!
+  uuid: bc39f7c6-f543-41be-9a43-fd1c2f753fc0
+
+- name: Prolonged silence
+  code: response("          ")
+  want: Fine. Be that way!
+  uuid: d6c47565-372b-4b09-b1dd-c40552b8378b
+
+- name: Alternate silence
+  code: response("\t\t\t\t\t\t\t\t\t\t")
+  want: Fine. Be that way!
+  uuid: 4428f28d-4100-4d85-a902-e5a78cb0ecd3
+
+- name: Multiple line question
+  code: response("\nDoes this cryogenic chamber make me look fat?\nNo.")
+  want: Whatever.
+  uuid: 66953780-165b-4e7e-8ce3-4bcb80b6385a
+
+- name: Starting with whitespace
+  code: response("         hmmmmmmm...")
+  want: Whatever.
+  uuid: 5371ef75-d9ea-4103-bcfa-2da973ddec1b
+
+- name: Ending with whitespace
+  code: response("Okay if like my  spacebar  quite a bit?   ")
+  want: Sure.
+  uuid: 05b304d6-f83b-46e7-81e0-4cd3ca647900
+
+- name: Other whitespace
+  code: response("\n\r \t")
+  want: Fine. Be that way!
+  uuid: 72bd5ad3-9b2f-4931-a988-dce1f5771de2
+
+- name: Non-question ending with whitespace
+  code: response("This is a statement ending with whitespace      ")
+  want: Whatever.
+  uuid: 12983553-8601-46a8-92fa-fcaa3bc4a2a0
+
+done: 25

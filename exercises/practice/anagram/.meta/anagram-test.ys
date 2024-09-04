@@ -1,1 +1,135 @@
-../anagram-test.ys
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: anagram
+
+test::
+- name: No matches
+  code: find-anagrams("diaper" ["hello" "world" "zombies" "pants"])
+  want: []
+  uuid: dd40c4d2-3c8b-44e5-992a-f42b393ec373
+
+- name: Detects two anagrams
+  code: find-anagrams("master" ["stream" "pigeon" "maters"])
+  want:
+  - stream
+  - maters
+  uuid: b3cca662-f50a-489e-ae10-ab8290a09bdc
+
+- name: Detects two anagrams
+  code: find-anagrams("solemn" ["lemons" "cherry" "melons"])
+  want:
+  - lemons
+  - melons
+  uuid: 03eb9bbe-8906-4ea0-84fa-ffe711b52c8b
+
+- name: Does not detect anagram subsets
+  code: find-anagrams("good" ["dog" "goody"])
+  want: []
+  uuid: a27558ee-9ba0-4552-96b1-ecf665b06556
+
+- name: Detects anagram
+  code: find-anagrams("listen" ["enlists" "google" "inlets" "banana"])
+  want:
+  - inlets
+  uuid: 64cd4584-fc15-4781-b633-3d814c4941a4
+
+- name: Detects three anagrams
+  code: find-anagrams("allergy" ["gallery" "ballerina" "regally" "clergy" "largely" "leading"])
+  want:
+  - gallery
+  - regally
+  - largely
+  uuid: 99c91beb-838f-4ccd-b123-935139917283
+
+- name: Detects multiple anagrams with different case
+  code: find-anagrams("nose" ["Eons" "ONES"])
+  want:
+  - Eons
+  - ONES
+  uuid: 78487770-e258-4e1f-a646-8ece10950d90
+
+- name: Does not detect non-anagrams with identical checksum
+  code: find-anagrams("mass" ["last"])
+  want: []
+  uuid: 1d0ab8aa-362f-49b7-9902-3d0c668d557b
+
+- name: Detects anagrams case-insensitively
+  code: find-anagrams("Orchestra" ["cashregister" "Carthorse" "radishes"])
+  want:
+  - Carthorse
+  uuid: 9e632c0b-c0b1-4804-8cc1-e295dea6d8a8
+
+- name: Detects anagrams using case-insensitive subject
+  code: find-anagrams("Orchestra" ["cashregister" "carthorse" "radishes"])
+  want:
+  - carthorse
+  uuid: b248e49f-0905-48d2-9c8d-bd02d8c3e392
+
+- name: Detects anagrams using case-insensitive possible matches
+  code: find-anagrams("orchestra" ["cashregister" "Carthorse" "radishes"])
+  want:
+  - Carthorse
+  uuid: f367325c-78ec-411c-be76-e79047f4bd54
+
+- name: Does not detect an anagram if the original word is repeated
+  code: find-anagrams("go" ["go Go GO"])
+  want: []
+  uuid: 7cc195ad-e3c7-44ee-9fd2-d3c344806a2c
+
+- name: Does not detect an anagram if the original word is repeated
+  code: find-anagrams("go" ["goGoGO"])
+  want: []
+  uuid: 630abb71-a94e-4715-8395-179ec1df9f91
+
+- name: Anagrams must use all letters exactly once
+  code: find-anagrams("tapper" ["patter"])
+  want: []
+  uuid: 9878a1c9-d6ea-4235-ae51-3ea2befd6842
+
+- name: Words are not anagrams of themselves (case-insensitive)
+  code: find-anagrams("BANANA" ["BANANA" "Banana" "banana"])
+  want: []
+  uuid: 85757361-4535-45fd-ac0e-3810d40debc1
+
+- name: Words are not anagrams of themselves
+  code: find-anagrams("BANANA" ["BANANA"])
+  want: []
+  uuid: 68934ed0-010b-4ef9-857a-20c9012d1ebf
+
+- name: Words are not anagrams of themselves even if letter case is partially different
+  code: find-anagrams("BANANA" ["Banana"])
+  want: []
+  uuid: 589384f3-4c8a-4e7d-9edc-51c3e5f0c90e
+
+- name: Words are not anagrams of themselves even if letter case is completely different
+  code: find-anagrams("BANANA" ["banana"])
+  want: []
+  uuid: ba53e423-7e02-41ee-9ae2-71f91e6d18e6
+
+- name: Words other than themselves can be anagrams
+  code: find-anagrams("LISTEN" ["Listen" "Silent" "LISTEN"])
+  want:
+  - Silent
+  uuid: a0705568-628c-4b55-9798-82e4acde51ca
+
+- name: Words other than themselves can be anagrams
+  code: find-anagrams("LISTEN" ["LISTEN" "Silent"])
+  want:
+  - Silent
+  uuid: 33d3f67e-fbb9-49d3-a90e-0beb00861da7
+
+- name: Handles case of greek letters
+  code: find-anagrams("ΑΒΓ" ["ΒΓΑ" "ΒΓΔ" "γβα" "αβγ"])
+  want:
+  - ΒΓΑ
+  - γβα
+  uuid: a6854f66-eec1-4afd-a137-62ef2870c051
+
+- name: Different characters may have the same bytes
+  code: find-anagrams("a⬂" ["€a"])
+  want: []
+  uuid: fd3509e5-e3ba-409d-ac3d-a9ac84d13296
+
+done: 22
