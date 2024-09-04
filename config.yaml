@@ -8,12 +8,9 @@ active: false
 
 status:
   concept_exercises: false
-  test_runner: true
+  test_runner: false
   representer: false
   analyzer: false
-
-test_runner:
-  average_run_time: 1
 
 blurb:
   YAMLScript is a dynamic, general purpose programming language.
