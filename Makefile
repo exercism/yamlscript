@@ -4,28 +4,38 @@ ROOT := $(shell pwd)
 
 BIN := bin
 
-YS := $(BIN)/ys
+YS_VERSION := 0.1.74
+
+YS_LOCAL := .local
+YS_LOCAL_PREFIX := $(YS_LOCAL)/ys-$(YS_VERSION)
+YS_LOCAL_BIN := $(YS_LOCAL_PREFIX)/bin
+YS := $(YS_LOCAL_PREFIX)/bin/ys-$(YS_VERSION)
 CFGLET := $(BIN)/configlet
 SHELLCHECK := $(BIN)/shellcheck
 VERIFY := $(BIN)/verify-exercises
 
 ifdef EXERCISM_YAMLSCRIPT_GHA
-YS := ys
+YS := ys-$(YS_VERSION)
 SHELLCHECK := shellcheck
 endif
 
-export PATH := $(ROOT)/bin:$(PATH)
+export PATH := $(ROOT)/bin:$(YS_LOCAL_BIN):$(PATH)
 
-EXERCISE_DIRS := $(shell find exercises -name .meta)
+EXERCISE_DIRS := $(shell find exercises -name .meta | sort)
 EXERCISE_DIRS := $(EXERCISE_DIRS:%/.meta=%)
 EXERCISES := $(EXERCISE_DIRS:exercises/practice/%=%)
+
 EXERCISE_MAKEFILES := $(EXERCISE_DIRS:%=%/Makefile)
+EXERCISE_GNU_MAKEFILES := $(EXERCISE_DIRS:%=%/GNUmakefile)
+EXERCISE_YS_MAKEFILES := $(EXERCISE_DIRS:%=%/.yamlscript/exercise.mk)
+EXERCISE_META_MAKEFILES := $(EXERCISE_DIRS:%=%/.meta/Makefile)
+EXERCISE_YS_INSTALLERS := $(EXERCISE_DIRS:%=%/.yamlscript/exercism-ys-installer)
+
 a := (
 b := )
 EXERCISE_META_LINKS := \
-  $(shell ls -d exercises/practice/*/*-test.ys \
-                exercises/practice/*/Makefile \
-    | perl -pe 's{$a.*$b/$a.*$b}{$$1/.meta/$$2}')
+  $(shell ls exercises/practice/*/.yamlscript/exercise.mk \
+    | perl -pe 's{$a.*$b/$a.*/.*$b}{$$1/.meta/$$2}')
 
 CHECKS := \
   check-yaml \
@@ -35,7 +45,11 @@ CHECKS := \
 
 GEN_FILES := \
   $(EXERCISE_MAKEFILES) \
+  $(EXERCISE_GNU_MAKEFILES) \
+  $(EXERCISE_YS_MAKEFILES) \
+  $(EXERCISE_META_MAKEFILES) \
   $(EXERCISE_META_LINKS) \
+  $(EXERCISE_YS_INSTALLERS) \
   config.json \
 
 SHELL_FILES := \
@@ -149,18 +163,31 @@ clean:
 realclean: clean
 	$(RM) $(CFGLET)
 	$(RM) $(SHELLCHECK)
-	$(RM) $(BIN)/ys*
-	$(RM) -r $(CLOJURE_REPO) $(PROBLEM_REPO)
+	$(RM) -r $(CLOJURE_REPO) $(PROBLEM_REPO) $(YS_LOCAL)
 
 reset:
 	git checkout -- config.*
 	git status -- exercises | grep exercises | xargs rm -fr
 
-exercises/practice/%/Makefile: common/exercise.mk
+exercises/practice/%/GNUmakefile: common/exercise.mk
 	cp -p $< $@
 
-$(EXERCISE_META_LINKS):
-	( d=$$(dirname $@); f=$$(basename $@); cd $$d && ln -fs ../$$f )
+exercises/practice/%/GNUmakefile: common/makefile.mk
+	cp -p $< $@
+
+exercises/practice/%/.yamlscript/exercise.mk: common/exercise-extra.mk
+	mkdir -p $$(dirname $@)
+	cp -p $< $@
+
+exercises/practice/%/.meta/Makefile: common/exercise-meta.mk
+	cp -p $< $@
+
+exercises/practice/%/.meta/.yamlscript/exercise.mk: ../../.yamlscript/exercise.mk
+	ln -fs $@ $<
+
+exercises/practice/%/.yamlscript/exercism-ys-installer: common/exercism-ys-installer
+	mkdir -p $$(dirname $@)
+	cp -p $< $@
 
 
 %.json: %.yaml $(YS) Makefile
@@ -175,13 +202,15 @@ $(CLOJURE_REPO):
 $(CFGLET):
 	$(BIN)/fetch-configlet
 
-# Dummy rule for GHA
-ys shellcheck:
 
-ifndef EXERCISM_YAMLSCRIPT_GHA
-bin/ys:
+ifdef EXERCISM_YAMLSCRIPT_GHA
+# Dummy rule for GHA
+$(YS) shellcheck:
+
+else
+$(YS):
 	curl -s https://yamlscript.org/install | \
-	  PREFIX=$(ROOT) BIN=1 bash
+	  BIN=1 PREFIX=$(YS_LOCAL_PREFIX) VERSION=$(YS_VERSION) bash
 
 ifeq (,$(wildcard $(SHELLCHECK)))
 bin/shellcheck: $(SHELLCHECK_DIR)

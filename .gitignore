@@ -10,6 +10,7 @@
 /shellcheck*
 /out.txt
 /.clojure/
+/.local/
 /.problem/
 /*.ys
 /*.clj

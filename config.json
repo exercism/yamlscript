@@ -20,7 +20,10 @@
     ],
     "test": [
       "%{kebab_slug}-test.ys",
-      "Makefile"
+      "GNUmakefile",
+      "Makefile",
+      ".yamlscript/exercise.mk",
+      ".yamlscript/exercism-ys-installer"
     ],
     "example": [
       ".meta/%{kebab_slug}.ys"
