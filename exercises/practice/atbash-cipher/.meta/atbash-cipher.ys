@@ -1,10 +1,7 @@
 !yamlscript/v0
 
-letters =: range(26)
-  .map(\(char(_ + \\a)))
-
 dict =:
-  zipmap letters: reverse(letters)
+  zipmap (\\a .. \\z): \\z .. \\a
 
 defn encode(phrase):
   phrase

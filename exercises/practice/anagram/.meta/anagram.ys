@@ -1,8 +1,8 @@
 !yamlscript/v0
 
 defn find-anagrams(subject candidates):
-  filter partial(anagram? subject): candidates
-
-defn- anagram?(*):
-  -[word1 word2] =: _.map(lc)
-  (word1 != word2) &&: sort(word1) == sort(word2)
+  filter _ candidates:
+    partial _ subject:
+      fn(*):
+        -[word1 word2] =: _.map(lc)
+        (word1 != word2) &&: sort(word1) == sort(word2)

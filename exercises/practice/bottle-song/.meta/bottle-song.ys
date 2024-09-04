@@ -1,24 +1,19 @@
 !yamlscript/v0
 
 defn recite(start-bottles take-down):
-  last-num =: (start-bottles - take-down).++
-  drop-last:
-    mapcat verse:
-      start-bottles .. last-num
+ lines:
+  join "\n":
+    map verse: start-bottles .. (start-bottles - take-down).++
 
-defn- verse(num):
-  drop-last:
-    lines: |
-      $uc1(bottles(num)) hanging on the wall,
-      $uc1(bottles(num)) hanging on the wall,
-      And if one green bottle should accidentally fall,
-      There'll be $bottles(num - 1) hanging on the wall.
-
-      ...
+defn- verse(num): |
+  $uc1(bottles(num)) hanging on the wall,
+  $uc1(bottles(num)) hanging on the wall,
+  And if one green bottle should accidentally fall,
+  There'll be $bottles(num - 1) hanging on the wall.
 
 dict =:
-  zipmap range():
-    qw(no one two three four five six seven eight nine ten)
+  zipmap (2 .. 10):
+    qw(two three four five six seven eight nine ten)
 
 defn- bottles(num):
   case num:
