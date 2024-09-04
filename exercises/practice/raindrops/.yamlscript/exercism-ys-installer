@@ -1,0 +1,85 @@
+#!/env/bin/env bash
+
+set -euo pipefail
+
+main() {
+  setup "$@"
+
+  installed || install-from-local
+  installed || install-from-release
+  installed || install-from-build
+  installed ||
+    die "Installing '$installed' failed. Giving up." \
+        "Consider filing an issue at: $gh_issue_url"
+
+  echo
+  echo 'Success!'
+  echo
+  echo "$installed is now installed."
+}
+
+installed() { [[ $(readlink "$bin/ys-0") == ys-$version ]]; }
+
+install-from-local() (
+  path=$(command -v "$ysfq")
+  if [[ -f $path ]]; then
+    cp "$path" "$bin"/
+    ln -fs "$ysfq" "$bin/ys-0"
+    ln -fs "$ysfq" "$bin/ys"
+  fi
+)
+
+install-from-release() (
+  echo "Installing '$installed' for this exercise."
+
+  curl -s https://yamlscript.org/install |
+    BIN=1 VERSION="$(YS_VERSION)" PREFIX="$prefix" bash
+)
+
+install-from-build() (
+  echo "The binary release install failed."
+  echo "We can attempt to build and install $ysfq now."
+  echo "This can take from 1 to 5 minutes to complete."
+  echo
+  printf "Enter 'y' to continue: "
+
+  read -r answer
+
+  [[ $answer == y ]] ||
+    die 'Giving up.'
+
+  [[ -d /tmp && -w /tmp ]] ||
+    die "Can't write to /tmp" \
+        'Giving up.'
+
+  set -x
+
+  rm -fr "$yamlscript_clone"
+
+  git clone --branch="$version" "$yamlscript_repo" "$yamlscript_clone"
+
+  "$make" -C "$yamlscript_clone/ys" install PREFIX="$prefix"
+)
+
+setup() {
+  version=$1
+  make=${2:-make}
+
+  [[ $version =~ ^0\.1\.[0-9]+$ ]] ||
+    die "Invalid YS_VERSION '$version'"
+
+  prefix=../.yamlscript/v$version
+  bin=$prefix/bin
+  ysfq=ys-$version
+  installed=$bin/$ysfq
+  yamlscript_repo=https://github.com/yamlscript
+  yamlscript_clone=/tmp/yamlscript-exercism
+  gh_issue_url=https://github.com/exercism/yamlscript/issues
+}
+
+die() {
+  printf '%s\n' "$@" >&2
+  exit 1
+}
+
+main "$@"
