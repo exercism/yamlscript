@@ -4,6 +4,4 @@ defn distance(strand1 strand2):
   when strand1.# != strand2.#:
     die: 'strands must be of equal length'
 
-  count:
-    filter true?:
-      map ne: strand1 strand2
+  strand1: .map(ne _ strand2).filter(true?).#
