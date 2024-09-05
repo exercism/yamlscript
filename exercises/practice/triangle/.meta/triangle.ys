@@ -5,11 +5,11 @@ defn equilateral(sides):
 
 defn isosceles(sides):
   -[a b c] =: sort(sides)
-  ((a + b ) > c) &&:
+  (a + b) > c &&:
     sides.frequencies().# <= 2
 
 defn scalene(sides):
   boolean:
     when-not isosceles(sides):
       -[a b c] =: sort(sides)
-      (a + b) >: c
+      a + b >: c

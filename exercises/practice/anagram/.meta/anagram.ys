@@ -5,4 +5,4 @@ defn find-anagrams(subject candidates):
     partial _ subject:
       fn(*):
         -[word1 word2] =: _.map(lc)
-        (word1 != word2) &&: sort(word1) == sort(word2)
+        word1 != word2 &&: sort(word1) == sort(word2)

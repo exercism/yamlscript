@@ -1,9 +1,6 @@
 !yamlscript/v0
 
 defn count-words(sentence):
-  sentence:
-    .lc()
-    .split(/[^a-z0-9']+/)
+  lc(sentence).split(/[^a-z0-9']+/)
     .map(\(replace _, /(^'|'$)/, ''))
-    .remove(empty?)
-    .frequencies()
+    .remove(empty?).frequencies()

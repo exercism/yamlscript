@@ -1,27 +1,20 @@
 !yamlscript/v0
 
-allergens =::
-- eggs
-- peanuts
-- shellfish
-- strawberries
-- tomatoes
-- chocolate
-- pollen
-- cats
-
-allergen-nums =:
-  zipmap allergens: range()
+allergen-map =:
+  zipmap _ range()::
+  - eggs
+  - peanuts
+  - shellfish
+  - strawberries
+  - tomatoes
+  - chocolate
+  - pollen
+  - cats
 
 defn allergic-to(item score):
-  bit-test score: allergen-nums.$item
+  bit-test score: allergen-map.$item
 
 defn list-allergens(score):
-  test-allergen =:
+  keep _ allergen-map:
     fn([allergen num]):
       bit-test(score num) &&& allergen
-
-  allergen-nums:
-    .seq()
-    .map(test-allergen)
-    .remove(nil?)

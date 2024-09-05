@@ -1,6 +1,6 @@
 #!/usr/bin/env ys-0
 
-root =: RUN.bin + '/..'
+root =: CWD
 
 all =::
 - yamlscript

@@ -2,5 +2,4 @@
 
 dna-to-rna =: list('GCAT' 'CGUA').map(split).zipmap(*)
 
-defn to-rna(dna):
-  dna.split().map(dna-to-rna).join()
+defn to-rna(dna): dna.split().map(dna-to-rna).join()

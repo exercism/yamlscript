@@ -7,7 +7,7 @@ defn convert(number):
     reduce _ [] [3 5 7]:
       fn(acc num):
         concat acc:
-          when(zero?(number % num) [dict.$num])
+          when zero?(number % num): -[dict.$num]
 
   if words.?:
     str: words*

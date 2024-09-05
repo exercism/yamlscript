@@ -4,5 +4,5 @@ defn sum(factors limit):
   std/sum:
     reduce _ [] factors:
       fn(nums num):
-        when(num.? range(num limit num))
+        when(num.? range(num limit num)):
           .concat(nums).distinct()

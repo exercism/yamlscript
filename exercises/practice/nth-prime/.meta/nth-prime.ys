@@ -11,4 +11,4 @@ defn- lazy-primes(d=2 table={}):
     lazy-seq:
       cons d:
         lazy-primes d.++:
-          table: .assoc(sqr(d) [d])
+          table.assoc(sqr(d) [d])

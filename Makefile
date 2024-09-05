@@ -4,10 +4,10 @@ ROOT := $(shell pwd)
 
 BIN := bin
 
-YS_VERSION := 0.1.74
+YS_VERSION := 0.1.75
 
 YS_LOCAL := .local
-YS_LOCAL_PREFIX := $(YS_LOCAL)/ys-$(YS_VERSION)
+YS_LOCAL_PREFIX := $(YS_LOCAL)/v$(YS_VERSION)
 YS_LOCAL_BIN := $(YS_LOCAL_PREFIX)/bin
 YS := $(YS_LOCAL_PREFIX)/bin/ys-$(YS_VERSION)
 CFGLET := $(BIN)/configlet

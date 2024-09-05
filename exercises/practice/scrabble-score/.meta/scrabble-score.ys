@@ -1,23 +1,9 @@
 !yamlscript/v0
 
-letter-values =::
-  AEIOULNRST : 1
-  DG         : 2
-  BCMP       : 3
-  FHVWY      : 4
-  K          : 5
-  JX         : 8
-  QZ         : 10
-
-letter-score =:
-  reduce _ {} seq(letter-values):
-    fn(dict [letters score]):
-      merge dict:
-        zipmap letters.split(): repeat(score)
-
 defn score(word):
-  word:
-    .uc()
-    .split()
-    .map(letter-score)
-    .sum()
+  uc(word).split().map(
+    S(1 'AEIOULNRST') + S(2 'DG') + S(3 'BCMP') +
+    S(4 'FHVWY') + S(5 'K') + S(8 'JX') + S(10 'QZ')
+  ).sum()
+
+defn S(score chars): zipmap(split(chars) repeat(score))

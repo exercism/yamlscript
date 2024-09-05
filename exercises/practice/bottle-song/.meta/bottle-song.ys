@@ -2,8 +2,8 @@
 
 defn recite(start-bottles take-down):
  lines:
-  join "\n":
-    map verse: start-bottles .. (start-bottles - take-down).++
+   join "\n":
+     map verse: start-bottles .. (start-bottles - take-down).++
 
 defn- verse(num): |
   $uc1(bottles(num)) hanging on the wall,

@@ -1,20 +1,17 @@
 !yamlscript/v0
 
-pairs =: '()[]{}'
-pairs .=: split().reverse().to-map()
-opening =: set(pairs.vals())
-closing =: set(pairs.keys())
+pairs =: seq('()[]{}').reverse().to-map()
+opening =: set(vals(pairs))
+closing =: set(keys(pairs))
 
 defn is-paired(value):
-  loop [char *chars] split(value), stack []:
-    stack =:
-      cond:
-        opening(char): stack.conj(char)
-        closing(char):
-          (peek(stack) == pairs(char)) &&: pop(stack)
-        else: stack
-
+  loop stack [], [char *chars] value:
     cond:
-      stack.!!: false
-      chars.!!: stack.!
-      else: recur(chars stack)
+      nil?(char): empty?(stack)
+      opening(char):
+        recur: conj(stack char) chars
+      closing(char):
+        if peek(stack) == pairs(char):
+          recur: pop(stack) chars
+          else: false
+      else: recur(stack chars)

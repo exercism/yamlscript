@@ -14,8 +14,8 @@ defn move(position direction instructions):
       recur instructions:
         case instruction:
           \\A: robot.advance()
-          \\L: robot.turn-left()
           \\R: robot.turn-right()
+          \\L: robot.turn-left()
       else: robot
 
 defn advance(robot):
@@ -29,18 +29,14 @@ defn advance(robot):
       -'east'  : -{'x' x.++ , 'y' y}
       -'west'  : -{'x' x.-- , 'y' y}
 
-defn turn-left(robot):
-  create robot.position:
-    turn robot.direction:
-      reverse(directions)
-
 defn turn-right(robot):
   create robot.position:
-    turn robot.direction:
-      directions
+    turn robot.direction: directions
+
+defn turn-left(robot):
+  create robot.position:
+    turn robot.direction: reverse(directions)
 
 defn turn(direction directions):
-  directions:
-    .mul+(2)
-    .drop-while(\(_ != direction))
-    .second()
+  directions.mul+(2):
+    .drop-while(\(_ != direction)).second()

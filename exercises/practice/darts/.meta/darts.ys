@@ -1,8 +1,7 @@
 !yamlscript/v0
 
 defn score(x y):
-  h =: math/hypot(x y)
-  condp ge h:
+  condp ge math/hypot(x y):
     1    : 10
     5    : 5
     10   : 1

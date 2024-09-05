@@ -10,16 +10,11 @@ factors =::
   Uranus  : 84.016846
   Neptune : 164.79132
 
-seconds-in-year =:
-  mul: 365.25 24 60 60
+seconds-in-year =: 365.25 * 24 * 60 * 60
 
 defn age(planet seconds):
   factor =: factors.$planet ||
     die('not a planet')
 
-  seconds:
-    .div(seconds-in-year)
-    .div(factors.$planet)
-    .mul(100)
-    .math/round()
-    .div(100)
+  seconds / seconds-in-year / factor:
+    .mul(100).math/round().div(100)

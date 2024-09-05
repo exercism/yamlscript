@@ -2,8 +2,7 @@
 
 defn isogram(string):
   string.! ||:
-    string
-      .lc()               \"Want to be case insensitive"
+    lc(string)            \"Want to be case insensitive"
       .split()            \"Split string into chars"
       .filter(\(/^\w$/))  \"Keep letters only"
       .distinct?(*)       \"Check if distinct letters"
