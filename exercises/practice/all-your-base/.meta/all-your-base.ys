@@ -7,10 +7,10 @@ defn rebase(input-base digits output-base):
   cond:
     input-base < 2: die('input base must be >= 2')
     output-base < 2: die('output base must be >= 2')
-    digits.some(neg?) || digits.some(partial(<= input-base)):
+    digits.some(neg?) || digits.some(\(_ >= input-base)):
       die: 'all digits must satisfy 0 <= d < input base'
 
-    digits.every?(zero?) || digits.empty?():: [0]
+    digits.every?(zero?) || digits.! :: [0]
 
     else: digits
       .digits-to-decimal(input-base)

@@ -7,7 +7,7 @@ closing =: set(keys(pairs))
 defn is-paired(value):
   loop stack [], [char *chars] value:
     cond:
-      nil?(char): empty?(stack)
+      char.!: stack.!
       opening(char):
         recur: conj(stack char) chars
       closing(char):
