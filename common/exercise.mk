@@ -29,10 +29,18 @@ default:
 test: $(YS_BIN)
 	prove -v $(TEST_FILE)
 
-$(YS_BIN):
-ifndef EXERCISM_YAMLSCRIPT_GHA
-	@$(YS_INSTALLER_CMD) prompt
-
 install-ys:
-	$(YS_INSTALLER_CMD)
+	@$(YS_INSTALLER_CMD)
+
+uninstall-ys:
+	rm -fr $(YS_LOCAL_PREFIX)
+
+
+#-------------------------------------------------------------------------------
+ifdef EXERCISM_YAMLSCRIPT_GHA
+$(YS_BIN):
+
+else
+$(YS_BIN):
+	@$(YS_INSTALLER_CMD) auto
 endif
