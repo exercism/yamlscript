@@ -6,7 +6,7 @@ include .yamlscript/exercise.mk
 
 YS_LOCAL_PREFIX := ../../../.local/v$(YS_VERSION)
 ifeq (,$(shell [[ -d "$(YS_LOCAL_PREFIX)" ]] && echo ok))
-YS_LOCAL_PREFIX := $(shell cd .. && pwd -P)/.yamlscript/v$(YS_VERSION)
+YS_LOCAL_PREFIX := $(shell cd .. && pwd -P)/.local/v$(YS_VERSION)
 endif
 
 YS_LOCAL_BIN := $(YS_LOCAL_PREFIX)/bin

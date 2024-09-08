@@ -14,8 +14,7 @@ When all the tests pass, you're done!
 
 As a bonus, running `make test` will also make sure that the correct version of
 the `ys` YAMLScript interpreter (the one required by the current exercise) is
-installed in the correct place.
-Something like `/path/to/exercism/yamlscript/.yamlscript/v0.1.##/ys`
+installed in the correct place (in `/path/to/exercism/yamlscript/.local/`).
 That means you don't have to even install `ys` beforehand to get started!
 
 

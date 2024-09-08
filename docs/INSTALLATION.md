@@ -25,8 +25,8 @@ program and run `make test` until all the tests pass.
 That's it!
 
 The first time you run `make test` it will try to install the specific version
-of the `ys` interpreter that is required for the exercise under the
-`../.yamlscript/` directory.
+of the `ys` interpreter that is required for the exercise in the
+`/path/to/exercism/yamlscript/.local/` directory.
 
 If you've already installed that version of `ys` somewhere in your `PATH`, then
 it will silently copy the `ys` interpreter to the correct place.
