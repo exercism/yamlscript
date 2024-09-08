@@ -5,7 +5,7 @@ defn hello:
   (): hello('World')
   (name): "Hello, $name!"
 
-# Randomly call `hello` with 0 or 1 arguments:
+# Randomly call the `hello` function with 0 or 1 arguments:
 if rand(2) > 1:
   say: hello()
   say:

@@ -115,12 +115,13 @@ To learn more about the `ys::taptest` library, check out the [documentation](
 https://yamlscript.org/doc/ys-taptest).
 
 
-<!-- TODO: write document
+<!-- Keep this comment:
 
-  This document should describe everything related to running tests in the track.
+  This document should describe everything related to running tests in the
+  track.
 
-  If your track uses skipped tests, this document can explain why thet is used and
-  how to unskip tests.
+  If your track uses skipped tests, this document can explain why that is used
+  and how to unskip tests.
 
   This document can also link to the testing framework documentation.
 

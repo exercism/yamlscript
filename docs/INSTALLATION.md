@@ -53,7 +53,7 @@ outside of Exercism, see the [YAMLScript Installation Documentation](
 https://yamlscript.org/doc/install/).
 
 
-<!-- TODO: write document
+<!-- Keep this comment:
 
   This document should describe what the student needs to install
   to allow working on the track on their local system using the CLI.

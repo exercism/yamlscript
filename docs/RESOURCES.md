@@ -12,7 +12,7 @@
   https://stackoverflow.com/questions/tagged/yamlscript)
 
 
-<!-- TODO: write document
+<!-- Keep this comment:
 
   This document should link to useful resources.
 

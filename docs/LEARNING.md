@@ -19,7 +19,7 @@ It is built over existing, robust technologies, but it still lacks all the
 trimmings of a mature language.
 
 
-<!-- TODO: write document
+<!-- Keep this comment:
 
   This document should link to learning resources.
 

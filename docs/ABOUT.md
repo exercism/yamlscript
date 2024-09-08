@@ -46,7 +46,7 @@ while using a clean, friendly and fairly painless syntax inspired by the best
 parts of YAML, Clojure, Perl, Python, Perl, JavaScript and CoffeeScript.
 
 
-<!-- TODO: write document
+<!-- Keep this comment:
 
   This document contains a short introduction to the language.
 
