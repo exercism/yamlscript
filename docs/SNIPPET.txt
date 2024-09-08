@@ -1,1 +1,12 @@
-TODO: add snippet
+!yamlscript/v0
+
+# Define a multi-arity function:
+defn hello:
+  (): hello('World')
+  (name): "Hello, $name!"
+
+# Randomly call `hello` with 0 or 1 arguments:
+if rand(2) > 1:
+  say: hello()
+  say:
+    hello: ENV.USER.uc1() \"user name with first char uppercase"
