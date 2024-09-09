@@ -26,8 +26,18 @@ export YSPATH := $(BASE)
 default:
 	@echo " No default make rule. Try 'make test'."
 
-test: $(YS_BIN)
+# test: show $(YS_BIN)
+test: show $(YS_BIN)
 	prove -v $(TEST_FILE)
+
+show:
+	@( set -x ; \
+	env | sort ; \
+	which ys ; \
+	ls -al / ; \
+	pwd ; \
+	ls -al . ; \
+	)
 
 install-ys:
 	@$(YS_INSTALLER_CMD)
