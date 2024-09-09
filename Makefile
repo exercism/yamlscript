@@ -169,17 +169,17 @@ reset:
 	git checkout -- config.*
 	git status -- exercises | grep exercises | xargs rm -fr
 
-exercises/practice/%/GNUmakefile: common/exercise.mk
+exercises/practice/%/GNUmakefile: common/gnumakefile.mk
 	cp -p $< $@
 
 exercises/practice/%/GNUmakefile: common/makefile.mk
 	cp -p $< $@
 
-exercises/practice/%/.yamlscript/exercise.mk: common/exercise-extra.mk
+exercises/practice/%/.yamlscript/exercise.mk: common/exercise-vars.mk
 	mkdir -p $$(dirname $@)
 	cp -p $< $@
 
-exercises/practice/%/.meta/Makefile: common/exercise-meta.mk
+exercises/practice/%/.meta/Makefile: common/meta-makefile.mk
 	cp -p $< $@
 
 exercises/practice/%/.meta/.yamlscript/exercise.mk: ../../.yamlscript/exercise.mk
