@@ -34,7 +34,7 @@ main() {
 
   install-from-local
 
-  [[ $prompt ]] && intro-prompt
+  $auto && intro-prompt
 
   installed || install-from-release || true
   installed || install-from-build || true
@@ -48,7 +48,9 @@ main() {
   echo
 }
 
-installed() { [[ $(readlink "$bin/ys-0") == ys-$version ]]; }
+installed() {
+  [[ -f $installed ]]
+}
 
 install-from-local() {
   local path
@@ -58,7 +60,8 @@ install-from-local() {
     cp "$path" "$bin"/
     ln -fs "$ysfq" "$bin/ys-0"
     ln -fs "$ysfq" "$bin/ys"
-    installed && exit
+    (installed && $auto) && exit
+    true
   fi
 }
 
@@ -96,7 +99,8 @@ setup() {
   version=$1
   prefix=$2
   make=$3
-  prompt=${4-}
+  auto=false
+  [[ ${4-} ]] && auto=true
 
   [[ $version =~ ^0\.1\.[0-9]+$ ]] ||
     die "Invalid YS_VERSION '$version'"
@@ -104,6 +108,12 @@ setup() {
   bin=$prefix/bin
   ysfq=ys-$version
   installed=$bin/$ysfq
+
+  if installed; then
+    echo "'$installed' is already installed."
+    exit
+  fi
+
   yamlscript_repo=https://github.com/yaml/yamlscript
   yamlscript_clone=/tmp/yamlscript-exercism
   gh_issue_url=https://github.com/exercism/yamlscript/issues
