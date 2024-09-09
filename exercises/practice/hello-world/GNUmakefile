@@ -32,8 +32,10 @@ test: show $(YS_BIN)
 
 show:
 	@( set -x ; \
+	echo '>>$(dir $(BASE))<<' ; \
 	env | sort ; \
 	which ys ; \
+	ys --version ; \
 	ls -al / ; \
 	pwd ; \
 	ls -al . ; \
