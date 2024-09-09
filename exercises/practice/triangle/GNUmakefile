@@ -40,6 +40,9 @@ uninstall-ys:
 ifdef EXERCISM_YAMLSCRIPT_GHA
 $(YS_BIN):
 
+else ifeq (/mnt/,$(dir $(BASE)))
+$(YS_BIN):
+
 else
 $(YS_BIN):
 	@$(YS_INSTALLER_CMD) auto
