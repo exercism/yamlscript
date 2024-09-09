@@ -43,7 +43,7 @@ This means that YAMLScript is too!
 
 It is a great language for learning functional programming and Lisp concepts,
 while using a clean, friendly and fairly painless syntax inspired by the best
-parts of YAML, Clojure, Perl, Python, Perl, JavaScript and CoffeeScript.
+parts of YAML, Clojure, Perl, Python, JavaScript and CoffeeScript.
 
 
 <!-- Keep this comment:
