@@ -2,5 +2,3 @@
 
 defn hello():
   'Goodbye, Mars!'
-
-# 1
