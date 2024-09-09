@@ -1,6 +1,6 @@
 #!/usr/bin/env ys-0
 
-# Bump ..
+# Bump ...
 
 require ys::taptest: :all
 
