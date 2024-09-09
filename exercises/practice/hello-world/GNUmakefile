@@ -42,9 +42,6 @@ $(YS_BIN):
 
 else ifeq (/mnt/,$(dir $(BASE)))
 $(YS_BIN):
-	true
-	pwd
-	exit 1
 
 else
 $(YS_BIN):
