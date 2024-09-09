@@ -26,20 +26,8 @@ export YSPATH := $(BASE)
 default:
 	@echo " No default make rule. Try 'make test'."
 
-# test: show $(YS_BIN)
-test: show $(YS_BIN)
+test: $(YS_BIN)
 	prove -v $(TEST_FILE)
-
-show:
-	@( set -x ; \
-	echo '>>$(dir $(BASE))<<' ; \
-	env | sort ; \
-	which ys ; \
-	ys --version ; \
-	ls -al / ; \
-	pwd ; \
-	ls -al . ; \
-	)
 
 install-ys:
 	@$(YS_INSTALLER_CMD)
@@ -51,6 +39,10 @@ uninstall-ys:
 #-------------------------------------------------------------------------------
 ifdef EXERCISM_YAMLSCRIPT_GHA
 $(YS_BIN):
+
+else ifeq (/mnt/,$(dir $(BASE)))
+$(YS_BIN):
+	true
 
 else
 $(YS_BIN):
