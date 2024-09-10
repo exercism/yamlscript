@@ -5,8 +5,9 @@ defn hello:
   (): hello('World')
   (name): "Hello, $name!"
 
-# Randomly call the `hello` function with 0 or 1 arguments:
+# Randomly call the `hello` function
+# with 0 or 1 arguments:
 if rand(2) > 1:
   say: hello()
   say:
-    hello: ENV.USER.uc1() \"user name with first char uppercase"
+    hello: ENV.USER.uc1() \"Guess user name"
