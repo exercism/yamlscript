@@ -1,13 +1,18 @@
+# A YAMLScript Program!
 !yamlscript/v0
 
-# Define a multi-arity function:
+# A multi-arity function definition:
 defn hello:
   (): hello('World')
+
   (name): "Hello, $name!"
 
 # Randomly call the `hello` function
 # with 0 or 1 arguments:
+
 if rand(2) > 1:
   say: hello()
+
   say:
-    hello: ENV.USER.uc1() \"Guess user name"
+    hello: ENV.USER \"Guess user name"
+              .uc1() \"First char upper"
