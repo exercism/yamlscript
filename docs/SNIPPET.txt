@@ -4,15 +4,12 @@
 # A multi-arity function definition:
 defn hello:
   (): hello('World')
-
   (name): "Hello, $name!"
 
 # Randomly call the `hello` function
 # with 0 or 1 arguments:
-
 if rand(2) > 1:
   say: hello()
-
   say:
     hello: ENV.USER \"Guess user name"
               .uc1() \"First char upper"
