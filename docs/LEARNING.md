@@ -3,20 +3,22 @@ Learning YAMLScript
 
 Here are some links to help you learn YAMLScript:
 
-* [YAMLScript Documentation](https://yamlscript.org/doc/)
-* [YAMLScript Examples - Rosetta Code](
+* Read the [YAMLScript Documentation](https://yamlscript.org/doc/)
+* Look at some [YAMLScript Examples on Rosetta Code](
   https://rosettacode.org/wiki/Category:YAMLScript#mw-pages)
-* [YAMLScript Matrix Chat](https://matrix.to/#/#chat-yamlscript:yaml.io)
-* [YAMLScript Slack Chat](https://clojurians.slack.com/messages/C05HQFMTURF)
-* [YAMLScript IRC Chat](https://web.libera.chat/?channel=yamlscript)
-* [YAMLScript GitHub Discussions](
-  https://github.com/yaml/yamlscript/discussions)
-* [YAMLScript on Stack Overflow](
-  https://stackoverflow.com/questions/tagged/yamlscript)
 
 YAMLScript is a relatively new programming language.
 It is built over existing, robust technologies, but it still lacks all the
 trimmings of a mature language.
+
+Things like full user documentation, tutorials, syntax highlighting, tab
+completion and a very long tail of other concerns are coming as soon as
+possible.
+
+YAMLScript is Open Source!
+
+If your learning adventures lead to a desire to improve the language or the
+tooling tech it needs to mature, don't hesitate to reach out and contribute!
 
 
 <!-- Keep this comment:
