@@ -20,8 +20,8 @@ language and an excellent choice for solving **Exercism** exercises.
 Its syntax is always valid **YAML**, but it is expressive as any modern
 programming language.
 
-> All of the solutions to the exercises in this track have be done in 3 to 50
-> well spaced lines of YAMLScript (median of 11, avg of 14.5 lines).
+> All of the solutions to the exercises in this track have been done in 3-50
+comfortably spaced lines of YAMLScript (10-15 on average).
 
 When you run a YAMLScript program it actually transpiles dynamically to the
 **Clojure** JVM/Lisp language.
