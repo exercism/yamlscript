@@ -4,7 +4,8 @@
 * [Online Examples - Rosetta Code](
   https://rosettacode.org/wiki/Category:YAMLScript#mw-pages)
 * [Matrix Chat](https://matrix.to/#/#chat-yamlscript:yaml.io)
-* [Slack Chat](https://clojurians.slack.com/messages/C05HQFMTURF)
+* [YAMLScript on Clojure's Slack](
+  https://clojurians.slack.com/messages/C05HQFMTURF)
 * [IRC Chat](https://web.libera.chat/?channel=yamlscript)
 * [GitHub Discussions]( https://github.com/yaml/yamlscript/discussions)
 * [Stack Overflow]( https://stackoverflow.com/questions/tagged/yamlscript)
