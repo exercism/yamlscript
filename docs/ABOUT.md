@@ -1,7 +1,7 @@
 About YAMLscript
 ================
 
-So you're ready to learn **YAMLScript**?!
+So you're ready to learn [YAMLscript](https://yamlscript.org)?!
 
 Congratulations!
 
@@ -9,37 +9,24 @@ You are about to embark on a journey that will change the way you think about
 data and programming.
 
 Along the way you can expect to learn:
-* A lot more about the **YAML** data language syntax
-* A lion's share of Lisp programming concepts
-* How to get things done with functional programming
-* About the beauty of immutable data structures
-* Enough of the **Clojure** programming language to be dangerous
 
-**[YAMLscript](https://yamlscript.org)** is a complete, Open Source programming
-language and an excellent choice for solving **Exercism** exercises.
-Its syntax is always valid **YAML**, but it is expressive as any modern
-programming language.
+* A lot more about the [YAML](https://wikipedia.org/wiki/YAML) data language
+  syntax
+* A lion's share of [Lisp](https://en.wikipedia.org/wiki/Lisp) programming
+  concepts
+* How to get things done with [Functional Programming](
+  https://wikipedia.org/wiki/Functional_programming) and immutable data
+  structures
+* Enough of the [Clojure](https://wikipedia.org/wiki/Clojure) programming
+  language to be dangerous
 
-> All of the solutions to the exercises in this track have been done in 3-50
-comfortably spaced lines of YAMLScript (10-15 on average).
+YAMLscript is a new, functional, Open Source programming language with a YAML
+based syntax that transpiles to Clojure code which is then evaluated by a
+native binary runtime interpreter called `ys`.
 
-When you run a YAMLScript program it actually transpiles dynamically to the
-**Clojure** JVM/Lisp language.
-Being a dialect of Clojure means that YAMLScript is a very full-featured
-programming language, even though is is a relatively new one.
-
-While being able to do almost anything that Clojure can do, it requires **No
-Java or JVM** to be installed on your computer.
-The YAMLScript interpreter `ys` is actually compiled to a native binary
-executable.
-It is as fast as typical dynamic languages like Python, and it has "batteries
-included" to accomplish most common programming tasks with no external
-dependencies.
-
-> Clojure is predominantly a functional programming language, and features a
-> rich set of immutable, persistent data structures.
-
-This means that YAMLScript is too!
+YAMLScript is an excellent choice for solving Exercism exercises.
+All of the exercises in this track have been solved in 3-50 comfortably spaced
+lines of YAMLScript (10-15 on average).
 
 It is a great language for learning functional programming and Lisp concepts,
 while using a clean, friendly and fairly painless syntax inspired by the best
