@@ -40,16 +40,19 @@ test::
   want: 猫子
   uuid: 1bed0f8a-13b0-4bd3-9d59-3d0593326fa2
 
-- name: Grapheme cluster with pre-combined form
-  code: reverse('Würstchenstand')
-  want: dnatsnehctsrüW
-  uuid: 93d7e1b8-f60f-4f3c-9559-4056e10d2ead
-  SKIP: true    # UNSOLVED
+# These two tests have been commented out because they might not be doable in
+# YAMLScript. Please reach out to a YAMLScript maintainer if you know how to.
 
-- name: Grapheme clusters
-  code: reverse('ผู้เขียนโปรแกรม')
-  want: มรกแรปโนยขีเผู้
-  uuid: 1028b2c1-6763-4459-8540-2da47ca512d9
-  SKIP: true    # UNSOLVED
+# - name: Grapheme cluster with pre-combined form
+#   code: reverse('Würstchenstand')
+#   want: dnatsnehctsrüW
+#   uuid: 93d7e1b8-f60f-4f3c-9559-4056e10d2ead
+#
+# - name: Grapheme clusters
+#   code: reverse('ผู้เขียนโปรแกรม')
+#   want: มรกแรปโนยขีเผู้
+#   uuid: 1028b2c1-6763-4459-8540-2da47ca512d9
+#
+# done: 9
 
-done: 7 # 9
+done: 7
