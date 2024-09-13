@@ -20,9 +20,9 @@ That means you don't have to even install `ys` beforehand to get started!
 
 ## Layout of an Exercise Directory
 
-If you are working on an exercise called `the-great-exercise`, then
-`configlet download --exercise=the-great-exercise --track=yamlscript` will
-create the directory `/path/to/exercism/yamlscript/the-great-exercise`.
+If you are working on an exercise called `the-great-exercise`, then `exercism
+download --exercise=the-great-exercise --track=yamlscript` will create the
+directory `/path/to/exercism/yamlscript/the-great-exercise`.
 
 Inside this directory, the test file will be named `the-great-exercise-test.ys`
 and the solution program file will be named `the-great-exercise.ys`.
