@@ -11,5 +11,5 @@ defn hello:
 if rand(2) > 1:
   say: hello()
   say:
-    hello: ENV.USER \"Guess user name"
+    hello: ENV.USER  \"Guess user name"
               .uc1() \"First char upper"

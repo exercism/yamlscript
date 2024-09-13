@@ -1,7 +1,7 @@
 About YAMLscript
 ================
 
-So you're ready to learn [YAMLscript](https://yamlscript.org)?!
+So you're ready to learn [YAMLScript](https://yamlscript.org)?!
 
 Congratulations!
 
