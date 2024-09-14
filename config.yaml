@@ -92,6 +92,13 @@ exercises:
     prerequisites: []
     difficulty: 1
 
+  - slug: sieve
+    name: Sieve
+    uuid: 73cd0f3a-edc4-43d6-9464-df0f4ba25d3d
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
   - slug: sum-of-multiples
     name: Sum of Multiples
     uuid: 2adee0a9-1fdf-4ae0-a59d-7be53f2359c9
