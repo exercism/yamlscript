@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn square-root(radicand):
+  # Implement the 'square-root' function.

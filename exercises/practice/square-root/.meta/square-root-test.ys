@@ -1,0 +1,38 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: square-root
+
+test::
+- name: Root of 1
+  code: square-root(1)
+  want: 1
+  uuid: 9b748478-7b0a-490c-b87a-609dacf631fd
+
+- name: Root of 4
+  code: square-root(4)
+  want: 2
+  uuid: 7d3aa9ba-9ac6-4e93-a18b-2e8b477139bb
+
+- name: Root of 25
+  code: square-root(25)
+  want: 5
+  uuid: 6624aabf-3659-4ae0-a1c8-25ae7f33c6ef
+
+- name: Root of 81
+  code: square-root(81)
+  want: 9
+  uuid: 93beac69-265e-4429-abb1-94506b431f81
+
+- name: Root of 196
+  code: square-root(196)
+  want: 14
+  uuid: fbddfeda-8c4f-4bc4-87ca-6991af35360e
+
+- name: Root of 65025
+  code: square-root(65025)
+  want: 255
+  uuid: c03d0532-8368-4734-a8e0-f96a9eb7fc1d
+
+done: 6
