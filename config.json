@@ -125,6 +125,14 @@
         "difficulty": 2
       },
       {
+        "slug": "collatz-conjecture",
+        "name": "Collatz Conjecture",
+        "uuid": "dd18fd4d-21de-40f8-9d92-2c5a1d1e7133",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "difference-of-squares",
         "name": "Difference of Squares",
         "uuid": "de0c68d4-f0c3-4bb7-9ab2-378f9034bc82",

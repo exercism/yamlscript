@@ -1,0 +1,44 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: collatz-conjecture
+
+test::
+- name: Zero steps for one
+  code: steps(1)
+  want: 0
+
+- name: Divide if even
+  code: steps(16)
+  want: 4
+
+- name: Even and odd steps
+  code: steps(12)
+  want: 9
+
+- name: Large number of even and odd steps
+  code: steps(1000000)
+  want: 152
+
+- name: Zero is an error
+  code: steps(0)
+  what: error
+  want: Only positive numbers are allowed
+
+- name: Zero is an error
+  code: steps(0)
+  what: error
+  want: Only positive integers are allowed
+
+- name: Negative value is an error
+  code: steps(-15)
+  what: error
+  want: Only positive numbers are allowed
+
+- name: Negative value is an error
+  code: steps(-15)
+  what: error
+  want: Only positive integers are allowed
+
+done: 8
