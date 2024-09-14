@@ -1,0 +1,111 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: strain
+
+test::
+- name: Keep on empty list returns empty list
+  code: 'keep([] "fn([x] true)")'
+  want: []
+
+- name: Keeps everything
+  code: keep([1 3 5] "fn(x):\ true")
+  want:
+  - 1
+  - 3
+  - 5
+
+- name: Keeps nothing
+  code: keep([1 3 5] "fn(x):\ false")
+  want: []
+
+- name: Keeps first and last
+  code: keep([1 2 3] "fn(x):\ (x % 2) == 1")
+  want:
+  - 1
+  - 3
+
+- name: Keeps neither first nor last
+  code: keep([1 2 3] "fn(x):\ (x % 2) == 0")
+  want:
+  - 2
+
+- name: Keeps strings
+  code: keep(
+          qw(apple zebra banana zombies cherimoya zealot)
+          "fn(x):\ starts?(x, 'z')")
+  want:
+  - zebra
+  - zombies
+  - zealot
+
+- name: Keeps lists
+  code: keep(
+          [[1 2 3] [5 5 5] [5 1 2] [2 1 2] [1 5 2] [2 2 1] [1 2 5]]
+          "fn(x):\ has?(x, 5)")
+  want:
+  - - 5
+    - 5
+    - 5
+  - - 5
+    - 1
+    - 2
+  - - 1
+    - 5
+    - 2
+  - - 1
+    - 2
+    - 5
+
+- name: Discard on empty list returns empty list
+  code: discard([] "fn(x):\ true")
+  want: []
+
+- name: Discards everything
+  code: discard([1 3 5] "fn(x):\ true")
+  want: []
+
+- name: Discards nothing
+  code: discard([1 3 5] "fn(x):\ false")
+  want:
+  - 1
+  - 3
+  - 5
+
+- name: Discards first and last
+  code: discard([1 2 3] "fn(x):\ (x % 2) == 1")
+  want:
+  - 2
+
+- name: Discards neither first nor last
+  code: discard([1 2 3] "fn(x):\ (x % 2) == 0")
+  want:
+  - 1
+  - 3
+
+- name: Discards strings
+  code: discard(
+          qw(apple zebra banana zombies cherimoya zealot)
+          "fn(x):\ starts?(x, 'z')")
+  want:
+  - apple
+  - banana
+  - cherimoya
+
+- name: Discards lists
+  code: discard(
+          [[1 2 3] [5 5 5] [5 1 2] [2 1 2] [1 5 2] [2 2 1] [1 2 5]]
+          "fn(x):\ has?(x, 5)")
+  want:
+  - - 1
+    - 2
+    - 3
+  - - 2
+    - 1
+    - 2
+  - - 2
+    - 2
+    - 1
+
+done: 14

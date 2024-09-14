@@ -1,0 +1,7 @@
+!yamlscript/v0
+
+defn keep(list predicate):
+  # Implement the 'keep' function.
+
+defn discard(list predicate):
+  # Implement the 'discard' function.

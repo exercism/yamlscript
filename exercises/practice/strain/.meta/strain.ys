@@ -1,0 +1,15 @@
+!yamlscript/v0
+
+defn keep(list predicate):
+  filter eval(predicate): list
+
+defn discard(list predicate):
+  remove eval(predicate): list
+
+# XXX: eval targeted to be in ys::std on 0.1.80
+defn eval(code):
+  str("!yamlscript/v0\n$code"):
+    .ys/compile()
+    .replace(/(?s)^\(\+\+\+ (.*)\)$/ '$1')
+    .read-string()
+    .clojure::core/eval()
