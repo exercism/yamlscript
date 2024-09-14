@@ -1,0 +1,7 @@
+!yamlscript/v0
+
+defn color-code(color):
+  # Implement the 'color-code' function.
+
+defn colors():
+  # Implement the 'colors' function.

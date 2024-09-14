@@ -85,6 +85,14 @@
         "difficulty": 1
       },
       {
+        "slug": "resistor-color",
+        "name": "Resistor Color",
+        "uuid": "edb17966-2a6c-47c8-ac65-d66b00deb97b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "reverse-string",
         "name": "Reverse String",
         "uuid": "89681570-5734-4f20-b68f-de8b176accdc",

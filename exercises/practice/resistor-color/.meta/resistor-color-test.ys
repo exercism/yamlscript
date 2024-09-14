@@ -1,0 +1,38 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: resistor-color
+
+test::
+- name: Black
+  code: color-code("black")
+  want: 0
+  uuid: 49eb31c5-10a8-4180-9f7f-fea632ab87ef
+
+- name: White
+  code: color-code("white")
+  want: 9
+  uuid: 0a4df94b-92da-4579-a907-65040ce0b3fc
+
+- name: Orange
+  code: color-code("orange")
+  want: 3
+  uuid: 5f81608d-f36f-4190-8084-f45116b6f380
+
+- name: Colors
+  code: colors()
+  want:
+  - black
+  - brown
+  - red
+  - orange
+  - yellow
+  - green
+  - blue
+  - violet
+  - grey
+  - white
+  uuid: 581d68fa-f968-4be2-9f9d-880f2fb73cf7
+
+done: 4
