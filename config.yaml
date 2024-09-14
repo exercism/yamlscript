@@ -393,6 +393,13 @@ exercises:
     prerequisites: []
     difficulty: 5
 
+  - slug: food-chain
+    name: Food Chain
+    uuid: fb4bd2e9-9ca0-41e3-90c7-1adad92d0dd1
+    practices: []
+    prerequisites: []
+    difficulty: 5
+
   - slug: matching-brackets
     name: Matching Brackets
     uuid: a6c79db6-925c-45c3-8a59-aa9d96a4740b
