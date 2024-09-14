@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn rows(count):
+  # Implement the 'rows' function.
