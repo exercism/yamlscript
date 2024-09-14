@@ -172,7 +172,7 @@ reset:
 exercises/practice/%/GNUmakefile: common/gnumakefile.mk
 	cp -p $< $@
 
-exercises/practice/%/GNUmakefile: common/makefile.mk
+exercises/practice/%/Makefile: common/makefile.mk
 	cp -p $< $@
 
 exercises/practice/%/.yamlscript/exercise.mk: common/exercise-vars.mk
