@@ -281,6 +281,13 @@ exercises:
     prerequisites: []
     difficulty: 3
 
+  - slug: pig-latin
+    name: Pig Latin
+    uuid: 16fe7667-a386-42b4-b3b3-4b4306f1fb0e
+    practices: []
+    prerequisites: []
+    difficulty: 3
+
   - slug: secret-handshake
     name: Secret Handshake
     uuid: e2176eb3-3f20-4050-aa18-d627ad0628bd

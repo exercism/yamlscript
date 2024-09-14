@@ -1,0 +1,96 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: pig-latin
+
+test::
+- name: Word beginning with a
+  code: translate("apple")
+  want: appleay
+
+- name: Word beginning with e
+  code: translate("ear")
+  want: earay
+
+- name: Word beginning with i
+  code: translate("igloo")
+  want: iglooay
+
+- name: Word beginning with o
+  code: translate("object")
+  want: objectay
+
+- name: Word beginning with u
+  code: translate("under")
+  want: underay
+
+- name: Word beginning with a vowel and followed by a qu
+  code: translate("equal")
+  want: equalay
+
+- name: Word beginning with p
+  code: translate("pig")
+  want: igpay
+
+- name: Word beginning with k
+  code: translate("koala")
+  want: oalakay
+
+- name: Word beginning with x
+  code: translate("xenon")
+  want: enonxay
+
+- name: Word beginning with q without a following u
+  code: translate("qat")
+  want: atqay
+
+- name: Word beginning with ch
+  code: translate("chair")
+  want: airchay
+
+- name: Word beginning with qu
+  code: translate("queen")
+  want: eenquay
+
+- name: Word beginning with qu and a preceding consonant
+  code: translate("square")
+  want: aresquay
+
+- name: Word beginning with th
+  code: translate("therapy")
+  want: erapythay
+
+- name: Word beginning with thr
+  code: translate("thrush")
+  want: ushthray
+
+- name: Word beginning with sch
+  code: translate("school")
+  want: oolschay
+
+- name: Word beginning with yt
+  code: translate("yttria")
+  want: yttriaay
+
+- name: Word beginning with xr
+  code: translate("xray")
+  want: xrayay
+
+- name: Y is treated like a consonant at the beginning of a word
+  code: translate("yellow")
+  want: ellowyay
+
+- name: Y is treated like a vowel at the end of a consonant cluster
+  code: translate("rhythm")
+  want: ythmrhay
+
+- name: Y as second letter in two letter word
+  code: translate("my")
+  want: ymay
+
+- name: A whole phrase
+  code: translate("quick fast run")
+  want: ickquay astfay unray
+
+done: 22
