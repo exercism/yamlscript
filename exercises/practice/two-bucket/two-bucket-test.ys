@@ -1,0 +1,67 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: two-bucket
+
+test::
+- name: Measure using bucket one of size 3 and bucket two of size 5 - start with bucket one
+  code: measure(3 5 1 "one")
+  want:
+    moves: 4
+    goalBucket: one
+    otherBucket: 5
+
+- name: Measure using bucket one of size 3 and bucket two of size 5 - start with bucket two
+  code: measure(3 5 1 "two")
+  want:
+    moves: 8
+    goalBucket: two
+    otherBucket: 3
+
+- name: Measure using bucket one of size 7 and bucket two of size 11 - start with bucket one
+  code: measure(7 11 2 "one")
+  want:
+    moves: 14
+    goalBucket: one
+    otherBucket: 11
+
+- name: Measure using bucket one of size 7 and bucket two of size 11 - start with bucket two
+  code: measure(7 11 2 "two")
+  want:
+    moves: 18
+    goalBucket: two
+    otherBucket: 7
+
+- name: Measure one step using bucket one of size 1 and bucket two of size 3 - start with bucket two
+  code: measure(1 3 3 "two")
+  want:
+    moves: 1
+    goalBucket: two
+    otherBucket: 0
+
+- name: Measure using bucket one of size 2 and bucket two of size 3 - start with bucket one and end with bucket two
+  code: measure(2 3 3 "one")
+  want:
+    moves: 2
+    goalBucket: two
+    otherBucket: 2
+
+- name: Not possible to reach the goal
+  code: measure(6 15 5 "one")
+  what: error
+  want: impossible
+
+- name: With the same buckets but a different goal, then it is possible
+  code: measure(6 15 9 "one")
+  want:
+    moves: 10
+    goalBucket: two
+    otherBucket: 0
+
+- name: Goal larger than both buckets is impossible
+  code: measure(5 7 8 "one")
+  what: error
+  want: impossible
+
+done: 9
