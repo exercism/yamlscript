@@ -1,0 +1,388 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: meetup
+
+test::
+- name: When teenth monday is the 13th, the first day of the teenth week
+  code: meetup(2013 5 "teenth" "Monday")
+  want: '2013-05-13'
+
+- name: When teenth monday is the 19th, the last day of the teenth week
+  code: meetup(2013 8 "teenth" "Monday")
+  want: '2013-08-19'
+
+- name: When teenth monday is some day in the middle of the teenth week
+  code: meetup(2013 9 "teenth" "Monday")
+  want: '2013-09-16'
+
+- name: When teenth tuesday is the 19th, the last day of the teenth week
+  code: meetup(2013 3 "teenth" "Tuesday")
+  want: '2013-03-19'
+
+- name: When teenth tuesday is some day in the middle of the teenth week
+  code: meetup(2013 4 "teenth" "Tuesday")
+  want: '2013-04-16'
+
+- name: When teenth tuesday is the 13th, the first day of the teenth week
+  code: meetup(2013 8 "teenth" "Tuesday")
+  want: '2013-08-13'
+
+- name: When teenth wednesday is some day in the middle of the teenth week
+  code: meetup(2013 1 "teenth" "Wednesday")
+  want: '2013-01-16'
+
+- name: When teenth wednesday is the 13th, the first day of the teenth week
+  code: meetup(2013 2 "teenth" "Wednesday")
+  want: '2013-02-13'
+
+- name: When teenth wednesday is the 19th, the last day of the teenth week
+  code: meetup(2013 6 "teenth" "Wednesday")
+  want: '2013-06-19'
+
+- name: When teenth thursday is some day in the middle of the teenth week
+  code: meetup(2013 5 "teenth" "Thursday")
+  want: '2013-05-16'
+
+- name: When teenth thursday is the 13th, the first day of the teenth week
+  code: meetup(2013 6 "teenth" "Thursday")
+  want: '2013-06-13'
+
+- name: When teenth thursday is the 19th, the last day of the teenth week
+  code: meetup(2013 9 "teenth" "Thursday")
+  want: '2013-09-19'
+
+- name: When teenth friday is the 19th, the last day of the teenth week
+  code: meetup(2013 4 "teenth" "Friday")
+  want: '2013-04-19'
+
+- name: When teenth friday is some day in the middle of the teenth week
+  code: meetup(2013 8 "teenth" "Friday")
+  want: '2013-08-16'
+
+- name: When teenth friday is the 13th, the first day of the teenth week
+  code: meetup(2013 9 "teenth" "Friday")
+  want: '2013-09-13'
+
+- name: When teenth saturday is some day in the middle of the teenth week
+  code: meetup(2013 2 "teenth" "Saturday")
+  want: '2013-02-16'
+
+- name: When teenth saturday is the 13th, the first day of the teenth week
+  code: meetup(2013 4 "teenth" "Saturday")
+  want: '2013-04-13'
+
+- name: When teenth saturday is the 19th, the last day of the teenth week
+  code: meetup(2013 10 "teenth" "Saturday")
+  want: '2013-10-19'
+
+- name: When teenth sunday is the 19th, the last day of the teenth week
+  code: meetup(2013 5 "teenth" "Sunday")
+  want: '2013-05-19'
+
+- name: When teenth sunday is some day in the middle of the teenth week
+  code: meetup(2013 6 "teenth" "Sunday")
+  want: '2013-06-16'
+
+- name: When teenth sunday is the 13th, the first day of the teenth week
+  code: meetup(2013 10 "teenth" "Sunday")
+  want: '2013-10-13'
+
+- name: When first monday is some day in the middle of the first week
+  code: meetup(2013 3 "first" "Monday")
+  want: '2013-03-04'
+
+- name: When first monday is the 1st, the first day of the first week
+  code: meetup(2013 4 "first" "Monday")
+  want: '2013-04-01'
+
+- name: When first tuesday is the 7th, the last day of the first week
+  code: meetup(2013 5 "first" "Tuesday")
+  want: '2013-05-07'
+
+- name: When first tuesday is some day in the middle of the first week
+  code: meetup(2013 6 "first" "Tuesday")
+  want: '2013-06-04'
+
+- name: When first wednesday is some day in the middle of the first week
+  code: meetup(2013 7 "first" "Wednesday")
+  want: '2013-07-03'
+
+- name: When first wednesday is the 7th, the last day of the first week
+  code: meetup(2013 8 "first" "Wednesday")
+  want: '2013-08-07'
+
+- name: When first thursday is some day in the middle of the first week
+  code: meetup(2013 9 "first" "Thursday")
+  want: '2013-09-05'
+
+- name: When first thursday is another day in the middle of the first week
+  code: meetup(2013 10 "first" "Thursday")
+  want: '2013-10-03'
+
+- name: When first friday is the 1st, the first day of the first week
+  code: meetup(2013 11 "first" "Friday")
+  want: '2013-11-01'
+
+- name: When first friday is some day in the middle of the first week
+  code: meetup(2013 12 "first" "Friday")
+  want: '2013-12-06'
+
+- name: When first saturday is some day in the middle of the first week
+  code: meetup(2013 1 "first" "Saturday")
+  want: '2013-01-05'
+
+- name: When first saturday is another day in the middle of the first week
+  code: meetup(2013 2 "first" "Saturday")
+  want: '2013-02-02'
+
+- name: When first sunday is some day in the middle of the first week
+  code: meetup(2013 3 "first" "Sunday")
+  want: '2013-03-03'
+
+- name: When first sunday is the 7th, the last day of the first week
+  code: meetup(2013 4 "first" "Sunday")
+  want: '2013-04-07'
+
+- name: When second monday is some day in the middle of the second week
+  code: meetup(2013 3 "second" "Monday")
+  want: '2013-03-11'
+
+- name: When second monday is the 8th, the first day of the second week
+  code: meetup(2013 4 "second" "Monday")
+  want: '2013-04-08'
+
+- name: When second tuesday is the 14th, the last day of the second week
+  code: meetup(2013 5 "second" "Tuesday")
+  want: '2013-05-14'
+
+- name: When second tuesday is some day in the middle of the second week
+  code: meetup(2013 6 "second" "Tuesday")
+  want: '2013-06-11'
+
+- name: When second wednesday is some day in the middle of the second week
+  code: meetup(2013 7 "second" "Wednesday")
+  want: '2013-07-10'
+
+- name: When second wednesday is the 14th, the last day of the second week
+  code: meetup(2013 8 "second" "Wednesday")
+  want: '2013-08-14'
+
+- name: When second thursday is some day in the middle of the second week
+  code: meetup(2013 9 "second" "Thursday")
+  want: '2013-09-12'
+
+- name: When second thursday is another day in the middle of the second week
+  code: meetup(2013 10 "second" "Thursday")
+  want: '2013-10-10'
+
+- name: When second friday is the 8th, the first day of the second week
+  code: meetup(2013 11 "second" "Friday")
+  want: '2013-11-08'
+
+- name: When second friday is some day in the middle of the second week
+  code: meetup(2013 12 "second" "Friday")
+  want: '2013-12-13'
+
+- name: When second saturday is some day in the middle of the second week
+  code: meetup(2013 1 "second" "Saturday")
+  want: '2013-01-12'
+
+- name: When second saturday is another day in the middle of the second week
+  code: meetup(2013 2 "second" "Saturday")
+  want: '2013-02-09'
+
+- name: When second sunday is some day in the middle of the second week
+  code: meetup(2013 3 "second" "Sunday")
+  want: '2013-03-10'
+
+- name: When second sunday is the 14th, the last day of the second week
+  code: meetup(2013 4 "second" "Sunday")
+  want: '2013-04-14'
+
+- name: When third monday is some day in the middle of the third week
+  code: meetup(2013 3 "third" "Monday")
+  want: '2013-03-18'
+
+- name: When third monday is the 15th, the first day of the third week
+  code: meetup(2013 4 "third" "Monday")
+  want: '2013-04-15'
+
+- name: When third tuesday is the 21st, the last day of the third week
+  code: meetup(2013 5 "third" "Tuesday")
+  want: '2013-05-21'
+
+- name: When third tuesday is some day in the middle of the third week
+  code: meetup(2013 6 "third" "Tuesday")
+  want: '2013-06-18'
+
+- name: When third wednesday is some day in the middle of the third week
+  code: meetup(2013 7 "third" "Wednesday")
+  want: '2013-07-17'
+
+- name: When third wednesday is the 21st, the last day of the third week
+  code: meetup(2013 8 "third" "Wednesday")
+  want: '2013-08-21'
+
+- name: When third thursday is some day in the middle of the third week
+  code: meetup(2013 9 "third" "Thursday")
+  want: '2013-09-19'
+
+- name: When third thursday is another day in the middle of the third week
+  code: meetup(2013 10 "third" "Thursday")
+  want: '2013-10-17'
+
+- name: When third friday is the 15th, the first day of the third week
+  code: meetup(2013 11 "third" "Friday")
+  want: '2013-11-15'
+
+- name: When third friday is some day in the middle of the third week
+  code: meetup(2013 12 "third" "Friday")
+  want: '2013-12-20'
+
+- name: When third saturday is some day in the middle of the third week
+  code: meetup(2013 1 "third" "Saturday")
+  want: '2013-01-19'
+
+- name: When third saturday is another day in the middle of the third week
+  code: meetup(2013 2 "third" "Saturday")
+  want: '2013-02-16'
+
+- name: When third sunday is some day in the middle of the third week
+  code: meetup(2013 3 "third" "Sunday")
+  want: '2013-03-17'
+
+- name: When third sunday is the 21st, the last day of the third week
+  code: meetup(2013 4 "third" "Sunday")
+  want: '2013-04-21'
+
+- name: When fourth monday is some day in the middle of the fourth week
+  code: meetup(2013 3 "fourth" "Monday")
+  want: '2013-03-25'
+
+- name: When fourth monday is the 22nd, the first day of the fourth week
+  code: meetup(2013 4 "fourth" "Monday")
+  want: '2013-04-22'
+
+- name: When fourth tuesday is the 28th, the last day of the fourth week
+  code: meetup(2013 5 "fourth" "Tuesday")
+  want: '2013-05-28'
+
+- name: When fourth tuesday is some day in the middle of the fourth week
+  code: meetup(2013 6 "fourth" "Tuesday")
+  want: '2013-06-25'
+
+- name: When fourth wednesday is some day in the middle of the fourth week
+  code: meetup(2013 7 "fourth" "Wednesday")
+  want: '2013-07-24'
+
+- name: When fourth wednesday is the 28th, the last day of the fourth week
+  code: meetup(2013 8 "fourth" "Wednesday")
+  want: '2013-08-28'
+
+- name: When fourth thursday is some day in the middle of the fourth week
+  code: meetup(2013 9 "fourth" "Thursday")
+  want: '2013-09-26'
+
+- name: When fourth thursday is another day in the middle of the fourth week
+  code: meetup(2013 10 "fourth" "Thursday")
+  want: '2013-10-24'
+
+- name: When fourth friday is the 22nd, the first day of the fourth week
+  code: meetup(2013 11 "fourth" "Friday")
+  want: '2013-11-22'
+
+- name: When fourth friday is some day in the middle of the fourth week
+  code: meetup(2013 12 "fourth" "Friday")
+  want: '2013-12-27'
+
+- name: When fourth saturday is some day in the middle of the fourth week
+  code: meetup(2013 1 "fourth" "Saturday")
+  want: '2013-01-26'
+
+- name: When fourth saturday is another day in the middle of the fourth week
+  code: meetup(2013 2 "fourth" "Saturday")
+  want: '2013-02-23'
+
+- name: When fourth sunday is some day in the middle of the fourth week
+  code: meetup(2013 3 "fourth" "Sunday")
+  want: '2013-03-24'
+
+- name: When fourth sunday is the 28th, the last day of the fourth week
+  code: meetup(2013 4 "fourth" "Sunday")
+  want: '2013-04-28'
+
+- name: Last monday in a month with four mondays
+  code: meetup(2013 3 "last" "Monday")
+  want: '2013-03-25'
+
+- name: Last monday in a month with five mondays
+  code: meetup(2013 4 "last" "Monday")
+  want: '2013-04-29'
+
+- name: Last tuesday in a month with four tuesdays
+  code: meetup(2013 5 "last" "Tuesday")
+  want: '2013-05-28'
+
+- name: Last tuesday in another month with four tuesdays
+  code: meetup(2013 6 "last" "Tuesday")
+  want: '2013-06-25'
+
+- name: Last wednesday in a month with five wednesdays
+  code: meetup(2013 7 "last" "Wednesday")
+  want: '2013-07-31'
+
+- name: Last wednesday in a month with four wednesdays
+  code: meetup(2013 8 "last" "Wednesday")
+  want: '2013-08-28'
+
+- name: Last thursday in a month with four thursdays
+  code: meetup(2013 9 "last" "Thursday")
+  want: '2013-09-26'
+
+- name: Last thursday in a month with five thursdays
+  code: meetup(2013 10 "last" "Thursday")
+  want: '2013-10-31'
+
+- name: Last friday in a month with five fridays
+  code: meetup(2013 11 "last" "Friday")
+  want: '2013-11-29'
+
+- name: Last friday in a month with four fridays
+  code: meetup(2013 12 "last" "Friday")
+  want: '2013-12-27'
+
+- name: Last saturday in a month with four saturdays
+  code: meetup(2013 1 "last" "Saturday")
+  want: '2013-01-26'
+
+- name: Last saturday in another month with four saturdays
+  code: meetup(2013 2 "last" "Saturday")
+  want: '2013-02-23'
+
+- name: Last sunday in a month with five sundays
+  code: meetup(2013 3 "last" "Sunday")
+  want: '2013-03-31'
+
+- name: Last sunday in a month with four sundays
+  code: meetup(2013 4 "last" "Sunday")
+  want: '2013-04-28'
+
+- name: When last wednesday in february in a leap year is the 29th
+  code: meetup(2012 2 "last" "Wednesday")
+  want: '2012-02-29'
+
+- name: Last wednesday in december that is also the last day of the year
+  code: meetup(2014 12 "last" "Wednesday")
+  want: '2014-12-31'
+
+- name: When last sunday in february in a non-leap year is not the 29th
+  code: meetup(2015 2 "last" "Sunday")
+  want: '2015-02-22'
+
+- name: When first friday is the 7th, the last day of the first week
+  code: meetup(2012 12 "first" "Friday")
+  want: '2012-12-07'
+
+done: 95

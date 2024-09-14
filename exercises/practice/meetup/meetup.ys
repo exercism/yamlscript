@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn meetup(year month week dayofweek):
+  # Implement the 'meetup' function.

@@ -338,6 +338,13 @@ exercises:
     prerequisites: []
     difficulty: 8
 
+  - slug: meetup
+    name: Meetup
+    uuid: 5455b809-9805-4d18-8b67-a531944070f9
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
 tags:
 - execution_mode/compiled
 - execution_mode/interpreted
