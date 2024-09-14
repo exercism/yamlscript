@@ -1,0 +1,117 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: dnd-character
+
+# The random generator 'ability' can be property-tested.
+# The pure function 'modifier' can be tested totally.
+# The random generator 'character' should return some
+# kind of structure with six random abilities and a
+# hitpoint score. This structure can be property-tested
+# in the same way as 'ability' and 'modifier'.
+# 
+# It may be fun to provide a 'name' property for characters
+# that may or may not be randomly generated but not tested.
+# 
+# Many programming languages feature property-based test
+# frameworks. For a language-agnostic introduction to
+# property-based testing, see:
+# 
+# https://hypothesis.works/articles/what-is-property-based-testing/
+
+test::
+- name: Ability modifier for score 3 is -4
+  code: modifier(3)
+  want: -4
+
+- name: Ability modifier for score 4 is -3
+  code: modifier(4)
+  want: -3
+
+- name: Ability modifier for score 5 is -3
+  code: modifier(5)
+  want: -3
+
+- name: Ability modifier for score 6 is -2
+  code: modifier(6)
+  want: -2
+
+- name: Ability modifier for score 7 is -2
+  code: modifier(7)
+  want: -2
+
+- name: Ability modifier for score 8 is -1
+  code: modifier(8)
+  want: -1
+
+- name: Ability modifier for score 9 is -1
+  code: modifier(9)
+  want: -1
+
+- name: Ability modifier for score 10 is 0
+  code: modifier(10)
+  want: 0
+
+- name: Ability modifier for score 11 is 0
+  code: modifier(11)
+  want: 0
+
+- name: Ability modifier for score 12 is +1
+  code: modifier(12)
+  want: 1
+
+- name: Ability modifier for score 13 is +1
+  code: modifier(13)
+  want: 1
+
+- name: Ability modifier for score 14 is +2
+  code: modifier(14)
+  want: 2
+
+- name: Ability modifier for score 15 is +2
+  code: modifier(15)
+  want: 2
+
+- name: Ability modifier for score 16 is +3
+  code: modifier(16)
+  want: 3
+
+- name: Ability modifier for score 17 is +3
+  code: modifier(17)
+  want: 3
+
+- name: Ability modifier for score 18 is +4
+  code: modifier(18)
+  want: 4
+
+- name: Random ability is within range
+  code: ability()
+  want: score >= 3 && score <= 18
+
+- name: Random character is valid
+  code: character()
+  want:
+    strength: strength >= 3 && strength <= 18
+    dexterity: dexterity >= 3 && dexterity <= 18
+    constitution: constitution >= 3 && constitution <= 18
+    intelligence: intelligence >= 3 && intelligence <= 18
+    wisdom: wisdom >= 3 && wisdom <= 18
+    charisma: charisma >= 3 && charisma <= 18
+    hitpoints: hitpoints == 10 + modifier(constitution)
+
+- name: Each ability is only calculated once
+  code: strength()
+  want: strength == strength
+
+- name: Each ability is only calculated once
+  code: character()
+  want:
+    strength: strength == strength
+    dexterity: dexterity == dexterity
+    constitution: constitution == constitution
+    intelligence: intelligence == intelligence
+    wisdom: wisdom == wisdom
+    charisma: charisma == charisma
+
+done: 20

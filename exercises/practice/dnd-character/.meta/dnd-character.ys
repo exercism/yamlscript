@@ -1,0 +1,7 @@
+!yamlscript/v0
+
+defn modifier(score):
+  # Implement the 'modifier' function.
+
+defn ability():
+  # Implement the 'ability' function.

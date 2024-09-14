@@ -1,0 +1,137 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: dnd-character
+
+# The random generator 'ability' can be property-tested.
+# The pure function 'modifier' can be tested totally.
+# The random generator 'character' should return some
+# kind of structure with six random abilities and a
+# hitpoint score. This structure can be property-tested
+# in the same way as 'ability' and 'modifier'.
+# 
+# It may be fun to provide a 'name' property for characters
+# that may or may not be randomly generated but not tested.
+# 
+# Many programming languages feature property-based test
+# frameworks. For a language-agnostic introduction to
+# property-based testing, see:
+# 
+# https://hypothesis.works/articles/what-is-property-based-testing/
+
+test::
+- name: Ability modifier for score 3 is -4
+  code: modifier(3)
+  want: -4
+  uuid: 1e9ae1dc-35bd-43ba-aa08-e4b94c20fa37
+
+- name: Ability modifier for score 4 is -3
+  code: modifier(4)
+  want: -3
+  uuid: cc9bb24e-56b8-4e9e-989d-a0d1a29ebb9c
+
+- name: Ability modifier for score 5 is -3
+  code: modifier(5)
+  want: -3
+  uuid: 5b519fcd-6946-41ee-91fe-34b4f9808326
+
+- name: Ability modifier for score 6 is -2
+  code: modifier(6)
+  want: -2
+  uuid: dc2913bd-6d7a-402e-b1e2-6d568b1cbe21
+
+- name: Ability modifier for score 7 is -2
+  code: modifier(7)
+  want: -2
+  uuid: 099440f5-0d66-4b1a-8a10-8f3a03cc499f
+
+- name: Ability modifier for score 8 is -1
+  code: modifier(8)
+  want: -1
+  uuid: cfda6e5c-3489-42f0-b22b-4acb47084df0
+
+- name: Ability modifier for score 9 is -1
+  code: modifier(9)
+  want: -1
+  uuid: c70f0507-fa7e-4228-8463-858bfbba1754
+
+- name: Ability modifier for score 10 is 0
+  code: modifier(10)
+  want: 0
+  uuid: 6f4e6c88-1cd9-46a0-92b8-db4a99b372f7
+
+- name: Ability modifier for score 11 is 0
+  code: modifier(11)
+  want: 0
+  uuid: e00d9e5c-63c8-413f-879d-cd9be9697097
+
+- name: Ability modifier for score 12 is +1
+  code: modifier(12)
+  want: 1
+  uuid: eea06f3c-8de0-45e7-9d9d-b8cab4179715
+
+- name: Ability modifier for score 13 is +1
+  code: modifier(13)
+  want: 1
+  uuid: 9c51f6be-db72-4af7-92ac-b293a02c0dcd
+
+- name: Ability modifier for score 14 is +2
+  code: modifier(14)
+  want: 2
+  uuid: 94053a5d-53b6-4efc-b669-a8b5098f7762
+
+- name: Ability modifier for score 15 is +2
+  code: modifier(15)
+  want: 2
+  uuid: 8c33e7ca-3f9f-4820-8ab3-65f2c9e2f0e2
+
+- name: Ability modifier for score 16 is +3
+  code: modifier(16)
+  want: 3
+  uuid: c3ec871e-1791-44d0-b3cc-77e5fb4cd33d
+
+- name: Ability modifier for score 17 is +3
+  code: modifier(17)
+  want: 3
+  uuid: 3d053cee-2888-4616-b9fd-602a3b1efff4
+
+- name: Ability modifier for score 18 is +4
+  code: modifier(18)
+  want: 4
+  uuid: bafd997a-e852-4e56-9f65-14b60261faee
+
+- name: Random ability is within range
+  code: ability()
+  want: score >= 3 && score <= 18
+  uuid: 4f28f19c-2e47-4453-a46a-c0d365259c14
+
+- name: Random character is valid
+  code: character()
+  want:
+    strength: strength >= 3 && strength <= 18
+    dexterity: dexterity >= 3 && dexterity <= 18
+    constitution: constitution >= 3 && constitution <= 18
+    intelligence: intelligence >= 3 && intelligence <= 18
+    wisdom: wisdom >= 3 && wisdom <= 18
+    charisma: charisma >= 3 && charisma <= 18
+    hitpoints: hitpoints == 10 + modifier(constitution)
+  uuid: 385d7e72-864f-4e88-8279-81a7d75b04ad
+
+- name: Each ability is only calculated once
+  code: strength()
+  want: strength == strength
+  uuid: 2ca77b9b-c099-46c3-a02c-0d0f68ffa0fe
+
+- name: Each ability is only calculated once
+  code: character()
+  want:
+    strength: strength == strength
+    dexterity: dexterity == dexterity
+    constitution: constitution == constitution
+    intelligence: intelligence == intelligence
+    wisdom: wisdom == wisdom
+    charisma: charisma == charisma
+  uuid: dca2b2ec-f729-4551-84b9-078876bb4808
+
+done: 20
