@@ -49,13 +49,6 @@ exercises:
     prerequisites: []
     difficulty: 1
 
-  - slug: grains
-    name: Grains
-    uuid: 53001741-514b-4675-8842-dfd61d45cb28
-    practices: []
-    prerequisites: []
-    difficulty: 1
-
   - slug: hello-world
     name: Hello World
     uuid: f4c93e64-d954-4d2d-b4c9-d27d87a3390f
@@ -67,13 +60,6 @@ exercises:
   - slug: leap
     name: Leap
     uuid: a6e60d12-8265-404a-b34e-69b6d00014fd
-    practices: []
-    prerequisites: []
-    difficulty: 1
-
-  - slug: list-ops
-    name: List Ops
-    uuid: ed3151c9-6a26-4fcd-aa4b-63a81ccae31d
     practices: []
     prerequisites: []
     difficulty: 1
@@ -106,9 +92,9 @@ exercises:
     prerequisites: []
     difficulty: 1
 
-  - slug: sieve
-    name: Sieve
-    uuid: 73cd0f3a-edc4-43d6-9464-df0f4ba25d3d
+  - slug: square-root
+    name: Square Root
+    uuid: 4f987e41-b47d-4e9a-a2d8-bb7b251fd4b7
     practices: []
     prerequisites: []
     difficulty: 1
@@ -169,6 +155,13 @@ exercises:
     prerequisites: []
     difficulty: 2
 
+  - slug: grains
+    name: Grains
+    uuid: 53001741-514b-4675-8842-dfd61d45cb28
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: hamming
     name: Hamming
     uuid: 5ab55f94-fe14-4f17-acb7-772787f84d33
@@ -225,6 +218,13 @@ exercises:
     prerequisites: []
     difficulty: 2
 
+  - slug: sieve
+    name: Sieve
+    uuid: 73cd0f3a-edc4-43d6-9464-df0f4ba25d3d
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: space-age
     name: Space Age
     uuid: 060241f1-798c-477f-861f-3e2971c25a58
@@ -277,6 +277,13 @@ exercises:
   - slug: eliuds-eggs
     name: Eliud's Eggs
     uuid: 40b2b3ea-21ef-4cb3-8089-eafa597c985f
+    practices: []
+    prerequisites: []
+    difficulty: 3
+
+  - slug: list-ops
+    name: List Ops
+    uuid: ed3151c9-6a26-4fcd-aa4b-63a81ccae31d
     practices: []
     prerequisites: []
     difficulty: 3

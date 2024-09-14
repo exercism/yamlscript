@@ -1,0 +1,32 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: square-root
+
+test::
+- name: Root of 1
+  code: square-root(1)
+  want: 1
+
+- name: Root of 4
+  code: square-root(4)
+  want: 2
+
+- name: Root of 25
+  code: square-root(25)
+  want: 5
+
+- name: Root of 81
+  code: square-root(81)
+  want: 9
+
+- name: Root of 196
+  code: square-root(196)
+  want: 14
+
+- name: Root of 65025
+  code: square-root(65025)
+  want: 255
+
+done: 6

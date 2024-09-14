@@ -1,0 +1,7 @@
+!yamlscript/v0
+
+defn square-root(radicand):
+  loop n 0:
+    if (n * n) != radicand:
+      recur: n + 1
+      else: n
