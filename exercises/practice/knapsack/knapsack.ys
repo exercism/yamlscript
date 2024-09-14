@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn maximum-value(maximum-weight items):
+  # Implement the 'maximum-value' function.
