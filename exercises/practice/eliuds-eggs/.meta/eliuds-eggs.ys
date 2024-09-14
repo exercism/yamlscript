@@ -1,0 +1,7 @@
+!yamlscript/v0
+
+defn egg-count(number):
+  loop num number, eggs 0:
+    if num.?:
+      recur: quot(num 2), (eggs + (num % 2))
+      else: eggs + num

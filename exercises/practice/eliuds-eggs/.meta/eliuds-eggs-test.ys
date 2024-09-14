@@ -1,0 +1,28 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: eliuds-eggs
+
+test::
+- name: 0 eggs
+  code: egg-count(0)
+  want: 0
+  uuid: 559e789d-07d1-4422-9004-3b699f83bca3
+
+- name: 1 egg
+  code: egg-count(16)
+  want: 1
+  uuid: 97223282-f71e-490c-92f0-b3ec9e275aba
+
+- name: 4 eggs
+  code: egg-count(89)
+  want: 4
+  uuid: 1f8fd18f-26e9-4144-9a0e-57cdfc4f4ff5
+
+- name: 13 eggs
+  code: egg-count(2000000000)
+  want: 13
+  uuid: 0c18be92-a498-4ef2-bcbb-28ac4b06cb81
+
+done: 4

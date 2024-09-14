@@ -247,6 +247,13 @@ exercises:
     prerequisites: []
     difficulty: 3
 
+  - slug: eliuds-eggs
+    name: Eliud's Eggs
+    uuid: 40b2b3ea-21ef-4cb3-8089-eafa597c985f
+    practices: []
+    prerequisites: []
+    difficulty: 3
+
   - slug: secret-handshake
     name: Secret Handshake
     uuid: e2176eb3-3f20-4050-aa18-d627ad0628bd

@@ -1,0 +1,24 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: eliuds-eggs
+
+test::
+- name: 0 eggs
+  code: egg-count(0)
+  want: 0
+
+- name: 1 egg
+  code: egg-count(16)
+  want: 1
+
+- name: 4 eggs
+  code: egg-count(89)
+  want: 4
+
+- name: 13 eggs
+  code: egg-count(2000000000)
+  want: 13
+
+done: 4
