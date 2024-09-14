@@ -393,6 +393,13 @@ exercises:
     prerequisites: []
     difficulty: 8
 
+  - slug: two-bucket
+    name: Two Bucket
+    uuid: bc92b952-7aeb-4857-b8b9-3d9fddba0d04
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
 tags:
 - execution_mode/compiled
 - execution_mode/interpreted
