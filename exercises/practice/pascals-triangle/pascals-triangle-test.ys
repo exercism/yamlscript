@@ -1,0 +1,154 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: pascals-triangle
+
+# Expectations are represented here as an array of arrays.
+# How you represent this idiomatically in your language is up to you.
+
+test::
+- name: Zero rows
+  code: rows(0)
+  want: []
+
+- name: Single row
+  code: rows(1)
+  want:
+  - - 1
+
+- name: Two rows
+  code: rows(2)
+  want:
+  - - 1
+  - - 1
+    - 1
+
+- name: Three rows
+  code: rows(3)
+  want:
+  - - 1
+  - - 1
+    - 1
+  - - 1
+    - 2
+    - 1
+
+- name: Four rows
+  code: rows(4)
+  want:
+  - - 1
+  - - 1
+    - 1
+  - - 1
+    - 2
+    - 1
+  - - 1
+    - 3
+    - 3
+    - 1
+
+- name: Five rows
+  code: rows(5)
+  want:
+  - - 1
+  - - 1
+    - 1
+  - - 1
+    - 2
+    - 1
+  - - 1
+    - 3
+    - 3
+    - 1
+  - - 1
+    - 4
+    - 6
+    - 4
+    - 1
+
+- name: Six rows
+  code: rows(6)
+  want:
+  - - 1
+  - - 1
+    - 1
+  - - 1
+    - 2
+    - 1
+  - - 1
+    - 3
+    - 3
+    - 1
+  - - 1
+    - 4
+    - 6
+    - 4
+    - 1
+  - - 1
+    - 5
+    - 10
+    - 10
+    - 5
+    - 1
+
+- name: Ten rows
+  code: rows(10)
+  want:
+  - - 1
+  - - 1
+    - 1
+  - - 1
+    - 2
+    - 1
+  - - 1
+    - 3
+    - 3
+    - 1
+  - - 1
+    - 4
+    - 6
+    - 4
+    - 1
+  - - 1
+    - 5
+    - 10
+    - 10
+    - 5
+    - 1
+  - - 1
+    - 6
+    - 15
+    - 20
+    - 15
+    - 6
+    - 1
+  - - 1
+    - 7
+    - 21
+    - 35
+    - 35
+    - 21
+    - 7
+    - 1
+  - - 1
+    - 8
+    - 28
+    - 56
+    - 70
+    - 56
+    - 28
+    - 8
+    - 1
+  - - 1
+    - 9
+    - 36
+    - 84
+    - 126
+    - 126
+    - 84
+    - 36
+    - 9
+    - 1
+
+done: 8

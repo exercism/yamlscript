@@ -357,6 +357,14 @@
         "difficulty": 4
       },
       {
+        "slug": "pascals-triangle",
+        "name": "Pascal's Triangle",
+        "uuid": "c4025a38-95ad-4e49-b632-bf59dbd574da",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "queen-attack",
         "name": "Queen Attack",
         "uuid": "a8c8b02e-2662-42ff-b7eb-6a4239f10066",

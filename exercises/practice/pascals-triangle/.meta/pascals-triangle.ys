@@ -1,0 +1,10 @@
+!yamlscript/v0
+
+defn rows(count):
+  reduce _ [] range(1 count.++):
+    fn(tri row):
+      conj tri:
+        or _ [1]:
+          when row > 1:
+            mapv _ (-1 .. (row - 2)):
+              \(to-num(get(last(tri) _)) + to-num(get(last(tri) _.++)))
