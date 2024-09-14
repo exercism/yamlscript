@@ -1,0 +1,86 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: circular-buffer
+
+# In general, these circular buffers are expected to be stateful,
+# and each language will operate on them differently.
+# Tests tend to perform a series of operations, some of which expect a certain result.
+# As such, this common test suite can only say in abstract terms what should be done.
+# 
+# Tests will contain a number of operations. The operation will be specified in the `operation` key.
+# Based on the operation, other keys may be present.
+# read: Reading from the buffer should succeed if and only if `should_succeed` is true.
+# If it should succeed, it should produce the item at `expected`.
+# If it should fail, `expected` will not be present.
+# write: Writing the item located at `item` should succeed if and only if `should_succeed` is true.
+# overwrite: Write the item located at `item` into the buffer, replacing the oldest item if necessary.
+# clear: Clear the buffer.
+# 
+# Failure of either `read` or `write` may be indicated in a manner appropriate for your language:
+# Raising an exception, returning (int, error), returning Option<int>, etc.
+# 
+# Finally, note that all values are integers.
+# If your language contains generics, you may consider allowing buffers to contain other types.
+# Tests for that are not included here.
+
+
+test::
+- name: Reading empty buffer should fail
+  code: run(1 [{"operation" "read", "should_succeed" false}])
+  want: {}
+
+- name: Can read an item just written
+  code: run(1 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 1}])
+  want: {}
+
+- name: Each item may only be read once
+  code: run(1 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 1} {"operation" "read", "should_succeed" false}])
+  want: {}
+
+- name: Items are read in the order they are written
+  code: run(2 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "write", "item" 2, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 1} {"operation" "read", "should_succeed" true, "expected" 2}])
+  want: {}
+
+- name: Full buffer can't be written to
+  code: run(1 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "write", "item" 2, "should_succeed" false}])
+  want: {}
+
+- name: A read frees up capacity for another write
+  code: run(1 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 1} {"operation" "write", "item" 2, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 2}])
+  want: {}
+
+- name: Read position is maintained even across multiple writes
+  code: run(3 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "write", "item" 2, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 1} {"operation" "write", "item" 3, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 2} {"operation" "read", "should_succeed" true, "expected" 3}])
+  want: {}
+
+- name: Items cleared out of buffer can't be read
+  code: run(1 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "clear"} {"operation" "read", "should_succeed" false}])
+  want: {}
+
+- name: Clear frees up capacity for another write
+  code: run(1 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "clear"} {"operation" "write", "item" 2, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 2}])
+  want: {}
+
+- name: Clear does nothing on empty buffer
+  code: run(1 [{"operation" "clear"} {"operation" "write", "item" 1, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 1}])
+  want: {}
+
+- name: Overwrite acts like write on non-full buffer
+  code: run(2 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "overwrite", "item" 2} {"operation" "read", "should_succeed" true, "expected" 1} {"operation" "read", "should_succeed" true, "expected" 2}])
+  want: {}
+
+- name: Overwrite replaces the oldest item on full buffer
+  code: run(2 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "write", "item" 2, "should_succeed" true} {"operation" "overwrite", "item" 3} {"operation" "read", "should_succeed" true, "expected" 2} {"operation" "read", "should_succeed" true, "expected" 3}])
+  want: {}
+
+- name: Overwrite replaces the oldest item remaining in buffer following a read
+  code: run(3 [{"operation" "write", "item" 1, "should_succeed" true} {"operation" "write", "item" 2, "should_succeed" true} {"operation" "write", "item" 3, "should_succeed" true} {"operation" "read", "should_succeed" true, "expected" 1} {"operation" "write", "item" 4, "should_succeed" true} {"operation" "overwrite", "item" 5} {"operation" "read", "should_succeed" true, "expected" 3} {"operation" "read", "should_succeed" true, "expected" 4} {"operation" "read", "should_succeed" true, "expected" 5}])
+  want: {}
+
+- name: Initial clear does not affect wrapping around
+  code: run(2 [{"operation" "clear"} {"operation" "write", "item" 1, "should_succeed" true} {"operation" "write", "item" 2, "should_succeed" true} {"operation" "overwrite", "item" 3} {"operation" "overwrite", "item" 4} {"operation" "read", "should_succeed" true, "expected" 3} {"operation" "read", "should_succeed" true, "expected" 4} {"operation" "read", "should_succeed" false}])
+  want: {}
+
+done: 14

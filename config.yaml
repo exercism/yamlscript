@@ -421,6 +421,13 @@ exercises:
     prerequisites: []
     difficulty: 7
 
+  - slug: circular-buffer
+    name: Circular Buffer
+    uuid: ebb62daf-c09a-4ee6-99a1-4f68be5152e4
+    practices: []
+    prerequisites: []
+    difficulty: 8
+
   - slug: minesweeper
     name: Minesweeper
     uuid: 4e7dd5dd-a6b6-4d8c-be9c-7a5995a86de9
