@@ -1,0 +1,125 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: strain
+
+test::
+- name: Keep on empty list returns empty list
+  code: 'keep([] "fn([x] true)")'
+  want: []
+  uuid: 26af8c32-ba6a-4eb3-aa0a-ebd8f136e003
+
+- name: Keeps everything
+  code: keep([1 3 5] "fn(x):\ true")
+  want:
+  - 1
+  - 3
+  - 5
+  uuid: f535cb4d-e99b-472a-bd52-9fa0ffccf454
+
+- name: Keeps nothing
+  code: keep([1 3 5] "fn(x):\ false")
+  want: []
+  uuid: 950b8e8e-f628-42a8-85e2-9b30f09cde38
+
+- name: Keeps first and last
+  code: keep([1 2 3] "fn(x):\ (x % 2) == 1")
+  want:
+  - 1
+  - 3
+  uuid: 92694259-6e76-470c-af87-156bdf75018a
+
+- name: Keeps neither first nor last
+  code: keep([1 2 3] "fn(x):\ (x % 2) == 0")
+  want:
+  - 2
+  uuid: 938f7867-bfc7-449e-a21b-7b00cbb56994
+
+- name: Keeps strings
+  code: keep(
+          qw(apple zebra banana zombies cherimoya zealot)
+          "fn(x):\ starts?(x, 'z')")
+  want:
+  - zebra
+  - zombies
+  - zealot
+  uuid: 8908e351-4437-4d2b-a0f7-770811e48816
+
+- name: Keeps lists
+  code: keep(
+          [[1 2 3] [5 5 5] [5 1 2] [2 1 2] [1 5 2] [2 2 1] [1 2 5]]
+          "fn(x):\ has?(x, 5)")
+  want:
+  - - 5
+    - 5
+    - 5
+  - - 5
+    - 1
+    - 2
+  - - 1
+    - 5
+    - 2
+  - - 1
+    - 2
+    - 5
+  uuid: 2728036b-102a-4f1e-a3ef-eac6160d876a
+
+- name: Discard on empty list returns empty list
+  code: discard([] "fn(x):\ true")
+  want: []
+  uuid: ef16beb9-8d84-451a-996a-14e80607fce6
+
+- name: Discards everything
+  code: discard([1 3 5] "fn(x):\ true")
+  want: []
+  uuid: 2f42f9bc-8e06-4afe-a222-051b5d8cd12a
+
+- name: Discards nothing
+  code: discard([1 3 5] "fn(x):\ false")
+  want:
+  - 1
+  - 3
+  - 5
+  uuid: ca990fdd-08c2-4f95-aa50-e0f5e1d6802b
+
+- name: Discards first and last
+  code: discard([1 2 3] "fn(x):\ (x % 2) == 1")
+  want:
+  - 2
+  uuid: 71595dae-d283-48ca-a52b-45fa96819d2f
+
+- name: Discards neither first nor last
+  code: discard([1 2 3] "fn(x):\ (x % 2) == 0")
+  want:
+  - 1
+  - 3
+  uuid: ae141f79-f86d-4567-b407-919eaca0f3dd
+
+- name: Discards strings
+  code: discard(
+          qw(apple zebra banana zombies cherimoya zealot)
+          "fn(x):\ starts?(x, 'z')")
+  want:
+  - apple
+  - banana
+  - cherimoya
+  uuid: daf25b36-a59f-4f29-bcfe-302eb4e43609
+
+- name: Discards lists
+  code: discard(
+          [[1 2 3] [5 5 5] [5 1 2] [2 1 2] [1 5 2] [2 2 1] [1 2 5]]
+          "fn(x):\ has?(x, 5)")
+  want:
+  - - 1
+    - 2
+    - 3
+  - - 2
+    - 1
+    - 2
+  - - 2
+    - 2
+    - 1
+  uuid: a38d03f9-95ad-4459-80d1-48e937e4acaf
+
+done: 14
