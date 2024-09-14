@@ -1,0 +1,25 @@
+!yamlscript/v0
+
+defn append(list1 list2):
+  # Implement the 'append' function.
+
+defn concat(lists):
+  # Implement the 'concat' function.
+
+defn filter(list function):
+  # Implement the 'filter' function.
+
+defn length(list):
+  # Implement the 'length' function.
+
+defn map(list function):
+  # Implement the 'map' function.
+
+defn foldl(list initial function):
+  # Implement the 'foldl' function.
+
+defn foldr(list initial function):
+  # Implement the 'foldr' function.
+
+defn reverse(list):
+  # Implement the 'reverse' function.

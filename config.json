@@ -69,6 +69,14 @@
         "difficulty": 1
       },
       {
+        "slug": "list-ops",
+        "name": "List Ops",
+        "uuid": "ed3151c9-6a26-4fcd-aa4b-63a81ccae31d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "nth-prime",
         "name": "Nth Prime",
         "uuid": "d0f42bce-73e7-4ef0-b4cc-985bc1d4eef6",

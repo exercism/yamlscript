@@ -1,0 +1,21 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "list-ops.ys"
+    ],
+    "test": [
+      "list-ops-test.ys",
+      "GNUmakefile",
+      "Makefile",
+      ".yamlscript/exercise.mk",
+      ".yamlscript/exercism-ys-installer"
+    ],
+    "example": [
+      ".meta/list-ops.ys"
+    ]
+  },
+  "blurb": "Implement basic list operations."
+}

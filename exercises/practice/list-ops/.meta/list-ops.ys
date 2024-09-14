@@ -1,0 +1,28 @@
+!yamlscript/v0
+
+defn append(list1 list2):
+  list1 + list2
+
+defn concat(lists):
+  lists.conj([]).clojure::core/concat(*)
+
+defn filter(list function):
+  list.filter(function)
+
+defn length(list):
+  list.#
+
+defn map(list function):
+  list.map(function)
+
+defn foldl(list initial function):
+  reduce function: initial list
+
+defn foldr(list initial function):
+  if list.?:
+    function _ list.0:
+      foldr: rest(list) initial function
+    else: initial
+
+defn reverse(list):
+  clojure::core/reverse(list)
