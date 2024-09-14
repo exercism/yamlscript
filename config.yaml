@@ -338,6 +338,13 @@ exercises:
     prerequisites: []
     difficulty: 8
 
+  - slug: grade-school
+    name: Grade School
+    uuid: 064581af-5b0e-46d0-a1b2-6f74997f8666
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
 tags:
 - execution_mode/compiled
 - execution_mode/interpreted
