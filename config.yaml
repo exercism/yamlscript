@@ -310,6 +310,13 @@ exercises:
     prerequisites: []
     difficulty: 5
 
+  - slug: diamond
+    name: Diamond
+    uuid: b907e51b-3272-4fb7-b43c-09bcf2005fbd
+    practices: []
+    prerequisites: []
+    difficulty: 5
+
   - slug: matching-brackets
     name: Matching Brackets
     uuid: a6c79db6-925c-45c3-8a59-aa9d96a4740b

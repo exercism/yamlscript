@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "diamond.ys"
+    ],
+    "test": [
+      "diamond-test.ys",
+      "GNUmakefile",
+      "Makefile",
+      ".yamlscript/exercise.mk",
+      ".yamlscript/exercism-ys-installer"
+    ],
+    "example": [
+      ".meta/diamond.ys"
+    ]
+  },
+  "blurb": "Given a letter, print a diamond starting with 'A' with the supplied letter at the widest point.",
+  "source": "Seb Rose",
+  "source_url": "https://web.archive.org/web/20220807163751/http://claysnow.co.uk/recycling-tests-in-tdd/"
+}
