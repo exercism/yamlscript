@@ -1,0 +1,161 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: kindergarten-garden
+
+test::
+- name: Garden with single student
+  code: plants("RC\nGG" "Alice")
+  want:
+  - radishes
+  - clover
+  - grass
+  - grass
+  uuid: 1fc316ed-17ab-4fba-88ef-3ae78296b692
+
+- name: Different garden with single student
+  code: plants("VC\nRC" "Alice")
+  want:
+  - violets
+  - clover
+  - radishes
+  - clover
+  uuid: acd19dc1-2200-4317-bc2a-08f021276b40
+
+- name: Garden with two students
+  code: plants("VVCG\nVVRC" "Bob")
+  want:
+  - clover
+  - grass
+  - radishes
+  - clover
+  uuid: c376fcc8-349c-446c-94b0-903947315757
+
+- name: Second student's garden
+  code: plants("VVCCGG\nVVCCGG" "Bob")
+  want:
+  - clover
+  - clover
+  - clover
+  - clover
+  uuid: 2d620f45-9617-4924-9d27-751c80d17db9
+
+- name: Third student's garden
+  code: plants("VVCCGG\nVVCCGG" "Charlie")
+  want:
+  - grass
+  - grass
+  - grass
+  - grass
+  uuid: 57712331-4896-4364-89f8-576421d69c44
+
+- name: For alice, first student's garden
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Alice")
+  want:
+  - violets
+  - radishes
+  - violets
+  - radishes
+  uuid: 149b4290-58e1-40f2-8ae4-8b87c46e765b
+
+- name: For bob, second student's garden
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Bob")
+  want:
+  - clover
+  - grass
+  - clover
+  - clover
+  uuid: ba25dbbc-10bd-4a37-b18e-f89ecd098a5e
+
+- name: For charlie
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Charlie")
+  want:
+  - violets
+  - violets
+  - clover
+  - grass
+  uuid: 566b621b-f18e-4c5f-873e-be30544b838c
+
+- name: For david
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "David")
+  want:
+  - radishes
+  - violets
+  - clover
+  - radishes
+  uuid: 3ad3df57-dd98-46fc-9269-1877abf612aa
+
+- name: For eve
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Eve")
+  want:
+  - clover
+  - grass
+  - radishes
+  - grass
+  uuid: 0f0a55d1-9710-46ed-a0eb-399ba8c72db2
+
+- name: For fred
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Fred")
+  want:
+  - grass
+  - clover
+  - violets
+  - clover
+  uuid: a7e80c90-b140-4ea1-aee3-f4625365c9a4
+
+- name: For ginny
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Ginny")
+  want:
+  - clover
+  - grass
+  - grass
+  - clover
+  uuid: 9d94b273-2933-471b-86e8-dba68694c615
+
+- name: For harriet
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Harriet")
+  want:
+  - violets
+  - radishes
+  - radishes
+  - violets
+  uuid: f55bc6c2-ade8-4844-87c4-87196f1b7258
+
+- name: For ileana
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Ileana")
+  want:
+  - grass
+  - clover
+  - violets
+  - clover
+  uuid: 759070a3-1bb1-4dd4-be2c-7cce1d7679ae
+
+- name: For joseph
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Joseph")
+  want:
+  - violets
+  - clover
+  - violets
+  - grass
+  uuid: 78578123-2755-4d4a-9c7d-e985b8dda1c6
+
+- name: For kincaid, second to last student's garden
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Kincaid")
+  want:
+  - grass
+  - clover
+  - clover
+  - grass
+  uuid: 6bb66df7-f433-41ab-aec2-3ead6e99f65b
+
+- name: For larry, last student's garden
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Larry")
+  want:
+  - grass
+  - violets
+  - clover
+  - violets
+  uuid: d7edec11-6488-418a-94e6-ed509e0fa7eb
+
+done: 17

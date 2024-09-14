@@ -1,0 +1,144 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: kindergarten-garden
+
+test::
+- name: Garden with single student
+  code: plants("RC\nGG" "Alice")
+  want:
+  - radishes
+  - clover
+  - grass
+  - grass
+
+- name: Different garden with single student
+  code: plants("VC\nRC" "Alice")
+  want:
+  - violets
+  - clover
+  - radishes
+  - clover
+
+- name: Garden with two students
+  code: plants("VVCG\nVVRC" "Bob")
+  want:
+  - clover
+  - grass
+  - radishes
+  - clover
+
+- name: Second student's garden
+  code: plants("VVCCGG\nVVCCGG" "Bob")
+  want:
+  - clover
+  - clover
+  - clover
+  - clover
+
+- name: Third student's garden
+  code: plants("VVCCGG\nVVCCGG" "Charlie")
+  want:
+  - grass
+  - grass
+  - grass
+  - grass
+
+- name: For alice, first student's garden
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Alice")
+  want:
+  - violets
+  - radishes
+  - violets
+  - radishes
+
+- name: For bob, second student's garden
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Bob")
+  want:
+  - clover
+  - grass
+  - clover
+  - clover
+
+- name: For charlie
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Charlie")
+  want:
+  - violets
+  - violets
+  - clover
+  - grass
+
+- name: For david
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "David")
+  want:
+  - radishes
+  - violets
+  - clover
+  - radishes
+
+- name: For eve
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Eve")
+  want:
+  - clover
+  - grass
+  - radishes
+  - grass
+
+- name: For fred
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Fred")
+  want:
+  - grass
+  - clover
+  - violets
+  - clover
+
+- name: For ginny
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Ginny")
+  want:
+  - clover
+  - grass
+  - grass
+  - clover
+
+- name: For harriet
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Harriet")
+  want:
+  - violets
+  - radishes
+  - radishes
+  - violets
+
+- name: For ileana
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Ileana")
+  want:
+  - grass
+  - clover
+  - violets
+  - clover
+
+- name: For joseph
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Joseph")
+  want:
+  - violets
+  - clover
+  - violets
+  - grass
+
+- name: For kincaid, second to last student's garden
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Kincaid")
+  want:
+  - grass
+  - clover
+  - clover
+  - grass
+
+- name: For larry, last student's garden
+  code: plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV" "Larry")
+  want:
+  - grass
+  - violets
+  - clover
+  - violets
+
+done: 17

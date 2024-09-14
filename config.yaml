@@ -338,6 +338,13 @@ exercises:
     prerequisites: []
     difficulty: 8
 
+  - slug: kindergarten-garden
+    name: Kindergarten Garden
+    uuid: 6ddb5805-c802-4563-b471-9336f101d34b
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
 tags:
 - execution_mode/compiled
 - execution_mode/interpreted
