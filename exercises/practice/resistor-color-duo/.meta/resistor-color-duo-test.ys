@@ -1,0 +1,43 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: resistor-color-duo
+
+test::
+- name: Brown and black
+  code: value(["brown" "black"])
+  want: 10
+  uuid: ce11995a-5b93-4950-a5e9-93423693b2fc
+
+- name: Blue and grey
+  code: value(["blue" "grey"])
+  want: 68
+  uuid: 7bf82f7a-af23-48ba-a97d-38d59406a920
+
+- name: Yellow and violet
+  code: value(["yellow" "violet"])
+  want: 47
+  uuid: f1886361-fdfd-4693-acf8-46726fe24e0c
+
+- name: White and red
+  code: value(["white" "red"])
+  want: 92
+  uuid: b7a6cbd2-ae3c-470a-93eb-56670b305640
+
+- name: Orange and orange
+  code: value(["orange" "orange"])
+  want: 33
+  uuid: 77a8293d-2a83-4016-b1af-991acc12b9fe
+
+- name: Ignore additional colors
+  code: value(["green" "brown" "orange"])
+  want: 51
+  uuid: 0c4fb44f-db7c-4d03-afa8-054350f156a8
+
+- name: Black and brown, one-digit
+  code: value(["black" "brown"])
+  want: 1
+  uuid: 4a8ceec5-0ab4-4904-88a4-daf953a5e818
+
+done: 7

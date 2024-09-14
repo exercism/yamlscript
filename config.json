@@ -371,6 +371,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 8
+      },
+      {
+        "slug": "resistor-color-duo",
+        "name": "Resistor Color Duo",
+        "uuid": "8a49347f-461f-415c-b203-bb491ac98fac",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
     ]
   },
