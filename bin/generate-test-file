@@ -17,7 +17,7 @@ defn main(slug):
     test::
     $(join("\n" tests).trimr())
 
-    done: # $count(tests)
+    done: $count(tests)
 
   say: test
 
@@ -28,21 +28,22 @@ defn gen-tests(cases):
         gen-tests(case.cases)
         gen-test(case).vector()
     tests =: concat(tests genned-tests)
-    if cases.seq():
+    if cases.?:
       recur cases: tests
-      =>: tests
+      else: tests
 
 defn gen-test(case):
+  expected-map =:
+    if case.expected.map?(): case.expected {}
   test =:
     vector:
       apply merge::
       - name:: case.description.uc1()
         code:: gen-code(case)
       - !
-        if case.expected.error: +{'what' 'error'} {}
-      - want:: case.expected.error || case.expected
+        if expected-map.error: +{'what' 'error'} {}
+      - want:: expected-map.error || case.expected
         uuid:: case.uuid
-        SKIP: true
 
   yaml/dump: test
 

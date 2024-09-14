@@ -40,6 +40,7 @@ setup() {
   ys_stub_file=$ys/$slug.ys
   # clj_test_file=$clj/test/${_slug}_test.clj
   ys_test_file=$ys/$slug-test.ys
+  ys_meta_test_file=$ys/.meta/$slug-test.ys
 }
 
 update-config-yaml() (
@@ -84,7 +85,8 @@ generate-stub-program() (
 
 generate-test-file() (
   command generate-test-file "$slug" \
-    > "$ys_test_file"
+    > "$ys_meta_test_file"
+  grep -v '^  uuid:' < "$ys_meta_test_file" > "$ys_test_file"
 )
 
 update-exercise-config() (
@@ -96,7 +98,7 @@ update-exercise-config() (
 )
 
 make-update() (
-  touch common/exercise.mk
+  touch common/*
 
   make update >/dev/null
 )
