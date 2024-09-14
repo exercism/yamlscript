@@ -1,0 +1,163 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: food-chain
+
+# JSON doesn't allow for multi-line strings, so all verses are presented
+# here as arrays of strings. It's up to the test generator to join the
+# lines together with line breaks.
+# Some languages test for the verse() method, which takes a start verse
+# and optional end verse, but other languages have only tested for the full poem.
+# For those languages in the latter category, you may wish to only
+# implement the full song test and leave the rest alone, ignoring the start
+# and end verse fields.
+
+test::
+- name: Fly
+  code: recite(1 1)
+  want:
+  - I know an old lady who swallowed a fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+
+- name: Spider
+  code: recite(2 2)
+  want:
+  - I know an old lady who swallowed a spider.
+  - It wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+
+- name: Bird
+  code: recite(3 3)
+  want:
+  - I know an old lady who swallowed a bird.
+  - How absurd to swallow a bird!
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+
+- name: Cat
+  code: recite(4 4)
+  want:
+  - I know an old lady who swallowed a cat.
+  - Imagine that, to swallow a cat!
+  - She swallowed the cat to catch the bird.
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+
+- name: Dog
+  code: recite(5 5)
+  want:
+  - I know an old lady who swallowed a dog.
+  - What a hog, to swallow a dog!
+  - She swallowed the dog to catch the cat.
+  - She swallowed the cat to catch the bird.
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+
+- name: Goat
+  code: recite(6 6)
+  want:
+  - I know an old lady who swallowed a goat.
+  - Just opened her throat and swallowed a goat!
+  - She swallowed the goat to catch the dog.
+  - She swallowed the dog to catch the cat.
+  - She swallowed the cat to catch the bird.
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+
+- name: Cow
+  code: recite(7 7)
+  want:
+  - I know an old lady who swallowed a cow.
+  - I don't know how she swallowed a cow!
+  - She swallowed the cow to catch the goat.
+  - She swallowed the goat to catch the dog.
+  - She swallowed the dog to catch the cat.
+  - She swallowed the cat to catch the bird.
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+
+- name: Horse
+  code: recite(8 8)
+  want:
+  - I know an old lady who swallowed a horse.
+  - She's dead, of course!
+
+- name: Multiple verses
+  code: recite(1 3)
+  want:
+  - I know an old lady who swallowed a fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+  - ''
+  - I know an old lady who swallowed a spider.
+  - It wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+  - ''
+  - I know an old lady who swallowed a bird.
+  - How absurd to swallow a bird!
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+
+- name: Full song
+  code: recite(1 8)
+  want:
+  - I know an old lady who swallowed a fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+  - ''
+  - I know an old lady who swallowed a spider.
+  - It wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+  - ''
+  - I know an old lady who swallowed a bird.
+  - How absurd to swallow a bird!
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+  - ''
+  - I know an old lady who swallowed a cat.
+  - Imagine that, to swallow a cat!
+  - She swallowed the cat to catch the bird.
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+  - ''
+  - I know an old lady who swallowed a dog.
+  - What a hog, to swallow a dog!
+  - She swallowed the dog to catch the cat.
+  - She swallowed the cat to catch the bird.
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+  - ''
+  - I know an old lady who swallowed a goat.
+  - Just opened her throat and swallowed a goat!
+  - She swallowed the goat to catch the dog.
+  - She swallowed the dog to catch the cat.
+  - She swallowed the cat to catch the bird.
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+  - ''
+  - I know an old lady who swallowed a cow.
+  - I don't know how she swallowed a cow!
+  - She swallowed the cow to catch the goat.
+  - She swallowed the goat to catch the dog.
+  - She swallowed the dog to catch the cat.
+  - She swallowed the cat to catch the bird.
+  - She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.
+  - She swallowed the spider to catch the fly.
+  - I don't know why she swallowed the fly. Perhaps she'll die.
+  - ''
+  - I know an old lady who swallowed a horse.
+  - She's dead, of course!
+
+done: 10

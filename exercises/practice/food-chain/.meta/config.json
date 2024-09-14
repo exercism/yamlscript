@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "food-chain.ys"
+    ],
+    "test": [
+      "food-chain-test.ys",
+      "GNUmakefile",
+      "Makefile",
+      ".yamlscript/exercise.mk",
+      ".yamlscript/exercism-ys-installer"
+    ],
+    "example": [
+      ".meta/food-chain.ys"
+    ]
+  },
+  "blurb": "Generate the lyrics of the song 'I Know an Old Lady Who Swallowed a Fly'.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/There_Was_an_Old_Lady_Who_Swallowed_a_Fly"
+}
