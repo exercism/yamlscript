@@ -1,0 +1,44 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: armstrong-numbers
+
+test::
+- name: Zero is an armstrong number
+  code: is-armstrong-number(0)
+  want: true
+
+- name: Single-digit numbers are armstrong numbers
+  code: is-armstrong-number(5)
+  want: true
+
+- name: There are no two-digit armstrong numbers
+  code: is-armstrong-number(10)
+  want: false
+
+- name: Three-digit number that is an armstrong number
+  code: is-armstrong-number(153)
+  want: true
+
+- name: Three-digit number that is not an armstrong number
+  code: is-armstrong-number(100)
+  want: false
+
+- name: Four-digit number that is an armstrong number
+  code: is-armstrong-number(9474)
+  want: true
+
+- name: Four-digit number that is not an armstrong number
+  code: is-armstrong-number(9475)
+  want: false
+
+- name: Seven-digit number that is an armstrong number
+  code: is-armstrong-number(9926315)
+  want: true
+
+- name: Seven-digit number that is not an armstrong number
+  code: is-armstrong-number(9926314)
+  want: false
+
+done: 9

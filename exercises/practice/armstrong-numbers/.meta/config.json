@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "armstrong-numbers.ys"
+    ],
+    "test": [
+      "armstrong-numbers-test.ys",
+      "GNUmakefile",
+      "Makefile",
+      ".yamlscript/exercise.mk",
+      ".yamlscript/exercism-ys-installer"
+    ],
+    "example": [
+      ".meta/armstrong-numbers.ys"
+    ]
+  },
+  "blurb": "Determine if a number is an Armstrong number.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Narcissistic_number"
+}

@@ -107,6 +107,13 @@ exercises:
     prerequisites: []
     difficulty: 2
 
+  - slug: armstrong-numbers
+    name: Armstrong Numbers
+    uuid: d9beb726-00fe-4b2c-9a58-1cadcaa4f4b5
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: binary-search
     name: Binary Search
     uuid: db284b8d-a06d-4a34-9f8a-6c78ef56ce26

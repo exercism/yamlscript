@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn is-armstrong-number(number):
+  # Implement the 'is-armstrong-number' function.
