@@ -366,6 +366,13 @@ exercises:
     prerequisites: []
     difficulty: 8
 
+  - slug: grains
+    name: Grains
+    uuid: 53001741-514b-4675-8842-dfd61d45cb28
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
 tags:
 - execution_mode/compiled
 - execution_mode/interpreted

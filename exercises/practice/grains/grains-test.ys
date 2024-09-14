@@ -1,0 +1,50 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: grains
+
+# The final tests of square test error conditions
+# In these cases you should expect an error as is idiomatic for your language
+
+test::
+- name: Grains on square 1
+  code: square(1)
+  want: 1
+
+- name: Grains on square 2
+  code: square(2)
+  want: 2
+
+- name: Grains on square 3
+  code: square(3)
+  want: 4
+
+- name: Grains on square 4
+  code: square(4)
+  want: 8
+
+- name: Grains on square 16
+  code: square(16)
+  want: 32768
+
+- name: Grains on square 32
+  code: square(32)
+  want: 2147483648
+
+- name: Square 0 is invalid
+  code: square(0)
+  what: error
+  want: square must be between 1 and 64
+
+- name: Negative square is invalid
+  code: square(-1)
+  what: error
+  want: square must be between 1 and 64
+
+- name: Square greater than 64 is invalid
+  code: square(65)
+  what: error
+  want: square must be between 1 and 64
+
+done: 9
