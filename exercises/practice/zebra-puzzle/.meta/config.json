@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "files": {
+    "solution": [
+      "zebra-puzzle.ys"
+    ],
+    "test": [
+      "zebra-puzzle-test.ys",
+      "GNUmakefile",
+      "Makefile",
+      ".yamlscript/exercise.mk",
+      ".yamlscript/exercism-ys-installer"
+    ],
+    "example": [
+      ".meta/zebra-puzzle.ys"
+    ]
+  },
+  "blurb": "Solve the zebra puzzle.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Zebra_Puzzle"
+}

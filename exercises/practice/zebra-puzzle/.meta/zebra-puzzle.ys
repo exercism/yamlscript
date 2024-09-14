@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn drinks-water():
+  # Implement the 'drinks-water' function.

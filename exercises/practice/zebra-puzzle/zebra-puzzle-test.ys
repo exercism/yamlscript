@@ -1,0 +1,16 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: zebra-puzzle
+
+test::
+- name: Resident who drinks water
+  code: drinks-water()
+  want: Norwegian
+
+- name: Resident who owns zebra
+  code: owns-zebra()
+  want: Japanese
+
+done: 2
