@@ -2,7 +2,7 @@
 
 defn encode(string):
   apply str:
-    for part partition-by(just string):
+    for part partition-by(a string):
       str:
         ((part.# > 1) &&& part.#)
         part.0
