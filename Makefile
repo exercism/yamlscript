@@ -27,15 +27,8 @@ EXERCISES := $(EXERCISE_DIRS:exercises/practice/%=%)
 
 EXERCISE_MAKEFILES := $(EXERCISE_DIRS:%=%/Makefile)
 EXERCISE_GNU_MAKEFILES := $(EXERCISE_DIRS:%=%/GNUmakefile)
-EXERCISE_YS_MAKEFILES := $(EXERCISE_DIRS:%=%/.yamlscript/exercise.mk)
 EXERCISE_META_MAKEFILES := $(EXERCISE_DIRS:%=%/.meta/Makefile)
 EXERCISE_YS_INSTALLERS := $(EXERCISE_DIRS:%=%/.yamlscript/exercism-ys-installer)
-
-a := (
-b := )
-EXERCISE_META_LINKS := \
-  $(shell ls exercises/practice/*/.yamlscript/exercise.mk \
-    | perl -pe 's{$a.*$b/$a.*/.*$b}{$$1/.meta/$$2}')
 
 CHECKS := \
   check-yaml \
@@ -46,9 +39,7 @@ CHECKS := \
 GEN_FILES := \
   $(EXERCISE_MAKEFILES) \
   $(EXERCISE_GNU_MAKEFILES) \
-  $(EXERCISE_YS_MAKEFILES) \
   $(EXERCISE_META_MAKEFILES) \
-  $(EXERCISE_META_LINKS) \
   $(EXERCISE_YS_INSTALLERS) \
   config.json \
 
@@ -87,6 +78,9 @@ else
 test-name := $(test)
 override test := exercises/practice/$(test)/.meta/*-test.ys
 endif
+
+a := (
+b := )
 
 export YSPATH := $(shell IFS=:; p=$aexercises/practice/*/.meta$b; \
 	           echo "$${p[*]}")
@@ -175,15 +169,8 @@ exercises/practice/%/GNUmakefile: common/gnumakefile.mk
 exercises/practice/%/Makefile: common/makefile.mk
 	cp -p $< $@
 
-exercises/practice/%/.yamlscript/exercise.mk: common/exercise-vars.mk
-	mkdir -p $$(dirname $@)
-	cp -p $< $@
-
 exercises/practice/%/.meta/Makefile: common/meta-makefile.mk
 	cp -p $< $@
-
-exercises/practice/%/.meta/.yamlscript/exercise.mk: ../../.yamlscript/exercise.mk
-	ln -fs $@ $<
 
 exercises/practice/%/.yamlscript/exercism-ys-installer: common/exercism-ys-installer
 	mkdir -p $$(dirname $@)

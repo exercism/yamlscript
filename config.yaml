@@ -37,7 +37,6 @@ files:
   - '%{kebab_slug}-test.ys'
   - GNUmakefile
   - Makefile
-  - .yamlscript/exercise.mk
   - .yamlscript/exercism-ys-installer
   example:
   - .meta/%{kebab_slug}.ys
