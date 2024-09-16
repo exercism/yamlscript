@@ -4,7 +4,7 @@ ROOT := $(shell pwd)
 
 BIN := bin
 
-YS_VERSION := 0.1.75
+YS_VERSION := 0.1.76
 
 YS_LOCAL := .local
 YS_LOCAL_PREFIX := $(YS_LOCAL)/v$(YS_VERSION)

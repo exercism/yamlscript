@@ -2,7 +2,7 @@ SHELL := bash
 
 BASE := $(shell pwd)
 
-YS_VERSION := 0.1.75
+export YS_VERSION := 0.1.76
 
 YS_LOCAL_PREFIX := ../../../.local/v$(YS_VERSION)
 ifeq (,$(shell [[ -d "$(YS_LOCAL_PREFIX)" ]] && echo ok))
