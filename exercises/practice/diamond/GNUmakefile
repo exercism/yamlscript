@@ -2,7 +2,7 @@ SHELL := bash
 
 BASE := $(shell pwd)
 
-include .yamlscript/exercise.mk
+export YS_VERSION := 0.1.76
 
 YS_LOCAL_PREFIX := ../../../.local/v$(YS_VERSION)
 ifeq (,$(shell [[ -d "$(YS_LOCAL_PREFIX)" ]] && echo ok))
