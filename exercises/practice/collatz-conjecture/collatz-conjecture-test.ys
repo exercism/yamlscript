@@ -24,21 +24,11 @@ test::
 - name: Zero is an error
   code: steps(0)
   what: error
-  want: Only positive numbers are allowed
-
-- name: Zero is an error
-  code: steps(0)
-  what: error
   want: Only positive integers are allowed
-
-- name: Negative value is an error
-  code: steps(-15)
-  what: error
-  want: Only positive numbers are allowed
 
 - name: Negative value is an error
   code: steps(-15)
   what: error
   want: Only positive integers are allowed
 
-done: 8
+done: 6
