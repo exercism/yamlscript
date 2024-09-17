@@ -22,7 +22,6 @@ blurb:
   When a YAMLScript program is run, the source code transpiles to Clojure code,
   and is evaluted by a native binary runtime interpreter called `ys` (not by
   the JVM).
-  YAMLScript is also available as a dynamic YAML loader library
 
 version: 3
 
@@ -46,6 +45,13 @@ exercises:
   - slug: darts
     name: Darts
     uuid: a307a3a9-7841-47e2-9962-e50e4ba035b8
+    practices: []
+    prerequisites: []
+    difficulty: 1
+
+  - slug: grains
+    name: Grains
+    uuid: 53001741-514b-4675-8842-dfd61d45cb28
     practices: []
     prerequisites: []
     difficulty: 1
@@ -365,13 +371,6 @@ exercises:
     practices: []
     prerequisites: []
     difficulty: 8
-
-  - slug: grains
-    name: Grains
-    uuid: 53001741-514b-4675-8842-dfd61d45cb28
-    practices: []
-    prerequisites: []
-    difficulty: 1
 
 tags:
 - execution_mode/compiled
