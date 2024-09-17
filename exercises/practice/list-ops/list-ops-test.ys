@@ -65,11 +65,11 @@ test::
     - 6
 
 - name: Empty list
-  code: filter([] "(x) -> x modulo 2 == 1")
+  code: filter([] \((_ % 2) == 1))
   want: []
 
 - name: Non-empty list
-  code: filter([1 2 3 5] "(x) -> x modulo 2 == 1")
+  code: filter([1 2 3 5] \((_ % 2) == 1))
   want:
   - 1
   - 3
@@ -84,11 +84,11 @@ test::
   want: 4
 
 - name: Empty list
-  code: map([] "(x) -> x + 1")
+  code: map([] inc)
   want: []
 
 - name: Non-empty list
-  code: map([1 3 5 7] "(x) -> x + 1")
+  code: map([1 3 5 7] inc)
   want:
   - 2
   - 4
@@ -96,51 +96,51 @@ test::
   - 8
 
 - name: Empty list
-  code: foldl([] 2 "(x, y) -> x * y")
+  code: foldl([] 2 mul)
   want: 2
 
 - name: Direction independent function applied to non-empty list
-  code: foldl([1 2 3 4] 5 "(x, y) -> x + y")
+  code: foldl([1 2 3 4] 5 add)
   want: 15
 
 - name: Direction dependent function applied to non-empty list
-  code: foldl([2 5] 5 "(x, y) -> x / y")
+  code: foldl([2 5] 5 quot)
   want: 0
 
 - name: Empty list
-  code: foldl([] 2 "(acc, el) -> el * acc")
+  code: foldl([] 2 mul)
   want: 2
 
 - name: Direction independent function applied to non-empty list
-  code: foldl([1 2 3 4] 5 "(acc, el) -> el + acc")
+  code: foldl([1 2 3 4] 5 add)
   want: 15
 
 - name: Direction dependent function applied to non-empty list
-  code: foldl([1 2 3 4] 24 "(acc, el) -> el / acc")
+  code: foldl([1 2 3 4] 24 \(/ %2 %1))
   want: 64
 
 - name: Empty list
-  code: foldr([] 2 "(x, y) -> x * y")
+  code: foldr([] 2 mul)
   want: 2
 
 - name: Direction independent function applied to non-empty list
-  code: foldr([1 2 3 4] 5 "(x, y) -> x + y")
+  code: foldr([1 2 3 4] 5 add)
   want: 15
 
 - name: Direction dependent function applied to non-empty list
-  code: foldr([2 5] 5 "(x, y) -> x / y")
+  code: foldr([2 5] 5 \(/ %2 %1))
   want: 2
 
 - name: Empty list
-  code: foldr([] 2 "(acc, el) -> el * acc")
+  code: foldr([] 2 mul)
   want: 2
 
 - name: Direction independent function applied to non-empty list
-  code: foldr([1 2 3 4] 5 "(acc, el) -> el + acc")
+  code: foldr([1 2 3 4] 5 add)
   want: 15
 
 - name: Direction dependent function applied to non-empty list
-  code: foldr([1 2 3 4] 24 "(acc, el) -> el / acc")
+  code: foldr([1 2 3 4] 24 \(/ %2 %1))
   want: 9
 
 - name: Empty list
