@@ -421,6 +421,14 @@
         "difficulty": 5
       },
       {
+        "slug": "two-bucket",
+        "name": "Two Bucket",
+        "uuid": "bc92b952-7aeb-4857-b8b9-3d9fddba0d04",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "largest-series-product",
         "name": "Largest Series Product",
         "uuid": "5718019d-844a-4c0d-8a92-38ae3d34f632",
@@ -435,14 +443,6 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 8
-      },
-      {
-        "slug": "two-bucket",
-        "name": "Two Bucket",
-        "uuid": "bc92b952-7aeb-4857-b8b9-3d9fddba0d04",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1
       }
     ]
   },
