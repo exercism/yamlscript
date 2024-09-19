@@ -26,18 +26,18 @@ test::
      B B 
       A  
 
-  name: Smallest non-degenerate case with even diamond side length
+- name: Smallest non-degenerate case with even diamond side length
   code: rows("D")
   want: |2
-        A   
-       B B  
-      C   C 
-     D     D
-      C   C 
-       B B  
-        A   
+       A   
+      B B  
+     C   C 
+    D     D
+     C   C 
+      B B  
+       A   
 
-  name: Largest possible diamond
+- name: Largest possible diamond
   code: rows("Z")
   want: |2
                              A                         
