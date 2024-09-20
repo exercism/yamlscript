@@ -3,12 +3,5 @@
 dict =:: { 3: Pling, 5: Plang, 7: Plong }
 
 defn convert(number):
-  words =:
-    reduce _ [] [3 5 7]:
-      fn(acc num):
-        concat acc:
-          when (number % num).!: -[dict.$num]
-
-  if words.?:
-    str: words*
-    str: number
+  words =: mapcat(\((number % _).! &&& dict.get(_)) [3 5 7])
+  if words.?: str(words*) str(number)
