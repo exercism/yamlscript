@@ -16,7 +16,7 @@ numeral-mapping =::
   1:    I
 
 defn roman(number):
-  when pos?(number):
+  when number.+?:
     -[part letter] =:
-      numeral-mapping.filter(\(_.0 <= number)).0
+      numeral-mapping.filter(\(_.^ <= number)).^
     str letter: roman(number - part)

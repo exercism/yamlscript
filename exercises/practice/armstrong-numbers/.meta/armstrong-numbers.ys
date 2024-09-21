@@ -1,4 +1,4 @@
 !yamlscript/v0
 
 defn is-armstrong-number(number):
-  number ==: map(\(_ ** str(number).#) digits(number)).sum()
+  number ==: map(\(_ ** number.>@.#) number.>@).@+

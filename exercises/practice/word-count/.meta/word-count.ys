@@ -2,5 +2,5 @@
 
 defn count-words(sentence):
   lc(sentence).split(/[^a-z0-9']+/)
-    .map(\(replace _, /(^'|'$)/, ''))
+    .map(\(replace _ /(^'|'$)/))
     .remove(empty?).frequencies()

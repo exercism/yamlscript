@@ -3,18 +3,15 @@
 defn encode(string):
   apply str:
     for part partition-by(a string):
-      str:
-        ((part.# > 1) &&& part.#)
-        part.0
+      str: part.#--.+?.and?(part.#) part.^
 
 defn decode(string):
   ? loop
-      [p1 p2 *parts]
-        re-seq(/\d+|[^\d]/ string)
+      [p1 p2 *parts] re-seq(/\d+|[^\d]/ string)
       val ''
   : if p1:
       if p1 =~ /\d/:
-        recur parts: "$val$(to-int(p1) * p2)"
+        recur parts: "$val$(p1.>I * p2)"
         recur cons(p2 parts): "$val$p1"
       else: val
 

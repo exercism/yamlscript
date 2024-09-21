@@ -1,7 +1,8 @@
 !yamlscript/v0
 
 defn rows(letter):
-  loop C letter.0, I (' ' * (((-64 + C) * 2) - 3)), O '', dmnd '':
+  ipad =: letter.^.>#.sub(64).mul(2).sub(3) * ' '
+  loop C letter.^, I ipad, O '', dmnd '':
     line =: if(I.? "$O$C$I$C$O\n" "$O$C$O\n")
     dmnd =: if(dmnd.? "$line$dmnd$line" line)
-    if I.?: recur(C.--, I.drop(2).join(), "$O ", dmnd), dmnd
+    if I.?: recur(C.--, I.drop(2).@$, "$O ", dmnd), dmnd

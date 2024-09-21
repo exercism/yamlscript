@@ -1,4 +1,3 @@
 !yamlscript/v0
 
-defn reverse(s):
-  str/reverse: s
+defn reverse(s): join(s.@<)

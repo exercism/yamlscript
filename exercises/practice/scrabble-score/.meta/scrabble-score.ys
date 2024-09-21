@@ -1,9 +1,9 @@
 !yamlscript/v0
 
 defn score(word):
-  uc(word).split().map(
+  word.uc().$@.map(
     S(1 'AEIOULNRST') + S(2 'DG') + S(3 'BCMP') +
     S(4 'FHVWY') + S(5 'K') + S(8 'JX') + S(10 'QZ')
-  ).sum()
+  ).@+
 
-defn S(score chars): zipmap(split(chars) repeat(score))
+defn S(score chars): zipmap(chars.$@ score.@*)

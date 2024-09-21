@@ -45,6 +45,6 @@ defn- do-withdraw(op):
 
 defn- get-amount(op):
   amount =: op.amount
-  if amount <= 0:
+  if amount.+!:
     die: 'amount must be greater than 0'
     else: amount

@@ -6,5 +6,5 @@ defn rows(count):
       conj tri:
         or _ [1]:
           when row > 1:
-            mapv _ (-1 .. (row - 2)):
-              \(to-num(get(last(tri) _)) + to-num(get(last(tri) _.++)))
+            mapv _ (-1 .. row.sub(2)):
+              \(tri.$.get(_).># + tri.$.get(_.++).>#)

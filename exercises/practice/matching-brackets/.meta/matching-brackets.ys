@@ -1,13 +1,13 @@
 !yamlscript/v0
 
-pairs =: seq('()[]{}').reverse().to-map()
-opening =: set(vals(pairs))
-closing =: set(keys(pairs))
+pairs =: -'()[]{}'.@<.>%
+opening =: vals(pairs).>{}
+closing =: keys(pairs).>{}
 
 defn is-paired(value):
   loop stack [], [char *chars] value:
     cond:
-      char.!: stack.!
+      char.~?: stack.#.0?
       opening(char):
         recur: conj(stack char) chars
       closing(char):

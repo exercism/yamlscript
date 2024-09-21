@@ -5,7 +5,7 @@ defn annotate(minefield):
   reduce-kv _ [] grid:
     fn(acc x row):
       height =: grid.#--
-      width =: grid.0.#--
+      width =: grid.^.#--
       conj acc:
         reduce-kv _ '' row:
           fn(acc y cell):
@@ -16,7 +16,7 @@ defn annotate(minefield):
                     ? for i (-1 .. 1) j (-1 .. 1)
                         :let [row (x + i), col (y + j)]
                     : to-num:
-                        ((i != 0) || (j != 0)) &&
+                        (i.0! || j.0!) &&
                         (0 <= row <= height) &&
                         (0 <= col <= width) &&
                         (grid.$row.$col == '*')

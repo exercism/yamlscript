@@ -35,8 +35,7 @@ defn turn-right(robot):
 
 defn turn-left(robot):
   create robot.position:
-    turn robot.direction: reverse(directions)
+    turn robot.direction: directions.@<
 
 defn turn(direction directions):
-  directions.mul+(2):
-    .drop-while(\(_ != direction)).second()
+  directions.@*.drop-while(\(_ != direction)).1

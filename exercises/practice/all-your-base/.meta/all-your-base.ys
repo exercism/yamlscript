@@ -7,21 +7,21 @@ defn rebase(input-base digits output-base):
   cond:
     input-base < 2: die('input base must be >= 2')
     output-base < 2: die('output base must be >= 2')
-    digits.some(neg?) || digits.some(\(_ >= input-base)):
+    digits.some(neg?) || digits.some(ge(input-base)):
       die: 'all digits must satisfy 0 <= d < input base'
 
-    digits.every?(zero?) || digits.! :: [0]
+    digits.every?(zero?) || digits.#.0? :: [0]
 
     else: digits
       .digits-to-decimal(input-base)
       .decimal-to-digits(output-base)
 
 defn digits-to-decimal(digits input-base):
-  reduce \((%1 * input-base) + %2): 0 digits
+  reduce \(%2 + %1.mul(input-base)): digits
 
 defn decimal-to-digits(number output-base):
   loop digits nil, num number:
-    if num > 0:
+    if num.+?:
       recur:
         conj: digits (num % output-base)
         quot: num output-base

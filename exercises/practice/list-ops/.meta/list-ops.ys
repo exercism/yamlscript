@@ -4,7 +4,7 @@ defn append(list1 list2):
   list1 + list2
 
 defn concat(lists):
-  lists.conj([]).clojure::core/concat(*)
+  lists.mapcat(a)
 
 defn filter(list function):
   list.filter(function)
@@ -16,13 +16,13 @@ defn map(list function):
   list.map(function)
 
 defn foldl(list initial function):
-  reduce function: initial list
+  list.reduce(function initial)
 
 defn foldr(list initial function):
-  if list.?:
-    function _ list.0:
-      foldr: rest(list) initial function
+  if list.#.+?:
+    function _ list.^:
+      foldr: list.^* initial function
     else: initial
 
 defn reverse(list):
-  clojure::core/reverse(list)
+  list.@<
