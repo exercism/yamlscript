@@ -1,11 +1,12 @@
 !yamlscript/v0
 
 defn primes(limit):
-  loop idx 2, primes ([nil nil] + range(2 limit.++)):
+  loop idx 2, primes ([nil nil] + (2 ... limit.++)):
     if idx < sqrt(limit):
       recur idx.++:
         if primes.$idx:
           map-indexed _ primes:
-            \(if ((_ >= sqr(idx)) && (_ % idx).!) nil %2)
+            fn(a b):
+              when (a < sqr(idx)) || (a % idx).?: b
           else: primes
-      primes: .remove(nil?)
+      filter a: primes

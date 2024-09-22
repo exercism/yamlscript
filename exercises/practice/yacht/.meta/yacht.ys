@@ -7,7 +7,7 @@ defn score(dice category):
 defn- do-yacht(dice): eq(dice*) && 50
 
 defn- same-number(n):
-  fn(dice): dice.filter(\(_ == n)).sum()
+  fn(dice): dice.filter(eq(n)):sum
 
 do-ones   =: same-number(1)
 do-twos   =: same-number(2)
@@ -18,17 +18,17 @@ do-sixes  =: same-number(6)
 
 defn- do-full-house(dice):
   freqs =: frequencies(dice)
-  when freqs.#.eq(2) && freqs.vals().has?(2):
-    sum(dice)
+  when freqs.#.eq(2) && freqs:vals.has?(2):
+    sum: dice
 
 defn- do-four-of-a-kind(dice):
-  freqs =: frequencies(dice).set/map-invert()
+  freqs =: frequencies(dice):V:reverse:M
   mul 4: freqs.get(4) || freqs.get(5) || 0
 
 defn- do-little-straight(dice):
-  dice.sort() == (1 .. 5) &&: 30
+  dice:sort == (1 .. 5) &&: 30
 
 defn- do-big-straight(dice):
-  dice.sort() == (2 .. 6) &&: 30
+  dice:sort == (2 .. 6) &&: 30
 
 defn- do-choice(dice): sum(dice)

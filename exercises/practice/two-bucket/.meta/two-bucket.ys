@@ -6,25 +6,25 @@ defn measure(bucket1 bucket2 goal start):
     goal == [0 bucket2 bucket1].$start:
       ret: 2 (start % 2).++ [0 bucket1 bucket2].$start
     else:
-      -[b1 b2] =:
+      b1 b2 =:
         if start == 1:
-          -[bucket1 bucket2] [bucket2 bucket1]
+          -[bucket1 bucket2]
+           [bucket2 bucket1]
       n =:
         keep-indexed \(when (== %2 goal) %1):
           if b1 < b2:
-            map \(_ % b2): range(b1 lcm(b1 b2).++ b1)
-            reverse:
-              map \(_ % b1): range(b2 lcm(b1 b2) b2)
+            range(b1 lcm(b1 b2).++ b1).map(\(_ % b2))
+            range(b2 lcm(b1 b2) b2).map(\(_ % b1)):reverse
       n |||: die('impossible')
       n =: n.0.++
       e =: int((min(b1 b2) * n) / max(b1 b2)) -
-           to-num(goal < b1 < b2)
+           (goal < b1 < b2):N
       moves =: 2 * (n + e)
       if goal < b1:
         ret: moves, start, b2
         ret: moves, 2, 0
 
-defn ret(moves goal other):
-  -{'moves' moves, 'goalBucket' goal, 'otherBucket' other}
 defn gcd(x y): if((x % y).? gcd(y (x % y)) y)
 defn lcm(x y): (x * y) / gcd(x y)
+defn ret(moves goal other):
+  -{'moves' moves, 'goalBucket' goal, 'otherBucket' other}
