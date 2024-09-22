@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn distance(strand1 strand2):
-  when strand1.# != strand2.#:
+  strand1.# == strand2.# ||:
     die: 'strands must be of equal length'
 
-  strand1: .map(ne _ strand2).filter(true?).#
+  len: map(ne strand1 strand2).filter(a)

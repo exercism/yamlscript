@@ -1,6 +1,6 @@
 !yamlscript/v0
 
-numeral-mapping =::
+rules =::
   1000: M
   900:  CM
   500:  D
@@ -16,7 +16,9 @@ numeral-mapping =::
   1:    I
 
 defn roman(number):
-  when pos?(number):
-    -[part letter] =:
-      numeral-mapping.filter(\(_.0 <= number)).0
+  when number > 0:
+    part letter =:
+      first:
+        filter _ rules:
+          le(number).comp(first)
     str letter: roman(number - part)

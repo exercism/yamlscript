@@ -1,22 +1,22 @@
 !yamlscript/v0
 
 defn clean(phrase):
-  numstr =: phrase.replace(/[^\d]/ '')
+  numstr =: phrase.replace(/[^\d]/)
 
-  when phrase.lc() =~ /[a-z]/: die('letters not permitted')
-  when phrase =~ /@/: die('punctuations not permitted')
+  phrase =~ /[a-z]/ &&: die('letters not permitted')
+  phrase.has?('@')  &&: die('punctuations not permitted')
+
   case numstr.#:
-    9:        die('must not be fewer than 10 digits')
-    range(8): die('incorrect number of digits')
-    11:
-      when numstr.0 != \\1: die('11 digits must start with 1')
-    else: nil
-  when numstr.# > 11: die('must not be greater than 11 digits')
+    0 .. 9: die('must not be fewer than 10 digits')
+    10: nil
+    11: (numstr.0 == \\1) || die('11 digits must start with 1')
+    else: die('must not be greater than 11 digits')
 
-  numstr .=: take-last(10).join()
+  numstr .=: take-last(10):join
+
   cond:
-    numstr =~ /^0/:  die('area code cannot start with zero')
-    numstr =~ /^1/:  die('area code cannot start with one')
+    numstr.0 == \\0: die('area code cannot start with zero')
+    numstr.0 == \\1: die('area code cannot start with one')
     numstr.3 == \\0: die('exchange code cannot start with zero')
     numstr.3 == \\1: die('exchange code cannot start with one')
     else: numstr

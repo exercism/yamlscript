@@ -1,7 +1,13 @@
 !yamlscript/v0
 
-dict =:: { 3: Pling, 5: Plang, 7: Plong }
-
 defn convert(number):
-  words =: mapcat(\((number % _).! &&& dict.get(_)) [3 5 7])
-  if words.?: str(words*) str(number)
+  ps =: M(3 'Pling' 5 'Plang' 7 'Plong')
+  words =:
+    mapcat _ [3 5 7]:
+      fn(n):
+        (number % n) == 0 &&&:
+          get ps: n
+
+  if words.?:
+    str(words*)
+    str(number)

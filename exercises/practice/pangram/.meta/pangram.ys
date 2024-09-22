@@ -1,5 +1,7 @@
 !yamlscript/v0
 
 defn is-pangram(sentence):
-  sentence.lc().replace(/[^a-z]/ '')
-          .sort().distinct().len().eq(26)
+  26 ==:
+    len: lc(sentence)
+           .replace(/[^a-z]/)
+           .distinct()

@@ -1,8 +1,12 @@
 !yamlscript/v0
 
-upper =: \\A .. \\Z
-lower =: \\a .. \\z
+UC =: \\A .. \\Z
+LC =: \\a .. \\z
 
-defn rotate(text shift-key): text
-  .str/escape(lower.zipmap(cycle(lower).drop(shift-key)))
-  .str/escape(upper.zipmap(cycle(upper).drop(shift-key)))
+defn rotate(text shift-key):
+  char-map =:
+    \(zipmap(_ drop(shift-key cycle(_))))
+
+  text:
+    .escape(char-map(UC))
+    .escape(char-map(LC))

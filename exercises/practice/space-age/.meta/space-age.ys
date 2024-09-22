@@ -17,4 +17,4 @@ defn age(planet seconds):
     die('not a planet')
 
   seconds / seconds-in-year / factor:
-    .mul(100).math/round().div(100)
+    .format('%.2f'):F

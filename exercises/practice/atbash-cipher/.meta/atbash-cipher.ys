@@ -4,8 +4,9 @@ dict =:
   zipmap (\\a .. \\z): \\z .. \\a
 
 defn encode(phrase):
-  lc(phrase).replace(/[^a-z0-9]/ '').str/escape(dict)
-  .partition(5 5 '').map(join).join(' ')
+  lc(phrase):
+    .replace(/[^a-z0-9]/).escape(dict)
+    .partition(5 5 '').map(join):joins
 
 defn decode(phrase):
-  phrase.replace(' ' '').str/escape(dict)
+  phrase.replace(' ').escape(dict)

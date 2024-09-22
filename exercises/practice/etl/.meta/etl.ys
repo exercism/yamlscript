@@ -3,4 +3,4 @@
 defn transform(legacy):
   into {}:
     for [score letters] legacy, letter letters:
-      vector: lc(letter) score.to-num()
+      V: lc(letter) score:N

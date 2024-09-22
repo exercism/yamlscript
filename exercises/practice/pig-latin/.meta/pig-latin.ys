@@ -1,13 +1,17 @@
 !yamlscript/v0
 
-trans =:
-  -{ /^([aeiou]|yt|xr).*/                   \(_.0 + 'ay')
-     /^(s?qu|thr|sch|[crst]h|[^aeiou])(.*)/ \("$(_.2)$(_.1)ay") }
+rules =::
+  ^(?:[aeiou]|yt|xr).*::
+    \(_ + 'ay')
+  ^(s?qu|thr|sch|[crst]h|[^aeiou])(.*)::
+    \("$(_.2)$(_.1)ay")
 
-defn translate(phrase): words(phrase).map(pig-latin).join(' ')
-
-defn pig-latin(word):
-  reduce-kv _ nil trans:
-    fn(trans regex function):
-      match =: word =~ regex
-      trans ||: match && function(match)
+defn translate(phrase):
+  join ' ':
+    map _ words(phrase):
+      fn(word):
+        reduce-kv _ nil rules:
+          fn(translated regex function):
+            match =: word =~ qr(regex)
+            translated ||:
+              match && function(match)

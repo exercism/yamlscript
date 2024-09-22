@@ -13,14 +13,13 @@ defn move(position direction instructions):
   : if instruction:
       recur instructions:
         case instruction:
-          \\A: robot.advance()
-          \\R: robot.turn-right()
-          \\L: robot.turn-left()
+          \\A: robot:advance
+          \\R: robot:turn-right
+          \\L: robot:turn-left
       else: robot
 
 defn advance(robot):
-  x =: robot.position.x
-  y =: robot.position.y
+  x y =: robot.position.slice(q(x y))
   d =: robot.direction
   create _ d:
     condp eq d:
@@ -39,4 +38,4 @@ defn turn-left(robot):
 
 defn turn(direction directions):
   directions.mul+(2):
-    .drop-while(\(_ != direction)).second()
+    .drop-while(ne(direction)).1

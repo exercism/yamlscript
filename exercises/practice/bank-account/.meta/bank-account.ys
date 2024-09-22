@@ -32,19 +32,19 @@ defn- do-balance(op):
 defn- do-deposit(op):
   when-not deref(account):
     die: 'account not open'
-  swap! account +: op.get-amount()
+  swap! account +: op:get-amount
 
 defn- do-withdraw(op):
   balance =: deref(account)
   when-not balance:
     die: 'account not open'
-  amount =: op.get-amount()
+  amount =: op:get-amount
   when amount > balance:
     die: 'amount must be less than balance'
   swap! account -: amount
 
 defn- get-amount(op):
   amount =: op.amount
-  if amount <= 0:
+  if amount < 0:
     die: 'amount must be greater than 0'
     else: amount

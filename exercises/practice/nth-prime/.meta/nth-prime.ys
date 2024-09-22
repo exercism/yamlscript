@@ -8,7 +8,8 @@ defn- lazy-primes(d=2 table={}):
     recur d.++:
       reduce _ table.dissoc(d) factors:
         \(update-in(%1 [(%2 + d)] conj %2))
+
     lazy-seq:
       cons d:
         lazy-primes d.++:
-          table.assoc(sqr(d) [d])
+          assoc table: sqr(d) [d]

@@ -2,6 +2,6 @@
 
 defn egg-count(number):
   loop num number, eggs 0:
-    if num.?:
-      recur: quot(num 2), (eggs + (num % 2))
-      else: eggs + num
+    if num > 0:
+      recur: quot(num 2), eggs.add(num % 2)
+      else: eggs
