@@ -1,3 +1,4 @@
 !yamlscript/v0
 
-defn is-leap-year(year): nil
+defn leap-year(year):
+  # Implement the 'leap-year' function.

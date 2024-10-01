@@ -1,6 +1,6 @@
 !yamlscript/v0
 
-defn is-leap-year(year):
+defn leap-year(year):
   (year % 4):zero? &&:
     (year % 100):pos? ||:
       (year % 400):zero?
