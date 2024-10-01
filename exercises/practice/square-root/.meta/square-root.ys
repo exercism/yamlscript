@@ -2,6 +2,6 @@
 
 defn square-root(radicand):
   loop n 0:
-    if (n * n) != radicand:
-      recur: n + 1
+    if sqr(n) != radicand:
+      recur: n.++
       else: n

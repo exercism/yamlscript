@@ -5,12 +5,3 @@ defn create(position direction):
 
 defn move(position direction instructions):
   # Implement the 'move' function.
-
-defn move(position direction instructions):
-  # Implement the 'move' function.
-
-defn move(position direction instructions):
-  # Implement the 'move' function.
-
-defn move(position direction instructions):
-  # Implement the 'move' function.

@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn value(colors):
+  # Implement the 'value' function.

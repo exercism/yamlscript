@@ -2,9 +2,12 @@
 
 defn largest-product(digits span):
   cond:
-    span < 0:           die('span must not be negative')
-    span > digits.#:    die('span must be smaller than string length')
-    digits =~ /[^0-9]/: die('digits input must only contain digits')
-    else: digits.split('').map(to-num)
-                .partition(span 1)
-                .map(\(_.mul(*))).max(*)
+    span < 0          : die('span must not be negative')
+    span > digits.#   : die('span must be smaller than string length')
+    digits =~ /[^\d]/ : die('digits input must only contain digits')
+
+  digits.split(''):
+    .map(to-num)
+    .partition(span 1)
+    .map(\(_.mul(*)))
+    .max(*)

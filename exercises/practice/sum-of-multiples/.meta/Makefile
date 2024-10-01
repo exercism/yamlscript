@@ -2,7 +2,7 @@ SHELL := bash
 
 BASE := $(shell pwd)
 
-export YS_VERSION := 0.1.76
+export YS_VERSION := 0.1.79
 
 YS_LOCAL_PREFIX := ../../../../.local/v$(YS_VERSION)
 

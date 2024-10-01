@@ -1,11 +1,11 @@
 !yamlscript/v0
 
 defn steps(number):
-  when-not pos?(number):
-    die('Only positive integers are allowed')
+  number > 0 ||:
+    die: 'Only positive integers are allowed'
 
   loop num number, steps 0:
     cond:
-      num == 1:   steps
-      even?(num): recur((num / 2), steps.++)
-      else:       recur((num * 3).++, steps.++)
+      num.eq(1) : steps
+      num:even? : recur(num.div(2), steps.++)
+      else      : recur(num.mul(3).++, steps.++)

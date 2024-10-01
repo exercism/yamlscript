@@ -1,4 +1,5 @@
 !yamlscript/v0
 
 defn sum(factors limit):
-  factors.mapcat(\(when(_.? range(_ limit _))) _).distinct().std/sum()
+  f =: \(_ &&& range(_ limit _))
+  factors: .mapcat(f):distinct:std/sum
