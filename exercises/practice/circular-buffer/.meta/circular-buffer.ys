@@ -4,29 +4,28 @@ defn run(capacity operations):
   buffer =: M(:B V(capacity * [nil]), :P 0)
   reduce _ buffer operations:
     fn(buffer op):
-      when op:
-        op item pass want =:
-          op.slice('operation' 'item'
-                   'should_succeed' 'expected')
-        args =:
-          condp eq op:
-            -'clear'     : -[buffer]
-            -'read'      : L(buffer pass want)
-            -'write'     : L(buffer pass item)
-            -'overwrite' : L(buffer pass item)
-        value("op-$op"): args*
+      op item pass want =:
+        op.slice('operation' 'item'
+                 'should_succeed' 'expected')
+      args =:
+        condp eq op:
+          -'clear'     : -[buffer]
+          -'read'      : L(buffer pass want)
+          -'write'     : L(buffer pass item)
+          -'overwrite' : L(buffer pass item)
+      value("op-$op"): args*
   =>: true
 
 defn op-clear(buffer):
   M: :B V(buffer.B.# * [nil]) :P 0
 
 defn op-read(buffer pass want):
+  cell =: buffer.B.nth(buffer.P)
   when pass:
-    when buffer.B.nth(buffer.P) == nil:
+    when cell:nil?:
       die: S("Can't read:\ " buffer)
-    when buffer.B.nth(buffer.P) != want:
-      die: "Bad read:\ $(buffer.B.nth(buffer.P))
-            != $want ($buffer)"
+    when cell != want:
+      die: "Bad read:\ $cell != $want ($buffer)"
   M: :B update-in(buffer.B [buffer.P] constantly(nil))
      :P (buffer.P.++ % buffer.B.#)
 
@@ -34,13 +33,11 @@ defn op-write(buffer pass item):
   B P =: buffer.slice(q(B P))
   I =:
     reduce _ nil concat(range(P B.#) range(0 P)):
-      fn(idx i):
-        idx ||: not(B.$i) && i
+      fn(idx i): idx || (not(B.$i) && i)
 
   if I:
     update-in: buffer [:B I] constantly(item)
-    when pass:
-      die: 'Full buffer'
+    when pass: die('Full buffer')
 
 defn op-overwrite(buffer pass item):
   if some(nil? buffer.B):
