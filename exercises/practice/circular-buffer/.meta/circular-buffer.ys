@@ -2,20 +2,19 @@
 
 defn run(capacity operations):
   buffer =: M(:B V(capacity * [nil]), :P 0)
-  loop [op *ops] operations, buffer buffer:
-    when op:
-      op item pass want =:
-        op.slice('operation' 'item'
-                 'should_succeed' 'expected')
-      args =:
-        condp eq op:
-          -'clear': -[buffer]
-          -'read': L(buffer pass want)
-          -'write': L(buffer pass item)
-          -'overwrite': L(buffer pass item)
-      buffer =: (value("op-$op") args*)
-      recur: ops buffer
-
+  reduce _ buffer operations:
+    fn(buffer op):
+      when op:
+        op item pass want =:
+          op.slice('operation' 'item'
+                   'should_succeed' 'expected')
+        args =:
+          condp eq op:
+            -'clear'     : -[buffer]
+            -'read'      : L(buffer pass want)
+            -'write'     : L(buffer pass item)
+            -'overwrite' : L(buffer pass item)
+        value("op-$op"): args*
   =>: true
 
 defn op-clear(buffer):
