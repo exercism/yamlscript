@@ -4,28 +4,6 @@ require ys::taptest: :all
 
 use: circular-buffer
 
-# In general, these circular buffers are expected to be stateful,
-# and each language will operate on them differently.
-# Tests tend to perform a series of operations, some of which expect a certain result.
-# As such, this common test suite can only say in abstract terms what should be done.
-# 
-# Tests will contain a number of operations. The operation will be specified in the `operation` key.
-# Based on the operation, other keys may be present.
-# read: Reading from the buffer should succeed if and only if `should_succeed` is true.
-# If it should succeed, it should produce the item at `expected`.
-# If it should fail, `expected` will not be present.
-# write: Writing the item located at `item` should succeed if and only if `should_succeed` is true.
-# overwrite: Write the item located at `item` into the buffer, replacing the oldest item if necessary.
-# clear: Clear the buffer.
-# 
-# Failure of either `read` or `write` may be indicated in a manner appropriate for your language:
-# Raising an exception, returning (int, error), returning Option<int>, etc.
-# 
-# Finally, note that all values are integers.
-# If your language contains generics, you may consider allowing buffers to contain other types.
-# Tests for that are not included here.
-
-
 test::
 - name: Reading empty buffer should fail
   code: run(1 [{"operation" "read", "should_succeed" false}])

@@ -67,12 +67,6 @@ test::
 - name: Rejects negative span
   code: largest-product("12345" -1)
   what: error
-  # want: span must be greater than zero
   want: span must not be negative
 
-- name: Rejects negative span
-  code: largest-product("12345" -1)
-  what: error
-  want: span must not be negative
-
-done: 16
+done: 15

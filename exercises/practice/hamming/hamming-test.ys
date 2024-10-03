@@ -28,18 +28,6 @@ test::
 - name: Disallow first strand longer
   code: distance("AATG" "AAA")
   what: error
-  # want: left and right strands must be of equal length
-  want: strands must be of equal length
-
-- name: Disallow first strand longer
-  code: distance("AATG" "AAA")
-  what: error
-  want: strands must be of equal length
-
-- name: Disallow second strand longer
-  code: distance("ATA" "AGTG")
-  what: error
-  # want: left and right strands must be of equal length
   want: strands must be of equal length
 
 - name: Disallow second strand longer
@@ -50,13 +38,6 @@ test::
 - name: Disallow left empty strand
   code: distance("" "G")
   what: error
-  # want: left strand must not be empty
-  want: strands must be of equal length
-
-- name: Disallow left empty strand
-  code: distance("" "G")
-  what: error
-  # want: left and right strands must be of equal length
   want: strands must be of equal length
 
 - name: Disallow empty first strand
@@ -67,13 +48,6 @@ test::
 - name: Disallow right empty strand
   code: distance("G" "")
   what: error
-  # want: right strand must not be empty
-  want: strands must be of equal length
-
-- name: Disallow right empty strand
-  code: distance("G" "")
-  what: error
-  # want: left and right strands must be of equal length
   want: strands must be of equal length
 
 - name: Disallow empty second strand
@@ -81,4 +55,4 @@ test::
   what: error
   want: strands must be of equal length
 
-done: 15
+done: 11
