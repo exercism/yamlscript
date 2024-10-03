@@ -18,9 +18,7 @@ test::
   want: 13
 
 - name: Big prime
-  # code: prime(10001)  # Takes 200 ms
-  # want: 104743
-  code: prime(1001)
-  want: 7927
+  code: prime(10001)
+  want: 104743
 
 done: 4

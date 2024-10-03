@@ -81,14 +81,7 @@ test::
 - name: Rejects negative span
   code: largest-product("12345" -1)
   what: error
-  # want: span must be greater than zero
-  want: span must not be negative
-  uuid: 5fe3c0e5-a945-49f2-b584-f0814b4dd1ef
-
-- name: Rejects negative span
-  code: largest-product("12345" -1)
-  what: error
   want: span must not be negative
   uuid: c859f34a-9bfe-4897-9c2f-6d7f8598e7f0
 
-done: 16
+done: 15

@@ -4,10 +4,6 @@ require ys::taptest: :all
 
 use: list-ops
 
-# Though there are no specifications here for dealing with large lists,
-# implementers may add tests for handling large lists to ensure that the
-# solutions have thought about performance concerns.
-
 test::
 - name: Empty lists
   code: append([] [])

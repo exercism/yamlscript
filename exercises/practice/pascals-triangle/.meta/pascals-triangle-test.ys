@@ -4,9 +4,6 @@ require ys::taptest: :all
 
 use: pascals-triangle
 
-# Expectations are represented here as an array of arrays.
-# How you represent this idiomatically in your language is up to you.
-
 test::
 - name: Zero rows
   code: rows(0)
