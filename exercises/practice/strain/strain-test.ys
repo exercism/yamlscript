@@ -6,7 +6,7 @@ use: strain
 
 test::
 - name: Keep on empty list returns empty list
-  code: 'keep([] "fn([x] true)")'
+  code: keep([] "fn([x] true)")
   want: []
 
 - name: Keeps everything
