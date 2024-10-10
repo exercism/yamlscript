@@ -239,6 +239,13 @@ exercises:
     prerequisites: []
     difficulty: 2
 
+  - slug: strain
+    name: Strain
+    uuid: 1306a71c-5ddb-4421-a119-c4b5f2f38efe
+    practices: []
+    prerequisites: []
+    difficulty: 2
+
   - slug: triangle
     name: Triangle
     uuid: 494f403b-3bd7-47f1-a866-d07e9faea677

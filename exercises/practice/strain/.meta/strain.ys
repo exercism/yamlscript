@@ -1,0 +1,7 @@
+!yamlscript/v0
+
+defn keep(list predicate):
+  filter eval(predicate): list
+
+defn discard(list predicate):
+  remove eval(predicate): list
