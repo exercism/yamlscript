@@ -1,0 +1,13 @@
+!yamlscript/v0
+
+defn spiral-matrix:
+  (size):
+    if size.?: spiral-matrix(1 size size) []
+  (n x y):
+    row =: -[range(x).map(add(n))]
+    if y != 1:
+      spiral-matrix((x + n) y.-- x):
+        .apply(map vector _)
+        .map(reverse)
+        .concat(row _)
+      else: row

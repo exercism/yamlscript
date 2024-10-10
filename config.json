@@ -405,6 +405,14 @@
         "difficulty": 4
       },
       {
+        "slug": "spiral-matrix",
+        "name": "Spiral Matrix",
+        "uuid": "c56d7d28-2857-4237-9d4c-997af386ed17",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "all-your-base",
         "name": "All Your Base",
         "uuid": "8dec480c-3ece-4f1c-9b87-d14e52f50db6",

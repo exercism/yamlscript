@@ -1,0 +1,87 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: spiral-matrix
+
+test::
+- name: Empty spiral
+  code: spiral-matrix(0)
+  want: []
+
+- name: Trivial spiral
+  code: spiral-matrix(1)
+  want:
+  - - 1
+
+- name: Spiral of size 2
+  code: spiral-matrix(2)
+  want:
+  - - 1
+    - 2
+  - - 4
+    - 3
+
+- name: Spiral of size 3
+  code: spiral-matrix(3)
+  want:
+  - - 1
+    - 2
+    - 3
+  - - 8
+    - 9
+    - 4
+  - - 7
+    - 6
+    - 5
+
+- name: Spiral of size 4
+  code: spiral-matrix(4)
+  want:
+  - - 1
+    - 2
+    - 3
+    - 4
+  - - 12
+    - 13
+    - 14
+    - 5
+  - - 11
+    - 16
+    - 15
+    - 6
+  - - 10
+    - 9
+    - 8
+    - 7
+
+- name: Spiral of size 5
+  code: spiral-matrix(5)
+  want:
+  - - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  - - 16
+    - 17
+    - 18
+    - 19
+    - 6
+  - - 15
+    - 24
+    - 25
+    - 20
+    - 7
+  - - 14
+    - 23
+    - 22
+    - 21
+    - 8
+  - - 13
+    - 12
+    - 11
+    - 10
+    - 9
+
+done: 6

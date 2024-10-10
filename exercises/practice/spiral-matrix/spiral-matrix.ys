@@ -1,0 +1,4 @@
+!yamlscript/v0
+
+defn spiral-matrix(size):
+  # Implement the 'spiral-matrix' function.
