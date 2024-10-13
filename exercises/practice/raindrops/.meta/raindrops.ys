@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn convert(number):
-  ps =: M(3 'Pling' 5 'Plang' 7 'Plong')
+  ps =: -{3 'Pling' 5 'Plang' 7 'Plong'}
   words =:
     mapcat _ [3 5 7]:
       fn(n):

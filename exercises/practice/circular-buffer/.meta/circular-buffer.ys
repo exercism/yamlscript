@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn run(capacity operations):
-  buffer =: M(:B V(capacity * [nil]), :P 0)
+  buffer =: -{:B V(capacity * [nil]), :P 0}
   reduce _ buffer operations:
     fn(buffer op):
       op item pass want =:
@@ -10,14 +10,14 @@ defn run(capacity operations):
       args =:
         condp eq op:
           -'clear'     : -[buffer]
-          -'read'      : L(buffer pass want)
-          -'write'     : L(buffer pass item)
-          -'overwrite' : L(buffer pass item)
+          -'read'      : -[buffer pass want]
+          -'write'     : -[buffer pass item]
+          -'overwrite' : -[buffer pass item]
       value("op-$op"): args*
   =>: true
 
 defn op-clear(buffer):
-  M: :B V(buffer.B.# * [nil]) :P 0
+  hash-map: :B V(buffer.B.# * [nil]) :P 0
 
 defn op-read(buffer pass want):
   cell =: buffer.B.nth(buffer.P)
@@ -26,8 +26,9 @@ defn op-read(buffer pass want):
       die: S("Can't read:\ " buffer)
     when cell != want:
       die: "Bad read:\ $cell != $want ($buffer)"
-  M: :B update-in(buffer.B [buffer.P] constantly(nil))
-     :P (buffer.P.++ % buffer.B.#)
+  hash-map:
+    :B update-in(buffer.B [buffer.P] constantly(nil))
+    :P (buffer.P.++ % buffer.B.#)
 
 defn op-write(buffer pass item):
   B P =: buffer.slice(q(B P))

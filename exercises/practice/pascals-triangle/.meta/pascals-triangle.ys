@@ -7,5 +7,5 @@ defn rows(count):
         or _ [1]:
           when row > 1:
             mapv _ (-1 .. row.sub(2)):
-              \(last(tri).get(_):N.or(0) +
-                last(tri).get(_.++):N.or(0))
+              \(last(tri).get(_ 0):N +
+                last(tri).get(_.++).or(0):N)

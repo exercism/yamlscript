@@ -1,6 +1,6 @@
 !yamlscript/v0
 
-account =: atom(nil)
+account =: nil:A
 
 defn reset-test-state():
   reset! account: nil
@@ -14,28 +14,28 @@ defn bank-account(operations):
         .call(operation)
 
 defn- do-open(op):
-  when deref(account):
+  when account:D:
     die: 'account already open'
   reset! account: 0
 
 defn- do-close(op):
-  when-not deref(account):
+  when-not account:D:
     die: 'account not open'
   reset! account: nil
 
 defn- do-balance(op):
-  balance =: deref(account)
+  balance =: account:D
   if-not balance:
     die: 'account not open'
     else: balance
 
 defn- do-deposit(op):
-  when-not deref(account):
+  when-not account:D:
     die: 'account not open'
   swap! account +: op:get-amount
 
 defn- do-withdraw(op):
-  balance =: deref(account)
+  balance =: account:D
   when-not balance:
     die: 'account not open'
   amount =: op:get-amount
