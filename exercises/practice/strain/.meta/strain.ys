@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn keep(list predicate):
-  filter eval(predicate): list
+  mapcat \(when(predicate(_) [_])): list
 
 defn discard(list predicate):
-  remove eval(predicate): list
+  mapcat \(when-not(predicate(_) [_])): list
