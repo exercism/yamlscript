@@ -11,30 +11,21 @@ barn =::
 - horse: She's dead, of course!
 
 defn recite(start-verse end-verse):
-  drop-last:
-    reduce: add-verse [] (start-verse.-- .. end-verse.--)
+  reduce(add-verse [] (start-verse.-- .. end-verse.--)):drop-last
 
 defn add-verse(lines verse):
   animal =: barn.$verse.first().0
-  lines =:
-    conj lines:
-      -"I know an old lady who swallowed a $animal."
-      barn.$verse.first().1
-  lines =:
-    if 0 < verse < barn.#.--:
-      conj _ barn.0:first.1:
-        reduce _ lines (verse .. 1):
-          fn(lines verse):
-            lines =:
-              animal1 animal2 =:
-                L(barn.$verse.first().0
-                barn.nth(verse.--):first.0)
-              line =: "She swallowed the $animal1 to catch the $animal2."
-              line =:
-                if animal2 == 'spider':
-                  replace(line /\./ replace(barn.1:first.1 /It/ ' that'))
-                  line
-              conj lines: line
-            =>: lines
-      =>: lines
-  conj lines: ''
+  lines .=: conj("I know an old lady who swallowed a $animal.")
+  lines .=: conj(barn.$verse.first().1)
+  conj _ '':
+    or _ lines:
+      when 0 < verse < barn.#.--:
+        conj _ barn.0:first.1:
+          reduce _ lines (verse .. 1):
+            fn(lines verse):
+              conj lines:
+                animal1 =: barn.$verse.first().0
+                animal2 =: barn.nth(verse.--):first.0
+                S("She swallowed the $animal1 to catch the $animal2."):
+                  .call(fn([s] if((animal2 != 'spider') s
+                   replace(s /\./ replace(barn.1:first.1 /It/ ' that'))))_)

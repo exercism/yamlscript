@@ -1,6 +1,5 @@
 !yamlscript/v0
 
-
 colors =:
   zipmap _ range():
     qw(black brown red orange yellow
