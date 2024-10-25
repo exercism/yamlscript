@@ -4,13 +4,11 @@ defn classify(number):
   when number <= 0:
     die: 'Classification is only possible for positive integers.'
 
-  case compare(sum-of-divisors(number), number):
+  sum-of-divisors =:
+    sum:
+      for n range(1 quot(number 2).++) :when (number % n).!: n
+
+  case compare(sum-of-divisors, number):
     0  :: perfect
     1  :: abundant
     -1 :: deficient
-
-defn sum-of-divisors(number):
-  sum:
-    ? for n range(1 quot(number 2).++)
-        :when (number % n).eq(0)
-    : n
