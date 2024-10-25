@@ -7,4 +7,3 @@ colors =:
 
 defn value([c1 c2]):
   colors.$c1 * 10 +: colors.$c2
-

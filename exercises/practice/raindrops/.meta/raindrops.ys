@@ -4,10 +4,6 @@ defn convert(number):
   ps =: M(3 'Pling' 5 'Plang' 7 'Plong')
   words =:
     mapcat _ [3 5 7]:
-      fn(n):
-        (number % n) == 0 &&&:
-          get ps: n
+      fn(n): number.rem(n).! &&& ps.$n
 
-  if words.?:
-    str(words*)
-    str(number)
+  if words.?: str(words*) str(number)
