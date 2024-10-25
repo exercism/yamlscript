@@ -1,0 +1,96 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: prime-factors
+
+test::
+- name: No factors
+  code: factors(1)
+  want: []
+  uuid: 924fc966-a8f5-4288-82f2-6b9224819ccd
+
+- name: Prime number
+  code: factors(2)
+  want:
+  - 2
+  uuid: 17e30670-b105-4305-af53-ddde182cb6ad
+
+- name: Another prime number
+  code: factors(3)
+  want:
+  - 3
+  uuid: 238d57c8-4c12-42ef-af34-ae4929f94789
+
+- name: Square of a prime
+  code: factors(9)
+  want:
+  - 3
+  - 3
+  uuid: f59b8350-a180-495a-8fb1-1712fbee1158
+
+- name: Product of first prime
+  code: factors(4)
+  want:
+  - 2
+  - 2
+  uuid: 756949d3-3158-4e3d-91f2-c4f9f043ee70
+
+- name: Cube of a prime
+  code: factors(8)
+  want:
+  - 2
+  - 2
+  - 2
+  uuid: bc8c113f-9580-4516-8669-c5fc29512ceb
+
+- name: Product of second prime
+  code: factors(27)
+  want:
+  - 3
+  - 3
+  - 3
+  uuid: 7d6a3300-a4cb-4065-bd33-0ced1de6cb44
+
+- name: Product of third prime
+  code: factors(625)
+  want:
+  - 5
+  - 5
+  - 5
+  - 5
+  uuid: 073ac0b2-c915-4362-929d-fc45f7b9a9e4
+
+- name: Product of first and second prime
+  code: factors(6)
+  want:
+  - 2
+  - 3
+  uuid: 6e0e4912-7fb6-47f3-a9ad-dbcd79340c75
+
+- name: Product of primes and non-primes
+  code: factors(12)
+  want:
+  - 2
+  - 2
+  - 3
+  uuid: 00485cd3-a3fe-4fbe-a64a-a4308fc1f870
+
+- name: Product of primes
+  code: factors(901255)
+  want:
+  - 5
+  - 17
+  - 23
+  - 461
+  uuid: 02251d54-3ca1-4a9b-85e1-b38f4b0ccb91
+
+- name: Factors include a large prime
+  code: factors(93819012551)
+  want:
+  - 11
+  - 9539
+  - 894119
+  uuid: 070cf8dc-e202-4285-aa37-8d775c9cd473
+
+done: 12

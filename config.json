@@ -69,6 +69,14 @@
         "difficulty": 1
       },
       {
+        "slug": "prime-factors",
+        "name": "Prime Factors",
+        "uuid": "9cc8f9a8-66c4-44e2-ad9d-c9ca4efa9dfc",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "resistor-color",
         "name": "Resistor Color",
         "uuid": "edb17966-2a6c-47c8-ac65-d66b00deb97b",

@@ -1,0 +1,84 @@
+#!/usr/bin/env ys-0
+
+require ys::taptest: :all
+
+use: prime-factors
+
+test::
+- name: No factors
+  code: factors(1)
+  want: []
+
+- name: Prime number
+  code: factors(2)
+  want:
+  - 2
+
+- name: Another prime number
+  code: factors(3)
+  want:
+  - 3
+
+- name: Square of a prime
+  code: factors(9)
+  want:
+  - 3
+  - 3
+
+- name: Product of first prime
+  code: factors(4)
+  want:
+  - 2
+  - 2
+
+- name: Cube of a prime
+  code: factors(8)
+  want:
+  - 2
+  - 2
+  - 2
+
+- name: Product of second prime
+  code: factors(27)
+  want:
+  - 3
+  - 3
+  - 3
+
+- name: Product of third prime
+  code: factors(625)
+  want:
+  - 5
+  - 5
+  - 5
+  - 5
+
+- name: Product of first and second prime
+  code: factors(6)
+  want:
+  - 2
+  - 3
+
+- name: Product of primes and non-primes
+  code: factors(12)
+  want:
+  - 2
+  - 2
+  - 3
+
+- name: Product of primes
+  code: factors(901255)
+  want:
+  - 5
+  - 17
+  - 23
+  - 461
+
+- name: Factors include a large prime
+  code: factors(93819012551)
+  want:
+  - 11
+  - 9539
+  - 894119
+
+done: 12

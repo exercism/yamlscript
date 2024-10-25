@@ -1,0 +1,8 @@
+!yamlscript/v0
+
+defn factors(value):
+  or _ []:
+    when value >= 2:
+      divisor =: range(2 (value / 2).++)
+        .filter(\((value % _) == 0)):first || value
+      into [divisor]: factors(quot(value divisor))
