@@ -10,7 +10,6 @@
       "grains-test.ys",
       "GNUmakefile",
       "Makefile",
-      ".yamlscript/exercise.mk",
       ".yamlscript/exercism-ys-installer"
     ],
     "example": [
