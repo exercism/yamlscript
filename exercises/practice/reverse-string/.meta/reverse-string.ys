@@ -1,7 +1,4 @@
 !yamlscript/v0
 
 defn reverse(s):
-  loop s s, r '':
-    if s.?:
-      recur: rest(s) "$first(s)$r"
-      else: r
+  reduce \(%2 + %1) '': s
