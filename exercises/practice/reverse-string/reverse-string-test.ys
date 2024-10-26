@@ -1,5 +1,14 @@
 #!/usr/bin/env ys-0
 
+
+# Disallow ys::std/reverse
+defn reverse(*):
+  die: "Using the builtin 'reverse' function is disallowed for this exercise."
+intern \'ys::std \'reverse: reverse
+intern \'clojure::core \'reverse: reverse
+ns-unmap \'clojure::string: \'reverse
+
+
 require ys::taptest: :all
 
 use: reverse-string
