@@ -14,7 +14,7 @@ defn run(capacity operations):
           -'write'     : L(buffer pass item)
           -'overwrite' : L(buffer pass item)
       value("op-$op"): args*
-  =>: true
+  =>: -{}
 
 defn op-clear(buffer):
   M: :B V(buffer.B.# * [nil]) :P 0
