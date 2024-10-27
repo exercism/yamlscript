@@ -1,11 +1,5 @@
 !yamlscript/v0
 
 defn rows(count):
-  reduce _ [] range(1 count.++):
-    fn(tri row):
-      conj tri:
-        or _ [1]:
-          when row > 1:
-            mapv _ (-1 .. row.sub(2)):
-              \(last(tri).get(_):N.or(0) +
-                last(tri).get(_.++):N.or(0))
+  \(mapv + _.cons(0) _.conj(0))
+    .iterate([1]).take(count)

@@ -3,5 +3,4 @@
 defn distance(strand1 strand2):
   strand1.# == strand2.# ||:
     die: 'strands must be of equal length'
-
-  len: map(ne strand1 strand2).filter(a)
+  sum: map(ne strand1 strand2).map(N)

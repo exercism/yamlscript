@@ -1,13 +1,8 @@
 !yamlscript/v0
 
 defn rows(letter):
-  ipad =:
-    letter.0:N.sub(64).mul(2).sub(3) * ' '
-
-  loop C letter.0, I ipad, O '', dmnd '':
-    line =: I.?.if("$O$C$I$C$O\n" "$O$C$O\n")
-    dmnd =: dmnd.?.if("$line$dmnd$line" line)
-
-    if I.?:
-      recur: C.--, I.chop(2), "$O ", dmnd
-      else: dmnd
+  a l n mirror =: -[\\A letter "\n" \(_ + _:chop:reverse)]
+  join:
+    mirror:
+      for c (\\A .. l.0):
+        mirror("$(' ' * (l.0 - c))$c$(' ' * (c - a))") + n

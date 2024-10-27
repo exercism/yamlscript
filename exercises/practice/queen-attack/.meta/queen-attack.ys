@@ -1,20 +1,17 @@
 !yamlscript/v0
 
 defn create(queen):
-  r c =: queen.position.map(qw(row column))
-
+  row col =: queen.position.map(qw(row column))
   cond:
-    r < 0 : die('row not positive')
-    r > 7 : die('row not on board')
-    c < 0 : die('column not positive')
-    c > 7 : die('column not on board')
-    else  : 0
+    row < 0 : die('row not positive')
+    row > 7 : die('row not on board')
+    col < 0 : die('column not positive')
+    col > 7 : die('column not on board')
+    else    : 0
 
 defn can-attack(white-queen black-queen):
-  w-r w-c =: white-queen.position.slice(q(row column))
-  b-r b-c =: black-queen.position.slice(q(row column))
-
-  or:
-    w-r ==: b-r
-    w-c ==: b-c
-    abs(w-r - b-r) ==: abs(w-c - b-c)
+  x =: white-queen.position.row -
+       black-queen.position.row
+  y =: white-queen.position.column -
+       black-queen.position.column
+  (x.! || y.!) ||: x:abs == y:abs

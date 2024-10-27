@@ -1,20 +1,16 @@
 !yamlscript/v0
 
-factors =::
-  Mercury : 0.2408467
-  Venus   : 0.61519726
-  Earth   : 1.0
-  Mars    : 1.8808158
-  Jupiter : 11.862615
-  Saturn  : 29.447498
-  Uranus  : 84.016846
-  Neptune : 164.79132
-
-seconds-in-year =: 365.25 * 24 * 60 * 60
+s =: 365.25 * 24 * 60 * 60
+planets =::
+  Mercury :: s * 0.2408467
+  Venus   :: s * 0.61519726
+  Earth   :: s * 1.0
+  Mars    :: s * 1.8808158
+  Jupiter :: s * 11.862615
+  Saturn  :: s * 29.447498
+  Uranus  :: s * 84.016846
+  Neptune :: s * 164.79132
 
 defn age(planet seconds):
-  factor =: factors.$planet ||
-    die('not a planet')
-
-  seconds / seconds-in-year / factor:
+  seconds.div(planets.$planet.or(die('not a planet')))
     .format('%.2f'):F

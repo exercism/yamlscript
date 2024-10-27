@@ -1,12 +1,10 @@
 !yamlscript/v0
 
-dict =:
-  zipmap (\\a .. \\z): \\z .. \\a
-
 defn encode(phrase):
-  lc(phrase):
-    .replace(/[^a-z0-9]/).escape(dict)
+  lc(phrase):decode:
+    .replace(/[^a-z0-9]/)
     .partition(5 5 '').map(join):joins
 
 defn decode(phrase):
-  phrase.replace(' ').escape(dict)
+  m =: (\\a .. \\z).zipmap(\\z .. \\a)
+  phrase: .replace(' ').escape(m)

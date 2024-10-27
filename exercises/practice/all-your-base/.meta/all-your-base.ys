@@ -1,28 +1,12 @@
 !yamlscript/v0
 
-defn rebase(input-base digits output-base):
-  :: Converts a sequence of digits given in input-base
-     into a sequence of digits in the desired output-base.
+defn rebase(input digits output):
+  when input < 2: die('input base must be >= 2')
+  when output < 2: die('output base must be >= 2')
+  when-not digits.every?(\(0 <= _ <= input.--)):
+    die('all digits must satisfy 0 <= d < input base')
 
-  cond:
-    input-base  < 2: die('input base must be >= 2')
-    output-base < 2: die('output base must be >= 2')
-    digits.some(neg?) || digits.some(ge(input-base)):
-      die: 'all digits must satisfy 0 <= d < input base'
-
-    digits.every?(zero?) || count(digits).eq(0) :: [0]
-
-    else: digits
-      .digits-to-decimal(input-base)
-      .decimal-to-digits(output-base)
-
-defn digits-to-decimal(digits input-base):
-  reduce \(%2 + (%1 * input-base)): digits
-
-defn decimal-to-digits(number output-base):
-  loop digits nil, num number:
-    if num > 0:
-      recur:
-        conj digits: num % output-base
-        quot: num output-base
-      else: digits
+  loop n reduce(\((%1 * input) + %2) 0 digits), res []:
+    if n.?:
+      =>: recur(quot(n output) res.cons(n % output))
+      res |||: -[0]

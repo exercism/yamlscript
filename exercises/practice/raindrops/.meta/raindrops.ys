@@ -1,9 +1,5 @@
 !yamlscript/v0
 
 defn convert(number):
-  ps =: M(3 'Pling' 5 'Plang' 7 'Plong')
-  words =:
-    mapcat _ [3 5 7]:
-      fn(n): number.rem(n).! &&& ps.$n
-
-  if words.?: str(words*) str(number)
+  f =: fn([a b] (number % a).!.when(b))
+  or?: map(f [3 5 7] qw(Pling Plang Plong)).str(*) number:S

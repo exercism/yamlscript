@@ -1,18 +1,6 @@
 !yamlscript/v0
 
 defn valid(value):
-  digits =: value.replace(' ')
-
-  and:
-    digits.# >=: 2
-    digits !~: /[^\d]/
-    digits:split:
-      .map(to-num):reverse:V
-      .conj(0).partition(2)
-      .map(munge):flat:sum
-      .mod(10).eq(0)
-
-defn munge([a b]):
-  b *=: 2
-  vector a:
-    if b > 9: (b - 9) b
+  digits =: value.replace(' ').map(\(_ - \\0)):reverse
+  digits.#.gt(1) &&: digits.every?(\(0 <= _ <= 9)) &&
+    map(int.comp(mul) digits [1 2.2]:cycle):sum.mod(10).!

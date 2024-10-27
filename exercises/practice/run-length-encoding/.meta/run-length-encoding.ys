@@ -1,19 +1,14 @@
 !yamlscript/v0
 
 defn encode(string):
-  apply str:
-    for part partition-by(a string):
-      str: part.--.gt(0).and?(part.#) part.0
+  partition-by(a string)
+   .mapcat(count.juxt(first))
+   .remove(eq(1)).str(*)
 
 defn decode(string):
-  ? loop
-      [p1 p2 *parts] re-seq(/\d+|[^\d]/ string)
-      val ''
-  : if p1:
-      if p1 =~ /\d/:
-        recur parts: "$val$(I(p1) * p2)"
-        recur cons(p2 parts): "$val$p1"
-      else: val
+  string.re-seq(/(\d+)?(.)/)
+    .map(fn([[_ n c]]
+         (c * I(n || 1)))):join
 
 defn consistency(string):
   string:encode:decode

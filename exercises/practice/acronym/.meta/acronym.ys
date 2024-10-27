@@ -1,6 +1,5 @@
 !yamlscript/v0
 
 defn abbreviate(phrase):
-  uc(phrase):
-    .re-seq(/[A-Z']+/)
+  uc(phrase).re-seq(/[A-Z']+/)
     .map(first):join
