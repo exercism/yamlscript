@@ -9,10 +9,10 @@ defn run(capacity operations):
                  'should_succeed' 'expected')
       args =:
         condp eq op:
-          -'clear'     : -[buffer]
-          -'read'      : -[buffer pass want]
-          -'write'     : -[buffer pass item]
-          -'overwrite' : -[buffer pass item]
+          'clear'     : -[buffer]
+          'read'      : -[buffer pass want]
+          'write'     : -[buffer pass item]
+          'overwrite' : -[buffer pass item]
       value("op-$op"): args*
   =>: -{}
 

@@ -5,15 +5,15 @@ defn score(dice category):
   counts =: dice:frequencies
   counts2 =: counts:set/map-invert
   case category:
-    -'yacht': dice-set.#.eq(1).and(50).or(0)
-    -'choice': dice:sum
-    -'little straight': dice-set.eq([1 2 3 4 5]).and(30).or(0)
-    -'big straight': dice-set.eq([2 3 4 5 6]).and(30).or(0)
-    -'four of a kind': counts2(4 counts2(5 0)) * 4
-    -'full house': (counts2.2 && counts2.3).and(dice:sum).or(0)
-    -'ones'  : counts(1 0) * 1
-    -'twos'  : counts(2 0) * 2
-    -'threes': counts(3 0) * 3
-    -'fours' : counts(4 0) * 4
-    -'fives' : counts(5 0) * 5
-    -'sixes' : counts(6 0) * 6
+    'full house': (counts2.2 && counts2.3).and(dice:sum).or(0)
+    'little straight': dice-set.eq([1 2 3 4 5]).and(30).or(0)
+    'big straight'   : dice-set.eq([2 3 4 5 6]).and(30).or(0)
+    'four of a kind' : counts2(4 counts2(5 0)) * 4
+    'yacht' : dice-set.#.eq(1).and(50).or(0)
+    'choice': dice:sum
+    'ones'  : counts(1 0) * 1
+    'twos'  : counts(2 0) * 2
+    'threes': counts(3 0) * 3
+    'fours' : counts(4 0) * 4
+    'fives' : counts(5 0) * 5
+    'sixes' : counts(6 0) * 6
