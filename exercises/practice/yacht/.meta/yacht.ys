@@ -1,34 +1,19 @@
 !yamlscript/v0
 
 defn score(dice category):
-  category.replace(/\ / '-')
-    .str('do-' _).call(dice).or(0)
-
-defn- do-yacht(dice): eq(dice*) && 50
-
-defn- same-number(n):
-  fn(dice): dice.filter(eq(n)):sum
-
-do-ones   =: same-number(1)
-do-twos   =: same-number(2)
-do-threes =: same-number(3)
-do-fours  =: same-number(4)
-do-fives  =: same-number(5)
-do-sixes  =: same-number(6)
-
-defn- do-full-house(dice):
-  freqs =: frequencies(dice)
-  when freqs.#.eq(2) && freqs:vals.has?(2):
-    sum: dice
-
-defn- do-four-of-a-kind(dice):
-  freqs =: frequencies(dice):V:reverse:M
-  mul 4: freqs.get(4) || freqs.get(5) || 0
-
-defn- do-little-straight(dice):
-  dice:sort == (1 .. 5) &&: 30
-
-defn- do-big-straight(dice):
-  dice:sort == (2 .. 6) &&: 30
-
-defn- do-choice(dice): sum(dice)
+  dice-set =: dice:distinct:sort
+  counts =: dice:frequencies
+  counts2 =: counts:set/map-invert
+  case category:
+    'full house': (counts2.2 && counts2.3).and(dice:sum).or(0)
+    'little straight': dice-set.eq([1 2 3 4 5]).and(30).or(0)
+    'big straight'   : dice-set.eq([2 3 4 5 6]).and(30).or(0)
+    'four of a kind' : counts2(4 counts2(5 0)) * 4
+    'yacht' : dice-set.#.eq(1).and(50).or(0)
+    'choice': dice:sum
+    'ones'  : counts(1 0) * 1
+    'twos'  : counts(2 0) * 2
+    'threes': counts(3 0) * 3
+    'fours' : counts(4 0) * 4
+    'fives' : counts(5 0) * 5
+    'sixes' : counts(6 0) * 6

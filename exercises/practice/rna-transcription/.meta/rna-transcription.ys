@@ -1,7 +1,4 @@
 !yamlscript/v0
 
-dna-to-rna =:
-  map(split ['GCAT' 'CGUA']).zipmap(*)
-
 defn to-rna(dna):
-  split(dna).map(dna-to-rna):join
+  map(zipmap('GCTA' 'CGAU') dna).str(*)

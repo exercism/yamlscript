@@ -1,13 +1,9 @@
 !yamlscript/v0
 
 defn find(array value):
- loop low 0, high array.--:
-   when low > high:
-     die: 'value not in array'
-   mid =: (high + low).quot(2)
-   item =: array.$mid
-
-   cond:
-     value == item : mid
-     value <  item : recur(low mid.--)
-     else          : recur(mid.++ high)
+  when array.#.!: die('value not in array')
+  mid =: array.#.--.quot(2)
+  case compare(array.$mid value):
+    0: mid
+    1: find(take(mid array) value)
+    -1: find(drop(mid.++ array) value) + mid.++

@@ -1,10 +1,6 @@
 !yamlscript/v0
 
-defn score(word):
-  uc(word):split.map(
-    S(1 'AEIOULNRST') + S(2 'DG') + S(3 'BCMP') +
-    S(4 'FHVWY') + S(5 'K') + S(8 'JX') + S(10 'QZ')
-  ):sum
-
-defn S(score chars):
-  zipmap: chars:split repeat(score)
+scores =: "1332142418513113:11114484:"
+defn score(word): !:sum
+  map _ word:lc:
+    \((_ - \\a).nth(scores):N - \\0)

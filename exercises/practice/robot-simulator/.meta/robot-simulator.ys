@@ -1,41 +1,21 @@
 !yamlscript/v0
 
-directions =: qw(north east south west)
+dirs =: qw(north east south west)
+next =: dirs.zipmap(dirs:cycle:rest)
 
-defn create(position direction)::
-  position:: position
-  direction:: direction
+dir =::
+  north :: \(update _ 'y' inc)
+  east  :: \(update _ 'x' inc)
+  south :: \(update _ 'y' dec)
+  west  :: \(update _ 'x' dec)
+
+defn create(position direction):
+  -{'position' position 'direction' direction}
 
 defn move(position direction instructions):
-  ? loop
-      [instruction *instructions] instructions
-      robot create(position direction)
-  : if instruction:
-      recur instructions:
-        case instruction:
-          \\A: robot:advance
-          \\R: robot:turn-right
-          \\L: robot:turn-left
-      else: robot
-
-defn advance(robot):
-  x y =: robot.position.slice(q(x y))
-  d =: robot.direction
-  create _ d:
-    condp eq d:
-      -'north' : -{'y' y.++ , 'x' x}
-      -'south' : -{'y' y.-- , 'x' x}
-      -'east'  : -{'x' x.++ , 'y' y}
-      -'west'  : -{'x' x.-- , 'y' y}
-
-defn turn-right(robot):
-  create robot.position:
-    turn robot.direction: directions
-
-defn turn-left(robot):
-  create robot.position:
-    turn robot.direction: reverse(directions)
-
-defn turn(direction directions):
-  directions.mul+(2):
-    .drop-while(ne(direction)).1
+  reduce _ create(position direction) instructions:
+    fn(robot command):
+      case command:
+        \\A: update(robot 'position'  dir(robot.direction))
+        \\R: update(robot 'direction' next)
+        \\L: update(robot 'direction' set/map-invert(next))

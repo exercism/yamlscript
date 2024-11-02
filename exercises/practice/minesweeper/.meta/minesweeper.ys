@@ -1,22 +1,20 @@
 !yamlscript/v0
 
 defn annotate(minefield):
-  grid =: minefield.map(split):V
-  reduce-kv _ [] grid:
-    fn(acc x row):
-      height =: grid.--
-      width =: grid.0.--
-      conj acc:
-        reduce-kv _ '' row:
-          fn(acc y cell):
-            str acc:
-              or? _ cell:
-                when cell:blank?:
-                  sum:
-                    ? for i (-1 .. 1) j (-1 .. 1)
-                        :let [row (x + i), col (y + j)]
-                    : to-num:
-                        (i.ne(0) || j.ne(0)) &&
-                        (0 <= row <= height) &&
-                        (0 <= col <= width) &&
-                        (grid.$row.$col == '*')
+  map-indexed _ minefield:
+    fn(r row):
+      join:
+        map-indexed _ row:
+          fn(c col):
+            lst =:
+              ? for x [-1 0 1],
+                    y [-1 0 1]
+                  :when minefield
+                    .get(r + x)
+                    .get(c + y)
+                    .eq(\\*)
+              : 1
+            cond:
+              lst.#.!: \\space
+              col == \\*: col
+              else: \\0 + lst.#

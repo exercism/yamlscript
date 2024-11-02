@@ -1,17 +1,9 @@
 !yamlscript/v0
 
-rules =::
-  ^(?:[aeiou]|yt|xr).*::
-    \(_ + 'ay')
-  ^(s?qu|thr|sch|[crst]h|[^aeiou])(.*)::
-    \("$(_.2)$(_.1)ay")
-
 defn translate(phrase):
-  join ' ':
-    map _ words(phrase):
-      fn(word):
-        reduce-kv _ nil rules:
-          fn(translated regex function):
-            match =: word =~ qr(regex)
-            translated ||:
-              match && function(match)
+  replace phrase:
+    /(?x)
+      ([^aeioquxy\s]*
+       (?:qu|q|x|y)?)
+      ([aeiouxy]\w*)/
+    "$2$1ay"

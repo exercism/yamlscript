@@ -1,10 +1,9 @@
 !yamlscript/v0
 
 defn largest-product(digits span):
-  cond:
-    span < 0          : die('span must not be negative')
-    span > digits.#   : die('span must be smaller than string length')
-    digits =~ /[^\d]/ : die('digits input must only contain digits')
+  when span < 0          : die('span must not be negative')
+  when span > digits.#   : die('span must be smaller than string length')
+  when digits =~ /[^\d]/ : die('digits input must only contain digits')
 
   digits.split(''):
     .map(to-num)

@@ -1,50 +1,28 @@
 !yamlscript/v0
 
-account =: atom(nil)
+closed =: 'closed'
+closed? =: P(== closed)
 
 defn reset-test-state():
-  reset! account: nil
 
 defn bank-account(operations):
-  last:
-    for operation operations:
-      operation
-        .operation
-        .str('do-' _)
-        .call(operation)
-
-defn- do-open(op):
-  when deref(account):
-    die: 'account already open'
-  reset! account: 0
-
-defn- do-close(op):
-  when-not deref(account):
-    die: 'account not open'
-  reset! account: nil
-
-defn- do-balance(op):
-  balance =: deref(account)
-  if-not balance:
-    die: 'account not open'
-    else: balance
-
-defn- do-deposit(op):
-  when-not deref(account):
-    die: 'account not open'
-  swap! account +: op:get-amount
-
-defn- do-withdraw(op):
-  balance =: deref(account)
-  when-not balance:
-    die: 'account not open'
-  amount =: op:get-amount
-  when amount > balance:
-    die: 'amount must be less than balance'
-  swap! account -: amount
-
-defn- get-amount(op):
-  amount =: op.amount
-  if amount < 0:
-    die: 'amount must be greater than 0'
-    else: amount
+  reduce _ closed operations:
+    fn(bal op):
+      case op.operation:
+        'open':
+          if closed?(bal): 0, die('account already open')
+        'close':
+          if closed?(bal): die('account not open'), closed
+        'balance':
+          if closed?(bal): die('account not open'), bal
+        'deposit':
+          cond:
+            closed?(bal): die('account not open')
+            op.amount <= 0: die('amount must be greater than 0')
+            else: bal + op.amount
+        'withdraw':
+          cond:
+            closed?(bal): die('account not open')
+            op.amount <= 0: die('amount must be greater than 0')
+            op.amount > bal: die('amount must be less than balance')
+            else: bal - op.amount

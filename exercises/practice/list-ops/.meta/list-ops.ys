@@ -19,10 +19,4 @@ defn foldl(list initial function):
   list.reduce(function initial)
 
 defn foldr(list initial function):
-  if len(list) > 0:
-    function _ list:first:
-      foldr: rest(list) initial function
-    else: initial
-
-defn reverse(list):
-  core/reverse: list
+  list:reverse.reduce(function initial)

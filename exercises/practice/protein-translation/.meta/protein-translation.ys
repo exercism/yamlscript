@@ -2,15 +2,14 @@
 
 defn proteins(strand):
   proteins =:
-    strand.str('XX').partition(3)
-          .map(join).map(translate-codon)
+    strand.re-seq(/.{1,3}/).map(translate)
           .take-while(ne('STOP'))
 
   if proteins.has?('INVALID'):
     die: 'Invalid codon'
     else: proteins
 
-defn translate-codon(codon):
+defn translate(codon):
   case codon:
     ('AUG'                  ) :: Methionine
     ('UUU' 'UUC'            ) :: Phenylalanine

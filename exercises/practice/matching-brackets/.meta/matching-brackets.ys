@@ -1,17 +1,8 @@
 !yamlscript/v0
 
-pairs =: reverse('()[]{}'):M
-opening =: vals(pairs):set
-closing =: keys(pairs):set
-
 defn is-paired(value):
-  loop stack [], [char *chars] value:
-    cond:
-      char:nil?: stack:count:zero?
-      opening(char):
-        recur: conj(stack char) chars
-      closing(char):
-        if peek(stack) == pairs(char):
-          recur: pop(stack) chars
-          else: false
-      else: recur(stack chars)
+  x =: value.replace(/\[\]|\(\)|\{\}|[^(){}\[\]]/)
+  cond:
+    x == '': true
+    x == value: false
+    else: is-paired(x)
