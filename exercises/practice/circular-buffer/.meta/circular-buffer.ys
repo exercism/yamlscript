@@ -27,7 +27,7 @@ defn op-read(buffer pass want):
     when cell != want:
       die: "Bad read:\ $cell != $want ($buffer)"
   hash-map:
-    :B update-in(buffer.B [buffer.P] constantly(nil))
+    :B update-in(buffer.B [buffer.P] \(nil))
     :P (buffer.P.++ % buffer.B.#)
 
 defn op-write(buffer pass item):
@@ -37,7 +37,7 @@ defn op-write(buffer pass item):
       fn(idx i): idx || (not(B.$i) && i)
 
   if I:
-    update-in: buffer [:B I] constantly(item)
+    update-in: buffer [:B I] \(item)
     when pass: die('Full buffer')
 
 defn op-overwrite(buffer pass item):
@@ -45,6 +45,6 @@ defn op-overwrite(buffer pass item):
     op-write: buffer pass item
     else:
       buffer =:
-        update-in: buffer [:B buffer.P] constantly(item)
+        update-in: buffer [:B buffer.P] \(item)
       P =: buffer.P.++ % buffer.B.#
-      update-in: buffer [:P] constantly(P)
+      update-in: buffer [:P] \(P)
