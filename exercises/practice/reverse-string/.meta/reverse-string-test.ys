@@ -9,9 +9,8 @@ intern \'clojure::core \'reverse: reverse
 ns-unmap \'clojure::string: \'reverse
 
 
-require ys::taptest: :all
-
-use: reverse-string
+use ys::taptest: :all
+load: 'reverse-string.ys'
 
 test::
 - name: An empty string

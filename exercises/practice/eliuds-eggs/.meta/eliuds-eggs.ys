@@ -1,4 +1,4 @@
 !yamlscript/v0
 
-defn egg-count(number):
-  len: P(bit-test number).filter(0 .. 31)
+defn egg-count(number): !:count
+  (bit-test + number).filter(0 .. 31)

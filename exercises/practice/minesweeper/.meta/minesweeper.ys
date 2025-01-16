@@ -2,19 +2,18 @@
 
 defn annotate(minefield):
   map-indexed _ minefield:
-    fn(r row):
-      join:
-        map-indexed _ row:
-          fn(c col):
-            lst =:
-              ? for x [-1 0 1],
-                    y [-1 0 1]
-                  :when minefield
-                    .get(r + x)
-                    .get(c + y)
-                    .eq(\\*)
-              : 1
-            cond:
-              lst.#.!: \\space
-              col == \\*: col
-              else: \\0 + lst.#
+    fn(r row): !:join
+      map-indexed _ row:
+        fn(c col):
+          lst =:
+            ? for x [-1 0 1],
+                  y [-1 0 1]
+                :when minefield
+                  .get(r + x)
+                  .get(c + y)
+                  .eq(\\*)
+            : 1
+          cond:
+            lst.#.!: \\space
+            col == \\*: col
+            else: \\0 + lst.#

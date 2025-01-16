@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn run(capacity operations):
-  buffer =: -{:B V(capacity * [nil]), :P 0}
+  buffer =: qm(:B (capacity * [nil]), :P 0)
   reduce _ buffer operations:
     fn(buffer op):
       op item pass want =:
@@ -9,25 +9,25 @@ defn run(capacity operations):
                  'should_succeed' 'expected')
       args =:
         condp eq op:
-          'clear'     : -[buffer]
-          'read'      : -[buffer pass want]
-          'write'     : -[buffer pass item]
-          'overwrite' : -[buffer pass item]
+          'clear'     : qv(buffer)
+          'read'      : qv(buffer pass want)
+          'write'     : qv(buffer pass item)
+          'overwrite' : qv(buffer pass item)
       value("op-$op"): args*
-  =>: -{}
+  qm:
 
 defn op-clear(buffer):
-  hash-map: :B V(buffer.B.# * [nil]) :P 0
+  hash-map: :B (buffer.B.# * [nil]) :P 0
 
 defn op-read(buffer pass want):
   cell =: buffer.B.nth(buffer.P)
   when pass:
-    when cell:nil?:
+    when-not cell:
       die: S("Can't read:\ " buffer)
     when cell != want:
       die: "Bad read:\ $cell != $want ($buffer)"
   hash-map:
-    :B update-in(buffer.B [buffer.P] constantly(nil))
+    :B assoc-in(buffer.B [buffer.P] nil)
     :P (buffer.P.++ % buffer.B.#)
 
 defn op-write(buffer pass item):
@@ -37,7 +37,7 @@ defn op-write(buffer pass item):
       fn(idx i): idx || (not(B.$i) && i)
 
   if I:
-    update-in: buffer [:B I] constantly(item)
+    assoc-in: buffer [:B I] item
     when pass: die('Full buffer')
 
 defn op-overwrite(buffer pass item):
@@ -45,6 +45,6 @@ defn op-overwrite(buffer pass item):
     op-write: buffer pass item
     else:
       buffer =:
-        update-in: buffer [:B buffer.P] constantly(item)
+        assoc-in: buffer [:B buffer.P] item
       P =: buffer.P.++ % buffer.B.#
-      update-in: buffer [:P] constantly(P)
+      assoc-in: buffer [:P] P

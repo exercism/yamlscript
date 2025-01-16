@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: circular-buffer
+use ys::taptest: :all
+load: 'circular-buffer.ys'
 
 test::
 - name: Reading empty buffer should fail

@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: resistor-color-duo
+use ys::taptest: :all
+load: 'resistor-color-duo.ys'
 
 test::
 - name: Brown and black

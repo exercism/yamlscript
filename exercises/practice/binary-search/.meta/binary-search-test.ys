@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: binary-search
+use ys::taptest: :all
+load: 'binary-search.ys'
 
 test::
 - name: Finds a value in an array with one element

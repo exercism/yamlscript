@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: atbash-cipher
+use ys::taptest: :all
+load: 'atbash-cipher.ys'
 
 test::
 - name: Encode yes

@@ -3,4 +3,4 @@
 defn valid(value):
   digits =: value.replace(' ').map(\(_ - \\0)):reverse
   digits.#.gt(1) &&: digits.every?(\(0 <= _ <= 9)) &&
-    map(int.comp(mul) digits [1 2.2]:cycle):sum.mod(10).!
+    map((mul + int) digits [1 2.2]:cycle):sum.mod(10).!

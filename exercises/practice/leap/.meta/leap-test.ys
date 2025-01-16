@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: leap
+use ys::taptest: :all
+load: 'leap.ys'
 
 test::
 - name: Year not divisible by 4 in common year

@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: isogram
+use ys::taptest: :all
+load: 'isogram.ys'
 
 test::
 - name: Empty string

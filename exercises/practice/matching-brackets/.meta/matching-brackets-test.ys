@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: matching-brackets
+use ys::taptest: :all
+load: 'matching-brackets.ys'
 
 test::
 - name: Paired square brackets

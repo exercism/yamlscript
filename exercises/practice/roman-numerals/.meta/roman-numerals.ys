@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn roman(number):
-  nums =: qw(I II III IV V VI VII VIII IX).cons('')
+  nums =: q(I II III IV V VI VII VIII IX).cons('')
   reduce _ '' number:S:
     fn(roman digit):
       roman.map('IVXLC'.zipmap('XLCDM'))

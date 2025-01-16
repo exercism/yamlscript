@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: square-root
+use ys::taptest: :all
+load: 'square-root.ys'
 
 test::
 - name: Root of 1

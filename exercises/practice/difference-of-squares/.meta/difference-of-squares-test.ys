@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: difference-of-squares
+use ys::taptest: :all
+load: 'difference-of-squares.ys'
 
 test::
 - name: Square of sum 1

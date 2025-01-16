@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: all-your-base
+use ys::taptest: :all
+load: 'all-your-base.ys'
 
 test::
 - name: Single bit one to decimal

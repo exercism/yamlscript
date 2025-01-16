@@ -2,8 +2,8 @@
 
 defn recite(start-bottles take-down):
   nums =: start-bottles ..
-          (start-bottles - take-down).++
-  nums: .map(verse).join("\n"):lines
+          inc(start-bottles - take-down)
+  lines: nums.map(verse).join("\n")
 
 defn- verse(num): |
   $uc1(bottles(num)) hanging on the wall,

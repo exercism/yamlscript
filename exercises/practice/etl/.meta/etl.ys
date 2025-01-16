@@ -3,4 +3,4 @@
 defn transform(legacy):
   into {}:
     for [score letters] legacy, letter letters:
-      -[lc(letter) score:N]
+      qv(letter:lc score:N)

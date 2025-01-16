@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: acronym
+use ys::taptest: :all
+load: 'acronym.ys'
 
 test::
 - name: Basic

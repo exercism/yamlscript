@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: bob
+use ys::taptest: :all
+load: 'bob.ys'
 
 test::
 - name: Stating something

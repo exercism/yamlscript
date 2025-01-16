@@ -12,5 +12,5 @@ planets =::
   Neptune :: s * 164.79132
 
 defn age(planet seconds):
-  seconds.div(planets.$planet.or(die('not a planet')))
+  seconds.div(planets.$planet || die('not a planet'))
     .format('%.2f'):F

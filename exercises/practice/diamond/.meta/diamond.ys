@@ -2,7 +2,6 @@
 
 defn rows(letter):
   a l n mirror =: -[\\A letter "\n" \(_ + _:chop:reverse)]
-  join:
-    mirror:
-      for c (\\A .. l.0):
-        mirror("$(' ' * (l.0 - c))$c$(' ' * (c - a))") + n
+  join: !:mirror
+    for c (\\A .. l.0):
+      mirror("$(' ' * (l.0 - c))$c$(' ' * (c - a))") + n

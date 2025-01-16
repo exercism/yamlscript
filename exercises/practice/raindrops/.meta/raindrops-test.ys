@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: raindrops
+use ys::taptest: :all
+load: 'raindrops.ys'
 
 test::
 - name: The sound for 1 is 1

@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: sieve
+use ys::taptest: :all
+load: 'sieve.ys'
 
 test::
 - name: No primes under two

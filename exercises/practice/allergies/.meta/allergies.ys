@@ -4,6 +4,6 @@ defn allergic-to(item score):
   list-allergens(score).has?(item)
 
 defn list-allergens(score):
-  (0 .. 7).filter(P(bit-test score))
+  (0 .. 7).filter(bit-test + score)
     .map(qw(eggs peanuts shellfish strawberries
             tomatoes chocolate pollen cats))

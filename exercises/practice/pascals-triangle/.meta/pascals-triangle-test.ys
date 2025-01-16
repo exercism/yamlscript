@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: pascals-triangle
+use ys::taptest: :all
+load: 'pascals-triangle.ys'
 
 test::
 - name: Zero rows

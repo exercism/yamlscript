@@ -3,10 +3,10 @@
 defn rebase(input digits output):
   when input < 2: die('input base must be >= 2')
   when output < 2: die('output base must be >= 2')
-  when-not digits.every?(\(0 <= _ <= input.--)):
+  when-not digits.every?(\(-1 < _ < input)):
     die('all digits must satisfy 0 <= d < input base')
 
-  loop n reduce(\((%1 * input) + %2) 0 digits), res []:
+  loop n reduce(\((input * %1) + %2) 0 digits), res []:
     if n.?:
-      =>: recur(quot(n output) res.cons(n % output))
+      recur: quot(n output) res.cons(n % output)
       res |||: -[0]

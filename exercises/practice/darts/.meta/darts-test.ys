@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: darts
+use ys::taptest: :all
+load: 'darts.ys'
 
 test::
 - name: Missed target

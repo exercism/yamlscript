@@ -7,7 +7,7 @@ defn spiral-matrix(size):
     .cons(size)
     .mapcat(\(repeat %2 %1) cyc _)
     .reductions(add _)
-    .map(vector range(1 (size ** 2).++) _)
+    .map(vector range(1 size:sqr.++) _)
     .sort-by(second _)
     .map(first)
     .partition(size)

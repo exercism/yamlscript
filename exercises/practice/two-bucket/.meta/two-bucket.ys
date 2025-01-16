@@ -7,12 +7,12 @@ defn measure(bucket-one bucket-two goal start-bucket):
 
 defn aux(s1 s2 goal queue visited):
   when queue.!: die('impossible')
-  -[head *tail] =: queue
-  -[b1 b2 steps] =: head
+  head *tail =: queue
+  b1 b2 steps =: head
   cond:
     visited.has?([b1 b2]): aux(s1 s2 goal tail visited)
-    goal == b1: -{'moves' steps 'goalBucket' 1 'otherBucket' b2}
-    goal == b2: -{'moves' steps 'goalBucket' 2 'otherBucket' b1}
+    goal == b1: qm('moves' steps 'goalBucket' 1 'otherBucket' b2)
+    goal == b2: qm('moves' steps 'goalBucket' 2 'otherBucket' b1)
     else:
       aux(s1 s2 goal ((tail || []) + [
         [s1 b2 steps.++] , [b1 s2 steps.++]

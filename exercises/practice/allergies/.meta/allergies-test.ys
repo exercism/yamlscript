@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: allergies
+use ys::taptest: :all
+load: 'allergies.ys'
 
 test::
 - name: Not allergic to anything

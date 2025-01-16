@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: roman-numerals
+use ys::taptest: :all
+load: 'roman-numerals.ys'
 
 test::
 - name: 1 is i

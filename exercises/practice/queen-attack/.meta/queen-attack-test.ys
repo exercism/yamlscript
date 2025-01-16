@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: queen-attack
+use ys::taptest: :all
+load: 'queen-attack.ys'
 
 test::
 - name: Queen with a valid position

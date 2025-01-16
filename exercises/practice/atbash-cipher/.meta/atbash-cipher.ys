@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 defn encode(phrase):
-  lc(phrase):decode:
+  phrase:lc:decode:
     .replace(/[^a-z0-9]/)
     .partition(5 5 '').map(join):joins
 

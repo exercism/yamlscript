@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: two-bucket
+use ys::taptest: :all
+load: 'two-bucket.ys'
 
 test::
 - name: Measure using bucket one of size 3 and bucket two of size 5 - start with bucket one

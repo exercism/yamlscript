@@ -1,7 +1,7 @@
 !yamlscript/v0
 
 closed =: 'closed'
-closed? =: P(== closed)
+closed? =: eq(closed)
 
 defn reset-test-state():
 
@@ -17,12 +17,12 @@ defn bank-account(operations):
           if closed?(bal): die('account not open'), bal
         'deposit':
           cond:
-            closed?(bal): die('account not open')
+            bal:closed?: die('account not open')
             op.amount <= 0: die('amount must be greater than 0')
             else: bal + op.amount
         'withdraw':
           cond:
-            closed?(bal): die('account not open')
+            bal:closed?: die('account not open')
             op.amount <= 0: die('amount must be greater than 0')
             op.amount > bal: die('amount must be less than balance')
             else: bal - op.amount

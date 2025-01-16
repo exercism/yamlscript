@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: list-ops
+use ys::taptest: :all
+load: 'list-ops.ys'
 
 test::
 - name: Empty lists

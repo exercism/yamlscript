@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: nucleotide-count
+use ys::taptest: :all
+load: 'nucleotide-count.ys'
 
 test::
 - name: Empty strand

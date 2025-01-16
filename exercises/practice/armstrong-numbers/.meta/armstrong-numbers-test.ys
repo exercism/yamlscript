@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: armstrong-numbers
+use ys::taptest: :all
+load: 'armstrong-numbers.ys'
 
 test::
 - name: Zero is an armstrong number

@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: 'two-fer'
+use ys::taptest: :all
+load: 'two-fer.ys'
 
 test::
 - name: No name given
