@@ -3,7 +3,7 @@
 defn main(slug):
   data =:
     json/load:
-      slurp: ".problem/exercises/$slug/canonical-data.json"
+      read: ".problem/exercises/$slug/canonical-data.json"
 
   tests =: gen-tests(data.cases)
 
