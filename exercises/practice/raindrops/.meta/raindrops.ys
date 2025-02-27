@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn convert(number):
   f =: fn([a b] (number % a).!.when(b))

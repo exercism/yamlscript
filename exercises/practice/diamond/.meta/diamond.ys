@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn rows(letter):
   a l n mirror =: -[\\A letter "\n" \(_ + _:chop:reverse)]

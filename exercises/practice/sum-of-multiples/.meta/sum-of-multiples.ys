@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn sum(factors limit):
   f =: \(_ &&& range(_ limit _))

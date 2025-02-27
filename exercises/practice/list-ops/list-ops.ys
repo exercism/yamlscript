@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn append(list1 list2):
   # Implement the 'append' function.

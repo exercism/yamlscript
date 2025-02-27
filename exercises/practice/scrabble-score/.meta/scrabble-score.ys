@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 scores =: "1332142418513113:11114484:"
 defn score(word): !:sum

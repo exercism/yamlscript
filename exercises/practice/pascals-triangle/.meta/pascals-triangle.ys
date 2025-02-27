@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn rows(count):
   \(mapv + _.cons(0) _.conj(0))

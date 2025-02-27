@@ -1,5 +1,5 @@
 # A YAMLScript Program!
-!yamlscript/v0
+!YS-v0
 
 # Define a hello function, 0 or 1 args:
 defn hello(name='World'):

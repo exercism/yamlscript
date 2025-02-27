@@ -5,7 +5,7 @@ defn main(slug):
     json/load:
       slurp: ".problem/exercises/$slug/canonical-data.json"
 
-  say: "!yamlscript/v0\n"
+  say: "!YS-v0\n"
 
   say:
     join "\n\n": gen-funcs(data.cases)

@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn create(queen):
   row col =: queen.position.map(qw(row column))

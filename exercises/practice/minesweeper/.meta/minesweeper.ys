@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn annotate(minefield):
   map-indexed _ minefield:

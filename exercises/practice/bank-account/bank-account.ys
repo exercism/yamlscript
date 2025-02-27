@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn bank-account(operations):
   # Implement the 'bank-account' function.

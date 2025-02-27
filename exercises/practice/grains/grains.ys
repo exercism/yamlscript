@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn square(square):
   # Implement the 'square' function.

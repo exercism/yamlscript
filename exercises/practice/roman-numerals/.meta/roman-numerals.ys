@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn roman(number):
   nums =: q(I II III IV V VI VII VIII IX).cons('')

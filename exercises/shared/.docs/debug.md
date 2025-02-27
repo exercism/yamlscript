@@ -1,7 +1,7 @@
 # Debug
 
-YAMLScript has a builtin `DBG` function that can be useful for debugging your
-solution code.
+YS has a builtin `DBG` function that can be useful for debugging your solution
+code.
 It takes any number of arguments and prints them to the console on stderr.
 It returns the last argument so you can use it inline in your code.
 
@@ -13,7 +13,7 @@ Here's an example code file:
 ```yaml
 # file: program.ys
 
-!yamlscript/v0
+!YS-v0
 
 defn do-it(nums):
   x =: 5
@@ -46,7 +46,7 @@ When you run this code with `ys`, you will see the following output:
 ## Compilation
 
 Another common way to figure out a problem is to look at the Clojure code that
-your YAMLScript code is compiled to.
+your YS code is compiled to.
 
 You can do this by running the `ys` command-line interpreter with the `-c` flag.
 

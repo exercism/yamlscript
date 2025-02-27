@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn score(x y):
   condp ge math/hypot(x y):

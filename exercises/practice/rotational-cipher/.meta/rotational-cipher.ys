@@ -1,4 +1,4 @@
-!yamlscript/v0
+!YS-v0
 
 defn rotate(text shift-key):
   cmap =: \(zipmap(_ drop(shift-key cycle(_))))
