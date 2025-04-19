@@ -7,5 +7,5 @@ defn steps(number):
   loop num number, steps 0:
     cond:
       num == 1  : steps
-      num:even? : recur(num.div(2), steps.++)
-      else      : recur(num.mul(3).++, steps.++)
+      num:even? : recur(num.div(2)    steps.++)
+      else      : recur(num.mul(3).++ steps.++)

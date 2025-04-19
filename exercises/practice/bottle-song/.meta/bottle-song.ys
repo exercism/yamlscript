@@ -1,8 +1,12 @@
 !YS-v0
 
+nums =:
+  zipmap (2 .. 10):
+    qw(two three four five six seven eight nine ten)
+
 defn recite(start-bottles take-down):
   nums =: start-bottles ..
-          inc(start-bottles - take-down)
+         (start-bottles - take-down).++
   lines: nums.map(verse).join("\n")
 
 defn- verse(num): |
@@ -10,10 +14,6 @@ defn- verse(num): |
   $uc1(bottles(num)) hanging on the wall,
   And if one green bottle should accidentally fall,
   There'll be $bottles(num.--) hanging on the wall.
-
-nums =:
-  zipmap (2 .. 10):
-    qw(two three four five six seven eight nine ten)
 
 defn- bottles(num):
   case num:

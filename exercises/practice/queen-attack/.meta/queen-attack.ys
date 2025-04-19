@@ -14,4 +14,4 @@ defn can-attack(white-queen black-queen):
        black-queen.position.row
   y =: white-queen.position.column -
        black-queen.position.column
-  (x.! || y.!) ||: x:abs == y:abs
+  not(x &&& y) ||: x:abs == y:abs

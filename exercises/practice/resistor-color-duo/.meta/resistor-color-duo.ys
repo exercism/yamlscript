@@ -6,4 +6,4 @@ colors =:
        green blue violet grey white)
 
 defn value([c1 c2]):
-  colors.$c1 * 10 +: colors.$c2
+  colors.$c1.mul(10) + colors.$c2

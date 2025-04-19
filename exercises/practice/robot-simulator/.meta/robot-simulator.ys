@@ -9,8 +9,8 @@ dir =::
   south :: \(update _ 'y' dec)
   west  :: \(update _ 'x' dec)
 
-defn create(position direction):
-  -{'position' position 'direction' direction}
+defn create(position direction): +
+  {'position' position 'direction' direction}
 
 defn move(position direction instructions):
   reduce _ create(position direction) instructions:

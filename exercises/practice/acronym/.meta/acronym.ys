@@ -1,5 +1,6 @@
 !YS-v0
 
 defn abbreviate(phrase):
-  phrase:uc.re-seq(/[A-Z']+/)
+  phrase:str/upper-case
+    .re-seq(/[A-Z']+/)
     .map(first):join

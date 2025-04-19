@@ -3,7 +3,7 @@
 defn encode(string):
   partition-by(a string)
    .mapcat(count.juxt(first))
-   .remove(eq(1)).str(*)
+   .remove(eq(1)):join
 
 defn decode(string):
   string.re-seq(/(\d+)?(.)/)

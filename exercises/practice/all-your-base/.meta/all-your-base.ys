@@ -6,7 +6,10 @@ defn rebase(input digits output):
   when-not digits.every?(\(-1 < _ < input)):
     die('all digits must satisfy 0 <= d < input base')
 
-  loop n reduce(\((input * %1) + %2) 0 digits), res []:
+  loop n reduce(\(input.mul(%1).add(%2)) 0 digits), res []:
     if n.?:
       recur: quot(n output) res.cons(n % output)
-      res |||: -[0]
+      res |||:: [0]
+
+# TODO:
+# loop n reduce(\(input * _1 + _2) 0 digits), res []:

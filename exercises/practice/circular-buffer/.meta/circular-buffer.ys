@@ -5,15 +5,15 @@ defn run(capacity operations):
   reduce _ buffer operations:
     fn(buffer op):
       op item pass want =:
-        op.slice('operation' 'item'
-                 'should_succeed' 'expected')
+        slice op:: [operation, item,
+                    should_succeed, expected]
       args =:
         condp eq op:
           'clear'     : qv(buffer)
           'read'      : qv(buffer pass want)
           'write'     : qv(buffer pass item)
           'overwrite' : qv(buffer pass item)
-      value("op-$op"): args*
+      value("op-$op") : args*
   qm:
 
 defn op-clear(buffer):
@@ -33,8 +33,8 @@ defn op-read(buffer pass want):
 defn op-write(buffer pass item):
   B P =: buffer.slice(q(B P))
   I =:
-    reduce _ nil concat(range(P B.#) range(0 P)):
-      fn(idx i): idx || (not(B.$i) && i)
+    reduce \(%1 || (get(B %2).! && %2)):
+      nil (range(P B.#) + range(0 P))
 
   if I:
     assoc-in: buffer [:B I] item
@@ -48,3 +48,8 @@ defn op-overwrite(buffer pass item):
         assoc-in: buffer [:B buffer.P] item
       P =: buffer.P.++ % buffer.B.#
       assoc-in: buffer [:P] P
+
+
+
+# TODO:
+# op:operation item pass:should_succeed want:expected =: {op}

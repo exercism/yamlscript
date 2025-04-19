@@ -6,5 +6,5 @@ defn encode(phrase):
     .partition(5 5 '').map(join):joins
 
 defn decode(phrase):
-  m =: (\\a .. \\z).zipmap(\\z .. \\a)
-  phrase: .replace(' ').escape(m)
+  escape phrase.replace(' '):
+    zipmap (\\a .. \\z): \\z .. \\a

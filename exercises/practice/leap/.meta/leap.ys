@@ -1,6 +1,6 @@
 !YS-v0
 
 defn leap-year(year):
-  zero?(year % 4) &&:
-    pos?(year % 100) ||:
-      zero?(year % 400)
+  (year % 400).! ||:
+    (year % 4).! &&
+    (year % 100).gt(0)

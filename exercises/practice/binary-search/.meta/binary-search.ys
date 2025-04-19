@@ -4,6 +4,6 @@ defn find(array value):
   when array.#.!: die('value not in array')
   mid =: array.#.--.quot(2)
   case compare(array.$mid value):
-    0: mid
-    1: find(take(mid array) value)
-    -1: find(drop(mid.++ array) value) + mid.++
+    0  : mid
+    1  : find(take(mid array) value)
+    -1 : find(drop(mid.++ array) value) + mid.++

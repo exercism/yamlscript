@@ -11,9 +11,7 @@ defn score(dice category):
     'four of a kind' : counts2(4 counts2(5 0)) * 4
     'yacht' : dice-set.#.eq(1).if(50 0)
     'choice': dice:sum
-    'ones'  : counts(1 0) * 1
-    'twos'  : counts(2 0) * 2
-    'threes': counts(3 0) * 3
-    'fours' : counts(4 0) * 4
-    'fives' : counts(5 0) * 5
-    'sixes' : counts(6 0) * 6
+    else:
+      nums =: qw(ones twos threes fours fives sixes)
+      num =: nums.take-while(ne(category)).#.++
+      mul num: counts(num 0)

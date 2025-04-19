@@ -1,15 +1,15 @@
 !YS-v0
 
-s =: 365.25 * 24 * 60 * 60
+secs =: 365.25 * 24 * 60 * 60
 planets =::
-  Mercury :: s * 0.2408467
-  Venus   :: s * 0.61519726
-  Earth   :: s * 1.0
-  Mars    :: s * 1.8808158
-  Jupiter :: s * 11.862615
-  Saturn  :: s * 29.447498
-  Uranus  :: s * 84.016846
-  Neptune :: s * 164.79132
+  Mercury :: secs * 0.2408467
+  Venus   :: secs * 0.61519726
+  Earth   :: secs * 1.0
+  Mars    :: secs * 1.8808158
+  Jupiter :: secs * 11.862615
+  Saturn  :: secs * 29.447498
+  Uranus  :: secs * 84.016846
+  Neptune :: secs * 164.79132
 
 defn age(planet seconds):
   seconds.div(planets.$planet || die('not a planet'))

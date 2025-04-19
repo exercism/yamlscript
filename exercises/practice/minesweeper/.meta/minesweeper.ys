@@ -5,7 +5,7 @@ defn annotate(minefield):
     fn(r row): !:join
       map-indexed _ row:
         fn(c col):
-          lst =:
+          list =:
             ? for x [-1 0 1],
                   y [-1 0 1]
                 :when minefield
@@ -14,6 +14,6 @@ defn annotate(minefield):
                   .eq(\\*)
             : 1
           cond:
-            lst.#.!: \\space
+            list.#.!: \\space
             col == \\*: col
-            else: \\0 + lst.#
+            else: \\0 + list.#
