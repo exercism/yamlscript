@@ -50,9 +50,8 @@ It's actually the first 3 tests from the `acronym` exercise. :-)
 ```yaml
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: acronym
+use ys::taptest: :all
+load: 'acronym.ys'
 
 test::
 - name: Basic
@@ -74,7 +73,7 @@ The first line is a shebang line that tells the `prove` command (run by the
 Makefile) to use the YAMLScript `ys` interpreter to run the tests instead of
 `perl` which is the default for `prove`.
 
-The second line is a `require` statement that loads YAMLScript's `ys::taptest`
+The second line is a `use` statement that loads YAMLScript's `ys::taptest`
 [TAP](https://testanything.org) testing library.
 
 > Note: TAP is a simple text-based interface between test scripts and test

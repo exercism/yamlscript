@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: space-age
+use ys::taptest: :all
+load: 'space-age.ys'
 
 test::
 - name: Age on earth

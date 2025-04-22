@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: rotational-cipher
+use ys::taptest: :all
+load: 'rotational-cipher.ys'
 
 test::
 - name: Rotate a by 0, same output as input

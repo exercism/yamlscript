@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: anagram
+use ys::taptest: :all
+load: 'anagram.ys'
 
 test::
 - name: No matches

@@ -10,9 +10,8 @@ defn main(slug):
   test =: |-
     #!/usr/bin/env ys-0
 
-    require ys::taptest: :all
-
-    use: $slug
+    use ys::taptest: :all
+    require: '$slug.ys'
     $gen-comments(data)
     test::
     $(join("\n" tests).trimr())

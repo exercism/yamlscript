@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: food-chain
+use ys::taptest: :all
+load: 'food-chain.ys'
 
 # JSON doesn't allow for multi-line strings, so all verses are presented
 # here as arrays of strings. It's up to the test generator to join the

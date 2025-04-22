@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: etl
+use ys::taptest: :all
+load: 'etl.ys'
 
 test::
 - name: Single letter

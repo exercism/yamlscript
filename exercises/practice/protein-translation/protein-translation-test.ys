@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: protein-translation
+use ys::taptest: :all
+load: 'protein-translation.ys'
 
 test::
 - name: Empty rna sequence results in no proteins

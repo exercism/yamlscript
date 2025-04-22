@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: luhn
+use ys::taptest: :all
+load: 'luhn.ys'
 
 test::
 - name: Single digit strings can not be valid

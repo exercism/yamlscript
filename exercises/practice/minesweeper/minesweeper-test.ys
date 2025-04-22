@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: minesweeper
+use ys::taptest: :all
+load: 'minesweeper.ys'
 
 test::
 - name: No rows

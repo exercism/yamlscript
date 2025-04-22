@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: word-count
+use ys::taptest: :all
+load: 'word-count.ys'
 
 test::
 - name: Count one word

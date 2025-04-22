@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: perfect-numbers
+use ys::taptest: :all
+load: 'perfect-numbers.ys'
 
 test::
 - name: Smallest perfect number is classified correctly

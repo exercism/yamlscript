@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: scrabble-score
+use ys::taptest: :all
+load: 'scrabble-score.ys'
 
 test::
 - name: Lowercase letter

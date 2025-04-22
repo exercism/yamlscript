@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: largest-series-product
+use ys::taptest: :all
+load: 'largest-series-product.ys'
 
 test::
 - name: Finds the largest product if span equals length

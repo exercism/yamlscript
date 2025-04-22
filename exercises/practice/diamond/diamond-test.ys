@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: diamond
+use ys::taptest: :all
+load: 'diamond.ys'
 
 test::
 - name: Degenerate case with a single 'a' row

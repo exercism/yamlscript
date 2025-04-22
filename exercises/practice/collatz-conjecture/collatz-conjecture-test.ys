@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: collatz-conjecture
+use ys::taptest: :all
+load: 'collatz-conjecture.ys'
 
 test::
 - name: Zero steps for one

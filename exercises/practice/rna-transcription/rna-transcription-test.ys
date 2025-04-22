@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: rna-transcription
+use ys::taptest: :all
+load: 'rna-transcription.ys'
 
 test::
 - name: Empty rna sequence

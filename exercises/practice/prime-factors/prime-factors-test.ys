@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: prime-factors
+use ys::taptest: :all
+load: 'prime-factors.ys'
 
 test::
 - name: No factors

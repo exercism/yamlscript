@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: robot-simulator
+use ys::taptest: :all
+load: 'robot-simulator.ys'
 
 test::
 - name: At origin facing north

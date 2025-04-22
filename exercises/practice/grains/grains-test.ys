@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: grains
+use ys::taptest: :all
+load: 'grains.ys'
 
 test::
 - name: Grains on square 1

@@ -1,8 +1,7 @@
 #!/usr/bin/env ys-0
 
-require ys::taptest: :all
-
-use: bottle-song
+use ys::taptest: :all
+load: 'bottle-song.ys'
 
 test::
 - name: First generic verse
