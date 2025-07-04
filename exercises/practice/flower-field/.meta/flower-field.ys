@@ -1,0 +1,19 @@
+!YS-v0
+
+defn annotate(garden):
+  map-indexed _ garden:
+    fn(r row): !:join
+      map-indexed _ row:
+        fn(c col):
+          list =:
+            ? for x [-1 0 1],
+                  y [-1 0 1]
+                :when garden
+                  .get(r + x)
+                  .get(c + y)
+                  .eq(\\*)
+            : 1
+          cond:
+            list.#.!: \\space
+            col == \\*: col
+            else: \\0 + list.#

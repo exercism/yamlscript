@@ -1,0 +1,4 @@
+!YS-v0
+
+defn annotate(garden):
+  # Implement the 'annotate' function.
