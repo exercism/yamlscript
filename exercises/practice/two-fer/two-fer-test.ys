@@ -1,7 +1,7 @@
 #!/usr/bin/env ys-0
 
 use ys::taptest: :all
-load: ''two-fer'.ys'
+load: 'two-fer.ys'
 
 test::
 - name: No name given
