@@ -12,9 +12,6 @@ status:
   representer: false
   analyzer: false
 
-test_runner:
-  average_run_time: 1
-
 blurb:
   YAMLScript is a dynamic, general purpose programming language.
   It has a clean YAML syntax and embeds nicely into existing YAML files, making
@@ -28,6 +25,9 @@ version: 3
 online_editor:
   indent_style: space
   indent_size: 2
+
+test_runner:
+  average_run_time: 1
 
 files:
   solution:
@@ -456,12 +456,20 @@ exercises:
     prerequisites: []
     difficulty: 8
 
+  - slug: flower-field
+    name: Flower Field
+    uuid: 911b5139-299b-4c92-8dea-cf1bfa75ba2f
+    practices: []
+    prerequisites: []
+    difficulty: 8
+
   - slug: minesweeper
     name: Minesweeper
     uuid: 4e7dd5dd-a6b6-4d8c-be9c-7a5995a86de9
     practices: []
     prerequisites: []
     difficulty: 8
+    status: deprecated
 
 tags:
 - execution_mode/compiled

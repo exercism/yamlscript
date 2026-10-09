@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "ingydotnet"
+  ],
+  "contributors": [
+    "BNAndras"
+  ],
+  "files": {
+    "solution": [
+      "flower-field.ys"
+    ],
+    "test": [
+      "flower-field-test.ys",
+      "GNUmakefile",
+      "Makefile",
+      ".yamlscript/exercism-ys-installer"
+    ],
+    "example": [
+      ".meta/flower-field.ys"
+    ]
+  },
+  "blurb": "Mark all the flowers in a garden."
+}
