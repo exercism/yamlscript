@@ -1,0 +1,91 @@
+#!/usr/bin/env ys-0
+
+use ys::taptest: :all
+load: 'flower-field.ys'
+
+test::
+- name: No rows
+  code: annotate([])
+  want: []
+
+- name: No columns
+  code: annotate([""])
+  want:
+  - ''
+
+- name: No flowers
+  code: annotate(["   " "   " "   "])
+  want:
+  - '   '
+  - '   '
+  - '   '
+
+- name: garden full of flowers
+  code: annotate(["***" "***" "***"])
+  want:
+  - '***'
+  - '***'
+  - '***'
+
+- name: flower surrounded by spaces
+  code: annotate(["   " " * " "   "])
+  want:
+  - '111'
+  - 1*1
+  - '111'
+
+- name: Space surrounded by flowers
+  code: annotate(["***" "* *" "***"])
+  want:
+  - '***'
+  - '*8*'
+  - '***'
+
+- name: Horizontal line
+  code: annotate([" * * "])
+  want:
+  - 1*2*1
+
+- name: Horizontal line, flowers at edges
+  code: annotate(["*   *"])
+  want:
+  - '*1 1*'
+
+- name: Vertical line
+  code: annotate([" " "*" " " "*" " "])
+  want:
+  - '1'
+  - '*'
+  - '2'
+  - '*'
+  - '1'
+
+- name: Vertical line, flowers at edges
+  code: annotate(["*" " " " " " " "*"])
+  want:
+  - '*'
+  - '1'
+  - ' '
+  - '1'
+  - '*'
+
+- name: Cross
+  code: annotate(["  *  " "  *  " "*****" "  *  " "  *  "])
+  want:
+  - ' 2*2 '
+  - 25*52
+  - '*****'
+  - 25*52
+  - ' 2*2 '
+
+- name: Large garden
+  code: annotate([" *  * " "  *   " "    * " "   * *" " *  * " "      "])
+  want:
+  - 1*22*1
+  - 12*322
+  - ' 123*2'
+  - 112*4*
+  - 1*22*2
+  - '111111'
+
+done: 12
