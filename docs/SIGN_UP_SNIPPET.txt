@@ -1,0 +1,10 @@
+!YS-v0
+
+defn most-common-word(text):
+  counts best =:
+    reduce _ [{} ''] text:lc:words:
+      fn([counts best] word):
+        counts =: update(counts word fnil(inc 0))
+        if get(counts word) > get(counts best 0):
+          vector(counts word), vector(counts best)
+  "\"$best\" appears $(get(counts best)) times"
