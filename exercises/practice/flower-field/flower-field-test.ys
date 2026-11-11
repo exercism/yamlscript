@@ -1,7 +1,12 @@
 #!/usr/bin/env ys-0
 
 use ys::taptest: :all
-load: 'flower-field.ys'
+require: 'flower-field.ys'
+
+# The expected outputs are represented as arrays of strings to
+# improve readability in this JSON file.
+# Your track may choose whether to present the input as a single
+# string (concatenating all the lines) or as the list.
 
 test::
 - name: No rows
@@ -20,14 +25,14 @@ test::
   - '   '
   - '   '
 
-- name: garden full of flowers
+- name: Garden full of flowers
   code: annotate(["***" "***" "***"])
   want:
   - '***'
   - '***'
   - '***'
 
-- name: flower surrounded by spaces
+- name: Flower surrounded by spaces
   code: annotate(["   " " * " "   "])
   want:
   - '111'
@@ -88,4 +93,9 @@ test::
   - 1*22*2
   - '111111'
 
-done: 12
+- name: Multiple adjacent flowers
+  code: annotate([" ** "])
+  want:
+  - 1**1
+
+done: 13
