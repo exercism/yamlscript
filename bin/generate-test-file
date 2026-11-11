@@ -11,7 +11,7 @@ defn main(slug):
     #!/usr/bin/env ys-0
 
     use ys::taptest: :all
-    require: '$slug.ys'
+    load: '$slug.ys'
     $gen-comments(data)
     test::
     $(join("\n" tests).trimr())

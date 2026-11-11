@@ -1,0 +1,114 @@
+#!/usr/bin/env ys-0
+
+use ys::taptest: :all
+load: 'flower-field.ys'
+
+# The expected outputs are represented as arrays of strings to
+# improve readability in this JSON file.
+# Your track may choose whether to present the input as a single
+# string (concatenating all the lines) or as the list.
+
+test::
+- name: No rows
+  code: annotate([])
+  want: []
+  uuid: 237ff487-467a-47e1-9b01-8a891844f86c
+
+- name: No columns
+  code: annotate([""])
+  want:
+  - ''
+  uuid: 4b4134ec-e20f-439c-a295-664c38950ba1
+
+- name: No flowers
+  code: annotate(["   " "   " "   "])
+  want:
+  - '   '
+  - '   '
+  - '   '
+  uuid: d774d054-bbad-4867-88ae-069cbd1c4f92
+
+- name: Garden full of flowers
+  code: annotate(["***" "***" "***"])
+  want:
+  - '***'
+  - '***'
+  - '***'
+  uuid: 225176a0-725e-43cd-aa13-9dced501f16e
+
+- name: Flower surrounded by spaces
+  code: annotate(["   " " * " "   "])
+  want:
+  - '111'
+  - 1*1
+  - '111'
+  uuid: 3f345495-f1a5-4132-8411-74bd7ca08c49
+
+- name: Space surrounded by flowers
+  code: annotate(["***" "* *" "***"])
+  want:
+  - '***'
+  - '*8*'
+  - '***'
+  uuid: 6cb04070-4199-4ef7-a6fa-92f68c660fca
+
+- name: Horizontal line
+  code: annotate([" * * "])
+  want:
+  - 1*2*1
+  uuid: 272d2306-9f62-44fe-8ab5-6b0f43a26338
+
+- name: Horizontal line, flowers at edges
+  code: annotate(["*   *"])
+  want:
+  - '*1 1*'
+  uuid: c6f0a4b2-58d0-4bf6-ad8d-ccf4144f1f8e
+
+- name: Vertical line
+  code: annotate([" " "*" " " "*" " "])
+  want:
+  - '1'
+  - '*'
+  - '2'
+  - '*'
+  - '1'
+  uuid: a54e84b7-3b25-44a8-b8cf-1753c8bb4cf5
+
+- name: Vertical line, flowers at edges
+  code: annotate(["*" " " " " " " "*"])
+  want:
+  - '*'
+  - '1'
+  - ' '
+  - '1'
+  - '*'
+  uuid: b40f42f5-dec5-4abc-b167-3f08195189c1
+
+- name: Cross
+  code: annotate(["  *  " "  *  " "*****" "  *  " "  *  "])
+  want:
+  - ' 2*2 '
+  - 25*52
+  - '*****'
+  - 25*52
+  - ' 2*2 '
+  uuid: 58674965-7b42-4818-b930-0215062d543c
+
+- name: Large garden
+  code: annotate([" *  * " "  *   " "    * " "   * *" " *  * " "      "])
+  want:
+  - 1*22*1
+  - 12*322
+  - ' 123*2'
+  - 112*4*
+  - 1*22*2
+  - '111111'
+  uuid: dd9d4ca8-9e68-4f78-a677-a2a70fd7a7b8
+
+- name: Multiple adjacent flowers
+  code: annotate([" ** "])
+  want:
+  - 1**1
+  uuid: 6e4ac13a-3e43-4728-a2e3-3551d4b1a996
+
+done: 13

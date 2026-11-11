@@ -1,0 +1,101 @@
+#!/usr/bin/env ys-0
+
+use ys::taptest: :all
+require: 'flower-field.ys'
+
+# The expected outputs are represented as arrays of strings to
+# improve readability in this JSON file.
+# Your track may choose whether to present the input as a single
+# string (concatenating all the lines) or as the list.
+
+test::
+- name: No rows
+  code: annotate([])
+  want: []
+
+- name: No columns
+  code: annotate([""])
+  want:
+  - ''
+
+- name: No flowers
+  code: annotate(["   " "   " "   "])
+  want:
+  - '   '
+  - '   '
+  - '   '
+
+- name: Garden full of flowers
+  code: annotate(["***" "***" "***"])
+  want:
+  - '***'
+  - '***'
+  - '***'
+
+- name: Flower surrounded by spaces
+  code: annotate(["   " " * " "   "])
+  want:
+  - '111'
+  - 1*1
+  - '111'
+
+- name: Space surrounded by flowers
+  code: annotate(["***" "* *" "***"])
+  want:
+  - '***'
+  - '*8*'
+  - '***'
+
+- name: Horizontal line
+  code: annotate([" * * "])
+  want:
+  - 1*2*1
+
+- name: Horizontal line, flowers at edges
+  code: annotate(["*   *"])
+  want:
+  - '*1 1*'
+
+- name: Vertical line
+  code: annotate([" " "*" " " "*" " "])
+  want:
+  - '1'
+  - '*'
+  - '2'
+  - '*'
+  - '1'
+
+- name: Vertical line, flowers at edges
+  code: annotate(["*" " " " " " " "*"])
+  want:
+  - '*'
+  - '1'
+  - ' '
+  - '1'
+  - '*'
+
+- name: Cross
+  code: annotate(["  *  " "  *  " "*****" "  *  " "  *  "])
+  want:
+  - ' 2*2 '
+  - 25*52
+  - '*****'
+  - 25*52
+  - ' 2*2 '
+
+- name: Large garden
+  code: annotate([" *  * " "  *   " "    * " "   * *" " *  * " "      "])
+  want:
+  - 1*22*1
+  - 12*322
+  - ' 123*2'
+  - 112*4*
+  - 1*22*2
+  - '111111'
+
+- name: Multiple adjacent flowers
+  code: annotate([" ** "])
+  want:
+  - 1**1
+
+done: 13
